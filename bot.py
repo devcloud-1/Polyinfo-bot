@@ -297,29 +297,82 @@ def get_recent_trades(wallet_address: str) -> list:
     return []
 
 
-def get_market_info(market_id: str) -> dict:
+def _parse_market(m: dict, market_id: str) -> dict:
+    vol = float(m.get("volume", 0))
+    print(f"[Market] Vol: ${vol:,.0f} | {m.get('question','')[:60]}")
+    return {
+        "volume": vol,
+        "description": m.get("description", ""),
+        "end_date": m.get("endDate", ""),
+        "liquidity": float(m.get("liquidity", 0)),
+        "category": m.get("category", ""),
+        "slug": m.get("slug", ""),
+        "conditionId": m.get("conditionId", market_id),
+        "question": m.get("question", ""),
+        "outcomes": m.get("outcomePrices", []),
+    }
+
+
+def _title_similarity(a: str, b: str) -> float:
+    """Returns ratio of matching words between two strings."""
+    if not a or not b:
+        return 0.0
+    wa = set(a.lower().split())
+    wb = set(b.lower().split())
+    if not wa or not wb:
+        return 0.0
+    return len(wa & wb) / max(len(wa), len(wb))
+
+
+def get_market_info(market_id: str, trade_title: str = "") -> dict:
+    """Fetch market info. Uses trade_title to validate the result is the correct market."""
     empty = {"volume": 0, "description": "", "end_date": "", "liquidity": 0, "category": "", "slug": "", "conditionId": market_id}
     if not market_id:
         return empty
+    candidates = []
     try:
-        # Try by conditionId first (hex format from Data API)
         for param in [{"conditionId": market_id}, {"id": market_id}]:
             r = requests.get(f"{GAMMA_API}/markets", params=param, timeout=10)
             if r.ok and r.json():
-                m = r.json()[0]
-                vol = float(m.get("volume", 0))
-                print(f"[Market] Encontrado — Vol: ${vol:,.0f} | {m.get('question','')[:50]}")
-                return {
-                    "volume": vol,
-                    "description": m.get("description", ""),
-                    "end_date": m.get("endDate", ""),
-                    "liquidity": float(m.get("liquidity", 0)),
-                    "category": m.get("category", ""),
-                    "slug": m.get("slug", ""),
-                    "conditionId": m.get("conditionId", market_id),
-                    "question": m.get("question", ""),
-                    "outcomes": m.get("outcomePrices", []),
-                }
+                for m in r.json():
+                    candidates.append(m)
+
+        if not candidates:
+            # Fallback: search by title keywords if we have them
+            if trade_title:
+                words = [w for w in trade_title.split() if len(w) > 4][:4]
+                query = " ".join(words)
+                r = requests.get(f"{GAMMA_API}/markets", params={"search": query, "limit": 10}, timeout=10)
+                if r.ok and r.json():
+                    candidates.extend(r.json())
+
+        if not candidates:
+            return empty
+
+        # If we have a trade title, pick the candidate that best matches it
+        if trade_title and len(candidates) > 1:
+            best = max(candidates, key=lambda m: _title_similarity(trade_title, m.get("question", "")))
+            sim = _title_similarity(trade_title, best.get("question", ""))
+            print(f"[Market] Best match similarity: {sim:.2f} — {best.get('question','')[:60]}")
+            return _parse_market(best, market_id)
+
+        # Single candidate or no title to compare — validate it's not obviously wrong
+        m = candidates[0]
+        if trade_title:
+            sim = _title_similarity(trade_title, m.get("question", ""))
+            if sim < 0.2:
+                print(f"[Market] ⚠️ Low similarity ({sim:.2f}) — may be wrong market. Title: {trade_title[:50]}")
+                # Try search fallback
+                words = [w for w in trade_title.split() if len(w) > 4][:4]
+                query = " ".join(words)
+                r2 = requests.get(f"{GAMMA_API}/markets", params={"search": query, "limit": 10}, timeout=10)
+                if r2.ok and r2.json():
+                    better = max(r2.json(), key=lambda x: _title_similarity(trade_title, x.get("question", "")))
+                    better_sim = _title_similarity(trade_title, better.get("question", ""))
+                    if better_sim > sim:
+                        print(f"[Market] Found better match ({better_sim:.2f}): {better.get('question','')[:60]}")
+                        return _parse_market(better, market_id)
+        return _parse_market(m, market_id)
     except Exception as e:
         print(f"[Market Info Error] {e}")
     return empty
@@ -329,15 +382,11 @@ def get_sibling_markets(market_id: str) -> list:
     """Busca otros sub-mercados del mismo evento por groupItemTitle o slug."""
     siblings = []
     try:
-        # Get base market first
-        m = None
-        for param in [{"conditionId": market_id}, {"id": market_id}]:
-            r = requests.get(f"{GAMMA_API}/markets", params=param, timeout=10)
-            if r.ok and r.json():
-                m = r.json()[0]
-                break
-        if not m:
+        # Get base market first — reuse get_market_info which already validates correctly
+        base_info = get_market_info(market_id)
+        if not base_info.get("slug"):
             return siblings
+        m = {"slug": base_info["slug"], "conditionId": market_id}
 
         slug = m.get("slug", "")
         # Strip trailing date/id suffix to get event base slug
@@ -656,7 +705,8 @@ def buffer_trade(trader_name: str, trade: dict, market_info: dict, market_id: st
 def process_trade(trader_name: str, trade: dict):
     """Recibe un trade nuevo y lo agrega al buffer de agrupación."""
     market_id = trade.get("market", trade.get("conditionId", ""))
-    market_info = get_market_info(market_id)
+    trade_title = trade.get("title", trade.get("market", ""))
+    market_info = get_market_info(market_id, trade_title)
     buffer_trade(trader_name, trade, market_info, market_id)
 
 
