@@ -401,6 +401,28 @@ def analyze_trade_with_claude(trader_name: str, trade: dict, market_info: dict, 
             )
         siblings_text += "Compara fechas y recomienda la mejor opcion riesgo/retorno.\n"
 
+    # Validate end_date — ignore if it's in the past by more than 1 year (likely bad API data)
+    raw_end = market_info.get("end_date", "") or ""
+    end_date_display = "desconocida"
+    try:
+        if raw_end:
+            ed = datetime.fromisoformat(raw_end.replace("Z", "+00:00").replace("z", "+00:00"))
+            ed_naive = ed.replace(tzinfo=None)
+            if ed_naive > datetime(2020, 1, 1):
+                end_date_display = ed_naive.strftime("%Y-%m-%d")
+            else:
+                end_date_display = "desconocida (dato API posiblemente incorrecto)"
+    except Exception:
+        pass
+
+    # Flag near-certain markets (price > 0.95) — usually not worth copying
+    near_certain = price > 0.95
+    near_certain_note = (
+        f"ATENCION: El precio es {price*100:.1f}c, el mercado esta casi resuelto. "
+        f"El retorno real es minimo (~{(1-price)*100:.1f}c por dolar). "
+        f"Evalua si vale la pena dado el riesgo residual.\n"
+    ) if near_certain else ""
+
     prompt = (
         "Eres un analista experto en prediction markets en Polymarket.\n"
         "Evalua si un usuario con $25 USD deberia copiar este trade.\n\n"
@@ -411,10 +433,11 @@ def analyze_trade_with_claude(trader_name: str, trade: dict, market_info: dict, 
         f"TRADE DETECTADO:\n"
         f"- Mercado: {market_title}\n"
         f"- Posicion: {outcome} | Accion: {side}\n"
-        f"- Precio: {price:.3f} ({price*100:.1f}c) | Aposto: ${amount:.2f} | Retorno: {mult}x\n\n"
-        f"MERCADO:\n"
+        f"- Precio: {price:.3f} ({price*100:.1f}c) | Aposto: ${amount:.2f} | Retorno: {mult}x\n"
+        f"{near_certain_note}"
+        f"\nMERCADO:\n"
         f"- Volumen: ${market_info.get('volume', 0):,.0f} | Liquidez: ${market_info.get('liquidity', 0):,.0f}\n"
-        f"- Categoria: {market_info.get('category', '?')} | Cierre: {market_info.get('end_date', '?')[:10]}\n"
+        f"- Categoria: {market_info.get('category', '?')} | Cierre: {end_date_display}\n"
         f"- Descripcion: {market_info.get('description', '')[:200]}\n"
         f"{siblings_text}\n"
         'Responde SOLO con este JSON, sin texto adicional:\n'
