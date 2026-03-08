@@ -303,17 +303,53 @@ def get_market_info(market_id: str) -> dict:
                 "end_date": m.get("endDate", ""),
                 "liquidity": float(m.get("liquidity", 0)),
                 "category": m.get("category", ""),
+                "slug": m.get("slug", ""),
+                "groupItemTitle": m.get("groupItemTitle", ""),
+                "conditionId": m.get("conditionId", market_id),
             }
     except Exception as e:
         print(f"[Market Info Error] {e}")
-    return {"volume": 0, "description": "", "end_date": "", "liquidity": 0, "category": ""}
+    return {"volume": 0, "description": "", "end_date": "", "liquidity": 0, "category": "", "slug": "", "groupItemTitle": "", "conditionId": ""}
+
+
+def get_sibling_markets(market_id: str) -> list:
+    """Busca otros sub-mercados del mismo evento (mismo slug base / grupo)."""
+    siblings = []
+    try:
+        # Primero obtener el mercado base para encontrar su slug
+        r = requests.get(f"{GAMMA_API}/markets", params={"id": market_id}, timeout=10)
+        if not r.ok or not r.json():
+            return siblings
+        m = r.json()[0]
+        slug = m.get("slug", "")
+        # El slug de sub-mercados suele ser: "us-forces-enter-iran-by-march-14-337"
+        # El evento padre suele estar en: "us-forces-enter-iran-by"
+        # Buscamos por el slug base quitando la última parte
+        parts = slug.rsplit("-", 2)
+        base_slug = parts[0] if len(parts) > 1 else slug
+
+        r2 = requests.get(f"{GAMMA_API}/markets", params={"slug": base_slug, "limit": 20}, timeout=10)
+        if r2.ok and r2.json():
+            for sm in r2.json():
+                if sm.get("conditionId") != market_id:
+                    siblings.append({
+                        "title": sm.get("groupItemTitle", sm.get("question", "")),
+                        "end_date": sm.get("endDate", ""),
+                        "volume": float(sm.get("volume", 0)),
+                        "liquidity": float(sm.get("liquidity", 0)),
+                        "price_yes": float(sm.get("outcomePrices", ["0"])[0]) if sm.get("outcomePrices") else 0,
+                        "price_no": float(sm.get("outcomePrices", ["0", "0"])[1]) if sm.get("outcomePrices") and len(sm.get("outcomePrices", [])) > 1 else 0,
+                    })
+    except Exception as e:
+        print(f"[Siblings Error] {e}")
+    return siblings
 
 
 # ============================================================
 # ANÁLISIS CON CLAUDE
 # ============================================================
 
-def analyze_trade_with_claude(trader_name: str, trade: dict, market_info: dict) -> dict:
+def analyze_trade_with_claude(trader_name: str, trade: dict, market_info: dict, siblings: list = None) -> dict:
     if not ANTHROPIC_API_KEY:
         return None
 
@@ -323,31 +359,45 @@ def analyze_trade_with_claude(trader_name: str, trade: dict, market_info: dict) 
     outcome = trade.get("outcome", trade.get("answer", ""))
     price = float(trade.get("price", trade.get("avgPrice", 0)) or 0)
     amount = float(trade.get("usdcSize", trade.get("size", 0)) or 0)
+    mult = round(1/price, 1) if price > 0 else "?"
 
-    prompt = f"""Eres un analista experto en prediction markets en Polymarket.
-Evalúa si un usuario con $25 USD debería copiar este trade.
+    # Build siblings section
+    siblings_text = ""
+    if siblings:
+        siblings_text = "\nOTRAS FECHAS DEL MISMO EVENTO:\n"
+        for s in siblings[:6]:
+            py = s.get("price_yes", 0)
+            sm = round(1/py, 1) if py > 0 else "?"
+            siblings_text += (
+                f"  - {s.get('title','?')}: "
+                f"Vol=${s.get('volume',0):,.0f} | "
+                f"Yes={py*100:.0f}c ({sm}x) | "
+                f"Cierre={s.get('end_date','?')[:10]}\n"
+            )
+        siblings_text += "Compara fechas y recomienda la mejor opcion riesgo/retorno.\n"
 
-TRADER: {trader_name}
-- Win Rate: {profile.get('win_rate')}% | PnL: ${profile.get('pnl'):,} | Profit Factor: {profile.get('profit_factor')}x
-- Especialidad: {profile.get('specialty')}
-- Estilo: {profile.get('style')}
-
-TRADE:
-- Mercado: {market_title}
-- Posición: {outcome} | Acción: {side}
-- Precio: {price:.3f} ({price*100:.1f}¢) | Apostó: ${amount:.2f}
-- Retorno potencial: {round(1/price, 1) if price > 0 else '?'}x
-
-MERCADO:
-- Volumen: ${market_info.get('volume', 0):,.0f} | Liquidez: ${market_info.get('liquidity', 0):,.0f}
-- Categoría: {market_info.get('category', '?')} | Cierre: {market_info.get('end_date', '?')}
-- Descripción: {market_info.get('description', '')[:200]}
-
-Responde SOLO con este JSON exacto, sin texto adicional:
-{{"recommendation": "ENTRAR" | "NO ENTRAR" | "OBSERVAR", "score": <0-100>, "risk_level": "BAJO" | "MEDIO" | "ALTO", "suggested_amount": <0.0-1.50>, "reasoning": "<max 2 oraciones>", "key_factor": "<factor decisivo>"}}"""
+    prompt = (
+        "Eres un analista experto en prediction markets en Polymarket.\n"
+        "Evalua si un usuario con $25 USD deberia copiar este trade.\n\n"
+        f"TRADER: {trader_name}\n"
+        f"- Win Rate: {profile.get('win_rate')}% | PnL: ${profile.get('pnl'):,} | PF: {profile.get('profit_factor')}x\n"
+        f"- Especialidad: {profile.get('specialty')}\n"
+        f"- Estilo: {profile.get('style')}\n\n"
+        f"TRADE DETECTADO:\n"
+        f"- Mercado: {market_title}\n"
+        f"- Posicion: {outcome} | Accion: {side}\n"
+        f"- Precio: {price:.3f} ({price*100:.1f}c) | Aposto: ${amount:.2f} | Retorno: {mult}x\n\n"
+        f"MERCADO:\n"
+        f"- Volumen: ${market_info.get('volume', 0):,.0f} | Liquidez: ${market_info.get('liquidity', 0):,.0f}\n"
+        f"- Categoria: {market_info.get('category', '?')} | Cierre: {market_info.get('end_date', '?')[:10]}\n"
+        f"- Descripcion: {market_info.get('description', '')[:200]}\n"
+        f"{siblings_text}\n"
+        'Responde SOLO con este JSON, sin texto adicional:\n'
+        '{"recommendation":"ENTRAR"|"NO ENTRAR"|"OBSERVAR","score":<0-100>,"risk_level":"BAJO"|"MEDIO"|"ALTO","suggested_amount":<0.0-1.50>,"reasoning":"<max 2 oraciones>","key_factor":"<factor decisivo>","best_date":"<fecha recomendada o null>"}'
+    )
 
     try:
-        r = requests.post(
+        resp = requests.post(
             ANTHROPIC_API,
             headers={
                 "x-api-key": ANTHROPIC_API_KEY,
@@ -356,15 +406,15 @@ Responde SOLO con este JSON exacto, sin texto adicional:
             },
             json={
                 "model": "claude-haiku-4-5-20251001",
-                "max_tokens": 300,
+                "max_tokens": 400,
                 "messages": [{"role": "user", "content": prompt}],
             },
             timeout=20,
         )
-        if r.ok:
-            content = r.json()["content"][0]["text"].strip()
-            content = content.replace("```json", "").replace("```", "").strip()
-            return json.loads(content)
+        if resp.ok:
+            text = resp.json()["content"][0]["text"].strip()
+            text = text.replace("```json", "").replace("```", "").strip()
+            return json.loads(text)
     except Exception as e:
         print(f"[Claude Error] {e}")
     return None
@@ -395,6 +445,8 @@ def format_alert(trader_name: str, trade: dict, market_info: dict, analysis: dic
         reasoning = analysis.get("reasoning", "")
         key_factor = analysis.get("key_factor", "")
         rec_emoji = {"ENTRAR": "✅", "NO ENTRAR": "❌", "OBSERVAR": "👁"}.get(rec, "👁")
+        best_date = analysis.get("best_date", None)
+        best_date_line = f"\n📅 <b>Mejor fecha:</b> {best_date}" if best_date and best_date != "null" else ""
 
         analysis_block = (
             f"\n━━━━━━━━━━━━━━━━━━━━\n"
@@ -402,7 +454,8 @@ def format_alert(trader_name: str, trade: dict, market_info: dict, analysis: dic
             f"{rec_emoji} <b>Veredicto: {rec}</b>\n"
             f"📊 Score: {score}/100  |  Riesgo: {risk}\n"
             f"💡 {reasoning}\n"
-            f"🔑 <b>Factor clave:</b> {key_factor}\n"
+            f"🔑 <b>Factor clave:</b> {key_factor}"
+            f"{best_date_line}\n"
             f"💰 <b>Monto sugerido:</b> ${suggested:.2f} de tus $25\n"
             f"📁 <i>Guardado en tracker para medir efectividad</i>"
         )
@@ -484,7 +537,10 @@ def check_wallet(trader_name: str, wallet_address: str):
             return
 
         print(f"[{trader_name}] Consultando análisis IA...")
-        analysis = analyze_trade_with_claude(trader_name, latest, market_info)
+        siblings = get_sibling_markets(market_id)
+        if siblings:
+            print(f"[{trader_name}] Encontrados {len(siblings)} sub-mercados")
+        analysis = analyze_trade_with_claude(trader_name, latest, market_info, siblings)
 
         # Guardar en tracker
         if analysis:
