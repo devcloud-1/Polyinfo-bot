@@ -292,21 +292,65 @@ def get_recent_trades(wallet_address: str) -> list:
     return []
 
 
+def _parse_market_dict(m: dict) -> dict:
+    """Extrae campos clave de un dict de mercado, normalizando nombres de campos."""
+    vol = float(m.get("volume") or m.get("volumeNum") or 0)
+    liq = float(m.get("liquidity") or m.get("liquidityNum") or 0)
+    # Mercados multi-outcome: sumar volumen de tokens individuales
+    if vol == 0:
+        for t in m.get("tokens", []):
+            if isinstance(t, dict):
+                vol += float(t.get("volume") or 0)
+    return {
+        "volume":      vol,
+        "description": m.get("description", ""),
+        "end_date":    m.get("endDate") or m.get("end_date_iso", ""),
+        "liquidity":   liq,
+        "category":    m.get("category", ""),
+        "question":    m.get("question", ""),
+    }
+
+
 def get_market_info(market_id: str) -> dict:
-    try:
-        r = requests.get(f"{GAMMA_API}/markets", params={"id": market_id}, timeout=10)
-        if r.ok and r.json():
-            m = r.json()[0]
-            return {
-                "volume": float(m.get("volume", 0)),
-                "description": m.get("description", ""),
-                "end_date": m.get("endDate", ""),
-                "liquidity": float(m.get("liquidity", 0)),
-                "category": m.get("category", ""),
-            }
-    except Exception as e:
-        print(f"[Market Info Error] {e}")
-    return {"volume": 0, "description": "", "end_date": "", "liquidity": 0, "category": ""}
+    """
+    Busca info del mercado con 4 estrategias de fallback:
+    1. GET /markets?id=<id>           — el campo 'id' del trade
+    2. GET /markets?conditionId=<id>  — a veces el trade trae conditionId
+    3. GET /markets/<id>              — lookup directo
+    4. GET /markets?clob_token_ids=<id> — cuando el id es un token de CLOB
+    """
+    empty = {"volume": 0, "description": "", "end_date": "", "liquidity": 0, "category": "", "question": ""}
+    if not market_id:
+        return empty
+
+    strategies = [
+        (f"{GAMMA_API}/markets",          {"id": market_id}),
+        (f"{GAMMA_API}/markets",          {"conditionId": market_id}),
+        (f"{GAMMA_API}/markets/{market_id}", None),
+        (f"{GAMMA_API}/markets",          {"clob_token_ids": market_id}),
+    ]
+
+    for url, params in strategies:
+        try:
+            r = requests.get(url, params=params, timeout=10)
+            if not r.ok:
+                continue
+            data = r.json()
+            if isinstance(data, list) and data:
+                result = _parse_market_dict(data[0])
+            elif isinstance(data, dict) and (data.get("id") or data.get("conditionId") or data.get("question")):
+                result = _parse_market_dict(data)
+            else:
+                continue
+
+            if result["volume"] > 0 or result["question"]:
+                print(f"[Market] Encontrado — Vol: ${result['volume']:,.0f} | {result['question'][:40]}")
+                return result
+        except Exception as e:
+            continue
+
+    print(f"[Market Info] Sin datos para: {str(market_id)[:24]}...")
+    return empty
 
 
 # ============================================================
@@ -451,12 +495,19 @@ def check_wallet(trader_name: str, wallet_address: str):
         last_seen[trader_name] = trade_id
         print(f"[{trader_name}] ¡Trade nuevo detectado!")
 
-        market_id = latest.get("market", latest.get("conditionId", ""))
+        # Intentar obtener market_id desde varios campos posibles
+        market_id = (latest.get("market") or latest.get("conditionId") or
+                     latest.get("asset_id") or latest.get("marketId") or "")
         market_info = get_market_info(market_id)
 
-        if market_info["volume"] < MIN_VOLUME and market_info["volume"] > 0:
+        # Solo filtrar por volumen si realmente obtuvimos datos del mercado.
+        # Si volume==0 Y no hay question, el lookup falló — dejamos pasar para no silenciar alertas.
+        lookup_ok = market_info["volume"] > 0 or bool(market_info.get("question"))
+        if lookup_ok and 0 < market_info["volume"] < MIN_VOLUME:
             print(f"[{trader_name}] Ignorado — volumen ${market_info['volume']:,.0f} < ${MIN_VOLUME:,}")
             return
+        if not lookup_ok:
+            print(f"[{trader_name}] ⚠️  Sin datos de mercado — enviando alerta sin filtro de volumen")
 
         print(f"[{trader_name}] Consultando análisis IA...")
         analysis = analyze_trade_with_claude(trader_name, latest, market_info)
@@ -520,4 +571,3 @@ def main():
 
 if __name__ == "__main__":
     main()
-    
