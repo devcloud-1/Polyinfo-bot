@@ -15,6 +15,7 @@ ANTHROPIC_API_KEY = os.getenv("ANTHROPIC_API_KEY")
 WALLETS = {
     "Gohst": os.getenv("WALLET_GOHST", "0x2d4bf8f846bf68f43b9157bf30810d334ac6ca7a"),
     "de5nuts": os.getenv("WALLET_DE5NUTS", "0x80a0da00fbdc8440b0ef601341f14c3e24795708"),
+    "aenews2": os.getenv("WALLET_AENEWS2", "0x44c1dfe43260c94ed4f1d00de2e1f80fb113ebc1"),
 }
 
 TRADER_PROFILES = {
@@ -24,7 +25,14 @@ TRADER_PROFILES = {
         "style": "Contrarian, apuesta baja probabilidad con alta convicción, posiciones largas",
         "months_active": 7,
     },
-    "de5nuts": {
+    "aenews2": {
+        "win_rate": 74.6,
+        "pnl": 1948004,
+        "profit_factor": 2.26,
+        "specialty": "Política US, Trump, Geopolítica Middle East (Irán, Estrecho de Ormuz)",
+        "style": "Especialista político puro, entra temprano cuando el mercado está mal calibrado, posiciones muy grandes con alta convicción, aguanta semanas o meses",
+        "months_active": 26,
+    },
         "win_rate": 48.6, "pnl": 195145, "profit_factor": 4.69,
         "specialty": "Geopolítica y Macro (Taiwan, conflictos internacionales, tech)",
         "style": "Contrarian extremo, fragmenta posiciones, concentra capital cuando está muy seguro",
