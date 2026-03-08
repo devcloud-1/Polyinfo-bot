@@ -54,6 +54,11 @@ ANTHROPIC_API = "https://api.anthropic.com/v1/messages"
 last_seen = {wallet: None for wallet in WALLETS}
 last_weekly_report = None
 
+# Pending trades buffer: groups transactions by (trader, market_id) within a time window
+# Structure: { "trader:market_id": {"trades": [...], "first_seen": timestamp, "market_info": {...}} }
+GROUPING_WINDOW = int(os.getenv("GROUPING_WINDOW", "600"))  # seconds to wait before sending (default 10 min)
+pending_trades: dict = {}
+
 
 # ============================================================
 # TRACKER — guarda cada decisión en disco
@@ -452,10 +457,21 @@ def format_alert(trader_name: str, trade: dict, market_info: dict, analysis: dic
     amount = float(trade.get("usdcSize", trade.get("size", 0)) or 0)
     volume = market_info.get("volume", 0)
     timestamp = datetime.now().strftime("%H:%M:%S")
+    n_trades = trade.get("_n_trades", 1)
+    price_range = trade.get("_price_range", None)
 
     action_emoji = "🟢" if "BUY" in side else "🔴"
     action_text = "COMPRÓ" if "BUY" in side else "VENDIÓ"
     multiplier = round(1 / price, 1) if 0 < price < 1 else "?"
+
+    # Consolidated vs single trade labels
+    trades_label = f" ({n_trades} transacciones)" if n_trades > 1 else ""
+    price_line = (
+        f"💵 <b>Precio promedio:</b> {price*100:.1f}¢  |  Rango: {price_range}"
+        if n_trades > 1 and price_range
+        else f"💵 <b>Precio:</b> {price:.3f} ({price*100:.1f}¢)"
+    )
+    header_label = "POSICIÓN ACUMULADA" if n_trades > 1 else "NUEVA ENTRADA"
 
     if analysis:
         rec = analysis.get("recommendation", "OBSERVAR")
@@ -483,13 +499,13 @@ def format_alert(trader_name: str, trade: dict, market_info: dict, analysis: dic
         analysis_block = "\n━━━━━━━━━━━━━━━━━━━━\n⚠️ Análisis IA no disponible"
 
     return (
-        f"{action_emoji} <b>NUEVA ENTRADA — {trader_name}</b>\n"
+        f"{action_emoji} <b>{header_label} — {trader_name}</b>{trades_label}\n"
         f"━━━━━━━━━━━━━━━━━━━━\n"
         f"📋 <b>Mercado:</b> {market}\n"
         f"🎯 <b>Posición:</b> {outcome}\n"
         f"⚡ <b>Acción:</b> {action_text}\n"
-        f"💵 <b>Precio:</b> {price:.3f} ({price*100:.1f}¢)\n"
-        f"💼 <b>Apostó:</b> ${amount:.2f} USDC\n"
+        f"{price_line}\n"
+        f"💼 <b>Total invertido:</b> ${amount:.2f} USDC\n"
         f"📈 <b>Retorno potencial:</b> {multiplier}x\n"
         f"🌊 <b>Volumen mercado:</b> ${volume:,.0f}"
         f"{analysis_block}\n"
@@ -502,64 +518,130 @@ def format_alert(trader_name: str, trade: dict, market_info: dict, analysis: dic
 # LOOP PRINCIPAL
 # ============================================================
 
-def process_trade(trader_name: str, trade: dict):
-    """Procesa un trade individual — analiza y notifica."""
-    market_id = trade.get("market", trade.get("conditionId", ""))
-    market_info = get_market_info(market_id)
-    low_volume = 0 < market_info["volume"] < MIN_VOLUME
+def flush_pending(key: str):
+    """Consolida todos los trades acumulados de un (trader, market) y envía UNA alerta."""
+    global pending_trades
+    if key not in pending_trades:
+        return
 
+    entry = pending_trades.pop(key)
+    trader_name = entry["trader_name"]
+    trades_list = entry["trades"]
+    market_info = entry["market_info"]
+    market_id = entry["market_id"]
+
+    if not trades_list:
+        return
+
+    # ── Sumarizaciones ──────────────────────────────────────────
+    total_amount = sum(float(t.get("usdcSize", t.get("size", 0)) or 0) for t in trades_list)
+    prices = [float(t.get("price", t.get("avgPrice", 0)) or 0) for t in trades_list]
+    prices = [p for p in prices if p > 0]
+    avg_price = sum(prices) / len(prices) if prices else 0
+    min_price = min(prices) if prices else 0
+    max_price = max(prices) if prices else 0
+    n = len(trades_list)
+
+    # Use first trade for metadata
+    ref = trades_list[0]
+    side = ref.get("side", ref.get("type", "?")).upper()
+    market_title = ref.get("title", ref.get("market", "Desconocido"))
+    outcome = ref.get("outcome", ref.get("answer", ""))
+    mult = round(1 / avg_price, 1) if avg_price > 0 else "?"
+
+    # Build a synthetic consolidated trade for Claude
+    consolidated = dict(ref)
+    consolidated["usdcSize"] = total_amount
+    consolidated["price"] = avg_price
+    consolidated["_n_trades"] = n
+    consolidated["_price_range"] = f"{min_price*100:.1f}¢ – {max_price*100:.1f}¢" if n > 1 else None
+
+    # Check volume filter
+    low_volume = 0 < market_info["volume"] < MIN_VOLUME
     if low_volume:
-        side = trade.get("side", trade.get("type", "?")).upper()
-        mkt = trade.get("title", trade.get("market", "Desconocido"))
-        outcome = trade.get("outcome", trade.get("answer", ""))
-        price = float(trade.get("price", trade.get("avgPrice", 0)) or 0)
-        amount = float(trade.get("usdcSize", trade.get("size", 0)) or 0)
         ae = "🟢" if "BUY" in side else "🔴"
         at = "COMPRÓ" if "BUY" in side else "VENDIÓ"
-        mult = round(1 / price, 1) if 0 < price < 1 else "?"
         vol = market_info["volume"]
         parts = [
             f"⚠️ <b>VOLUMEN BAJO — {trader_name}</b> (info only, no copiar)",
             "━━━━━━━━━━━━━━━━━━━━",
-            f"{ae} <b>Acción:</b> {at}",
-            f"📋 <b>Mercado:</b> {mkt}",
+            f"{ae} <b>Acción:</b> {at} ({n} transacciones)",
+            f"📋 <b>Mercado:</b> {market_title}",
             f"🎯 <b>Posición:</b> {outcome}",
-            f"💵 <b>Precio:</b> {price:.3f} ({price*100:.1f}¢)",
-            f"💼 <b>Apostó:</b> ${amount:.2f} USDC",
+            f"💵 <b>Precio promedio:</b> {avg_price*100:.1f}¢  |  Rango: {min_price*100:.1f}¢–{max_price*100:.1f}¢" if n > 1 else f"💵 <b>Precio:</b> {avg_price*100:.1f}¢",
+            f"💼 <b>Total apostado:</b> ${total_amount:.2f} USDC",
             f"📈 <b>Retorno potencial:</b> {mult}x",
-            f"🌊 <b>Volumen:</b> ${vol:,.0f} (mínimo: ${MIN_VOLUME:,})",
+            f"🌊 <b>Volumen mercado:</b> ${vol:,.0f} (mínimo: ${MIN_VOLUME:,})",
             "━━━━━━━━━━━━━━━━━━━━",
             "ℹ️ <i>Mercado pequeño — observar, no copiar</i>",
         ]
         send_telegram("\n".join(parts))
-        print(f"[{trader_name}] Alerta volumen bajo enviada ✓")
+        print(f"[{trader_name}] Alerta volumen bajo consolidada ({n} trades) ✓")
         return
 
-    print(f"[{trader_name}] Consultando análisis IA...")
+    print(f"[{trader_name}] Analizando posición consolidada ({n} trades, ${total_amount:.0f} total)...")
     siblings = get_sibling_markets(market_id)
     if siblings:
-        print(f"[{trader_name}] Encontrados {len(siblings)} sub-mercados")
-    analysis = analyze_trade_with_claude(trader_name, trade, market_info, siblings)
+        print(f"[{trader_name}] {len(siblings)} sub-mercados encontrados")
+    analysis = analyze_trade_with_claude(trader_name, consolidated, market_info, siblings)
 
     if analysis:
-        price = float(trade.get("price", trade.get("avgPrice", 0)) or 0)
         log_trade(
             trader=trader_name,
-            market=trade.get("title", trade.get("market", "?")),
-            outcome=trade.get("outcome", trade.get("answer", "")),
-            price=price,
+            market=market_title,
+            outcome=outcome,
+            price=avg_price,
             recommendation=analysis.get("recommendation", "OBSERVAR"),
             score=analysis.get("score", 0),
             suggested_amount=analysis.get("suggested_amount", 0),
             market_id=market_id,
         )
 
-    message = format_alert(trader_name, trade, market_info, analysis)
+    message = format_alert(trader_name, consolidated, market_info, analysis)
     send_telegram(message)
     verdict = analysis.get("recommendation", "N/A") if analysis else "Sin análisis"
-    print(f"[{trader_name}] Alerta enviada ✓ | Veredicto: {verdict}")
+    print(f"[{trader_name}] Alerta consolidada enviada ✓ | Veredicto: {verdict}")
 
 
+def buffer_trade(trader_name: str, trade: dict, market_info: dict, market_id: str):
+    """Agrega un trade al buffer. Si es el primero del grupo, programa su flush."""
+    global pending_trades
+    key = f"{trader_name}:{market_id}"
+    if key not in pending_trades:
+        pending_trades[key] = {
+            "trader_name": trader_name,
+            "market_id": market_id,
+            "market_info": market_info,
+            "trades": [],
+            "first_seen": time.time(),
+        }
+        print(f"[Buffer] Nueva posición abierta: {key}")
+    else:
+        # Update market_info with latest (may have better volume data)
+        if market_info.get("volume", 0) > pending_trades[key]["market_info"].get("volume", 0):
+            pending_trades[key]["market_info"] = market_info
+        print(f"[Buffer] Trade acumulado en: {key} ({len(pending_trades[key]['trades'])+1} total)")
+    pending_trades[key]["trades"].append(trade)
+
+
+def process_trade(trader_name: str, trade: dict):
+    """Recibe un trade nuevo y lo agrega al buffer de agrupación."""
+    market_id = trade.get("market", trade.get("conditionId", ""))
+    market_info = get_market_info(market_id)
+    buffer_trade(trader_name, trade, market_info, market_id)
+
+
+def flush_stale_pending():
+    """Revisa el buffer y envía alertas de grupos cuya ventana de tiempo ya venció."""
+    global pending_trades
+    now = time.time()
+    to_flush = [
+        key for key, entry in pending_trades.items()
+        if now - entry["first_seen"] >= GROUPING_WINDOW
+    ]
+    for key in to_flush:
+        print(f"[Buffer] Ventana cerrada — enviando alerta consolidada: {key}")
+        flush_pending(key)
 def check_wallet(trader_name: str, wallet_address: str):
     global last_seen
 
@@ -642,6 +724,9 @@ def main():
                 check_wallet(name, wallet)
             except Exception as e:
                 print(f"[Error] {name}: {e}")
+
+        # Flush any pending trade groups whose window has expired
+        flush_stale_pending()
 
         cycle += 1
         time.sleep(CHECK_INTERVAL)
