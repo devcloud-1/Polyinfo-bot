@@ -313,66 +313,101 @@ def _parse_market(m: dict, market_id: str) -> dict:
     }
 
 
+def _title_to_slug(title: str) -> str:
+    """Convert a market title to its likely Polymarket slug."""
+    import re
+    slug = title.lower().strip()
+    slug = re.sub(r"[^a-z0-9\s-]", "", slug)
+    slug = re.sub(r"\s+", "-", slug)
+    slug = re.sub(r"-+", "-", slug).strip("-")
+    return slug
+
+
 def _title_similarity(a: str, b: str) -> float:
-    """Returns ratio of matching words between two strings."""
     if not a or not b:
         return 0.0
     wa = set(a.lower().split())
     wb = set(b.lower().split())
+    stopwords = {"will", "the", "a", "an", "be", "to", "of", "in", "by", "on", "at", "is", "or", "and"}
+    wa -= stopwords
+    wb -= stopwords
     if not wa or not wb:
         return 0.0
     return len(wa & wb) / max(len(wa), len(wb))
 
 
+def _fetch_by_slug(slug: str) -> dict | None:
+    """Try to find a market by exact or partial slug match."""
+    try:
+        r = requests.get(f"{GAMMA_API}/markets", params={"slug": slug}, timeout=10)
+        if r.ok and r.json():
+            return r.json()[0]
+        # Try truncated slug (remove last segment)
+        parts = slug.rsplit("-", 1)
+        if len(parts) > 1:
+            r2 = requests.get(f"{GAMMA_API}/markets", params={"slug": parts[0]}, timeout=10)
+            if r2.ok and r2.json():
+                return r2.json()[0]
+    except Exception:
+        pass
+    return None
+
+
 def get_market_info(market_id: str, trade_title: str = "") -> dict:
-    """Fetch market info. Uses trade_title to validate the result is the correct market."""
-    empty = {"volume": 0, "description": "", "end_date": "", "liquidity": 0, "category": "", "slug": "", "conditionId": market_id}
-    if not market_id:
+    """Fetch correct market info using title-first strategy to avoid conditionId collisions."""
+    empty = {"volume": 0, "description": "", "end_date": "", "liquidity": 0,
+             "category": "", "slug": "", "conditionId": market_id}
+    if not market_id and not trade_title:
         return empty
+
     candidates = []
     try:
-        for param in [{"conditionId": market_id}, {"id": market_id}]:
-            r = requests.get(f"{GAMMA_API}/markets", params=param, timeout=10)
-            if r.ok and r.json():
-                for m in r.json():
-                    candidates.append(m)
+        # STRATEGY 1: If we have a title, build slug and search directly — most reliable
+        if trade_title:
+            slug = _title_to_slug(trade_title)
+            m = _fetch_by_slug(slug)
+            if m:
+                sim = _title_similarity(trade_title, m.get("question", ""))
+                if sim >= 0.3:
+                    print(f"[Market] ✓ Slug match (sim={sim:.2f}) Vol:${float(m.get('volume',0)):,.0f} | {m.get('question','')[:60]}")
+                    return _parse_market(m, market_id)
+                else:
+                    print(f"[Market] Slug found but low similarity {sim:.2f} — trying other methods")
 
-        if not candidates:
-            # Fallback: search by title keywords if we have them
-            if trade_title:
-                words = [w for w in trade_title.split() if len(w) > 4][:4]
-                query = " ".join(words)
-                r = requests.get(f"{GAMMA_API}/markets", params={"search": query, "limit": 10}, timeout=10)
+        # STRATEGY 2: conditionId lookup — validate result matches title
+        if market_id:
+            for param in [{"conditionId": market_id}, {"id": market_id}]:
+                r = requests.get(f"{GAMMA_API}/markets", params=param, timeout=10)
                 if r.ok and r.json():
-                    candidates.extend(r.json())
+                    for m in r.json():
+                        candidates.append(m)
+                    break
 
-        if not candidates:
-            return empty
-
-        # If we have a trade title, pick the candidate that best matches it
-        if trade_title and len(candidates) > 1:
+        if candidates and trade_title:
             best = max(candidates, key=lambda m: _title_similarity(trade_title, m.get("question", "")))
             sim = _title_similarity(trade_title, best.get("question", ""))
-            print(f"[Market] Best match similarity: {sim:.2f} — {best.get('question','')[:60]}")
-            return _parse_market(best, market_id)
+            if sim >= 0.3:
+                print(f"[Market] ✓ conditionId match (sim={sim:.2f}) Vol:${float(best.get('volume',0)):,.0f}")
+                return _parse_market(best, market_id)
+            else:
+                print(f"[Market] ⚠️ conditionId result mismatch (sim={sim:.2f}) — API may have wrong data")
+                # STRATEGY 3: Keyword search using important words from title
+                keywords = [w for w in trade_title.split() if len(w) > 4 and w.lower() not in
+                           {"will", "their", "there", "where", "which", "about", "after", "before"}][:5]
+                query = " ".join(keywords[:3])
+                print(f"[Market] Searching by keywords: '{query}'")
+                r3 = requests.get(f"{GAMMA_API}/markets", params={"search": query, "limit": 20}, timeout=10)
+                if r3.ok and r3.json():
+                    search_results = r3.json()
+                    best2 = max(search_results, key=lambda m: _title_similarity(trade_title, m.get("question", "")))
+                    sim2 = _title_similarity(trade_title, best2.get("question", ""))
+                    if sim2 > sim:
+                        print(f"[Market] ✓ Keyword search match (sim={sim2:.2f}) Vol:${float(best2.get('volume',0)):,.0f}")
+                        return _parse_market(best2, market_id)
 
-        # Single candidate or no title to compare — validate it's not obviously wrong
-        m = candidates[0]
-        if trade_title:
-            sim = _title_similarity(trade_title, m.get("question", ""))
-            if sim < 0.2:
-                print(f"[Market] ⚠️ Low similarity ({sim:.2f}) — may be wrong market. Title: {trade_title[:50]}")
-                # Try search fallback
-                words = [w for w in trade_title.split() if len(w) > 4][:4]
-                query = " ".join(words)
-                r2 = requests.get(f"{GAMMA_API}/markets", params={"search": query, "limit": 10}, timeout=10)
-                if r2.ok and r2.json():
-                    better = max(r2.json(), key=lambda x: _title_similarity(trade_title, x.get("question", "")))
-                    better_sim = _title_similarity(trade_title, better.get("question", ""))
-                    if better_sim > sim:
-                        print(f"[Market] Found better match ({better_sim:.2f}): {better.get('question','')[:60]}")
-                        return _parse_market(better, market_id)
-        return _parse_market(m, market_id)
+        elif candidates:
+            return _parse_market(candidates[0], market_id)
+
     except Exception as e:
         print(f"[Market Info Error] {e}")
     return empty
