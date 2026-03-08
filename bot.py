@@ -46,10 +46,22 @@ MIN_VOLUME = int(os.getenv("MIN_VOLUME", "50000"))
 USER_BANKROLL = float(os.getenv("USER_BANKROLL", "25"))
 TRACKER_FILE = "/tmp/trade_tracker.json"
 
+# Trading config
+MY_PRIVATE_KEY = os.getenv("MY_PRIVATE_KEY", "")           # Polygon private key
+MY_WALLET = os.getenv("MY_WALLET", "")                      # Your Polygon wallet address
+MAX_PER_TRADE = float(os.getenv("MAX_PER_TRADE", "2.0"))    # Max USDC per trade
+MAX_OPEN_POSITIONS = int(os.getenv("MAX_OPEN_POSITIONS", "3"))  # Max simultaneous positions
+AUTO_TRADE = os.getenv("AUTO_TRADE", "false").lower() == "true"  # False = semi-auto (buttons)
+
 # APIs
 GAMMA_API = "https://gamma-api.polymarket.com"
 DATA_API = "https://data-api.polymarket.com"
+CLOB_API = "https://clob.polymarket.com"
 ANTHROPIC_API = "https://api.anthropic.com/v1/messages"
+
+# Pending orders waiting for user approval
+# Structure: { "callback_data": { trade info } }
+pending_approvals: dict = {}
 
 last_seen = {wallet: None for wallet in WALLETS}
 last_weekly_report = None
@@ -58,6 +70,64 @@ last_weekly_report = None
 # Structure: { "trader:market_id": {"trades": [...], "first_seen": timestamp, "market_info": {...}} }
 GROUPING_WINDOW = int(os.getenv("GROUPING_WINDOW", "600"))  # seconds to wait before sending (default 10 min)
 pending_trades: dict = {}
+
+# Open positions memory: tracks entries to calculate PnL on exit
+# Structure: { "trader:market_id:outcome": {"avg_price": float, "total_amount": float, "entry_time": str, "market_title": str} }
+POSITIONS_FILE = "/tmp/positions.json"
+
+def load_positions() -> dict:
+    try:
+        if os.path.exists(POSITIONS_FILE):
+            with open(POSITIONS_FILE, "r") as f:
+                return json.load(f)
+    except Exception:
+        pass
+    return {}
+
+def save_positions(data: dict):
+    try:
+        with open(POSITIONS_FILE, "w") as f:
+            json.dump(data, f, indent=2)
+    except Exception as e:
+        print(f"[Positions Error] {e}")
+
+def record_entry(trader: str, market_id: str, outcome: str, avg_price: float, total_amount: float, market_title: str):
+    """Record an entry position for later PnL calculation on exit."""
+    positions = load_positions()
+    key = f"{trader}:{market_id}:{outcome.lower()}"
+    if key in positions:
+        # Average down/up existing position
+        existing = positions[key]
+        total = existing["total_amount"] + total_amount
+        avg = (existing["avg_price"] * existing["total_amount"] + avg_price * total_amount) / total
+        existing["avg_price"] = avg
+        existing["total_amount"] = total
+        print(f"[Positions] Updated: {key} avg={avg:.3f} total=${total:.2f}")
+    else:
+        positions[key] = {
+            "avg_price": avg_price,
+            "total_amount": total_amount,
+            "entry_time": datetime.now().isoformat(),
+            "market_title": market_title,
+            "trader": trader,
+        }
+        print(f"[Positions] New entry: {key} @ {avg_price:.3f} ${total_amount:.2f}")
+    save_positions(positions)
+
+def get_entry_for_exit(trader: str, market_id: str, outcome: str) -> dict | None:
+    """Retrieve recorded entry position when a SELL is detected."""
+    positions = load_positions()
+    key = f"{trader}:{market_id}:{outcome.lower()}"
+    return positions.get(key)
+
+def close_position(trader: str, market_id: str, outcome: str):
+    """Remove position after exit."""
+    positions = load_positions()
+    key = f"{trader}:{market_id}:{outcome.lower()}"
+    if key in positions:
+        del positions[key]
+        save_positions(positions)
+        print(f"[Positions] Closed: {key}")
 
 
 # ============================================================
@@ -262,7 +332,7 @@ def maybe_send_weekly_report():
 # TELEGRAM
 # ============================================================
 
-def send_telegram(message: str):
+def send_telegram(message: str, reply_markup: dict = None):
     url = f"https://api.telegram.org/bot{TELEGRAM_TOKEN}/sendMessage"
     payload = {
         "chat_id": TELEGRAM_CHAT_ID,
@@ -270,12 +340,273 @@ def send_telegram(message: str):
         "parse_mode": "HTML",
         "disable_web_page_preview": True,
     }
+    if reply_markup:
+        payload["reply_markup"] = reply_markup
     try:
         r = requests.post(url, json=payload, timeout=10)
         if not r.ok:
             print(f"[Telegram Error] {r.text}")
+        return r.json() if r.ok else None
     except Exception as e:
         print(f"[Telegram Exception] {e}")
+    return None
+
+
+def send_trade_alert_with_buttons(message: str, trade_data: dict) -> str:
+    """Send alert with COPIAR/IGNORAR buttons. Returns callback_id."""
+    import hashlib
+    callback_id = hashlib.md5(
+        f"{trade_data.get('trader')}:{trade_data.get('market_id')}:{time.time()}".encode()
+    ).hexdigest()[:12]
+
+    pending_approvals[callback_id] = trade_data
+
+    keyboard = {
+        "inline_keyboard": [[
+            {"text": f"✅ COPIAR ${trade_data.get('amount', 0):.2f}", "callback_data": f"copy:{callback_id}"},
+            {"text": "❌ IGNORAR", "callback_data": f"ignore:{callback_id}"},
+        ]]
+    }
+    # Add EXIT button for sell alerts
+    if trade_data.get("is_exit"):
+        keyboard = {
+            "inline_keyboard": [[
+                {"text": "🚨 SALIR AHORA", "callback_data": f"exit:{callback_id}"},
+                {"text": "⏳ MANTENER", "callback_data": f"ignore:{callback_id}"},
+            ]]
+        }
+
+    send_telegram(message, reply_markup=keyboard)
+    print(f"[Buttons] Alerta con botones enviada | callback_id: {callback_id}")
+    return callback_id
+
+
+def answer_callback(callback_query_id: str, text: str):
+    """Acknowledge button press to remove loading spinner."""
+    try:
+        requests.post(
+            f"https://api.telegram.org/bot{TELEGRAM_TOKEN}/answerCallbackQuery",
+            json={"callback_query_id": callback_query_id, "text": text},
+            timeout=5,
+        )
+    except Exception:
+        pass
+
+
+def edit_message_reply_markup(chat_id: str, message_id: int, text: str):
+    """Update message after button press to show result."""
+    try:
+        requests.post(
+            f"https://api.telegram.org/bot{TELEGRAM_TOKEN}/editMessageText",
+            json={
+                "chat_id": chat_id,
+                "message_id": message_id,
+                "text": text,
+                "parse_mode": "HTML",
+            },
+            timeout=5,
+        )
+    except Exception:
+        pass
+
+
+# ============================================================
+# POLYMARKET TRADING EXECUTION
+# ============================================================
+
+def get_my_usdc_balance() -> float:
+    """Get USDC balance of our wallet via Polygon RPC."""
+    if not MY_WALLET:
+        return 0.0
+    try:
+        # USDC contract on Polygon
+        usdc_contract = "0x2791Bca1f2de4661ED88A30C99A7a9449Aa84174"
+        # balanceOf call
+        data = f"0x70a08231000000000000000000000000{MY_WALLET.lower().replace('0x', '')}"
+        payload = {
+            "jsonrpc": "2.0", "method": "eth_call",
+            "params": [{"to": usdc_contract, "data": data}, "latest"],
+            "id": 1,
+        }
+        r = requests.post("https://polygon-rpc.com", json=payload, timeout=10)
+        if r.ok:
+            result = r.json().get("result", "0x0")
+            balance_raw = int(result, 16)
+            return balance_raw / 1_000_000  # USDC has 6 decimals
+    except Exception as e:
+        print(f"[Balance Error] {e}")
+    return 0.0
+
+
+def execute_polymarket_trade(token_id: str, side: str, amount_usdc: float, price: float) -> dict:
+    """
+    Execute a trade on Polymarket CLOB.
+    token_id: the outcome token ID (from market)
+    side: "BUY" or "SELL"
+    amount_usdc: how much USDC to spend
+    price: limit price (0.0-1.0)
+    """
+    if not MY_PRIVATE_KEY or not MY_WALLET:
+        return {"success": False, "error": "No private key configured"}
+
+    try:
+        from eth_account import Account
+        from eth_account.messages import encode_defunct
+        import hashlib
+
+        # Build order
+        order = {
+            "salt": int(time.time()),
+            "maker": MY_WALLET,
+            "signer": MY_WALLET,
+            "taker": "0x0000000000000000000000000000000000000000",
+            "tokenId": token_id,
+            "makerAmount": str(int(amount_usdc * 1_000_000)),  # USDC 6 decimals
+            "takerAmount": str(int(amount_usdc / price * 1_000_000)) if side == "BUY" else str(int(amount_usdc * 1_000_000)),
+            "expiration": str(int(time.time()) + 3600),
+            "nonce": "0",
+            "feeRateBps": "0",
+            "side": "0" if side == "BUY" else "1",
+            "signatureType": "0",
+        }
+
+        # Sign order
+        order_hash = hashlib.sha256(json.dumps(order, sort_keys=True).encode()).hexdigest()
+        account = Account.from_key(MY_PRIVATE_KEY)
+        signed = account.sign_message(encode_defunct(hexstr=order_hash))
+        order["signature"] = signed.signature.hex()
+
+        # Post to CLOB
+        r = requests.post(
+            f"{CLOB_API}/order",
+            headers={"Content-Type": "application/json"},
+            json={"order": order, "owner": MY_WALLET, "orderType": "GTC"},
+            timeout=15,
+        )
+        if r.ok:
+            data = r.json()
+            return {"success": True, "order_id": data.get("orderID", ""), "data": data}
+        else:
+            return {"success": False, "error": r.text}
+
+    except ImportError:
+        return {"success": False, "error": "eth_account not installed — add to requirements.txt"}
+    except Exception as e:
+        return {"success": False, "error": str(e)}
+
+
+def get_token_id_for_market(market_id: str, outcome: str) -> str:
+    """Get the outcome token ID needed to execute a trade."""
+    try:
+        r = requests.get(f"{CLOB_API}/markets/{market_id}", timeout=10)
+        if r.ok:
+            data = r.json()
+            tokens = data.get("tokens", [])
+            for t in tokens:
+                if t.get("outcome", "").lower() == outcome.lower():
+                    return t.get("token_id", "")
+    except Exception as e:
+        print(f"[TokenID Error] {e}")
+    return ""
+
+
+# ============================================================
+# TELEGRAM CALLBACK HANDLER
+# ============================================================
+
+last_update_id = 0
+
+def poll_telegram_callbacks():
+    """Poll Telegram for button presses and handle them."""
+    global last_update_id, pending_approvals
+    try:
+        r = requests.get(
+            f"https://api.telegram.org/bot{TELEGRAM_TOKEN}/getUpdates",
+            params={"offset": last_update_id + 1, "timeout": 1, "allowed_updates": ["callback_query"]},
+            timeout=5,
+        )
+        if not r.ok:
+            return
+        updates = r.json().get("result", [])
+        for update in updates:
+            last_update_id = update["update_id"]
+            cb = update.get("callback_query")
+            if not cb:
+                continue
+
+            data = cb.get("data", "")
+            cq_id = cb["id"]
+            msg = cb.get("message", {})
+            chat_id = msg.get("chat", {}).get("id", TELEGRAM_CHAT_ID)
+            msg_id = msg.get("message_id")
+
+            parts = data.split(":", 1)
+            action = parts[0]
+            callback_id = parts[1] if len(parts) > 1 else ""
+
+            trade_data = pending_approvals.get(callback_id)
+
+            if action == "ignore" or not trade_data:
+                answer_callback(cq_id, "❌ Ignorado")
+                pending_approvals.pop(callback_id, None)
+                edit_message_reply_markup(chat_id, msg_id,
+                    msg.get("text", "") + "\n\n<i>❌ Ignorado por el usuario</i>")
+                print(f"[Callback] Ignorado: {callback_id}")
+                continue
+
+            if action in ("copy", "exit"):
+                # Safety checks
+                balance = get_my_usdc_balance()
+                amount = trade_data.get("amount", 0)
+                open_pos = len(load_positions())
+
+                if balance < amount:
+                    answer_callback(cq_id, f"⚠️ Saldo insuficiente (${balance:.2f} USDC)")
+                    send_telegram(f"⚠️ <b>Trade cancelado</b> — Saldo insuficiente\nTienes ${balance:.2f} USDC, necesitas ${amount:.2f}")
+                    continue
+
+                if action == "copy" and open_pos >= MAX_OPEN_POSITIONS:
+                    answer_callback(cq_id, f"⚠️ Máximo {MAX_OPEN_POSITIONS} posiciones abiertas")
+                    send_telegram(f"⚠️ <b>Trade cancelado</b> — Ya tienes {open_pos} posiciones abiertas (máximo: {MAX_OPEN_POSITIONS})")
+                    continue
+
+                answer_callback(cq_id, "⏳ Ejecutando orden...")
+                send_telegram("⏳ <b>Ejecutando orden en Polymarket...</b>")
+
+                token_id = get_token_id_for_market(
+                    trade_data.get("market_id", ""),
+                    trade_data.get("outcome", "Yes")
+                )
+                trade_side = "SELL" if action == "exit" else "BUY"
+                result = execute_polymarket_trade(
+                    token_id=token_id,
+                    side=trade_side,
+                    amount_usdc=amount,
+                    price=trade_data.get("price", 0.5),
+                )
+
+                if result["success"]:
+                    answer_callback(cq_id, "✅ Orden ejecutada")
+                    success_parts = [
+                        f"✅ <b>ORDEN EJECUTADA</b>",
+                        f"📋 {trade_data.get('market_title', '')}",
+                        f"⚡ {trade_side} {trade_data.get('outcome', '')} @ {trade_data.get('price', 0)*100:.1f}¢",
+                        f"💵 Monto: ${amount:.2f} USDC",
+                        f"🔑 Order ID: {result.get('order_id', 'N/A')}",
+                    ]
+                    send_telegram("\n".join(success_parts))
+                    edit_message_reply_markup(chat_id, msg_id,
+                        msg.get("text", "") + "\n\n<b>✅ Orden ejecutada</b>")
+                    print(f"[Trade] Ejecutado: {trade_side} {amount} USDC en {trade_data.get('market_title','')}")
+                else:
+                    answer_callback(cq_id, "❌ Error al ejecutar")
+                    send_telegram(f"❌ <b>Error al ejecutar orden</b>\n<code>{result.get('error','')}</code>")
+                    print(f"[Trade Error] {result.get('error','')}")
+
+                pending_approvals.pop(callback_id, None)
+
+    except Exception as e:
+        print(f"[Poll Error] {e}")
 
 
 # ============================================================
@@ -690,6 +1021,72 @@ def flush_pending(key: str):
         print(f"[{trader_name}] Alerta volumen bajo consolidada ({n} trades) ✓")
         return
 
+    is_sell = "SELL" in side.upper()
+
+    if is_sell:
+        # Check if we have a recorded entry for this position
+        entry = get_entry_for_exit(trader_name, market_id, outcome)
+        if entry:
+            entry_price = entry["avg_price"]
+            entry_amount = entry["total_amount"]
+            pnl_pct = (avg_price - entry_price) / entry_price * 100
+            pnl_usd = entry_amount * (avg_price - entry_price) / entry_price
+            multiplier = round(avg_price / entry_price, 2)
+            hold_time = ""
+            try:
+                entry_dt = datetime.fromisoformat(entry["entry_time"])
+                delta = datetime.now() - entry_dt
+                hours = int(delta.total_seconds() // 3600)
+                days = delta.days
+                hold_time = f"{days}d {hours % 24}h" if days > 0 else f"{hours}h"
+            except Exception:
+                pass
+
+            emoji = "🟩" if pnl_usd >= 0 else "🟥"
+            pnl_sign = "+" if pnl_usd >= 0 else ""
+            exit_parts = [
+                f"🚨 <b>SALIDA CON GANANCIA — {trader_name}</b> ({n} transacciones)",
+                "━━━━━━━━━━━━━━━━━━━━",
+                f"📋 <b>Mercado:</b> {market_title}",
+                f"🎯 <b>Posición:</b> {outcome}",
+                "━━━━━━━━━━━━━━━━━━━━",
+                f"📥 <b>Entrada:</b> {entry_price*100:.1f}¢  |  Invertido: ${entry_amount:.2f}",
+                f"📤 <b>Salida:</b> {avg_price*100:.1f}¢  |  Recuperado: ${entry_amount*multiplier:.2f}",
+                "━━━━━━━━━━━━━━━━━━━━",
+                f"{emoji} <b>PnL: {pnl_sign}{pnl_usd:.2f} USDC ({pnl_sign}{pnl_pct:.1f}%)</b>",
+                f"📈 <b>Multiplicador:</b> {multiplier}x",
+                f"⏱ <b>Tiempo en posición:</b> {hold_time}",
+                "━━━━━━━━━━━━━━━━━━━━",
+                "⚠️ <b>Si copiaste esta entrada: considera salir ahora</b>",
+                f"🌊 Volumen mercado: ${market_info.get('volume', 0):,.0f}",
+                f"⏰ {datetime.now().strftime('%H:%M:%S')}",
+            ]
+            exit_msg = "\n".join(exit_parts)
+            if MY_PRIVATE_KEY and MY_WALLET:
+                exit_trade_data = {
+                    "trader": trader_name,
+                    "market_id": market_id,
+                    "market_title": market_title,
+                    "outcome": outcome,
+                    "price": avg_price,
+                    "amount": entry_amount,
+                    "is_exit": True,
+                }
+                send_trade_alert_with_buttons(exit_msg, exit_trade_data)
+            else:
+                send_telegram(exit_msg)
+            close_position(trader_name, market_id, outcome)
+            print(f"[{trader_name}] Alerta de salida con PnL enviada ✓ | {pnl_pct:+.1f}%")
+        else:
+            # No recorded entry — send basic exit alert
+            message = format_alert(trader_name, consolidated, market_info, None)
+            send_telegram(message)
+            print(f"[{trader_name}] Salida sin entrada registrada — alerta básica enviada")
+        return
+
+    # BUY — record position and send entry alert with buttons
+    record_entry(trader_name, market_id, outcome, avg_price, total_amount, market_title)
+
     print(f"[{trader_name}] Analizando posición consolidada ({n} trades, ${total_amount:.0f} total)...")
     siblings = get_sibling_markets(market_id)
     if siblings:
@@ -709,9 +1106,49 @@ def flush_pending(key: str):
         )
 
     message = format_alert(trader_name, consolidated, market_info, analysis)
-    send_telegram(message)
-    verdict = analysis.get("recommendation", "N/A") if analysis else "Sin análisis"
-    print(f"[{trader_name}] Alerta consolidada enviada ✓ | Veredicto: {verdict}")
+
+    # Decide amount for button
+    copy_amount = round(min(
+        analysis.get("suggested_amount", 1.0) if analysis else 1.0,
+        MAX_PER_TRADE,
+        USER_BANKROLL * 0.07,
+    ), 2)
+    copy_amount = max(copy_amount, 0.50)  # minimum $0.50
+
+    rec = analysis.get("recommendation", "OBSERVAR") if analysis else "OBSERVAR"
+
+    if MY_PRIVATE_KEY and MY_WALLET:
+        # Send with buttons
+        trade_data = {
+            "trader": trader_name,
+            "market_id": market_id,
+            "market_title": market_title,
+            "outcome": outcome,
+            "price": avg_price,
+            "amount": copy_amount,
+            "is_exit": False,
+        }
+        # Auto-execute if AUTO_TRADE is on and IA says ENTRAR
+        if AUTO_TRADE and rec == "ENTRAR":
+            send_telegram(message)
+            balance = get_my_usdc_balance()
+            if balance >= copy_amount:
+                token_id = get_token_id_for_market(market_id, outcome)
+                result = execute_polymarket_trade(token_id, "BUY", copy_amount, avg_price)
+                if result["success"]:
+                    send_telegram(f"🤖 <b>AUTO-TRADE ejecutado</b>\n${copy_amount:.2f} USDC @ {avg_price*100:.1f}¢\nOrder: {result.get('order_id','')}")
+                else:
+                    send_telegram(f"❌ <b>AUTO-TRADE fallido</b>\n{result.get('error','')}")
+            else:
+                send_telegram(f"⚠️ Saldo insuficiente para auto-trade (${balance:.2f} disponible)")
+        else:
+            send_trade_alert_with_buttons(message, trade_data)
+    else:
+        # No wallet configured — plain alert
+        send_telegram(message)
+
+    verdict = rec
+    print(f"[{trader_name}] Alerta enviada ✓ | Veredicto: {verdict}")
 
 
 def buffer_trade(trader_name: str, trade: dict, market_info: dict, market_id: str):
@@ -832,6 +1269,9 @@ def main():
 
         # Flush any pending trade groups whose window has expired
         flush_stale_pending()
+
+        # Poll Telegram for button presses (every cycle)
+        poll_telegram_callbacks()
 
         cycle += 1
         time.sleep(CHECK_INTERVAL)
