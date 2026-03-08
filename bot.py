@@ -33,6 +33,7 @@ TRADER_PROFILES = {
         "style": "Especialista político puro, entra temprano cuando el mercado está mal calibrado, posiciones muy grandes con alta convicción, aguanta semanas o meses",
         "months_active": 26,
     },
+    "de5nuts": {
         "win_rate": 48.6, "pnl": 195145, "profit_factor": 4.69,
         "specialty": "Geopolítica y Macro (Taiwan, conflictos internacionales, tech)",
         "style": "Contrarian extremo, fragmenta posiciones, concentra capital cuando está muy seguro",
@@ -519,3 +520,4 @@ def main():
 
 if __name__ == "__main__":
     main()
+    
