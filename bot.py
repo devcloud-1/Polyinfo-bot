@@ -279,11 +279,11 @@ def send_telegram(message: str):
 
 def get_recent_trades(wallet_address: str) -> list:
     try:
-        r = requests.get(f"{DATA_API}/activity", params={"user": wallet_address, "limit": 5}, timeout=10)
+        r = requests.get(f"{DATA_API}/activity", params={"user": wallet_address, "limit": 10}, timeout=10)
         if r.ok:
             return r.json() or []
         r2 = requests.get("https://clob.polymarket.com/data/trades",
-                          params={"maker_address": wallet_address, "limit": 5}, timeout=10)
+                          params={"maker_address": wallet_address, "limit": 10}, timeout=10)
         if r2.ok:
             data = r2.json()
             return data.get("data", []) if isinstance(data, dict) else data
@@ -502,12 +502,71 @@ def format_alert(trader_name: str, trade: dict, market_info: dict, analysis: dic
 # LOOP PRINCIPAL
 # ============================================================
 
+def process_trade(trader_name: str, trade: dict):
+    """Procesa un trade individual — analiza y notifica."""
+    market_id = trade.get("market", trade.get("conditionId", ""))
+    market_info = get_market_info(market_id)
+    low_volume = 0 < market_info["volume"] < MIN_VOLUME
+
+    if low_volume:
+        side = trade.get("side", trade.get("type", "?")).upper()
+        mkt = trade.get("title", trade.get("market", "Desconocido"))
+        outcome = trade.get("outcome", trade.get("answer", ""))
+        price = float(trade.get("price", trade.get("avgPrice", 0)) or 0)
+        amount = float(trade.get("usdcSize", trade.get("size", 0)) or 0)
+        ae = "🟢" if "BUY" in side else "🔴"
+        at = "COMPRÓ" if "BUY" in side else "VENDIÓ"
+        mult = round(1 / price, 1) if 0 < price < 1 else "?"
+        vol = market_info["volume"]
+        parts = [
+            f"⚠️ <b>VOLUMEN BAJO — {trader_name}</b> (info only, no copiar)",
+            "━━━━━━━━━━━━━━━━━━━━",
+            f"{ae} <b>Acción:</b> {at}",
+            f"📋 <b>Mercado:</b> {mkt}",
+            f"🎯 <b>Posición:</b> {outcome}",
+            f"💵 <b>Precio:</b> {price:.3f} ({price*100:.1f}¢)",
+            f"💼 <b>Apostó:</b> ${amount:.2f} USDC",
+            f"📈 <b>Retorno potencial:</b> {mult}x",
+            f"🌊 <b>Volumen:</b> ${vol:,.0f} (mínimo: ${MIN_VOLUME:,})",
+            "━━━━━━━━━━━━━━━━━━━━",
+            "ℹ️ <i>Mercado pequeño — observar, no copiar</i>",
+        ]
+        send_telegram("\n".join(parts))
+        print(f"[{trader_name}] Alerta volumen bajo enviada ✓")
+        return
+
+    print(f"[{trader_name}] Consultando análisis IA...")
+    siblings = get_sibling_markets(market_id)
+    if siblings:
+        print(f"[{trader_name}] Encontrados {len(siblings)} sub-mercados")
+    analysis = analyze_trade_with_claude(trader_name, trade, market_info, siblings)
+
+    if analysis:
+        price = float(trade.get("price", trade.get("avgPrice", 0)) or 0)
+        log_trade(
+            trader=trader_name,
+            market=trade.get("title", trade.get("market", "?")),
+            outcome=trade.get("outcome", trade.get("answer", "")),
+            price=price,
+            recommendation=analysis.get("recommendation", "OBSERVAR"),
+            score=analysis.get("score", 0),
+            suggested_amount=analysis.get("suggested_amount", 0),
+            market_id=market_id,
+        )
+
+    message = format_alert(trader_name, trade, market_info, analysis)
+    send_telegram(message)
+    verdict = analysis.get("recommendation", "N/A") if analysis else "Sin análisis"
+    print(f"[{trader_name}] Alerta enviada ✓ | Veredicto: {verdict}")
+
+
 def check_wallet(trader_name: str, wallet_address: str):
     global last_seen
 
     if not wallet_address:
         return
 
+    # Fetch last 10 trades to catch bursts of simultaneous entries
     trades = get_recent_trades(wallet_address)
     if not trades:
         return
@@ -521,66 +580,35 @@ def check_wallet(trader_name: str, wallet_address: str):
         return
 
     if trade_id != last_seen[trader_name]:
+        # Find all new trades since last seen
+        new_trades = []
+        for t in trades:
+            tid = t.get("id", t.get("transactionHash", str(t)))
+            if tid == last_seen[trader_name]:
+                break
+            new_trades.append(t)
+
+        # Update last seen immediately
         last_seen[trader_name] = trade_id
-        print(f"[{trader_name}] ¡Trade nuevo detectado!")
+        print(f"[{trader_name}] {len(new_trades)} trade(s) nuevo(s) detectado(s)")
 
-        market_id = latest.get("market", latest.get("conditionId", ""))
-        market_info = get_market_info(market_id)
+        # Group by market to avoid duplicate analysis of same market
+        seen_markets = set()
+        for trade in reversed(new_trades):  # process oldest first
+            market_id = trade.get("market", trade.get("conditionId", ""))
+            if market_id and market_id in seen_markets:
+                print(f"[{trader_name}] Mismo mercado — saltando duplicado")
+                continue
+            if market_id:
+                seen_markets.add(market_id)
+            try:
+                process_trade(trader_name, trade)
+                if len(new_trades) > 1:
+                    time.sleep(2)  # small delay between multiple alerts
+            except Exception as e:
+                print(f"[Process Error] {trader_name}: {e}")
 
-        low_volume = 0 < market_info["volume"] < MIN_VOLUME
 
-        if low_volume:
-            side = latest.get("side", latest.get("type", "?")).upper()
-            mkt = latest.get("title", latest.get("market", "Desconocido"))
-            outcome = latest.get("outcome", latest.get("answer", ""))
-            price = float(latest.get("price", latest.get("avgPrice", 0)) or 0)
-            amount = float(latest.get("usdcSize", latest.get("size", 0)) or 0)
-            ae = "🟢" if "BUY" in side else "🔴"
-            at = "COMPRÓ" if "BUY" in side else "VENDIÓ"
-            mult = round(1 / price, 1) if 0 < price < 1 else "?"
-            vol = market_info["volume"]
-            parts = [
-                f"⚠️ <b>VOLUMEN BAJO — {trader_name}</b> (info only, no copiar)",
-                "━━━━━━━━━━━━━━━━━━━━",
-                f"{ae} <b>Acción:</b> {at}",
-                f"📋 <b>Mercado:</b> {mkt}",
-                f"🎯 <b>Posición:</b> {outcome}",
-                f"💵 <b>Precio:</b> {price:.3f} ({price*100:.1f}¢)",
-                f"💼 <b>Apostó:</b> ${amount:.2f} USDC",
-                f"📈 <b>Retorno potencial:</b> {mult}x",
-                f"🌊 <b>Volumen:</b> ${vol:,.0f} (mínimo recomendado: ${MIN_VOLUME:,})",
-                "━━━━━━━━━━━━━━━━━━━━",
-                "ℹ️ <i>Mercado pequeño — observar, no copiar</i>",
-            ]
-            send_telegram("\n".join(parts))
-            print(f"[{trader_name}] Alerta volumen bajo enviada ✓")
-            return
-
-        print(f"[{trader_name}] Consultando análisis IA...")
-        siblings = get_sibling_markets(market_id)
-        if siblings:
-            print(f"[{trader_name}] Encontrados {len(siblings)} sub-mercados")
-        analysis = analyze_trade_with_claude(trader_name, latest, market_info, siblings)
-
-        # Guardar en tracker
-        if analysis:
-            price = float(latest.get("price", latest.get("avgPrice", 0)) or 0)
-            log_trade(
-                trader=trader_name,
-                market=latest.get("title", latest.get("market", "?")),
-                outcome=latest.get("outcome", latest.get("answer", "")),
-                price=price,
-                recommendation=analysis.get("recommendation", "OBSERVAR"),
-                score=analysis.get("score", 0),
-                suggested_amount=analysis.get("suggested_amount", 0),
-                market_id=market_id,
-            )
-
-        message = format_alert(trader_name, latest, market_info, analysis)
-        send_telegram(message)
-
-        verdict = analysis.get("recommendation", "N/A") if analysis else "Sin análisis"
-        print(f"[{trader_name}] Alerta enviada ✓ | Veredicto: {verdict}")
 
 
 def main():
