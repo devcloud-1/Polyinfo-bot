@@ -488,13 +488,17 @@ def format_alert(trader_name: str, trade: dict, market_info: dict, analysis: dic
     multiplier = round(1 / price, 1) if 0 < price < 1 else "?"
 
     # Consolidated vs single trade labels
+    is_sell = "SELL" in side or "VEND" in side.upper()
     trades_label = f" ({n_trades} transacciones)" if n_trades > 1 else ""
     price_line = (
         f"💵 <b>Precio promedio:</b> {price*100:.1f}¢  |  Rango: {price_range}"
         if n_trades > 1 and price_range
         else f"💵 <b>Precio:</b> {price:.3f} ({price*100:.1f}¢)"
     )
-    header_label = "POSICIÓN ACUMULADA" if n_trades > 1 else "NUEVA ENTRADA"
+    if is_sell:
+        header_label = "SALIDA CONSOLIDADA" if n_trades > 1 else "SALIDA"
+    else:
+        header_label = "POSICIÓN ACUMULADA" if n_trades > 1 else "NUEVA ENTRADA"
 
     if analysis:
         rec = analysis.get("recommendation", "OBSERVAR")
@@ -627,9 +631,11 @@ def flush_pending(key: str):
 
 
 def buffer_trade(trader_name: str, trade: dict, market_info: dict, market_id: str):
-    """Agrega un trade al buffer. Si es el primero del grupo, programa su flush."""
+    """Agrega un trade al buffer. Agrupa por trader+mercado+side (buy/sell separados)."""
     global pending_trades
-    key = f"{trader_name}:{market_id}"
+    side = trade.get("side", trade.get("type", "?")).upper()
+    direction = "BUY" if "BUY" in side else "SELL"
+    key = f"{trader_name}:{market_id}:{direction}"
     if key not in pending_trades:
         pending_trades[key] = {
             "trader_name": trader_name,
@@ -697,19 +703,10 @@ def check_wallet(trader_name: str, wallet_address: str):
         last_seen[trader_name] = trade_id
         print(f"[{trader_name}] {len(new_trades)} trade(s) nuevo(s) detectado(s)")
 
-        # Group by market to avoid duplicate analysis of same market
-        seen_markets = set()
-        for trade in reversed(new_trades):  # process oldest first
-            market_id = trade.get("market", trade.get("conditionId", ""))
-            if market_id and market_id in seen_markets:
-                print(f"[{trader_name}] Mismo mercado — saltando duplicado")
-                continue
-            if market_id:
-                seen_markets.add(market_id)
+        # Send ALL new trades to the buffer — buffer handles grouping by market
+        for trade in reversed(new_trades):  # oldest first
             try:
                 process_trade(trader_name, trade)
-                if len(new_trades) > 1:
-                    time.sleep(2)  # small delay between multiple alerts
             except Exception as e:
                 print(f"[Process Error] {trader_name}: {e}")
 
