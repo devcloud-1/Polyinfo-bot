@@ -293,53 +293,73 @@ def get_recent_trades(wallet_address: str) -> list:
 
 
 def get_market_info(market_id: str) -> dict:
+    empty = {"volume": 0, "description": "", "end_date": "", "liquidity": 0, "category": "", "slug": "", "conditionId": market_id}
+    if not market_id:
+        return empty
     try:
-        r = requests.get(f"{GAMMA_API}/markets", params={"id": market_id}, timeout=10)
-        if r.ok and r.json():
-            m = r.json()[0]
-            return {
-                "volume": float(m.get("volume", 0)),
-                "description": m.get("description", ""),
-                "end_date": m.get("endDate", ""),
-                "liquidity": float(m.get("liquidity", 0)),
-                "category": m.get("category", ""),
-                "slug": m.get("slug", ""),
-                "groupItemTitle": m.get("groupItemTitle", ""),
-                "conditionId": m.get("conditionId", market_id),
-            }
+        # Try by conditionId first (hex format from Data API)
+        for param in [{"conditionId": market_id}, {"id": market_id}]:
+            r = requests.get(f"{GAMMA_API}/markets", params=param, timeout=10)
+            if r.ok and r.json():
+                m = r.json()[0]
+                vol = float(m.get("volume", 0))
+                print(f"[Market] Encontrado — Vol: ${vol:,.0f} | {m.get('question','')[:50]}")
+                return {
+                    "volume": vol,
+                    "description": m.get("description", ""),
+                    "end_date": m.get("endDate", ""),
+                    "liquidity": float(m.get("liquidity", 0)),
+                    "category": m.get("category", ""),
+                    "slug": m.get("slug", ""),
+                    "conditionId": m.get("conditionId", market_id),
+                    "question": m.get("question", ""),
+                    "outcomes": m.get("outcomePrices", []),
+                }
     except Exception as e:
         print(f"[Market Info Error] {e}")
-    return {"volume": 0, "description": "", "end_date": "", "liquidity": 0, "category": "", "slug": "", "groupItemTitle": "", "conditionId": ""}
+    return empty
 
 
 def get_sibling_markets(market_id: str) -> list:
-    """Busca otros sub-mercados del mismo evento (mismo slug base / grupo)."""
+    """Busca otros sub-mercados del mismo evento por groupItemTitle o slug."""
     siblings = []
     try:
-        # Primero obtener el mercado base para encontrar su slug
-        r = requests.get(f"{GAMMA_API}/markets", params={"id": market_id}, timeout=10)
-        if not r.ok or not r.json():
+        # Get base market first
+        m = None
+        for param in [{"conditionId": market_id}, {"id": market_id}]:
+            r = requests.get(f"{GAMMA_API}/markets", params=param, timeout=10)
+            if r.ok and r.json():
+                m = r.json()[0]
+                break
+        if not m:
             return siblings
-        m = r.json()[0]
-        slug = m.get("slug", "")
-        # El slug de sub-mercados suele ser: "us-forces-enter-iran-by-march-14-337"
-        # El evento padre suele estar en: "us-forces-enter-iran-by"
-        # Buscamos por el slug base quitando la última parte
-        parts = slug.rsplit("-", 2)
-        base_slug = parts[0] if len(parts) > 1 else slug
 
-        r2 = requests.get(f"{GAMMA_API}/markets", params={"slug": base_slug, "limit": 20}, timeout=10)
+        slug = m.get("slug", "")
+        # Strip trailing date/id suffix to get event base slug
+        # e.g. "will-iran-announce-supreme-leader-on-march-8-2026" -> "will-iran-announce-supreme-leader-on"
+        import re
+        base_slug = re.sub(r"-(january|february|march|april|may|june|july|august|september|october|november|december|jan|feb|mar|apr|jun|jul|aug|sep|oct|nov|dec).*$", "", slug, flags=re.IGNORECASE)
+        if base_slug == slug:
+            # fallback: remove last 2 dash-segments
+            parts = slug.rsplit("-", 2)
+            base_slug = parts[0]
+
+        r2 = requests.get(f"{GAMMA_API}/markets", params={"slug": base_slug, "limit": 30}, timeout=10)
         if r2.ok and r2.json():
             for sm in r2.json():
-                if sm.get("conditionId") != market_id:
+                cid = sm.get("conditionId", "")
+                if cid and cid != market_id:
+                    op = sm.get("outcomePrices", [])
+                    p_yes = float(op[0]) if op else 0
                     siblings.append({
-                        "title": sm.get("groupItemTitle", sm.get("question", "")),
-                        "end_date": sm.get("endDate", ""),
+                        "title": sm.get("groupItemTitle", sm.get("question", ""))[:60],
+                        "end_date": sm.get("endDate", "")[:10],
                         "volume": float(sm.get("volume", 0)),
                         "liquidity": float(sm.get("liquidity", 0)),
-                        "price_yes": float(sm.get("outcomePrices", ["0"])[0]) if sm.get("outcomePrices") else 0,
-                        "price_no": float(sm.get("outcomePrices", ["0", "0"])[1]) if sm.get("outcomePrices") and len(sm.get("outcomePrices", [])) > 1 else 0,
+                        "price_yes": p_yes,
                     })
+        # Sort by volume desc so best options appear first
+        siblings.sort(key=lambda x: x["volume"], reverse=True)
     except Exception as e:
         print(f"[Siblings Error] {e}")
     return siblings
