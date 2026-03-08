@@ -53,6 +53,11 @@ MAX_PER_TRADE = float(os.getenv("MAX_PER_TRADE", "2.0"))    # Max USDC per trade
 MAX_OPEN_POSITIONS = int(os.getenv("MAX_OPEN_POSITIONS", "3"))  # Max simultaneous positions
 AUTO_TRADE = os.getenv("AUTO_TRADE", "false").lower() == "true"  # False = semi-auto (buttons)
 
+# Polymarket CLOB API credentials (from polymarket.com → Settings → API Keys)
+POLY_API_KEY = os.getenv("POLY_API_KEY", "")
+POLY_SECRET = os.getenv("POLY_SECRET", "")
+POLY_PASSPHRASE = os.getenv("POLY_PASSPHRASE", "")
+
 # APIs
 GAMMA_API = "https://gamma-api.polymarket.com"
 DATA_API = "https://data-api.polymarket.com"
@@ -438,31 +443,66 @@ def get_my_usdc_balance() -> float:
     return 0.0
 
 
+def _get_clob_auth_headers(method: str, path: str, body: str = "") -> dict:
+    """Generate authenticated headers for Polymarket CLOB API."""
+    import hmac
+    import hashlib
+    import base64
+
+    timestamp = str(int(time.time()))
+    message = timestamp + method.upper() + path + body
+    secret_bytes = base64.b64decode(POLY_SECRET) if POLY_SECRET else b""
+    signature = hmac.new(secret_bytes, message.encode(), hashlib.sha256).digest()
+    sig_b64 = base64.b64encode(signature).decode()
+
+    return {
+        "POLY-API-KEY": POLY_API_KEY,
+        "POLY-PASSPHRASE": POLY_PASSPHRASE,
+        "POLY-TIMESTAMP": timestamp,
+        "POLY-SIGNATURE": sig_b64,
+        "Content-Type": "application/json",
+    }
+
+
 def execute_polymarket_trade(token_id: str, side: str, amount_usdc: float, price: float) -> dict:
     """
     Execute a trade on Polymarket CLOB.
-    token_id: the outcome token ID (from market)
+    token_id: outcome token ID from market
     side: "BUY" or "SELL"
-    amount_usdc: how much USDC to spend
-    price: limit price (0.0-1.0)
+    amount_usdc: USDC to spend
+    price: limit price 0.0-1.0
     """
     if not MY_PRIVATE_KEY or not MY_WALLET:
-        return {"success": False, "error": "No private key configured"}
+        return {"success": False, "error": "Falta MY_PRIVATE_KEY o MY_WALLET en Railway"}
+
+    if not POLY_API_KEY or not POLY_SECRET or not POLY_PASSPHRASE:
+        return {"success": False, "error": "Faltan POLY_API_KEY, POLY_SECRET o POLY_PASSPHRASE en Railway"}
+
+    if not token_id:
+        return {"success": False, "error": "No se encontró token_id para este mercado"}
 
     try:
         from eth_account import Account
         from eth_account.messages import encode_defunct
-        import hashlib
 
-        # Build order
+        # Calculate amounts (USDC has 6 decimals, shares have 6 decimals)
+        if side == "BUY":
+            # makerAmount = USDC spending, takerAmount = shares receiving
+            maker_amount = int(amount_usdc * 1_000_000)
+            taker_amount = int((amount_usdc / price) * 1_000_000) if price > 0 else 0
+        else:
+            # SELL: makerAmount = shares selling, takerAmount = USDC receiving
+            maker_amount = int((amount_usdc / price) * 1_000_000) if price > 0 else 0
+            taker_amount = int(amount_usdc * 1_000_000)
+
         order = {
-            "salt": int(time.time()),
+            "salt": int(time.time() * 1000),
             "maker": MY_WALLET,
             "signer": MY_WALLET,
             "taker": "0x0000000000000000000000000000000000000000",
             "tokenId": token_id,
-            "makerAmount": str(int(amount_usdc * 1_000_000)),  # USDC 6 decimals
-            "takerAmount": str(int(amount_usdc / price * 1_000_000)) if side == "BUY" else str(int(amount_usdc * 1_000_000)),
+            "makerAmount": str(maker_amount),
+            "takerAmount": str(taker_amount),
             "expiration": str(int(time.time()) + 3600),
             "nonce": "0",
             "feeRateBps": "0",
@@ -470,27 +510,30 @@ def execute_polymarket_trade(token_id: str, side: str, amount_usdc: float, price
             "signatureType": "0",
         }
 
-        # Sign order
-        order_hash = hashlib.sha256(json.dumps(order, sort_keys=True).encode()).hexdigest()
+        # Sign with private key
         account = Account.from_key(MY_PRIVATE_KEY)
-        signed = account.sign_message(encode_defunct(hexstr=order_hash))
+        order_str = json.dumps(order, separators=(",", ":"), sort_keys=True)
+        msg = encode_defunct(text=order_str)
+        signed = account.sign_message(msg)
         order["signature"] = signed.signature.hex()
 
-        # Post to CLOB
-        r = requests.post(
-            f"{CLOB_API}/order",
-            headers={"Content-Type": "application/json"},
-            json={"order": order, "owner": MY_WALLET, "orderType": "GTC"},
-            timeout=15,
-        )
+        # Build authenticated headers
+        body = json.dumps({"order": order, "owner": MY_WALLET, "orderType": "GTC"})
+        headers = _get_clob_auth_headers("POST", "/order", body)
+
+        r = requests.post(f"{CLOB_API}/order", headers=headers, data=body, timeout=15)
+
         if r.ok:
             data = r.json()
-            return {"success": True, "order_id": data.get("orderID", ""), "data": data}
+            order_id = data.get("orderID", data.get("id", "N/A"))
+            print(f"[Trade] ✅ Orden ejecutada: {order_id}")
+            return {"success": True, "order_id": order_id, "data": data}
         else:
-            return {"success": False, "error": r.text}
+            print(f"[Trade] ❌ Error: {r.status_code} {r.text}")
+            return {"success": False, "error": f"{r.status_code}: {r.text[:200]}"}
 
     except ImportError:
-        return {"success": False, "error": "eth_account not installed — add to requirements.txt"}
+        return {"success": False, "error": "Instalar eth-account: agrega 'eth-account==0.10.0' a requirements.txt"}
     except Exception as e:
         return {"success": False, "error": str(e)}
 
