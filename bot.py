@@ -1,7 +1,8 @@
 import os
 import time
+import json
 import requests
-from datetime import datetime
+from datetime import datetime, timedelta
 
 # ============================================================
 # CONFIGURACIÓN
@@ -9,27 +10,22 @@ from datetime import datetime
 
 TELEGRAM_TOKEN = os.getenv("TELEGRAM_TOKEN", "8529223538:AAG6zHWzMr8ncZfjShtjc55Y3IGiNvCwQW8")
 TELEGRAM_CHAT_ID = os.getenv("TELEGRAM_CHAT_ID", "8715771861")
-ANTHROPIC_API_KEY = os.getenv("ANTHROPIC_API_KEY")  # Agregar en Railway
+ANTHROPIC_API_KEY = os.getenv("ANTHROPIC_API_KEY")
 
 WALLETS = {
     "Gohst": os.getenv("WALLET_GOHST", "0x2d4bf8f846bf68f43b9157bf30810d334ac6ca7a"),
     "de5nuts": os.getenv("WALLET_DE5NUTS", "0x80a0da00fbdc8440b0ef601341f14c3e24795708"),
 }
 
-# Perfil de cada trader para darle contexto a Claude
 TRADER_PROFILES = {
     "Gohst": {
-        "win_rate": 57.1,
-        "pnl": 103620,
-        "profit_factor": 3.4,
+        "win_rate": 57.1, "pnl": 103620, "profit_factor": 3.4,
         "specialty": "Política y Geopolítica (Middle East, Iran, US Politics)",
         "style": "Contrarian, apuesta baja probabilidad con alta convicción, posiciones largas",
         "months_active": 7,
     },
     "de5nuts": {
-        "win_rate": 48.6,
-        "pnl": 195145,
-        "profit_factor": 4.69,
+        "win_rate": 48.6, "pnl": 195145, "profit_factor": 4.69,
         "specialty": "Geopolítica y Macro (Taiwan, conflictos internacionales, tech)",
         "style": "Contrarian extremo, fragmenta posiciones, concentra capital cuando está muy seguro",
         "months_active": 8,
@@ -39,16 +35,213 @@ TRADER_PROFILES = {
 CHECK_INTERVAL = int(os.getenv("CHECK_INTERVAL", "120"))
 MIN_VOLUME = int(os.getenv("MIN_VOLUME", "50000"))
 USER_BANKROLL = float(os.getenv("USER_BANKROLL", "25"))
+TRACKER_FILE = "/tmp/trade_tracker.json"
 
-# ============================================================
 # APIs
-# ============================================================
-
 GAMMA_API = "https://gamma-api.polymarket.com"
 DATA_API = "https://data-api.polymarket.com"
 ANTHROPIC_API = "https://api.anthropic.com/v1/messages"
 
 last_seen = {wallet: None for wallet in WALLETS}
+last_weekly_report = None
+
+
+# ============================================================
+# TRACKER — guarda cada decisión en disco
+# ============================================================
+
+def load_tracker() -> dict:
+    """Carga el historial de trades del disco."""
+    try:
+        if os.path.exists(TRACKER_FILE):
+            with open(TRACKER_FILE, "r") as f:
+                return json.load(f)
+    except Exception:
+        pass
+    return {"trades": [], "stats": {"total": 0, "entrar": 0, "no_entrar": 0, "observar": 0}}
+
+
+def save_tracker(data: dict):
+    """Guarda el historial al disco."""
+    try:
+        with open(TRACKER_FILE, "w") as f:
+            json.dump(data, f, indent=2)
+    except Exception as e:
+        print(f"[Tracker Error] {e}")
+
+
+def log_trade(trader: str, market: str, outcome: str, price: float,
+              recommendation: str, score: int, suggested_amount: float,
+              market_id: str):
+    """Registra un trade nuevo con estado pendiente."""
+    tracker = load_tracker()
+    trade_entry = {
+        "id": f"{trader}_{datetime.now().strftime('%Y%m%d%H%M%S')}",
+        "timestamp": datetime.now().isoformat(),
+        "trader": trader,
+        "market": market,
+        "market_id": market_id,
+        "outcome": outcome,
+        "entry_price": price,
+        "recommendation": recommendation,
+        "score": score,
+        "suggested_amount": suggested_amount,
+        "status": "PENDING",   # PENDING → WIN | LOSS | EXPIRED
+        "resolved_price": None,
+        "pnl_if_followed": None,
+        "pnl_if_ignored": None,
+    }
+    tracker["trades"].append(trade_entry)
+    tracker["stats"]["total"] += 1
+    tracker["stats"][recommendation.lower().replace(" ", "_")] = \
+        tracker["stats"].get(recommendation.lower().replace(" ", "_"), 0) + 1
+    save_tracker(tracker)
+    print(f"[Tracker] Trade registrado: {trade_entry['id']}")
+    return trade_entry["id"]
+
+
+def check_pending_resolutions():
+    """Revisa si los trades pendientes ya resolvieron en Polymarket."""
+    tracker = load_tracker()
+    updated = False
+
+    for trade in tracker["trades"]:
+        if trade["status"] != "PENDING":
+            continue
+
+        # Solo revisa trades con más de 1 hora de antigüedad
+        trade_time = datetime.fromisoformat(trade["timestamp"])
+        if datetime.now() - trade_time < timedelta(hours=1):
+            continue
+
+        try:
+            market_id = trade.get("market_id", "")
+            if not market_id:
+                continue
+
+            r = requests.get(f"{GAMMA_API}/markets", params={"id": market_id}, timeout=10)
+            if not r.ok or not r.json():
+                continue
+
+            market_data = r.json()[0]
+            is_resolved = market_data.get("resolved", False)
+            winning_outcome = market_data.get("winnerOutcome", "")
+
+            if is_resolved and winning_outcome:
+                entry_price = trade["entry_price"]
+                bet_outcome = trade["outcome"].lower()
+                winner = winning_outcome.lower()
+
+                if bet_outcome == winner or bet_outcome == "yes" and winner == "yes":
+                    # Ganó
+                    resolved_price = 1.0
+                    pnl_pct = (1.0 - entry_price) / entry_price * 100
+                    trade["status"] = "WIN"
+                else:
+                    # Perdió
+                    resolved_price = 0.0
+                    pnl_pct = -100.0
+                    trade["status"] = "LOSS"
+
+                amount = trade["suggested_amount"]
+                trade["resolved_price"] = resolved_price
+                trade["pnl_if_followed"] = amount * (pnl_pct / 100) if trade["recommendation"] == "ENTRAR" else 0
+                trade["pnl_if_ignored"] = amount * (pnl_pct / 100) if trade["recommendation"] != "ENTRAR" else 0
+                updated = True
+
+                print(f"[Tracker] Resuelto: {trade['id']} → {trade['status']}")
+
+        except Exception as e:
+            print(f"[Resolution Error] {e}")
+
+    if updated:
+        save_tracker(tracker)
+
+    return tracker
+
+
+# ============================================================
+# REPORTE SEMANAL
+# ============================================================
+
+def generate_weekly_report() -> str:
+    """Genera el reporte semanal de efectividad."""
+    tracker = load_tracker()
+    trades = tracker["trades"]
+
+    if not trades:
+        return "📊 <b>Reporte Semanal</b>\n\nAún no hay trades registrados."
+
+    # Filtrar última semana
+    week_ago = datetime.now() - timedelta(days=7)
+    weekly = [t for t in trades if datetime.fromisoformat(t["timestamp"]) > week_ago]
+    resolved = [t for t in weekly if t["status"] in ("WIN", "LOSS")]
+
+    total = len(weekly)
+    total_resolved = len(resolved)
+
+    # Por recomendación
+    entrar_trades = [t for t in resolved if t["recommendation"] == "ENTRAR"]
+    no_entrar_trades = [t for t in resolved if t["recommendation"] == "NO ENTRAR"]
+    observar_trades = [t for t in resolved if t["recommendation"] == "OBSERVAR"]
+
+    entrar_wins = len([t for t in entrar_trades if t["status"] == "WIN"])
+    no_entrar_wins = len([t for t in no_entrar_trades if t["status"] == "WIN"])
+
+    # PnL simulado
+    pnl_siguiendo_ia = sum(t.get("pnl_if_followed", 0) or 0 for t in resolved)
+    pnl_ignorando_ia = sum(t.get("pnl_if_ignored", 0) or 0 for t in resolved)
+
+    # Win rate de la IA en ENTRAR
+    ia_winrate = (entrar_wins / len(entrar_trades) * 100) if entrar_trades else 0
+
+    # Por trader
+    gohst_trades = [t for t in resolved if t["trader"] == "Gohst"]
+    de5nuts_trades = [t for t in resolved if t["trader"] == "de5nuts"]
+    gohst_wins = len([t for t in gohst_trades if t["status"] == "WIN"])
+    de5nuts_wins = len([t for t in de5nuts_trades if t["status"] == "WIN"])
+
+    report = (
+        f"📊 <b>REPORTE SEMANAL — Efectividad IA</b>\n"
+        f"━━━━━━━━━━━━━━━━━━━━\n"
+        f"📅 Período: últimos 7 días\n"
+        f"🔢 Alertas totales: {total} ({total_resolved} resueltas)\n\n"
+
+        f"<b>VEREDICTOS DE LA IA:</b>\n"
+        f"✅ ENTRAR: {len(entrar_trades)} trades → {entrar_wins} wins "
+        f"({ia_winrate:.0f}% win rate)\n"
+        f"❌ NO ENTRAR: {len(no_entrar_trades)} trades → {no_entrar_wins} hubieran ganado\n"
+        f"👁 OBSERVAR: {len(observar_trades)} trades\n\n"
+
+        f"<b>PnL SIMULADO (con ${USER_BANKROLL}):</b>\n"
+        f"💰 Siguiendo la IA: ${pnl_siguiendo_ia:+.2f}\n"
+        f"💸 Ignorando la IA: ${pnl_ignorando_ia:+.2f}\n\n"
+
+        f"<b>POR TRADER:</b>\n"
+        f"👻 Gohst: {len(gohst_trades)} trades, {gohst_wins} wins "
+        f"({gohst_wins/len(gohst_trades)*100:.0f}%)\n" if gohst_trades else ""
+        f"🌰 de5nuts: {len(de5nuts_trades)} trades, {de5nuts_wins} wins "
+        f"({de5nuts_wins/len(de5nuts_trades)*100:.0f}%)\n" if de5nuts_trades else ""
+
+        f"━━━━━━━━━━━━━━━━━━━━\n"
+        f"⚠️ <i>PnL simulado — no dinero real</i>"
+    )
+
+    return report
+
+
+def maybe_send_weekly_report():
+    """Manda el reporte si no se mandó en los últimos 7 días."""
+    global last_weekly_report
+    now = datetime.now()
+
+    if last_weekly_report is None or (now - last_weekly_report).days >= 7:
+        # Solo manda los lunes a las 9am aproximado
+        if now.weekday() == 0 and now.hour == 9:
+            report = generate_weekly_report()
+            send_telegram(report)
+            last_weekly_report = now
+            print("[Reporte] Reporte semanal enviado ✓")
 
 
 # ============================================================
@@ -80,7 +273,8 @@ def get_recent_trades(wallet_address: str) -> list:
         r = requests.get(f"{DATA_API}/activity", params={"user": wallet_address, "limit": 5}, timeout=10)
         if r.ok:
             return r.json() or []
-        r2 = requests.get("https://clob.polymarket.com/data/trades", params={"maker_address": wallet_address, "limit": 5}, timeout=10)
+        r2 = requests.get("https://clob.polymarket.com/data/trades",
+                          params={"maker_address": wallet_address, "limit": 5}, timeout=10)
         if r2.ok:
             data = r2.json()
             return data.get("data", []) if isinstance(data, dict) else data
@@ -90,7 +284,6 @@ def get_recent_trades(wallet_address: str) -> list:
 
 
 def get_market_info(market_id: str) -> dict:
-    """Obtiene volumen, descripción y fecha de cierre del mercado."""
     try:
         r = requests.get(f"{GAMMA_API}/markets", params={"id": market_id}, timeout=10)
         if r.ok and r.json():
@@ -112,7 +305,6 @@ def get_market_info(market_id: str) -> dict:
 # ============================================================
 
 def analyze_trade_with_claude(trader_name: str, trade: dict, market_info: dict) -> dict:
-    """Llama a Claude Haiku para analizar si vale copiar el trade."""
     if not ANTHROPIC_API_KEY:
         return None
 
@@ -161,7 +353,6 @@ Responde SOLO con este JSON exacto, sin texto adicional:
             timeout=20,
         )
         if r.ok:
-            import json
             content = r.json()["content"][0]["text"].strip()
             content = content.replace("```json", "").replace("```", "").strip()
             return json.loads(content)
@@ -171,7 +362,7 @@ Responde SOLO con este JSON exacto, sin texto adicional:
 
 
 # ============================================================
-# FORMATEO DE MENSAJES
+# FORMATEO
 # ============================================================
 
 def format_alert(trader_name: str, trade: dict, market_info: dict, analysis: dict) -> str:
@@ -185,7 +376,7 @@ def format_alert(trader_name: str, trade: dict, market_info: dict, analysis: dic
 
     action_emoji = "🟢" if "BUY" in side else "🔴"
     action_text = "COMPRÓ" if "BUY" in side else "VENDIÓ"
-    multiplier = round(1 / price, 1) if price > 0 and price < 1 else "?"
+    multiplier = round(1 / price, 1) if 0 < price < 1 else "?"
 
     if analysis:
         rec = analysis.get("recommendation", "OBSERVAR")
@@ -194,7 +385,6 @@ def format_alert(trader_name: str, trade: dict, market_info: dict, analysis: dic
         suggested = analysis.get("suggested_amount", 0)
         reasoning = analysis.get("reasoning", "")
         key_factor = analysis.get("key_factor", "")
-
         rec_emoji = {"ENTRAR": "✅", "NO ENTRAR": "❌", "OBSERVAR": "👁"}.get(rec, "👁")
 
         analysis_block = (
@@ -204,7 +394,8 @@ def format_alert(trader_name: str, trade: dict, market_info: dict, analysis: dic
             f"📊 Score: {score}/100  |  Riesgo: {risk}\n"
             f"💡 {reasoning}\n"
             f"🔑 <b>Factor clave:</b> {key_factor}\n"
-            f"💰 <b>Monto sugerido:</b> ${suggested:.2f} de tus $25"
+            f"💰 <b>Monto sugerido:</b> ${suggested:.2f} de tus $25\n"
+            f"📁 <i>Guardado en tracker para medir efectividad</i>"
         )
     else:
         analysis_block = "\n━━━━━━━━━━━━━━━━━━━━\n⚠️ Análisis IA no disponible"
@@ -261,6 +452,20 @@ def check_wallet(trader_name: str, wallet_address: str):
         print(f"[{trader_name}] Consultando análisis IA...")
         analysis = analyze_trade_with_claude(trader_name, latest, market_info)
 
+        # Guardar en tracker
+        if analysis:
+            price = float(latest.get("price", latest.get("avgPrice", 0)) or 0)
+            log_trade(
+                trader=trader_name,
+                market=latest.get("title", latest.get("market", "?")),
+                outcome=latest.get("outcome", latest.get("answer", "")),
+                price=price,
+                recommendation=analysis.get("recommendation", "OBSERVAR"),
+                score=analysis.get("score", 0),
+                suggested_amount=analysis.get("suggested_amount", 0),
+                market_id=market_id,
+            )
+
         message = format_alert(trader_name, latest, market_info, analysis)
         send_telegram(message)
 
@@ -270,25 +475,37 @@ def check_wallet(trader_name: str, wallet_address: str):
 
 def main():
     print("=" * 50)
-    print("🤖 Polymarket Copy Alert Bot v2 — con IA")
+    print("🤖 Polymarket Copy Alert Bot v3 — con Tracker")
     print(f"   Monitoreando: {', '.join(WALLETS.keys())}")
     print(f"   Intervalo: {CHECK_INTERVAL}s | Vol mínimo: ${MIN_VOLUME:,}")
     print(f"   Análisis IA: {'✓ Activo' if ANTHROPIC_API_KEY else '✗ Falta ANTHROPIC_API_KEY'}")
+    print(f"   Reporte: todos los lunes 9am")
     print("=" * 50)
 
     send_telegram(
-        "🤖 <b>Bot v2 iniciado — con análisis IA</b>\n"
+        "🤖 <b>Bot v3 iniciado — con Tracker de Efectividad</b>\n"
         f"Monitoreando: {', '.join(WALLETS.keys())}\n"
-        f"Cada alerta incluye: ENTRAR / NO ENTRAR / OBSERVAR\n"
+        f"✅ Cada decisión queda registrada\n"
+        f"📊 Reporte semanal automático los lunes\n"
         f"{'✅ Análisis IA activo' if ANTHROPIC_API_KEY else '⚠️ Agrega ANTHROPIC_API_KEY en Railway'}"
     )
 
+    cycle = 0
     while True:
+        # Cada 10 ciclos revisa si hay trades que resolvieron
+        if cycle % 10 == 0:
+            check_pending_resolutions()
+
+        # Revisar si toca reporte semanal
+        maybe_send_weekly_report()
+
         for name, wallet in WALLETS.items():
             try:
                 check_wallet(name, wallet)
             except Exception as e:
                 print(f"[Error] {name}: {e}")
+
+        cycle += 1
         time.sleep(CHECK_INTERVAL)
 
 
