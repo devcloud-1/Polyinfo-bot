@@ -19,5 +19,12 @@
     "entry_time": "2026-03-11T09:51:46.947555",
     "market_title": "Will a Gulf State strike Iran by March 7?",
     "trader": "Gohst"
+  },
+  "aenews2:0x418dd0cb462be6258e311340724b6b0f07f6e0f58de3998944cc1f2fd5fa2bf6:yes": {
+    "avg_price": 0.991,
+    "total_amount": 447.93199999999996,
+    "entry_time": "2026-03-11T10:41:00.116141",
+    "market_title": "Will \"Scream 7\" Second Weekend Box Office be less than 19m?",
+    "trader": "aenews2"
   }
 }
