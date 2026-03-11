@@ -152,5 +152,12 @@
     "entry_time": "2026-03-11T18:55:27.562166",
     "market_title": "Will February 2026 be the 1st hottest on record?",
     "trader": "aenews2"
+  },
+  "aenews2:0xd251c76b2cd29cf50c3cd13e44027d8d5cf2eec1f47e64b1ca34d39912cea238:": {
+    "avg_price": 0,
+    "total_amount": 88.0,
+    "entry_time": "2026-03-11T18:55:30.884342",
+    "market_title": "Will global temperature increase by between 1.20\u00baC and 1.24\u00baC in February 2026?",
+    "trader": "aenews2"
   }
 }
