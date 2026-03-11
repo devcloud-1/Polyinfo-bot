@@ -15,12 +15,28 @@
       "resolved_price": null,
       "pnl_if_followed": null,
       "pnl_if_ignored": null
+    },
+    {
+      "id": "Gohst_20260311095149",
+      "timestamp": "2026-03-11T09:51:49.360106",
+      "trader": "Gohst",
+      "market": "Will a Gulf State strike Iran by March 7?",
+      "market_id": "0x7c3f9482e5c8d1c00ad849581324b5e224f5e960476f535453e04c1f55d4ea49",
+      "outcome": "",
+      "entry_price": 0,
+      "recommendation": "NO ENTRAR",
+      "score": 25,
+      "suggested_amount": 0.0,
+      "status": "PENDING",
+      "resolved_price": null,
+      "pnl_if_followed": null,
+      "pnl_if_ignored": null
     }
   ],
   "stats": {
-    "total": 1,
+    "total": 2,
     "entrar": 0,
-    "no_entrar": 1,
+    "no_entrar": 2,
     "observar": 0
   }
 }
