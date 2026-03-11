@@ -1347,6 +1347,77 @@ def check_wallet(trader_name: str, wallet_address: str):
 
 
 
+def run_dashboard_server():
+    """Serve the analytics dashboard on PORT (default 8080)."""
+    import http.server
+    import urllib.parse
+
+    dashboard_path = os.path.join(os.path.dirname(os.path.abspath(__file__)), "dashboard.html")
+    port = int(os.getenv("PORT", "8080"))
+
+    class Handler(http.server.BaseHTTPRequestHandler):
+        def log_message(self, format, *args):
+            pass  # suppress access logs
+
+        def do_GET(self):
+            path = urllib.parse.urlparse(self.path).path
+
+            if path == "/api/tracker":
+                # Serve tracker JSON for the dashboard
+                try:
+                    tracker = load_tracker()
+                    body = json.dumps(tracker).encode()
+                    self.send_response(200)
+                    self.send_header("Content-Type", "application/json")
+                    self.send_header("Access-Control-Allow-Origin", "*")
+                    self.send_header("Content-Length", str(len(body)))
+                    self.end_headers()
+                    self.wfile.write(body)
+                except Exception as e:
+                    self.send_error(500, str(e))
+
+            elif path == "/api/positions":
+                # Serve open positions
+                try:
+                    positions = load_positions()
+                    body = json.dumps(positions).encode()
+                    self.send_response(200)
+                    self.send_header("Content-Type", "application/json")
+                    self.send_header("Access-Control-Allow-Origin", "*")
+                    self.send_header("Content-Length", str(len(body)))
+                    self.end_headers()
+                    self.wfile.write(body)
+                except Exception as e:
+                    self.send_error(500, str(e))
+
+            elif path == "/" or path == "/dashboard":
+                # Serve the HTML dashboard
+                try:
+                    if os.path.exists(dashboard_path):
+                        with open(dashboard_path, "rb") as f:
+                            body = f.read()
+                        self.send_response(200)
+                        self.send_header("Content-Type", "text/html; charset=utf-8")
+                        self.send_header("Content-Length", str(len(body)))
+                        self.end_headers()
+                        self.wfile.write(body)
+                    else:
+                        # Fallback: simple status page if dashboard.html not found
+                        body = b"<h1>Bot running. dashboard.html not found.</h1><p>Add dashboard.html to your repo.</p><p><a href='/api/tracker'>View raw tracker data</a></p>"
+                        self.send_response(200)
+                        self.send_header("Content-Type", "text/html")
+                        self.end_headers()
+                        self.wfile.write(body)
+                except Exception as e:
+                    self.send_error(500, str(e))
+            else:
+                self.send_error(404)
+
+    server = http.server.HTTPServer(("0.0.0.0", port), Handler)
+    print(f"[Dashboard] Servidor iniciado en puerto {port}")
+    server.serve_forever()
+
+
 def main():
     print("=" * 50)
     print("🤖 Polymarket Copy Alert Bot v3 — con Tracker")
@@ -1355,6 +1426,11 @@ def main():
     print(f"   Análisis IA: {'✓ Activo' if ANTHROPIC_API_KEY else '✗ Falta ANTHROPIC_API_KEY'}")
     print(f"   Reporte: todos los lunes 9am")
     print("=" * 50)
+
+    # Start dashboard server in background thread
+    import threading
+    dashboard_thread = threading.Thread(target=run_dashboard_server, daemon=True)
+    dashboard_thread.start()
 
     send_telegram(
         "🤖 <b>Bot v3 iniciado — con Tracker de Efectividad</b>\n"
