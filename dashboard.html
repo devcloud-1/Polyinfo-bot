@@ -1,0 +1,572 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Polymarket Tracker</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;600;800&family=Inter:wght@400;500;600&display=swap');
+
+  :root {
+    --bg: #0b0b12;
+    --surface: #11111c;
+    --border: rgba(255,255,255,0.07);
+    --green: #00d4aa;
+    --red: #ff4d6d;
+    --yellow: #ffd166;
+    --orange: #ff6b35;
+    --purple: #a78bfa;
+    --muted: #4b5563;
+    --sub: #6b7280;
+    --text: #e8e8f0;
+  }
+
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+
+  body {
+    background: var(--bg);
+    color: var(--text);
+    font-family: 'Inter', sans-serif;
+    min-height: 100vh;
+  }
+
+  .mono { font-family: 'JetBrains Mono', monospace; }
+
+  /* ── HEADER ── */
+  .header {
+    border-bottom: 1px solid var(--border);
+    padding: 18px 32px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    background: rgba(0,212,170,0.02);
+    position: sticky; top: 0; z-index: 10;
+    backdrop-filter: blur(10px);
+  }
+  .header-left { display: flex; align-items: center; gap: 12px; }
+  .dot { width: 8px; height: 8px; border-radius: 50%; background: var(--green); box-shadow: 0 0 10px var(--green); animation: pulse 2s infinite; }
+  @keyframes pulse { 0%,100%{opacity:1} 50%{opacity:0.4} }
+  .logo { font-family: 'JetBrains Mono', monospace; font-size: 16px; font-weight: 800; color: var(--green); letter-spacing: 0.1em; }
+  .subtitle { font-size: 11px; color: var(--muted); margin-top: 2px; font-family: 'JetBrains Mono', monospace; }
+  .refresh-btn {
+    background: rgba(0,212,170,0.1); border: 1px solid rgba(0,212,170,0.3);
+    color: var(--green); padding: 8px 16px; border-radius: 8px; cursor: pointer;
+    font-size: 11px; font-family: 'JetBrains Mono', monospace; font-weight: 700;
+    letter-spacing: 0.1em; transition: all 0.2s;
+  }
+  .refresh-btn:hover { background: rgba(0,212,170,0.2); }
+
+  /* ── TABS ── */
+  .tabs {
+    display: flex; gap: 4px;
+    padding: 0 32px;
+    border-bottom: 1px solid var(--border);
+  }
+  .tab {
+    background: none; border: none; cursor: pointer;
+    padding: 14px 18px; font-size: 11px;
+    font-family: 'JetBrains Mono', monospace; font-weight: 700;
+    letter-spacing: 0.1em; color: var(--muted);
+    border-bottom: 2px solid transparent; margin-bottom: -1px;
+    transition: color 0.2s;
+  }
+  .tab.active { color: var(--green); border-bottom-color: var(--green); }
+
+  /* ── CONTENT ── */
+  .content { padding: 28px 32px; }
+  .tab-panel { display: none; }
+  .tab-panel.active { display: block; }
+
+  /* ── GRID ── */
+  .grid-4 { display: grid; grid-template-columns: repeat(4,1fr); gap: 16px; margin-bottom: 20px; }
+  .grid-3 { display: grid; grid-template-columns: repeat(3,1fr); gap: 16px; margin-bottom: 20px; }
+  .grid-2 { display: grid; grid-template-columns: repeat(2,1fr); gap: 16px; margin-bottom: 20px; }
+
+  /* ── STAT CARD ── */
+  .card {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 16px;
+    padding: 20px;
+    position: relative; overflow: hidden;
+  }
+  .card-accent { position: absolute; top: 0; left: 0; right: 0; height: 3px; border-radius: 16px 16px 0 0; }
+  .card-label { font-size: 10px; color: var(--sub); text-transform: uppercase; letter-spacing: 0.12em; margin-bottom: 8px; font-family: 'JetBrains Mono', monospace; }
+  .card-value { font-size: 28px; font-weight: 800; font-family: 'JetBrains Mono', monospace; line-height: 1; }
+  .card-sub { font-size: 11px; color: var(--sub); margin-top: 6px; }
+
+  /* ── SECTION ── */
+  .section {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 16px;
+    padding: 24px;
+    margin-bottom: 20px;
+  }
+  .section-title {
+    font-size: 10px; color: var(--sub); text-transform: uppercase;
+    letter-spacing: 0.12em; margin-bottom: 20px;
+    font-family: 'JetBrains Mono', monospace;
+  }
+
+  /* ── BADGE ── */
+  .badge {
+    display: inline-block; padding: 2px 8px; border-radius: 6px;
+    font-size: 10px; font-weight: 700; font-family: 'JetBrains Mono', monospace;
+    letter-spacing: 0.05em; border: 1px solid;
+  }
+
+  /* ── MINI BAR ── */
+  .bar-track { background: rgba(255,255,255,0.05); border-radius: 4px; height: 6px; width: 100%; overflow: hidden; }
+  .bar-fill { height: 100%; border-radius: 4px; transition: width 1s ease; }
+
+  /* ── TRADER CARD ── */
+  .trader-card {
+    background: var(--surface);
+    border-radius: 20px; padding: 24px;
+    position: relative; overflow: hidden;
+    border: 1px solid var(--border);
+  }
+  .trader-header { display: flex; align-items: center; gap: 10px; margin-bottom: 20px; }
+  .trader-emoji { font-size: 24px; }
+  .trader-name { font-size: 16px; font-weight: 800; font-family: 'JetBrains Mono', monospace; }
+  .trader-meta { font-size: 10px; color: var(--muted); margin-top: 2px; }
+  .stat-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; margin-bottom: 16px; }
+  .stat-box { background: rgba(255,255,255,0.03); border-radius: 10px; padding: 10px 12px; }
+  .stat-box-label { font-size: 10px; color: var(--sub); margin-bottom: 4px; }
+  .stat-box-value { font-size: 20px; font-weight: 800; font-family: 'JetBrains Mono', monospace; }
+
+  /* ── TRADE ROW ── */
+  .trade-list { display: flex; flex-direction: column; gap: 8px; }
+  .trade-row {
+    background: var(--surface);
+    border: 1px solid rgba(255,255,255,0.05);
+    border-radius: 12px; padding: 14px 18px;
+    display: grid;
+    grid-template-columns: 110px 1fr 100px 50px 80px 70px;
+    gap: 12px; align-items: center;
+  }
+  .trade-trader { font-size: 11px; font-weight: 700; font-family: 'JetBrains Mono', monospace; }
+  .trade-date { font-size: 10px; color: var(--muted); margin-top: 2px; }
+  .trade-market { font-size: 12px; color: #d1d5db; line-height: 1.3; }
+  .trade-meta { font-size: 10px; color: var(--sub); margin-top: 2px; }
+  .trade-pnl { text-align: right; font-size: 13px; font-weight: 800; font-family: 'JetBrains Mono', monospace; }
+
+  /* ── FILTERS ── */
+  .filters { display: flex; gap: 8px; margin-bottom: 16px; flex-wrap: wrap; }
+  .filter-btn {
+    background: rgba(255,255,255,0.03); border: 1px solid rgba(255,255,255,0.08);
+    color: var(--sub); padding: 6px 12px; border-radius: 8px; cursor: pointer;
+    font-size: 11px; font-family: 'JetBrains Mono', monospace; font-weight: 700;
+    letter-spacing: 0.05em; transition: all 0.2s;
+  }
+  .filter-btn.active-green { background: rgba(0,212,170,0.15); border-color: rgba(0,212,170,0.4); color: var(--green); }
+  .filter-btn.active-red { background: rgba(255,77,109,0.15); border-color: rgba(255,77,109,0.4); color: var(--red); }
+  .filter-btn.active-yellow { background: rgba(255,209,102,0.15); border-color: rgba(255,209,102,0.4); color: var(--yellow); }
+  .filter-btn.active-default { background: rgba(0,212,170,0.1); border-color: rgba(0,212,170,0.3); color: var(--green); }
+
+  /* ── CALIBRATION ── */
+  .calib-card { border-radius: 16px; padding: 24px; border: 1px solid; }
+  .calib-value { font-size: 48px; font-weight: 800; font-family: 'JetBrains Mono', monospace; line-height: 1; margin: 12px 0 6px; }
+  .calib-sub { font-size: 12px; color: var(--sub); margin-bottom: 14px; }
+  .warning-box { background: rgba(255,209,102,0.05); border: 1px solid rgba(255,209,102,0.2); border-radius: 10px; padding: 12px 16px; font-size: 12px; color: var(--yellow); margin-bottom: 20px; }
+
+  /* ── OPEN POSITIONS ── */
+  .pos-row { background: var(--surface); border: 1px solid var(--border); border-radius: 12px; padding: 16px 18px; margin-bottom: 8px; }
+  .pos-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 8px; }
+  .pos-market { font-size: 13px; color: var(--text); }
+  .pos-meta { font-size: 11px; color: var(--sub); margin-top: 4px; }
+
+  /* ── GAUGE ── */
+  .gauge { width: 36px; height: 36px; border-radius: 50%; display: flex; align-items: center; justify-content: center; }
+  .gauge-inner { width: 24px; height: 24px; border-radius: 50%; background: var(--bg); display: flex; align-items: center; justify-content: center; font-size: 8px; font-weight: 800; font-family: 'JetBrains Mono', monospace; }
+
+  /* ── LOADING ── */
+  .loading { text-align: center; padding: 60px; color: var(--sub); font-family: 'JetBrains Mono', monospace; font-size: 13px; }
+  .loading span { color: var(--green); animation: pulse 1s infinite; }
+
+  @media(max-width:900px) {
+    .grid-4,.grid-3 { grid-template-columns: repeat(2,1fr); }
+    .trade-row { grid-template-columns: 1fr 1fr; }
+    .content { padding: 16px; }
+    .header { padding: 14px 16px; }
+    .tabs { padding: 0 16px; }
+  }
+</style>
+</head>
+<body>
+
+<div class="header">
+  <div class="header-left">
+    <div class="dot"></div>
+    <div>
+      <div class="logo">POLYMARKET TRACKER</div>
+      <div class="subtitle" id="status-line">Cargando datos...</div>
+    </div>
+  </div>
+  <button class="refresh-btn" onclick="loadData()">↻ ACTUALIZAR</button>
+</div>
+
+<div class="tabs">
+  <button class="tab active mono" onclick="switchTab('overview')">OVERVIEW</button>
+  <button class="tab mono" onclick="switchTab('traders')">TRADERS</button>
+  <button class="tab mono" onclick="switchTab('calibration')">CALIBRACIÓN IA</button>
+  <button class="tab mono" onclick="switchTab('trades')">HISTORIAL</button>
+  <button class="tab mono" onclick="switchTab('positions')">POSICIONES</button>
+</div>
+
+<div class="content">
+  <div class="loading" id="loading"><span>●</span> Conectando con el bot...</div>
+
+  <!-- OVERVIEW -->
+  <div class="tab-panel" id="tab-overview">
+    <div class="grid-4" id="kpi-grid"></div>
+    <div class="grid-3" id="kpi-grid2"></div>
+    <div class="section">
+      <div class="section-title">Calibración por Veredicto</div>
+      <div id="calib-quick" style="display:grid;grid-template-columns:repeat(3,1fr);gap:20px;"></div>
+    </div>
+    <div class="section">
+      <div class="section-title">Precisión por Score IA</div>
+      <div id="score-buckets" style="display:flex;flex-direction:column;gap:12px;"></div>
+    </div>
+  </div>
+
+  <!-- TRADERS -->
+  <div class="tab-panel" id="tab-traders">
+    <div class="grid-3" id="traders-grid"></div>
+  </div>
+
+  <!-- CALIBRATION -->
+  <div class="tab-panel" id="tab-calibration">
+    <div class="warning-box">⚠️ El objetivo es que cuando la IA dice ENTRAR, gane más del 60% de las veces. Si OBSERVAR gana más que ENTRAR, la IA está siendo demasiado conservadora.</div>
+    <div class="grid-3" id="calib-deep"></div>
+    <div class="section">
+      <div class="section-title">¿El Score predice bien?</div>
+      <div id="score-detail" style="display:flex;flex-direction:column;gap:14px;"></div>
+    </div>
+  </div>
+
+  <!-- TRADES -->
+  <div class="tab-panel" id="tab-trades">
+    <div class="filters" id="trade-filters"></div>
+    <div class="trade-list" id="trade-list"></div>
+  </div>
+
+  <!-- POSITIONS -->
+  <div class="tab-panel" id="tab-positions">
+    <div id="positions-list"></div>
+  </div>
+</div>
+
+<script>
+const TRADERS = {
+  aenews2: { color: "#00d4aa", emoji: "🎯", winRate: 74.6, pnl: 1948004, pf: 2.26 },
+  de5nuts: { color: "#ff6b35", emoji: "🌰", winRate: 48.6, pnl: 195145, pf: 4.69 },
+  Gohst:   { color: "#a78bfa", emoji: "👻", winRate: 57.1, pnl: 103620, pf: 3.4  },
+};
+const REC_COLORS = { "ENTRAR": "#00d4aa", "NO ENTRAR": "#ff4d6d", "OBSERVAR": "#ffd166" };
+const STATUS_COLORS = { WIN: "#00d4aa", LOSS: "#ff4d6d", PENDING: "#6b7280" };
+
+let allTrades = [];
+let filterTrader = "all";
+let filterRec = "all";
+
+function pct(n, d) { return d === 0 ? 0 : Math.round(n / d * 100); }
+function fmt$(n) { return Math.abs(n) >= 1000 ? `$${(n/1000).toFixed(1)}k` : `$${parseFloat(n).toFixed(2)}`; }
+function badge(text, color) {
+  return `<span class="badge" style="color:${color};border-color:${color}44;background:${color}18">${text}</span>`;
+}
+function minibar(val, max, color) {
+  const w = Math.min(100, (val/max)*100);
+  return `<div class="bar-track"><div class="bar-fill" style="width:${w}%;background:${color}"></div></div>`;
+}
+function gauge(score) {
+  const color = score >= 70 ? "#00d4aa" : score >= 50 ? "#ffd166" : "#ff4d6d";
+  const deg = score * 3.6;
+  return `<div class="gauge" style="background:conic-gradient(${color} ${deg}deg, rgba(255,255,255,0.05) 0deg)">
+    <div class="gauge-inner" style="color:${color}">${score}</div>
+  </div>`;
+}
+
+async function loadData() {
+  try {
+    document.getElementById("loading").style.display = "block";
+    document.querySelectorAll(".tab-panel").forEach(p => p.classList.remove("active"));
+
+    const [trackerRes, posRes] = await Promise.all([
+      fetch("/api/tracker"),
+      fetch("/api/positions").catch(() => ({ ok: false }))
+    ]);
+
+    const tracker = await trackerRes.json();
+    const positions = posRes.ok ? await posRes.json() : {};
+
+    allTrades = tracker.trades || [];
+    const now = new Date();
+    document.getElementById("status-line").textContent =
+      `● DATOS EN VIVO — ${allTrades.length} trades · actualizado ${now.getHours()}:${String(now.getMinutes()).padStart(2,"0")}`;
+
+    renderAll(allTrades, positions);
+    document.getElementById("loading").style.display = "none";
+
+    // Re-activate current tab
+    const activeTab = document.querySelector(".tab.active");
+    const tabId = activeTab ? activeTab.getAttribute("onclick").match(/'(\w+)'/)[1] : "overview";
+    document.getElementById(`tab-${tabId}`).classList.add("active");
+
+  } catch(e) {
+    document.getElementById("loading").innerHTML = `<span style="color:#ff4d6d">● Error conectando: ${e.message}</span>`;
+  }
+}
+
+function renderAll(trades, positions) {
+  const resolved = trades.filter(t => t.status === "WIN" || t.status === "LOSS");
+  const pending = trades.filter(t => t.status === "PENDING");
+  const wins = resolved.filter(t => t.status === "WIN");
+  const globalWR = pct(wins.length, resolved.length);
+
+  const iaEntrar = trades.filter(t => t.recommendation === "ENTRAR");
+  const iaEntrarRes = iaEntrar.filter(t => t.status !== "PENDING");
+  const iaEntrarWins = iaEntrarRes.filter(t => t.status === "WIN");
+  const iaWR = pct(iaEntrarWins.length, iaEntrarRes.length);
+
+  const pnlFollowing = resolved.reduce((s,t) => s + (t.pnl_if_followed||0), 0);
+  const pnlIgnoring = resolved.reduce((s,t) => s + (t.pnl_if_ignored||0), 0);
+  const missed = resolved.filter(t => t.recommendation !== "ENTRAR" && t.status === "WIN");
+  const correctSkips = resolved.filter(t => t.recommendation !== "ENTRAR" && t.status === "LOSS");
+
+  // KPIs
+  const kpiColor = n => n >= 60 ? "#00d4aa" : n >= 45 ? "#ffd166" : "#ff4d6d";
+  document.getElementById("kpi-grid").innerHTML = [
+    { label: "Trades Totales", value: trades.length, sub: `${pending.length} pendientes`, color: "#6b7280" },
+    { label: "Win Rate Global", value: `${globalWR}%`, sub: `${wins.length}/${resolved.length} resueltos`, color: kpiColor(globalWR) },
+    { label: "IA → ENTRAR WR", value: `${iaWR}%`, sub: `${iaEntrarRes.length} señales evaluadas`, color: kpiColor(iaWR) },
+    { label: "PnL Siguiendo IA", value: fmt$(pnlFollowing), sub: `vs ${fmt$(pnlIgnoring)} ignorándola`, color: pnlFollowing >= 0 ? "#00d4aa" : "#ff4d6d" },
+  ].map(k => `
+    <div class="card">
+      <div class="card-accent" style="background:${k.color}"></div>
+      <div class="card-label">${k.label}</div>
+      <div class="card-value" style="color:${k.color}">${k.value}</div>
+      <div class="card-sub">${k.sub}</div>
+    </div>`).join("");
+
+  document.getElementById("kpi-grid2").innerHTML = [
+    { label: "Oportunidades Perdidas", value: missed.length, sub: "IA dijo NO pero ganaron", color: "#ff6b35" },
+    { label: "Pérdidas Evitadas", value: correctSkips.length, sub: "IA dijo NO y perdieron ✓", color: "#00d4aa" },
+    { label: "Señales ENTRAR", value: iaEntrar.length, sub: `de ${trades.length} totales (${pct(iaEntrar.length, trades.length)}%)`, color: "#ffd166" },
+  ].map(k => `
+    <div class="card">
+      <div class="card-accent" style="background:${k.color}"></div>
+      <div class="card-label">${k.label}</div>
+      <div class="card-value" style="color:${k.color}">${k.value}</div>
+      <div class="card-sub">${k.sub}</div>
+    </div>`).join("");
+
+  // Calibration quick
+  const calibData = ["ENTRAR","NO ENTRAR","OBSERVAR"].map(rec => {
+    const g = resolved.filter(t => t.recommendation === rec);
+    const w = g.filter(t => t.status === "WIN").length;
+    return { rec, total: g.length, wins: w, wr: pct(w, g.length) };
+  });
+  document.getElementById("calib-quick").innerHTML = calibData.map(c => `
+    <div>
+      <div style="display:flex;justify-content:space-between;margin-bottom:8px">
+        ${badge(c.rec, REC_COLORS[c.rec])}
+        <span style="font-size:11px;color:var(--sub)">${c.total} trades</span>
+      </div>
+      <div style="font-size:28px;font-weight:800;color:${REC_COLORS[c.rec]};font-family:'JetBrains Mono',monospace;margin-bottom:6px">${c.wr}%</div>
+      ${minibar(c.wr, 100, REC_COLORS[c.rec])}
+      <div style="font-size:10px;color:var(--muted);margin-top:4px">${c.wins} de ${c.total} ganaron</div>
+    </div>`).join("");
+
+  // Score buckets
+  const buckets = [{label:"0–30",min:0,max:30},{label:"31–50",min:31,max:50},{label:"51–70",min:51,max:70},{label:"71–100",min:71,max:100}];
+  const bData = buckets.map(b => {
+    const g = resolved.filter(t => (t.score||0) >= b.min && (t.score||0) <= b.max);
+    const w = g.filter(t => t.status === "WIN").length;
+    return { ...b, total: g.length, wins: w, wr: pct(w, g.length) };
+  });
+  document.getElementById("score-buckets").innerHTML = bData.map(b => {
+    const color = b.wr >= 60 ? "#00d4aa" : b.wr >= 40 ? "#ffd166" : "#ff4d6d";
+    return `<div style="display:grid;grid-template-columns:80px 1fr 60px 60px;gap:12px;align-items:center">
+      <span style="font-size:11px;color:var(--sub);font-family:'JetBrains Mono',monospace">Score ${b.label}</span>
+      ${minibar(b.wr, 100, color)}
+      <span style="font-size:13px;font-weight:800;color:${color};text-align:right;font-family:'JetBrains Mono',monospace">${b.wr}%</span>
+      <span style="font-size:10px;color:var(--muted);text-align:right">${b.total} trades</span>
+    </div>`;
+  }).join("");
+
+  // Traders
+  document.getElementById("traders-grid").innerHTML = Object.entries(TRADERS).map(([name, p]) => {
+    const tTrades = trades.filter(t => t.trader === name);
+    const tRes = tTrades.filter(t => t.status !== "PENDING");
+    const tWins = tRes.filter(t => t.status === "WIN");
+    const tEntrar = tTrades.filter(t => t.recommendation === "ENTRAR");
+    const tEntrarRes = tEntrar.filter(t => t.status !== "PENDING");
+    const tEntrarWins = tEntrarRes.filter(t => t.status === "WIN");
+    const pnl = tRes.reduce((s,t) => s + (t.pnl_if_followed||0), 0);
+    const avgScore = tTrades.length ? Math.round(tTrades.reduce((s,t) => s+(t.score||0),0)/tTrades.length) : 0;
+    const wr = pct(tWins.length, tRes.length);
+    const iaWr = pct(tEntrarWins.length, tEntrarRes.length);
+    return `
+    <div class="trader-card" style="border-color:${p.color}33">
+      <div class="card-accent" style="background:${p.color}"></div>
+      <div class="trader-header">
+        <span class="trader-emoji">${p.emoji}</span>
+        <div>
+          <div class="trader-name" style="color:${p.color}">${name}</div>
+          <div class="trader-meta">WR histórico: ${p.winRate}% · PF: ${p.pf}x</div>
+        </div>
+      </div>
+      <div class="stat-grid">
+        ${[["Alertas bot",tTrades.length],["Resueltos",tRes.length],["WR bot",`${wr}%`],["WR IA ENTRAR",`${iaWr}%`]]
+          .map(([l,v]) => `<div class="stat-box"><div class="stat-box-label">${l}</div><div class="stat-box-value" style="color:${p.color}">${v}</div></div>`).join("")}
+      </div>
+      <div style="margin-bottom:12px">
+        <div style="display:flex;justify-content:space-between;font-size:10px;color:var(--sub);margin-bottom:4px">
+          <span>Score promedio IA</span><span>${avgScore}/100</span>
+        </div>
+        ${minibar(avgScore, 100, p.color)}
+      </div>
+      <div style="display:flex;gap:6px;flex-wrap:wrap">
+        ${badge(`${tEntrar.length} ENTRAR`, p.color)}
+        ${badge(`PnL ${fmt$(pnl)}`, pnl >= 0 ? "#00d4aa" : "#ff4d6d")}
+      </div>
+    </div>`;
+  }).join("");
+
+  // Calibration deep
+  document.getElementById("calib-deep").innerHTML = calibData.map(c => {
+    const color = REC_COLORS[c.rec];
+    const warn = c.rec === "ENTRAR" && c.wr < 60
+      ? `<div style="margin-top:10px;font-size:11px;color:#ff6b35">⚠️ Por debajo del 60% objetivo — ajustar prompt</div>`
+      : c.rec === "ENTRAR"
+        ? `<div style="margin-top:10px;font-size:11px;color:#00d4aa">✓ Calibración correcta</div>`
+        : c.rec === "NO ENTRAR" && c.wr > 50
+          ? `<div style="margin-top:10px;font-size:11px;color:#ff6b35">⚠️ IA rechaza demasiado — está siendo conservadora</div>`
+          : "";
+    return `
+    <div class="calib-card" style="border-color:${color}33;background:var(--surface)">
+      <div style="display:flex;justify-content:space-between;align-items:flex-start">
+        ${badge(c.rec, color)}
+        <span style="font-size:11px;color:var(--muted)">${c.total} resueltos</span>
+      </div>
+      <div class="calib-value" style="color:${color}">${c.wr}%</div>
+      <div class="calib-sub">${c.wins} ganaron · ${c.total - c.wins} perdieron</div>
+      ${minibar(c.wr, 100, color)}
+      ${warn}
+    </div>`;
+  }).join("");
+
+  document.getElementById("score-detail").innerHTML = bData.map(b => {
+    const color = b.wr >= 60 ? "#00d4aa" : b.wr >= 40 ? "#ffd166" : "#ff4d6d";
+    return `<div style="display:grid;grid-template-columns:100px 1fr 70px 70px;gap:12px;align-items:center">
+      <span style="font-size:11px;color:var(--sub);font-family:'JetBrains Mono',monospace">Score ${b.label}</span>
+      ${minibar(b.wr, 100, color)}
+      <span style="font-size:14px;font-weight:800;color:${color};text-align:right;font-family:'JetBrains Mono',monospace">${b.wr}%</span>
+      <span style="font-size:11px;color:var(--muted);text-align:right">${b.total} trades</span>
+    </div>`;
+  }).join("");
+
+  // Trades with filters
+  renderTrades(trades);
+  buildFilters(trades);
+
+  // Positions
+  const posKeys = Object.keys(positions);
+  document.getElementById("positions-list").innerHTML = posKeys.length === 0
+    ? `<div style="text-align:center;padding:40px;color:var(--sub);font-family:'JetBrains Mono',monospace">Sin posiciones abiertas registradas</div>`
+    : posKeys.map(key => {
+        const [trader, , outcome] = key.split(":");
+        const pos = positions[key];
+        const p = TRADERS[trader] || { color: "#6b7280", emoji: "?" };
+        const holdTime = pos.entry_time ? (() => {
+          const delta = (Date.now() - new Date(pos.entry_time)) / 1000;
+          const h = Math.floor(delta/3600), d = Math.floor(delta/86400);
+          return d > 0 ? `${d}d ${h%24}h` : `${h}h`;
+        })() : "?";
+        return `
+        <div class="pos-row" style="border-left:3px solid ${p.color}">
+          <div class="pos-header">
+            <div>
+              <span style="font-size:13px;font-weight:700;color:${p.color};font-family:'JetBrains Mono',monospace">${p.emoji} ${trader}</span>
+              <span style="font-size:11px;color:var(--sub);margin-left:8px">${outcome.toUpperCase()}</span>
+            </div>
+            <div style="text-align:right">
+              <div style="font-size:13px;font-weight:800;color:var(--yellow);font-family:'JetBrains Mono',monospace">@ ${(pos.avg_price*100).toFixed(1)}¢</div>
+              <div style="font-size:10px;color:var(--sub)">${fmt$(pos.total_amount)} invertido</div>
+            </div>
+          </div>
+          <div class="pos-market">${pos.market_title || "Mercado desconocido"}</div>
+          <div class="pos-meta">⏱ Tiempo en posición: ${holdTime} · Retorno potencial: ${(1/pos.avg_price).toFixed(1)}x</div>
+        </div>`;
+      }).join("");
+}
+
+function buildFilters(trades) {
+  const traders = ["all", ...Object.keys(TRADERS)];
+  const recs = ["all", "ENTRAR", "NO ENTRAR", "OBSERVAR"];
+  const traderBtns = traders.map(t => {
+    const isActive = filterTrader === t;
+    return `<button class="filter-btn ${isActive ? 'active-default' : ''}" onclick="setFilter('trader','${t}')">${t === "all" ? "TODOS" : t}</button>`;
+  }).join("");
+  const recBtns = recs.map(r => {
+    const isActive = filterRec === r;
+    const cls = isActive ? (r === "ENTRAR" ? "active-green" : r === "NO ENTRAR" ? "active-red" : r === "OBSERVAR" ? "active-yellow" : "active-default") : "";
+    return `<button class="filter-btn ${cls}" onclick="setFilter('rec','${r}')">${r === "all" ? "TODOS" : r}</button>`;
+  }).join("");
+  document.getElementById("trade-filters").innerHTML = `<div style="display:flex;gap:6px;flex-wrap:wrap">${traderBtns}</div><div style="display:flex;gap:6px;flex-wrap:wrap">${recBtns}</div>`;
+}
+
+function setFilter(type, val) {
+  if (type === "trader") filterTrader = val;
+  else filterRec = val;
+  renderTrades(allTrades);
+  buildFilters(allTrades);
+}
+
+function renderTrades(trades) {
+  const filtered = trades
+    .filter(t => filterTrader === "all" || t.trader === filterTrader)
+    .filter(t => filterRec === "all" || t.recommendation === filterRec)
+    .sort((a,b) => new Date(b.timestamp) - new Date(a.timestamp));
+
+  document.getElementById("trade-list").innerHTML = filtered.map(t => {
+    const p = TRADERS[t.trader] || { color: "#6b7280", emoji: "?" };
+    const d = new Date(t.timestamp);
+    const ds = `${d.getDate()}/${d.getMonth()+1} ${d.getHours()}:${String(d.getMinutes()).padStart(2,"0")}`;
+    const pnl = t.pnl_if_followed != null ? t.pnl_if_followed : null;
+    const pnlColor = pnl > 0 ? "#00d4aa" : pnl < 0 ? "#ff4d6d" : "#6b7280";
+    const pnlStr = pnl != null ? `${pnl >= 0 ? "+" : ""}${fmt$(pnl)}` : "—";
+    return `
+    <div class="trade-row" style="border-left:3px solid ${p.color}">
+      <div>
+        <div class="trade-trader" style="color:${p.color}">${p.emoji} ${t.trader}</div>
+        <div class="trade-date">${ds}</div>
+      </div>
+      <div>
+        <div class="trade-market">${(t.market||"").slice(0,60)}${(t.market||"").length>60?"…":""}</div>
+        <div class="trade-meta">${t.outcome||""} @ ${((t.entry_price||0)*100).toFixed(1)}¢ · sug $${t.suggested_amount}</div>
+      </div>
+      <div>${badge(t.recommendation, REC_COLORS[t.recommendation]||"#6b7280")}</div>
+      <div>${gauge(t.score||0)}</div>
+      <div>${badge(t.status, STATUS_COLORS[t.status]||"#6b7280")}</div>
+      <div class="trade-pnl" style="color:${pnlColor}">${pnlStr}</div>
+    </div>`;
+  }).join("") || `<div style="text-align:center;padding:40px;color:var(--sub);font-family:'JetBrains Mono',monospace">Sin trades con estos filtros</div>`;
+}
+
+function switchTab(name) {
+  document.querySelectorAll(".tab").forEach(t => t.classList.remove("active"));
+  document.querySelectorAll(".tab-panel").forEach(p => p.classList.remove("active"));
+  event.target.classList.add("active");
+  document.getElementById(`tab-${name}`).classList.add("active");
+}
+
+// Auto-refresh every 2 minutes
+loadData();
+setInterval(loadData, 120000);
+</script>
+</body>
+</html>
