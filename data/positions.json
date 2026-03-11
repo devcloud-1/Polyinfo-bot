@@ -40,5 +40,12 @@
     "entry_time": "2026-03-11T13:22:46.960810",
     "market_title": "Will Bitcoin dip to $60,000 in March?",
     "trader": "de5nuts"
+  },
+  "de5nuts:0x561cd8d035bac38ed04e23d7882a126da38d7ead9d6679f722ad62c0c9d54ad2:yes": {
+    "avg_price": 0.9970000009960001,
+    "total_amount": 457.75593299999997,
+    "entry_time": "2026-03-11T13:27:52.339712",
+    "market_title": "Will Iran close the Strait of Hormuz by March 31?",
+    "trader": "de5nuts"
   }
 }
