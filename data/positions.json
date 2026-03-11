@@ -138,5 +138,12 @@
     "entry_time": "2026-03-11T16:51:44.679701",
     "market_title": "Bitcoin Up or Down - March 11, 11:45AM-12:00PM ET",
     "trader": "Gohst"
+  },
+  "aenews2:0x3536d7d6b2a69f9eed544bf089619692dbd8fa40f53bd96c78410be7c6ded24e:": {
+    "avg_price": 0,
+    "total_amount": 2954.7,
+    "entry_time": "2026-03-11T18:55:24.578500",
+    "market_title": "Will global temperature increase by more than 1.24\u00baC in February 2026?",
+    "trader": "aenews2"
   }
 }
