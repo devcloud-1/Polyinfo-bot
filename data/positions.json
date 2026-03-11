@@ -173,5 +173,12 @@
     "entry_time": "2026-03-11T20:44:26.943980",
     "market_title": "US strikes Yemen by March 31, 2026?",
     "trader": "Gohst"
+  },
+  "Gohst:0xbf5952e2f44f1251863da558fb625484230648a9709807eeb39fb08670a87e01:no": {
+    "avg_price": 0.3,
+    "total_amount": 39.999,
+    "entry_time": "2026-03-11T20:49:40.655460",
+    "market_title": "US/Israel strike Yemen by March 14?",
+    "trader": "Gohst"
   }
 }
