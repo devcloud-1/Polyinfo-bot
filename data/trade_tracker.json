@@ -31,12 +31,28 @@
       "resolved_price": null,
       "pnl_if_followed": null,
       "pnl_if_ignored": null
+    },
+    {
+      "id": "aenews2_20260311104102",
+      "timestamp": "2026-03-11T10:41:02.451422",
+      "trader": "aenews2",
+      "market": "Will \"Scream 7\" Second Weekend Box Office be less than 19m?",
+      "market_id": "0x418dd0cb462be6258e311340724b6b0f07f6e0f58de3998944cc1f2fd5fa2bf6",
+      "outcome": "Yes",
+      "entry_price": 0.991,
+      "recommendation": "NO ENTRAR",
+      "score": 18,
+      "suggested_amount": 0.5,
+      "status": "PENDING",
+      "resolved_price": null,
+      "pnl_if_followed": null,
+      "pnl_if_ignored": null
     }
   ],
   "stats": {
-    "total": 2,
+    "total": 3,
     "entrar": 0,
-    "no_entrar": 2,
+    "no_entrar": 3,
     "observar": 0
   }
 }
