@@ -843,12 +843,30 @@ def _fetch_by_clob(market_id: str) -> dict | None:
         if r.ok:
             data = r.json()
             if data and data.get("condition_id"):
-                # CLOB returns different field names — normalize to Gamma format
+                # CLOB uses volumeNum or volume24hr — pick the best available
+                vol = (
+                    float(data.get("volumeNum", 0) or 0)
+                    or float(data.get("volume", 0) or 0)
+                    or float(data.get("volume24hr", 0) or 0)
+                )
+                # If CLOB volume is 0, fall back to Gamma for this market_id
+                if vol == 0:
+                    try:
+                        r2 = requests.get(f"{GAMMA_API}/markets",
+                                          params={"conditionId": market_id}, timeout=10)
+                        if r2.ok and r2.json():
+                            gamma = r2.json()[0]
+                            vol = float(gamma.get("volume", 0) or 0)
+                            # Use Gamma data if it has better volume info
+                            if vol > 0:
+                                return gamma  # already in Gamma format, _parse_market handles it
+                    except Exception:
+                        pass
                 return {
                     "conditionId": data.get("condition_id", market_id),
                     "question": data.get("question", ""),
                     "description": data.get("description", ""),
-                    "volume": float(data.get("volume", 0) or 0),
+                    "volume": vol,
                     "liquidity": float(data.get("liquidity", 0) or 0),
                     "endDate": data.get("end_date_iso", data.get("end_date", "")),
                     "category": data.get("category", ""),
@@ -1186,9 +1204,23 @@ def flush_pending(key: str):
 
     # If market_info came back empty (volume=0), retry lookup now — API may have recovered
     if market_info.get("volume", 0) == 0 and market_id:
-        ref_title = trades_list[0].get("title", trades_list[0].get("market", ""))
-        print(f"[Buffer] market_info vacío — reintentando lookup para {market_id[:20]}...")
-        market_info = get_market_info(market_id, ref_title)
+        # Try all titles from trades list, not just first — sometimes first has bad title
+        titles = list(dict.fromkeys([
+            t.get("title", t.get("market", "")) for t in trades_list
+            if t.get("title", t.get("market", ""))
+        ]))
+        for ref_title in titles:
+            print(f"[Buffer] market_info vacío — reintentando lookup: '{ref_title[:40]}'")
+            market_info = get_market_info(market_id, ref_title)
+            if market_info.get("volume", 0) > 0:
+                print(f"[Buffer] ✓ Volumen encontrado en retry: ${market_info['volume']:,.0f}")
+                break
+        # Last resort: try CLOB directly without title validation
+        if market_info.get("volume", 0) == 0:
+            clob = _fetch_by_clob(market_id)
+            if clob and float(clob.get("volume", 0)) > 0:
+                market_info = _parse_market(clob, market_id)
+                print(f"[Buffer] ✓ Volumen encontrado via CLOB directo: ${market_info['volume']:,.0f}")
 
     # ── Sumarizaciones ──────────────────────────────────────────
     total_amount = sum(float(t.get("usdcSize", t.get("size", 0)) or 0) for t in trades_list)
@@ -1293,9 +1325,20 @@ def flush_pending(key: str):
             close_position(trader_name, market_id, outcome)
             print(f"[{trader_name}] Alerta de salida con PnL enviada ✓ | {pnl_pct:+.1f}%")
         else:
-            # No recorded entry — send basic exit alert
-            message = format_alert(trader_name, consolidated, market_info, None)
-            send_telegram(message)
+            # No recorded entry — send basic exit alert (no IA analysis for exits)
+            exit_parts = [
+                f"🔴 <b>SALIDA — {trader_name}</b>{'(' + str(n) + ' transacciones)' if n > 1 else ''}",
+                "━━━━━━━━━━━━━━━━━━━━",
+                f"📋 <b>Mercado:</b> {market_title}",
+                f"🎯 <b>Posición:</b> {outcome}",
+                f"💵 <b>Precio salida:</b> {avg_price*100:.1f}¢",
+                f"💼 <b>Total vendido:</b> ${total_amount:.2f} USDC",
+                f"🌊 <b>Volumen mercado:</b> ${market_info.get('volume', 0):,.0f}",
+                "━━━━━━━━━━━━━━━━━━━━",
+                "ℹ️ <i>Sin entrada registrada — no se puede calcular PnL</i>",
+                f"⏰ {datetime.now().strftime('%H:%M:%S')}",
+            ]
+            send_telegram("\n".join(exit_parts))
             print(f"[{trader_name}] Salida sin entrada registrada — alerta básica enviada")
         return
 
@@ -1542,7 +1585,7 @@ def main():
     dashboard_thread.start()
 
     send_telegram(
-        "🤖 <b>Bot v3 iniciado — con Tracker de Efectividad</b>\n"
+        "🤖 <b>Bot iniciado — con Tracker de Efectividad</b>\n"
         f"Monitoreando: {', '.join(WALLETS.keys())}\n"
         f"✅ Cada decisión queda registrada\n"
         f"📊 Reporte semanal automático los lunes\n"
