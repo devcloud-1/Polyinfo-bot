@@ -727,8 +727,32 @@ def _fetch_by_slug(slug: str) -> dict | None:
     return None
 
 
+def _fetch_by_clob(market_id: str) -> dict | None:
+    """Fetch market directly from CLOB API by conditionId — most accurate, no collisions."""
+    try:
+        r = requests.get(f"{CLOB_API}/markets/{market_id}", timeout=10)
+        if r.ok:
+            data = r.json()
+            if data and data.get("condition_id"):
+                # CLOB returns different field names — normalize to Gamma format
+                return {
+                    "conditionId": data.get("condition_id", market_id),
+                    "question": data.get("question", ""),
+                    "description": data.get("description", ""),
+                    "volume": float(data.get("volume", 0) or 0),
+                    "liquidity": float(data.get("liquidity", 0) or 0),
+                    "endDate": data.get("end_date_iso", data.get("end_date", "")),
+                    "category": data.get("category", ""),
+                    "slug": data.get("market_slug", ""),
+                    "outcomePrices": [t.get("price", "0") for t in data.get("tokens", [])],
+                }
+    except Exception as e:
+        print(f"[CLOB Error] {e}")
+    return None
+
+
 def get_market_info(market_id: str, trade_title: str = "") -> dict:
-    """Fetch correct market info using title-first strategy to avoid conditionId collisions."""
+    """Fetch correct market info — CLOB first, then slug, then keyword search."""
     empty = {"volume": 0, "description": "", "end_date": "", "liquidity": 0,
              "category": "", "slug": "", "conditionId": market_id}
     if not market_id and not trade_title:
@@ -736,7 +760,18 @@ def get_market_info(market_id: str, trade_title: str = "") -> dict:
 
     candidates = []
     try:
-        # STRATEGY 1: If we have a title, build slug and search directly — most reliable
+        # STRATEGY 0: CLOB API by conditionId — exact match, no ambiguity
+        if market_id:
+            clob_data = _fetch_by_clob(market_id)
+            if clob_data and clob_data.get("question"):
+                sim = _title_similarity(trade_title, clob_data.get("question", "")) if trade_title else 1.0
+                if sim >= 0.2 or not trade_title:
+                    print(f"[Market] ✓ CLOB match (sim={sim:.2f}) Vol:${float(clob_data.get('volume',0)):,.0f} | {clob_data.get('question','')[:60]}")
+                    return _parse_market(clob_data, market_id)
+                else:
+                    print(f"[Market] CLOB found but low similarity ({sim:.2f}): '{clob_data.get('question','')[:50]}'")
+
+        # STRATEGY 1: If we have a title, build slug and search directly
         if trade_title:
             slug = _title_to_slug(trade_title)
             m = _fetch_by_slug(slug)
@@ -748,7 +783,7 @@ def get_market_info(market_id: str, trade_title: str = "") -> dict:
                 else:
                     print(f"[Market] Slug found but low similarity {sim:.2f} — trying other methods")
 
-        # STRATEGY 2: conditionId lookup — validate result matches title
+        # STRATEGY 2: conditionId lookup via Gamma — validate result matches title
         if market_id:
             for param in [{"conditionId": market_id}, {"id": market_id}]:
                 r = requests.get(f"{GAMMA_API}/markets", params=param, timeout=10)
@@ -764,19 +799,22 @@ def get_market_info(market_id: str, trade_title: str = "") -> dict:
                 print(f"[Market] ✓ conditionId match (sim={sim:.2f}) Vol:${float(best.get('volume',0)):,.0f}")
                 return _parse_market(best, market_id)
             else:
-                print(f"[Market] ⚠️ conditionId result mismatch (sim={sim:.2f}) — API may have wrong data")
-                # STRATEGY 3: Keyword search using important words from title
-                keywords = [w for w in trade_title.split() if len(w) > 4 and w.lower() not in
-                           {"will", "their", "there", "where", "which", "about", "after", "before"}][:5]
-                query = " ".join(keywords[:3])
+                print(f"[Market] ⚠️ conditionId result mismatch (sim={sim:.2f}) — trying keyword search")
+                # STRATEGY 3: Keyword search — include short words, broader net
+                stopwords = {"will", "their", "there", "where", "which", "about", "after",
+                             "before", "from", "with", "this", "that", "have", "been"}
+                keywords = [w for w in trade_title.split()
+                            if len(w) >= 3 and w.lower() not in stopwords][:6]
+                query = " ".join(keywords[:4])
                 print(f"[Market] Searching by keywords: '{query}'")
-                r3 = requests.get(f"{GAMMA_API}/markets", params={"search": query, "limit": 20}, timeout=10)
+                r3 = requests.get(f"{GAMMA_API}/markets", params={"search": query, "limit": 30}, timeout=10)
                 if r3.ok and r3.json():
                     search_results = r3.json()
                     best2 = max(search_results, key=lambda m: _title_similarity(trade_title, m.get("question", "")))
                     sim2 = _title_similarity(trade_title, best2.get("question", ""))
-                    if sim2 > sim:
-                        print(f"[Market] ✓ Keyword search match (sim={sim2:.2f}) Vol:${float(best2.get('volume',0)):,.0f}")
+                    # Accept any improvement over current best, or any match > 0.1
+                    if sim2 > sim or sim2 >= 0.1:
+                        print(f"[Market] ✓ Keyword search match (sim={sim2:.2f}) Vol:${float(best2.get('volume',0)):,.0f} | {best2.get('question','')[:60]}")
                         return _parse_market(best2, market_id)
 
         elif candidates:
@@ -881,25 +919,44 @@ def analyze_trade_with_claude(trader_name: str, trade: dict, market_info: dict, 
         f"Evalua si vale la pena dado el riesgo residual.\n"
     ) if near_certain else ""
 
+    # Check if this trade is in the trader's specialty area
+    specialty = profile.get("specialty", "").lower()
+    market_lower = market_title.lower()
+    specialty_keywords = [w for w in specialty.replace(",", " ").split() if len(w) > 3]
+    specialty_match = any(kw in market_lower for kw in specialty_keywords)
+    specialty_note = (
+        f"IMPORTANTE: Este mercado cae DIRECTAMENTE en la especialidad de {trader_name} "
+        f"({profile.get('specialty')}). Su historial en esta area es especialmente relevante.\n"
+    ) if specialty_match else ""
+
+    # Max suggested amount scales with trader conviction (amount bet) and bankroll
+    max_suggest = min(USER_BANKROLL * 0.15, MAX_PER_TRADE)  # up to 15% of bankroll
+
     prompt = (
-        "Eres un analista experto en prediction markets en Polymarket.\n"
-        "Evalua si un usuario con $25 USD deberia copiar este trade.\n\n"
+        f"Eres un analista de prediction markets. Tu trabajo es evaluar si copiar este trade.\n"
+        f"REGLA CRITICA: Debes recomendar ENTRAR cuando haya señales positivas claras. "
+        f"Ser siempre conservador es un ERROR — significa perder oportunidades reales. "
+        f"Calibra tu respuesta: aproximadamente 1 de cada 3 trades buenos deberia ser ENTRAR.\n\n"
         f"TRADER: {trader_name}\n"
-        f"- Win Rate: {profile.get('win_rate')}% | PnL: ${profile.get('pnl'):,} | PF: {profile.get('profit_factor')}x\n"
+        f"- Win Rate: {profile.get('win_rate')}% | PnL total: ${profile.get('pnl'):,} | Profit Factor: {profile.get('profit_factor')}x\n"
         f"- Especialidad: {profile.get('specialty')}\n"
-        f"- Estilo: {profile.get('style')}\n\n"
-        f"TRADE DETECTADO:\n"
+        f"- Estilo: {profile.get('style')}\n"
+        f"- Meses activo: {profile.get('months_active')}\n"
+        f"{specialty_note}"
+        f"\nTRADE DETECTADO:\n"
         f"- Mercado: {market_title}\n"
         f"- Posicion: {outcome} | Accion: {side}\n"
-        f"- Precio: {price:.3f} ({price*100:.1f}c) | Aposto: ${amount:.2f} | Retorno: {mult}x\n"
+        f"- Precio: {price:.3f} ({price*100:.1f}c) | Aposto: ${amount:.2f} | Retorno potencial: {mult}x\n"
         f"{near_certain_note}"
-        f"\nMERCADO:\n"
+        f"\nDATO DE MERCADO:\n"
         f"- Volumen: ${market_info.get('volume', 0):,.0f} | Liquidez: ${market_info.get('liquidity', 0):,.0f}\n"
         f"- Categoria: {market_info.get('category', '?')} | Cierre: {end_date_display}\n"
-        f"- Descripcion: {market_info.get('description', '')[:200]}\n"
+        f"- Descripcion: {market_info.get('description', '')[:300]}\n"
         f"{siblings_text}\n"
-        'Responde SOLO con este JSON, sin texto adicional:\n'
-        '{"recommendation":"ENTRAR"|"NO ENTRAR"|"OBSERVAR","score":<0-100>,"risk_level":"BAJO"|"MEDIO"|"ALTO","suggested_amount":<0.0-1.50>,"reasoning":"<max 2 oraciones>","key_factor":"<factor decisivo>","best_date":"<fecha recomendada o null>"}'
+        f"BANKROLL DEL USUARIO: ${USER_BANKROLL} USD. suggested_amount debe ser entre $0.50 y ${max_suggest:.2f}.\n"
+        f"Solo recomienda NO ENTRAR si hay razon concreta (mercado casi resuelto, fuera de especialidad, trader apostando pequeño = sin conviccion).\n"
+        f'Responde SOLO con este JSON, sin texto adicional:\n'
+        f'{{"recommendation":"ENTRAR"|"NO ENTRAR"|"OBSERVAR","score":<0-100>,"risk_level":"BAJO"|"MEDIO"|"ALTO","suggested_amount":<0.50-{max_suggest:.2f}>,"reasoning":"<max 2 oraciones>","key_factor":"<factor decisivo>","best_date":"<fecha recomendada o null>"}}'
     )
 
     try:
@@ -1017,6 +1074,12 @@ def flush_pending(key: str):
 
     if not trades_list:
         return
+
+    # If market_info came back empty (volume=0), retry lookup now — API may have recovered
+    if market_info.get("volume", 0) == 0 and market_id:
+        ref_title = trades_list[0].get("title", trades_list[0].get("market", ""))
+        print(f"[Buffer] market_info vacío — reintentando lookup para {market_id[:20]}...")
+        market_info = get_market_info(market_id, ref_title)
 
     # ── Sumarizaciones ──────────────────────────────────────────
     total_amount = sum(float(t.get("usdcSize", t.get("size", 0)) or 0) for t in trades_list)
@@ -1221,6 +1284,12 @@ def process_trade(trader_name: str, trade: dict):
     """Recibe un trade nuevo y lo agrega al buffer de agrupación."""
     market_id = trade.get("market", trade.get("conditionId", ""))
     trade_title = trade.get("title", trade.get("market", ""))
+
+    # Skip trades with no market identifier — nothing useful we can do with them
+    if not market_id:
+        print(f"[{trader_name}] Trade ignorado — sin market_id")
+        return
+
     market_info = get_market_info(market_id, trade_title)
     buffer_trade(trader_name, trade, market_info, market_id)
 
