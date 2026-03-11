@@ -110,5 +110,12 @@
     "entry_time": "2026-03-11T16:00:41.375782",
     "market_title": "Will monthly inflation increase by 0.4% or more in February?",
     "trader": "Gohst"
+  },
+  "Gohst:0xde865d7a11ea6a57a790f6fc86d53c9dbfeef4c03fdc019197a34fdc338d44cb:down": {
+    "avg_price": 0.3899999859599991,
+    "total_amount": 9.999999,
+    "entry_time": "2026-03-11T16:06:52.629002",
+    "market_title": "Bitcoin Up or Down - March 11, 12:00PM-12:15PM ET",
+    "trader": "Gohst"
   }
 }
