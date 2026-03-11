@@ -79,12 +79,28 @@
       "resolved_price": null,
       "pnl_if_followed": null,
       "pnl_if_ignored": null
+    },
+    {
+      "id": "aenews2_20260311151133",
+      "timestamp": "2026-03-11T15:11:33.494456",
+      "trader": "aenews2",
+      "market": "Will global temperature increase by more than 1.24\u00baC in February 2026?",
+      "market_id": "0x3536d7d6b2a69f9eed544bf089619692dbd8fa40f53bd96c78410be7c6ded24e",
+      "outcome": "No",
+      "entry_price": 0.999,
+      "recommendation": "NO ENTRAR",
+      "score": 15,
+      "suggested_amount": 0.0,
+      "status": "PENDING",
+      "resolved_price": null,
+      "pnl_if_followed": null,
+      "pnl_if_ignored": null
     }
   ],
   "stats": {
-    "total": 5,
+    "total": 6,
     "entrar": 0,
-    "no_entrar": 5,
+    "no_entrar": 6,
     "observar": 0
   }
 }
