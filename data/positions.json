@@ -159,5 +159,12 @@
     "entry_time": "2026-03-11T18:55:30.884342",
     "market_title": "Will global temperature increase by between 1.20\u00baC and 1.24\u00baC in February 2026?",
     "trader": "aenews2"
+  },
+  "aenews2:0xbfbacce3909f8e65c6a6ec82cbca812f3384e324e167cf9f015675374c21074b:": {
+    "avg_price": 0,
+    "total_amount": 0.0,
+    "entry_time": "2026-03-11T19:56:59.687475",
+    "market_title": "Will Israel strike Gaza on March 5, 2026?",
+    "trader": "aenews2"
   }
 }
