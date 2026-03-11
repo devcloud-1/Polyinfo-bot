@@ -64,6 +64,17 @@ DATA_API = "https://data-api.polymarket.com"
 CLOB_API = "https://clob.polymarket.com"
 ANTHROPIC_API = "https://api.anthropic.com/v1/messages"
 
+# GitHub persistence — set these in Railway Variables
+# GITHUB_TOKEN: your Personal Access Token (repo scope)
+# GITHUB_REPO: "usuario/nombre-repo" e.g. "juan/polymarket-bot"
+# GITHUB_TRACKER_PATH: path inside repo e.g. "data/trade_tracker.json"
+GITHUB_TOKEN = os.getenv("GITHUB_TOKEN", "")
+GITHUB_REPO = os.getenv("GITHUB_REPO", "")
+GITHUB_TRACKER_PATH = os.getenv("GITHUB_TRACKER_PATH", "data/trade_tracker.json")
+GITHUB_POSITIONS_PATH = os.getenv("GITHUB_POSITIONS_PATH", "data/positions.json")
+_github_tracker_sha = ""    # SHA del archivo actual en GitHub (necesario para updates)
+_github_positions_sha = ""  # SHA positions file
+
 # Pending orders waiting for user approval
 # Structure: { "callback_data": { trade info } }
 pending_approvals: dict = {}
@@ -81,6 +92,18 @@ pending_trades: dict = {}
 POSITIONS_FILE = "/tmp/positions.json"
 
 def load_positions() -> dict:
+    """Carga posiciones — desde GitHub primero, fallback a disco."""
+    global _github_positions_sha
+    if GITHUB_TOKEN and GITHUB_REPO:
+        data, sha = _github_get(GITHUB_POSITIONS_PATH)
+        if data is not None:
+            _github_positions_sha = sha
+            try:
+                with open(POSITIONS_FILE, "w") as f:
+                    json.dump(data, f, indent=2)
+            except Exception:
+                pass
+            return data
     try:
         if os.path.exists(POSITIONS_FILE):
             with open(POSITIONS_FILE, "r") as f:
@@ -90,11 +113,24 @@ def load_positions() -> dict:
     return {}
 
 def save_positions(data: dict):
+    """Guarda posiciones en disco y sincroniza a GitHub en background."""
+    global _github_positions_sha
     try:
         with open(POSITIONS_FILE, "w") as f:
             json.dump(data, f, indent=2)
     except Exception as e:
         print(f"[Positions Error] {e}")
+    if GITHUB_TOKEN and GITHUB_REPO:
+        import threading
+        def _push():
+            global _github_positions_sha
+            new_sha = _github_put(
+                GITHUB_POSITIONS_PATH, data, _github_positions_sha,
+                f"positions: {len(data)} open [{datetime.now().strftime('%Y-%m-%d %H:%M')}]"
+            )
+            if new_sha:
+                _github_positions_sha = new_sha
+        threading.Thread(target=_push, daemon=True).start()
 
 def record_entry(trader: str, market_id: str, outcome: str, avg_price: float, total_amount: float, market_title: str):
     """Record an entry position for later PnL calculation on exit."""
@@ -139,8 +175,68 @@ def close_position(trader: str, market_id: str, outcome: str):
 # TRACKER — guarda cada decisión en disco
 # ============================================================
 
+def _github_headers() -> dict:
+    return {
+        "Authorization": f"token {GITHUB_TOKEN}",
+        "Accept": "application/vnd.github.v3+json",
+        "Content-Type": "application/json",
+    }
+
+def _github_get(path: str) -> tuple:
+    """Fetch a file from GitHub. Returns (content_dict, sha)."""
+    if not GITHUB_TOKEN or not GITHUB_REPO:
+        return None, ""
+    try:
+        import base64
+        url = f"https://api.github.com/repos/{GITHUB_REPO}/contents/{path}"
+        r = requests.get(url, headers=_github_headers(), timeout=15)
+        if r.ok:
+            data = r.json()
+            content = json.loads(base64.b64decode(data["content"]).decode())
+            return content, data.get("sha", "")
+        elif r.status_code == 404:
+            return None, ""
+    except Exception as e:
+        print(f"[GitHub] Error leyendo {path}: {e}")
+    return None, ""
+
+def _github_put(path: str, data: dict, sha: str, message: str) -> str:
+    """Write a file to GitHub. Returns new SHA or empty string on failure."""
+    if not GITHUB_TOKEN or not GITHUB_REPO:
+        return sha
+    try:
+        import base64
+        content = base64.b64encode(json.dumps(data, indent=2).encode()).decode()
+        payload = {"message": message, "content": content}
+        if sha:
+            payload["sha"] = sha
+        url = f"https://api.github.com/repos/{GITHUB_REPO}/contents/{path}"
+        r = requests.put(url, headers=_github_headers(), json=payload, timeout=15)
+        if r.ok:
+            new_sha = r.json().get("content", {}).get("sha", sha)
+            print(f"[GitHub] ✓ Guardado: {path}")
+            return new_sha
+        else:
+            print(f"[GitHub] Error guardando {path}: {r.status_code} {r.text[:100]}")
+    except Exception as e:
+        print(f"[GitHub] Excepcion guardando {path}: {e}")
+    return sha
+
+
 def load_tracker() -> dict:
-    """Carga el historial de trades del disco."""
+    """Carga el historial — primero desde GitHub, fallback a disco local."""
+    global _github_tracker_sha
+    if GITHUB_TOKEN and GITHUB_REPO:
+        data, sha = _github_get(GITHUB_TRACKER_PATH)
+        if data is not None:
+            _github_tracker_sha = sha
+            try:
+                with open(TRACKER_FILE, "w") as f:
+                    json.dump(data, f, indent=2)
+            except Exception:
+                pass
+            print(f"[GitHub] Tracker cargado ({len(data.get('trades', []))} trades)")
+            return data
     try:
         if os.path.exists(TRACKER_FILE):
             with open(TRACKER_FILE, "r") as f:
@@ -151,12 +247,25 @@ def load_tracker() -> dict:
 
 
 def save_tracker(data: dict):
-    """Guarda el historial al disco."""
+    """Guarda en disco local inmediatamente, luego sincroniza a GitHub en background."""
+    global _github_tracker_sha
     try:
         with open(TRACKER_FILE, "w") as f:
             json.dump(data, f, indent=2)
     except Exception as e:
-        print(f"[Tracker Error] {e}")
+        print(f"[Tracker Error] disco: {e}")
+    if GITHUB_TOKEN and GITHUB_REPO:
+        import threading
+        def _push():
+            global _github_tracker_sha
+            n = len(data.get("trades", []))
+            new_sha = _github_put(
+                GITHUB_TRACKER_PATH, data, _github_tracker_sha,
+                f"tracker: {n} trades [{datetime.now().strftime('%Y-%m-%d %H:%M')}]"
+            )
+            if new_sha:
+                _github_tracker_sha = new_sha
+        threading.Thread(target=_push, daemon=True).start()
 
 
 def log_trade(trader: str, market: str, outcome: str, price: float,
