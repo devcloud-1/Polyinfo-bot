@@ -33,5 +33,12 @@
     "entry_time": "2026-03-11T12:07:03.019133",
     "market_title": "Will February 2026 be the 1st hottest on record?",
     "trader": "aenews2"
+  },
+  "de5nuts:0x4290a4aa43a0707f0f1193c73667074f2ef5ce8ab5d6fcdd4ca645bfe1528f03:yes": {
+    "avg_price": 0.29,
+    "total_amount": 1450.0,
+    "entry_time": "2026-03-11T13:22:46.960810",
+    "market_title": "Will Bitcoin dip to $60,000 in March?",
+    "trader": "de5nuts"
   }
 }
