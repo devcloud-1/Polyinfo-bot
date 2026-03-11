@@ -61,5 +61,12 @@
     "entry_time": "2026-03-11T14:42:58.106791",
     "market_title": "Bitcoin Up or Down - March 11, 10:40AM-10:45AM ET",
     "trader": "Gohst"
+  },
+  "Gohst:0xc0c04eb5d01d6446dd0534ddb5013cf4814d09e6f239f5f2999fe7682dde7263:": {
+    "avg_price": 0,
+    "total_amount": 9.84686,
+    "entry_time": "2026-03-11T14:56:05.194344",
+    "market_title": "Bitcoin Up or Down - March 11, 10:40AM-10:45AM ET",
+    "trader": "Gohst"
   }
 }
