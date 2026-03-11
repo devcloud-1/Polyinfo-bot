@@ -12,5 +12,12 @@
     "entry_time": "2026-03-11T08:30:47.284609",
     "market_title": "Will Iran strike Israel on March 6?",
     "trader": "aenews2"
+  },
+  "Gohst:0x7c3f9482e5c8d1c00ad849581324b5e224f5e960476f535453e04c1f55d4ea49:": {
+    "avg_price": 0,
+    "total_amount": 3328.3,
+    "entry_time": "2026-03-11T09:51:46.947555",
+    "market_title": "Will a Gulf State strike Iran by March 7?",
+    "trader": "Gohst"
   }
 }
