@@ -192,6 +192,35 @@
     .header { padding: 14px 16px; }
     .tabs { padding: 0 16px; }
   }
+
+  /* ── SIMULATOR ── */
+  .sim-kpi { background: var(--surface); border: 1px solid var(--border); border-radius: 16px; padding: 20px; position: relative; overflow: hidden; }
+  .sim-kpi-accent { position: absolute; top:0;left:0;right:0;height:3px;border-radius:16px 16px 0 0; }
+  .sim-kpi-label { font-size:10px;color:var(--sub);text-transform:uppercase;letter-spacing:0.12em;margin-bottom:6px;font-family:"JetBrains Mono",monospace; }
+  .sim-kpi-value { font-size:28px;font-weight:800;font-family:"JetBrains Mono",monospace;line-height:1; }
+  .sim-kpi-sub { font-size:11px;color:var(--sub);margin-top:5px; }
+  .sim-row { display:grid;grid-template-columns:40px 1fr 90px 90px 80px;gap:12px;align-items:center;
+    background:var(--surface);border:1px solid rgba(255,255,255,0.05);border-radius:10px;
+    padding:12px 16px;margin-bottom:6px; }
+  .sim-row-num { font-size:11px;color:var(--muted);font-family:"JetBrains Mono",monospace;text-align:center; }
+  .sim-row-market { font-size:12px;color:#d1d5db;line-height:1.3; }
+  .sim-row-meta { font-size:10px;color:var(--sub);margin-top:2px; }
+  .sim-row-bet { font-size:12px;font-weight:700;font-family:"JetBrains Mono",monospace;text-align:right; }
+  .sim-row-result { font-size:13px;font-weight:800;font-family:"JetBrains Mono",monospace;text-align:right; }
+  .sim-row-balance { font-size:12px;font-weight:700;font-family:"JetBrains Mono",monospace;text-align:right;color:var(--sub); }
+  .strategy-btn { background:rgba(255,255,255,0.03);border:1px solid rgba(255,255,255,0.08);
+    color:var(--sub);padding:8px 14px;border-radius:8px;cursor:pointer;
+    font-size:11px;font-family:"JetBrains Mono",monospace;font-weight:700;letter-spacing:0.05em;
+    transition:all 0.2s;text-align:left; }
+  .strategy-btn.active { background:rgba(0,212,170,0.15);border-color:rgba(0,212,170,0.4);color:var(--green); }
+  .pct-btn { background:rgba(255,255,255,0.03);border:1px solid rgba(255,255,255,0.08);
+    color:var(--sub);padding:6px 10px;border-radius:6px;cursor:pointer;
+    font-size:11px;font-family:"JetBrains Mono",monospace;font-weight:700;transition:all 0.2s; }
+  .pct-btn.active { background:rgba(0,212,170,0.15);border-color:rgba(0,212,170,0.4);color:var(--green); }
+  .capital-preset { background:rgba(255,255,255,0.03);border:1px solid rgba(255,255,255,0.08);
+    color:var(--sub);padding:5px 10px;border-radius:6px;cursor:pointer;
+    font-size:11px;font-family:"JetBrains Mono",monospace;font-weight:700;transition:all 0.2s; }
+  .capital-preset.active { background:rgba(0,212,170,0.15);border-color:rgba(0,212,170,0.4);color:var(--green); }
 </style>
 </head>
 <body>
@@ -213,6 +242,7 @@
   <button class="tab mono" onclick="switchTab('calibration')">CALIBRACIÓN IA</button>
   <button class="tab mono" onclick="switchTab('trades')">HISTORIAL</button>
   <button class="tab mono" onclick="switchTab('positions')">POSICIONES</button>
+  <button class="tab mono" onclick="switchTab('simulator')">💰 SIMULADOR</button>
 </div>
 
 <div class="content">
@@ -256,6 +286,57 @@
   <!-- POSITIONS -->
   <div class="tab-panel" id="tab-positions">
     <div id="positions-list"></div>
+  </div>
+
+  <!-- SIMULATOR -->
+  <div class="tab-panel" id="tab-simulator">
+    <div class="warning-box" style="border-color:rgba(0,212,170,0.3);background:rgba(0,212,170,0.05);color:#00d4aa">
+      💰 Simula cuánto habrías ganado con cualquier capital siguiendo (o ignorando) las señales de la IA. Solo usa trades ya resueltos (WIN/LOSS).
+    </div>
+
+    <!-- Capital input -->
+    <div class="section" style="margin-bottom:20px">
+      <div class="section-title">Configura tu simulación</div>
+      <div style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:20px;align-items:end">
+        <div>
+          <div style="font-size:11px;color:var(--sub);margin-bottom:8px;font-family:'JetBrains Mono',monospace">CAPITAL INICIAL</div>
+          <div style="display:flex;gap:8px;flex-wrap:wrap;margin-bottom:10px" id="capital-presets"></div>
+          <div style="display:flex;align-items:center;gap:8px">
+            <span style="color:var(--green);font-family:'JetBrains Mono',monospace;font-size:16px;font-weight:800">$</span>
+            <input id="capital-input" type="number" value="100" min="1" max="100000"
+              style="background:rgba(255,255,255,0.05);border:1px solid rgba(255,255,255,0.15);border-radius:8px;
+              padding:10px 14px;color:#f0f0f0;font-family:'JetBrains Mono',monospace;font-size:18px;font-weight:800;
+              width:140px;outline:none"
+              oninput="runSimulation()">
+          </div>
+        </div>
+        <div>
+          <div style="font-size:11px;color:var(--sub);margin-bottom:8px;font-family:'JetBrains Mono',monospace">ESTRATEGIA</div>
+          <div style="display:flex;flex-direction:column;gap:8px" id="strategy-btns"></div>
+        </div>
+        <div>
+          <div style="font-size:11px;color:var(--sub);margin-bottom:8px;font-family:'JetBrains Mono',monospace">% POR TRADE</div>
+          <div style="display:flex;gap:8px;flex-wrap:wrap" id="pct-presets"></div>
+          <div style="font-size:11px;color:var(--sub);margin-top:8px" id="pct-label">5% por trade = $5.00</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Results KPIs -->
+    <div class="grid-4" id="sim-kpis" style="margin-bottom:20px"></div>
+
+    <!-- Equity curve -->
+    <div class="section" style="margin-bottom:20px">
+      <div class="section-title">Curva de Capital</div>
+      <canvas id="equity-chart" height="180" style="width:100%"></canvas>
+      <div style="display:flex;gap:20px;margin-top:12px;justify-content:center" id="chart-legend"></div>
+    </div>
+
+    <!-- Trade by trade breakdown -->
+    <div class="section">
+      <div class="section-title">Detalle por Trade</div>
+      <div id="sim-trade-list"></div>
+    </div>
   </div>
 </div>
 
@@ -557,14 +638,284 @@ function renderTrades(trades) {
   }).join("") || `<div style="text-align:center;padding:40px;color:var(--sub);font-family:'JetBrains Mono',monospace">Sin trades con estos filtros</div>`;
 }
 
+// switchTab defined below
+
+
+
+// ═══════════════════════════════════════════════════
+// SIMULATOR
+// ═══════════════════════════════════════════════════
+let simStrategy = "follow_ia";   // follow_ia | ignore_ia | follow_trader | all_in
+let simPct = 5;                  // % of capital per trade
+let simCapital = 100;
+let equityChartInstance = null;
+
+const STRATEGIES = [
+  { id: "follow_ia",     label: "✅ Siguiendo IA (solo ENTRAR)",  desc: "Solo trades donde IA dijo ENTRAR" },
+  { id: "ignore_ia",     label: "❌ Ignorando IA (todo opuesto)", desc: "Entra donde IA dijo NO ENTRAR" },
+  { id: "copy_all",      label: "📋 Copiando todo",               desc: "Copia todos los trades sin filtro" },
+  { id: "follow_trader", label: "🎯 Solo aenews2",                desc: "Solo trades de aenews2" },
+];
+
+function initSimulator() {
+  // Capital presets
+  document.getElementById("capital-presets").innerHTML =
+    [25, 100, 500, 1000].map(v =>
+      `<button class="capital-preset ${simCapital === v ? 'active' : ''}"
+        onclick="setCapital(${v})">${v === 1000 ? '$1k' : '$' + v}</button>`
+    ).join("");
+
+  // Strategy buttons
+  document.getElementById("strategy-btns").innerHTML =
+    STRATEGIES.map(s =>
+      `<button class="strategy-btn ${simStrategy === s.id ? 'active' : ''}"
+        onclick="setStrategy('${s.id}')" title="${s.desc}">${s.label}</button>`
+    ).join("");
+
+  // Pct presets
+  document.getElementById("pct-presets").innerHTML =
+    [3, 5, 10, 15].map(v =>
+      `<button class="pct-btn ${simPct === v ? 'active' : ''}"
+        onclick="setPct(${v})">${v}%</button>`
+    ).join("");
+
+  runSimulation();
+}
+
+function setCapital(v) {
+  simCapital = v;
+  document.getElementById("capital-input").value = v;
+  initSimulator();
+}
+function setStrategy(s) { simStrategy = s; initSimulator(); }
+function setPct(v) { simPct = v; initSimulator(); }
+
+function runSimulation() {
+  simCapital = parseFloat(document.getElementById("capital-input").value) || 100;
+
+  // Update pct label
+  const betAmt = simCapital * simPct / 100;
+  document.getElementById("pct-label").textContent =
+    `${simPct}% por trade = $${betAmt.toFixed(2)}`;
+
+  const resolved = allTrades.filter(t => t.status === "WIN" || t.status === "LOSS")
+    .sort((a, b) => new Date(a.timestamp) - new Date(b.timestamp));
+
+  // Filter by strategy
+  let selected = resolved;
+  if (simStrategy === "follow_ia")     selected = resolved.filter(t => t.recommendation === "ENTRAR");
+  if (simStrategy === "ignore_ia")     selected = resolved.filter(t => t.recommendation !== "ENTRAR");
+  if (simStrategy === "follow_trader") selected = resolved.filter(t => t.trader === "aenews2");
+
+  if (selected.length === 0) {
+    document.getElementById("sim-kpis").innerHTML =
+      `<div style="grid-column:1/-1;text-align:center;padding:40px;color:var(--sub);font-family:'JetBrains Mono',monospace">
+        Sin trades resueltos con esta estrategia todavía.<br>
+        <span style="color:var(--green);font-size:11px">Los datos aparecerán cuando los traders cierren posiciones.</span>
+      </div>`;
+    document.getElementById("sim-trade-list").innerHTML = "";
+    return;
+  }
+
+  // Run simulation
+  let balance = simCapital;
+  let wins = 0, losses = 0, totalBet = 0, totalProfit = 0;
+  const equityCurve = [simCapital];
+  const tradeRows = [];
+
+  selected.forEach((t, i) => {
+    const betAmt = Math.min(balance * simPct / 100, balance); // can't bet more than we have
+    const price = t.entry_price || 0.5;
+    const multiplier = price > 0 ? (1 / price) : 2;
+
+    let profit = 0;
+    if (t.status === "WIN") {
+      profit = betAmt * (multiplier - 1);
+      wins++;
+    } else {
+      profit = -betAmt;
+      losses++;
+    }
+
+    balance += profit;
+    totalBet += betAmt;
+    totalProfit += profit;
+    equityCurve.push(Math.max(0, balance));
+
+    tradeRows.push({
+      num: i + 1,
+      market: t.market,
+      trader: t.trader,
+      rec: t.recommendation,
+      status: t.status,
+      betAmt,
+      profit,
+      balance: Math.max(0, balance),
+      price,
+      multiplier,
+      timestamp: t.timestamp,
+    });
+  });
+
+  const roi = ((balance - simCapital) / simCapital * 100);
+  const wr = pct(wins, selected.length);
+  const maxDrawdown = calcMaxDrawdown(equityCurve);
+
+  // KPIs
+  const balColor = balance >= simCapital ? "#00d4aa" : "#ff4d6d";
+  const roiColor = roi >= 0 ? "#00d4aa" : "#ff4d6d";
+  document.getElementById("sim-kpis").innerHTML = [
+    { label: "Capital Final", value: `$${balance.toFixed(2)}`, sub: `desde $${simCapital.toFixed(2)}`, color: balColor },
+    { label: "ROI Total", value: `${roi >= 0 ? "+" : ""}${roi.toFixed(1)}%`, sub: `${wins}W / ${losses}L en ${selected.length} trades`, color: roiColor },
+    { label: "Win Rate", value: `${wr}%`, sub: `${wins} trades ganados`, color: wr >= 55 ? "#00d4aa" : wr >= 40 ? "#ffd166" : "#ff4d6d" },
+    { label: "Max Drawdown", value: `-${maxDrawdown.toFixed(1)}%`, sub: "caída máxima del capital", color: maxDrawdown > 30 ? "#ff4d6d" : maxDrawdown > 15 ? "#ffd166" : "#00d4aa" },
+  ].map(k => `
+    <div class="sim-kpi">
+      <div class="sim-kpi-accent" style="background:${k.color}"></div>
+      <div class="sim-kpi-label">${k.label}</div>
+      <div class="sim-kpi-value" style="color:${k.color}">${k.value}</div>
+      <div class="sim-kpi-sub">${k.sub}</div>
+    </div>`).join("");
+
+  // Equity chart
+  drawEquityChart(equityCurve, simCapital);
+
+  // Trade breakdown
+  document.getElementById("sim-trade-list").innerHTML = tradeRows.map(r => {
+    const profitColor = r.profit >= 0 ? "#00d4aa" : "#ff4d6d";
+    const profitStr = `${r.profit >= 0 ? "+" : ""}$${r.profit.toFixed(2)}`;
+    const p = TRADERS[r.trader] || { color: "#6b7280", emoji: "?" };
+    const d = new Date(r.timestamp);
+    const ds = `${d.getDate()}/${d.getMonth()+1}`;
+    return `
+    <div class="sim-row">
+      <div class="sim-row-num">#${r.num}</div>
+      <div>
+        <div class="sim-row-market">${(r.market||"").slice(0,55)}${(r.market||"").length>55?"…":""}</div>
+        <div class="sim-row-meta">${p.emoji} ${r.trader} · ${ds} · @ ${(r.price*100).toFixed(0)}¢ · ${r.multiplier.toFixed(1)}x
+          · ${badge(r.rec, REC_COLORS[r.rec]||"#6b7280")}
+        </div>
+      </div>
+      <div class="sim-row-bet" style="color:var(--sub)">-$${r.betAmt.toFixed(2)}</div>
+      <div class="sim-row-result" style="color:${profitColor}">${profitStr}</div>
+      <div class="sim-row-balance" style="color:${r.balance >= simCapital ? '#00d4aa' : '#ff4d6d'}">$${r.balance.toFixed(2)}</div>
+    </div>`;
+  }).join("") || `<div style="text-align:center;padding:30px;color:var(--sub)">Sin trades para mostrar</div>`;
+}
+
+function calcMaxDrawdown(curve) {
+  let peak = curve[0], maxDD = 0;
+  for (const v of curve) {
+    if (v > peak) peak = v;
+    const dd = peak > 0 ? (peak - v) / peak * 100 : 0;
+    if (dd > maxDD) maxDD = dd;
+  }
+  return maxDD;
+}
+
+function drawEquityChart(curve, startCapital) {
+  const canvas = document.getElementById("equity-chart");
+  const ctx = canvas.getContext("2d");
+  const dpr = window.devicePixelRatio || 1;
+  const rect = canvas.parentElement.getBoundingClientRect();
+  canvas.width = rect.width * dpr;
+  canvas.height = 180 * dpr;
+  canvas.style.width = rect.width + "px";
+  canvas.style.height = "180px";
+  ctx.scale(dpr, dpr);
+
+  const W = rect.width, H = 180;
+  const pad = { top: 16, right: 16, bottom: 32, left: 60 };
+  const chartW = W - pad.left - pad.right;
+  const chartH = H - pad.top - pad.bottom;
+
+  ctx.clearRect(0, 0, W, H);
+
+  if (curve.length < 2) return;
+
+  const minV = Math.min(...curve) * 0.95;
+  const maxV = Math.max(...curve) * 1.05;
+  const range = maxV - minV || 1;
+
+  const toX = i => pad.left + (i / (curve.length - 1)) * chartW;
+  const toY = v => pad.top + chartH - ((v - minV) / range) * chartH;
+
+  // Grid lines
+  ctx.strokeStyle = "rgba(255,255,255,0.05)";
+  ctx.lineWidth = 1;
+  for (let i = 0; i <= 4; i++) {
+    const y = pad.top + (i / 4) * chartH;
+    ctx.beginPath(); ctx.moveTo(pad.left, y); ctx.lineTo(pad.left + chartW, y); ctx.stroke();
+    const val = maxV - (i / 4) * range;
+    ctx.fillStyle = "#4b5563";
+    ctx.font = "10px 'JetBrains Mono', monospace";
+    ctx.textAlign = "right";
+    ctx.fillText("$" + val.toFixed(0), pad.left - 6, y + 3);
+  }
+
+  // Starting capital reference line
+  const refY = toY(startCapital);
+  ctx.strokeStyle = "rgba(255,255,255,0.15)";
+  ctx.setLineDash([4, 4]);
+  ctx.beginPath(); ctx.moveTo(pad.left, refY); ctx.lineTo(pad.left + chartW, refY); ctx.stroke();
+  ctx.setLineDash([]);
+  ctx.fillStyle = "rgba(255,255,255,0.3)"; ctx.font = "9px 'JetBrains Mono',monospace"; ctx.textAlign = "left";
+  ctx.fillText("inicio", pad.left + 4, refY - 3);
+
+  // Fill area
+  const finalColor = curve[curve.length-1] >= startCapital ? "#00d4aa" : "#ff4d6d";
+  const grad = ctx.createLinearGradient(0, pad.top, 0, pad.top + chartH);
+  grad.addColorStop(0, finalColor + "44");
+  grad.addColorStop(1, finalColor + "00");
+  ctx.beginPath();
+  ctx.moveTo(toX(0), toY(curve[0]));
+  curve.forEach((v, i) => ctx.lineTo(toX(i), toY(v)));
+  ctx.lineTo(toX(curve.length - 1), pad.top + chartH);
+  ctx.lineTo(toX(0), pad.top + chartH);
+  ctx.closePath();
+  ctx.fillStyle = grad;
+  ctx.fill();
+
+  // Line
+  ctx.strokeStyle = finalColor;
+  ctx.lineWidth = 2.5;
+  ctx.lineJoin = "round";
+  ctx.beginPath();
+  curve.forEach((v, i) => i === 0 ? ctx.moveTo(toX(i), toY(v)) : ctx.lineTo(toX(i), toY(v)));
+  ctx.stroke();
+
+  // Dots at start and end
+  [[0, curve[0]], [curve.length-1, curve[curve.length-1]]].forEach(([i, v]) => {
+    ctx.beginPath();
+    ctx.arc(toX(i), toY(v), 4, 0, Math.PI * 2);
+    ctx.fillStyle = finalColor;
+    ctx.fill();
+  });
+
+  // X axis labels
+  ctx.fillStyle = "#4b5563"; ctx.font = "9px 'JetBrains Mono',monospace"; ctx.textAlign = "center";
+  const step = Math.max(1, Math.floor(curve.length / 6));
+  for (let i = 0; i < curve.length; i += step) {
+    ctx.fillText(`#${i}`, toX(i), H - 8);
+  }
+
+  // Legend
+  document.getElementById("chart-legend").innerHTML = `
+    <span style="font-size:11px;color:#6b7280;font-family:'JetBrains Mono',monospace">── Capital</span>
+    <span style="font-size:11px;color:rgba(255,255,255,0.3);font-family:'JetBrains Mono',monospace">- - Capital inicial ($${startCapital})</span>
+  `;
+}
+
+// Auto-refresh every 2 minutes
+// Init simulator after data loads
+const _origSwitchTab = switchTab;
 function switchTab(name) {
   document.querySelectorAll(".tab").forEach(t => t.classList.remove("active"));
   document.querySelectorAll(".tab-panel").forEach(p => p.classList.remove("active"));
   event.target.classList.add("active");
   document.getElementById(`tab-${name}`).classList.add("active");
+  if (name === "simulator") initSimulator();
 }
-
-// Auto-refresh every 2 minutes
 loadData();
 setInterval(loadData, 120000);
 </script>
