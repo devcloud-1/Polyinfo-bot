@@ -166,5 +166,12 @@
     "entry_time": "2026-03-11T19:56:59.687475",
     "market_title": "Will Israel strike Gaza on March 5, 2026?",
     "trader": "aenews2"
+  },
+  "Gohst:0x8aab152fc4bc00948af5b09be024d4791c9becc1c74f925337c32f6405d52390:no": {
+    "avg_price": 0.26000000149717056,
+    "total_amount": 20.839309,
+    "entry_time": "2026-03-11T20:44:26.943980",
+    "market_title": "US strikes Yemen by March 31, 2026?",
+    "trader": "Gohst"
   }
 }
