@@ -313,5 +313,12 @@
     "entry_time": "2026-03-12T21:34:15.883866",
     "market_title": "What will SpaceX's public ticker be?",
     "trader": "Gohst"
+  },
+  "Gohst:0x61619309efb1d47c90ccad819ff9975b027680b2b728a51e9a96f5521634b800:no": {
+    "avg_price": 0.12333333333333334,
+    "total_amount": 419.9989,
+    "entry_time": "2026-03-12T22:07:42.336794",
+    "market_title": "Will Marco Rubio visit China by April 30, 2026?",
+    "trader": "Gohst"
   }
 }
