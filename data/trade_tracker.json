@@ -239,12 +239,28 @@
       "resolved_price": null,
       "pnl_if_followed": null,
       "pnl_if_ignored": null
+    },
+    {
+      "id": "Gohst_20260312091901",
+      "timestamp": "2026-03-12T09:19:01.138234",
+      "trader": "Gohst",
+      "market": "US strikes Iraq by March 7?",
+      "market_id": "0x8b542974121a934ca9dd13d11eacaebca7ce465fcc3146df90605aae897605e6",
+      "outcome": "",
+      "entry_price": 0,
+      "recommendation": "NO ENTRAR",
+      "score": 25,
+      "suggested_amount": 0.0,
+      "status": "PENDING",
+      "resolved_price": null,
+      "pnl_if_followed": null,
+      "pnl_if_ignored": null
     }
   ],
   "stats": {
-    "total": 15,
+    "total": 16,
     "entrar": 3,
-    "no_entrar": 12,
+    "no_entrar": 13,
     "observar": 0
   }
 }
