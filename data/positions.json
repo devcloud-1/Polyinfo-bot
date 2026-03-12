@@ -201,5 +201,12 @@
     "entry_time": "2026-03-12T02:10:32.004793",
     "market_title": "Will Iran close the Strait of Hormuz by March 31?",
     "trader": "aenews2"
+  },
+  "aenews2:0x771de080638c0fd0deff3e2016dfb22f16c1f6edad690c75d1f4cb9b240add51:no": {
+    "avg_price": 0.824,
+    "total_amount": 4.12,
+    "entry_time": "2026-03-12T02:16:14.551328",
+    "market_title": "Russia strike impacts Kyiv municipality during week of March 2, 2026?",
+    "trader": "aenews2"
   }
 }
