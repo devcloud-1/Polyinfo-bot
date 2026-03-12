@@ -264,5 +264,12 @@
     "entry_time": "2026-03-12T15:53:46.594326",
     "market_title": "Netanyahu out by March 31?",
     "trader": "Gohst"
+  },
+  "aenews2:0x43c7e8f73e867ebc035edf002617f67cf96b90c85eccac18090e553bfe7a8411:yes": {
+    "avg_price": 0.999,
+    "total_amount": 9.41058,
+    "entry_time": "2026-03-12T16:25:15.743213",
+    "market_title": "Will Iran close the Strait of Hormuz by June 30?",
+    "trader": "aenews2"
   }
 }
