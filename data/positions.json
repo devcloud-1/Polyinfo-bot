@@ -215,5 +215,12 @@
     "entry_time": "2026-03-12T09:12:04.541880",
     "market_title": "Will Israel's Ben Gurion Airport reopen by March 7?",
     "trader": "Gohst"
+  },
+  "Gohst:0x8b542974121a934ca9dd13d11eacaebca7ce465fcc3146df90605aae897605e6:": {
+    "avg_price": 0,
+    "total_amount": 0.0,
+    "entry_time": "2026-03-12T09:18:58.825461",
+    "market_title": "US strikes Iraq by March 7?",
+    "trader": "Gohst"
   }
 }
