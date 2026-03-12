@@ -320,5 +320,12 @@
     "entry_time": "2026-03-12T22:07:42.336794",
     "market_title": "Will Marco Rubio visit China by April 30, 2026?",
     "trader": "Gohst"
+  },
+  "Gohst:0x6f416ddd0d4e15ad8d76fff96851a154c16713a26aafc753173c49acf5c6eb74:yes": {
+    "avg_price": 0.1600000001898255,
+    "total_amount": 101.145527,
+    "entry_time": "2026-03-12T22:22:01.805225",
+    "market_title": "Will Benjamin Netanyahu be the next leader out before 2027?",
+    "trader": "Gohst"
   }
 }
