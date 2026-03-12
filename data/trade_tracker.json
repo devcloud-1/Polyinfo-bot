@@ -335,12 +335,28 @@
       "resolved_price": null,
       "pnl_if_followed": null,
       "pnl_if_ignored": null
+    },
+    {
+      "id": "aenews2_20260312165659",
+      "timestamp": "2026-03-12T16:56:59.187510",
+      "trader": "aenews2",
+      "market": "\"The Bride!\" Opening Weekend Box Office",
+      "market_id": "0x9e8f002bf1f0b67ef70c827732885e787e07a103bb6619c7a9ed8479022c6f00",
+      "outcome": "",
+      "entry_price": 0,
+      "recommendation": "NO ENTRAR",
+      "score": 15,
+      "suggested_amount": 0.0,
+      "status": "PENDING",
+      "resolved_price": null,
+      "pnl_if_followed": null,
+      "pnl_if_ignored": null
     }
   ],
   "stats": {
-    "total": 21,
+    "total": 22,
     "entrar": 6,
-    "no_entrar": 15,
+    "no_entrar": 16,
     "observar": 0
   }
 }
