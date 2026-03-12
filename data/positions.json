@@ -208,5 +208,12 @@
     "entry_time": "2026-03-12T02:45:20.137615",
     "market_title": "Will the Iranian regime fall by April 30?",
     "trader": "de5nuts"
+  },
+  "Gohst:0x56ced25c1266e3bdb08450662d82a6361777ddd1de9c5c4572c33652d6dd1aaf:": {
+    "avg_price": 0,
+    "total_amount": 315.78,
+    "entry_time": "2026-03-12T09:12:04.541880",
+    "market_title": "Will Israel's Ben Gurion Airport reopen by March 7?",
+    "trader": "Gohst"
   }
 }
