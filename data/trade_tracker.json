@@ -191,11 +191,27 @@
       "resolved_price": null,
       "pnl_if_followed": null,
       "pnl_if_ignored": null
+    },
+    {
+      "id": "aenews2_20260312012104",
+      "timestamp": "2026-03-12T01:21:04.800470",
+      "trader": "aenews2",
+      "market": "Will Iran close the Strait of Hormuz by March 31?",
+      "market_id": "0x561cd8d035bac38ed04e23d7882a126da38d7ead9d6679f722ad62c0c9d54ad2",
+      "outcome": "No",
+      "entry_price": 0.001,
+      "recommendation": "ENTRAR",
+      "score": 72,
+      "suggested_amount": 1.5,
+      "status": "PENDING",
+      "resolved_price": null,
+      "pnl_if_followed": null,
+      "pnl_if_ignored": null
     }
   ],
   "stats": {
-    "total": 12,
-    "entrar": 2,
+    "total": 13,
+    "entrar": 3,
     "no_entrar": 10,
     "observar": 0
   }
