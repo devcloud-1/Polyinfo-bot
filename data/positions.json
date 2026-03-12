@@ -306,5 +306,12 @@
     "entry_time": "2026-03-12T18:43:21.265959",
     "market_title": "Military action against Iran ends on March 30, 2026?",
     "trader": "Gohst"
+  },
+  "Gohst:0x1212b9737a6892ac8d549f80025fba1ed4f8055a1248f14a5724affd3b056400:": {
+    "avg_price": 0,
+    "total_amount": 200.0,
+    "entry_time": "2026-03-12T21:34:15.883866",
+    "market_title": "What will SpaceX's public ticker be?",
+    "trader": "Gohst"
   }
 }
