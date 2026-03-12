@@ -292,5 +292,12 @@
     "entry_time": "2026-03-12T16:56:56.335793",
     "market_title": "\"The Bride!\" Opening Weekend Box Office",
     "trader": "aenews2"
+  },
+  "Gohst:0x97d9efae9a1242a8a03dbcc185a8b86bd305d6d46b3f24ca1a4aca3fa9a6212e:yes": {
+    "avg_price": 0.2,
+    "total_amount": 37.228,
+    "entry_time": "2026-03-12T18:32:04.017217",
+    "market_title": "Will Republican House incumbents not win in fewer than three nominating elections in the 2026 cycle?",
+    "trader": "Gohst"
   }
 }
