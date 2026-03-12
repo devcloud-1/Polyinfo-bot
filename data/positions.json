@@ -243,5 +243,12 @@
     "entry_time": "2026-03-12T12:10:35.168541",
     "market_title": "US forces enter Iran by March 31?",
     "trader": "de5nuts"
+  },
+  "Gohst:0xcef6eb62edc0fdc47f90a7e8ed8dbb17194efc01dc7ae9cd0837e66d71b8900e:no": {
+    "avg_price": 0.35,
+    "total_amount": 119.9975,
+    "entry_time": "2026-03-12T12:15:38.165764",
+    "market_title": "Mojtaba Khamenei seen in public by March 16?",
+    "trader": "Gohst"
   }
 }
