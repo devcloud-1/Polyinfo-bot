@@ -250,5 +250,12 @@
     "entry_time": "2026-03-12T12:15:38.165764",
     "market_title": "Mojtaba Khamenei seen in public by March 16?",
     "trader": "Gohst"
+  },
+  "Gohst:0xb93df4cab70e63c3f4c0e4137d9ff03ca7ec17241076b54c24cffb9b8fab4ee2:no": {
+    "avg_price": 0.2633333334891105,
+    "total_amount": 314.293248,
+    "entry_time": "2026-03-12T13:00:27.609706",
+    "market_title": "Mojtaba Khamenei seen in public by March 13?",
+    "trader": "Gohst"
   }
 }
