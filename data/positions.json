@@ -299,5 +299,12 @@
     "entry_time": "2026-03-12T18:32:04.017217",
     "market_title": "Will Republican House incumbents not win in fewer than three nominating elections in the 2026 cycle?",
     "trader": "Gohst"
+  },
+  "Gohst:0xdc15de44696cde71776edb36ac57c3609acf99dadeb65c7ba422701c35820e63:no": {
+    "avg_price": 0.390000000783326,
+    "total_amount": 109.532944,
+    "entry_time": "2026-03-12T18:43:21.265959",
+    "market_title": "Military action against Iran ends on March 30, 2026?",
+    "trader": "Gohst"
   }
 }
