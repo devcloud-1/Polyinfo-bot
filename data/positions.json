@@ -180,5 +180,12 @@
     "entry_time": "2026-03-11T20:49:40.655460",
     "market_title": "US/Israel strike Yemen by March 14?",
     "trader": "Gohst"
+  },
+  "aenews2:0x561cd8d035bac38ed04e23d7882a126da38d7ead9d6679f722ad62c0c9d54ad2:no": {
+    "avg_price": 0.001,
+    "total_amount": 300.0,
+    "entry_time": "2026-03-12T01:21:02.154730",
+    "market_title": "Will Iran close the Strait of Hormuz by March 31?",
+    "trader": "aenews2"
   }
 }
