@@ -415,11 +415,27 @@
       "resolved_price": null,
       "pnl_if_followed": null,
       "pnl_if_ignored": null
+    },
+    {
+      "id": "Gohst_20260312222204",
+      "timestamp": "2026-03-12T22:22:04.639083",
+      "trader": "Gohst",
+      "market": "Will Benjamin Netanyahu be the next leader out before 2027?",
+      "market_id": "0x6f416ddd0d4e15ad8d76fff96851a154c16713a26aafc753173c49acf5c6eb74",
+      "outcome": "Yes",
+      "entry_price": 0.1600000001898255,
+      "recommendation": "ENTRAR",
+      "score": 72,
+      "suggested_amount": 1.5,
+      "status": "PENDING",
+      "resolved_price": null,
+      "pnl_if_followed": null,
+      "pnl_if_ignored": null
     }
   ],
   "stats": {
-    "total": 26,
-    "entrar": 8,
+    "total": 27,
+    "entrar": 9,
     "no_entrar": 18,
     "observar": 0
   }
