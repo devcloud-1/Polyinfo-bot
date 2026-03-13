@@ -46,6 +46,7 @@ CHECK_INTERVAL = int(os.getenv("CHECK_INTERVAL", "120"))
 MIN_VOLUME = int(os.getenv("MIN_VOLUME", "50000"))
 USER_BANKROLL = float(os.getenv("USER_BANKROLL", "25"))
 TRACKER_FILE = "/tmp/trade_tracker.json"
+MESSAGE_LOG_FILE = "/tmp/message_log.json"   # Full Telegram message history
 
 # Trading config
 MY_PRIVATE_KEY = os.getenv("MY_PRIVATE_KEY", "")           # Polygon private key
@@ -84,6 +85,7 @@ last_seen = {wallet: None for wallet in WALLETS}
 last_weekly_report = None
 _tracker_cache = None        # In-memory tracker cache (avoid GitHub on every call)
 _positions_cache = None      # In-memory positions cache
+_message_log_cache = None    # In-memory message log cache
 
 # Pending trades buffer: groups transactions by (trader, market_id) within a time window
 # Structure: { "trader:market_id": {"trades": [...], "first_seen": timestamp, "market_info": {...}} }
@@ -466,7 +468,72 @@ def maybe_send_weekly_report():
 # TELEGRAM
 # ============================================================
 
+
+def log_message(msg_type: str, content: str, extra: dict = None):
+    """Guarda cada mensaje enviado a Telegram en el log de memoria."""
+    global _message_log_cache
+    try:
+        # Load or init cache
+        if _message_log_cache is None:
+            if os.path.exists(MESSAGE_LOG_FILE):
+                try:
+                    with open(MESSAGE_LOG_FILE, "r") as f:
+                        _message_log_cache = json.load(f)
+                except Exception:
+                    _message_log_cache = {"messages": []}
+            else:
+                _message_log_cache = {"messages": []}
+
+        entry = {
+            "ts": datetime.now().strftime("%Y-%m-%dT%H:%M:%S"),
+            "type": msg_type,          # TRADE_ALERT | SELL_ALERT | WEEKLY_REPORT | BOT_START | ERROR | CALLBACK | INFO
+            "text": content,
+        }
+        if extra:
+            entry.update(extra)
+
+        _message_log_cache["messages"].append(entry)
+
+        # Keep only last 500 messages in memory
+        if len(_message_log_cache["messages"]) > 500:
+            _message_log_cache["messages"] = _message_log_cache["messages"][-500:]
+
+        # Save to disk (async-friendly — just write directly, it's fast)
+        with open(MESSAGE_LOG_FILE, "w") as f:
+            json.dump(_message_log_cache, f, indent=2, ensure_ascii=False)
+
+        # Sync to GitHub if configured (low priority — background thread)
+        if GITHUB_TOKEN and GITHUB_REPO:
+            import threading
+            def _push_log():
+                _github_put(
+                    "data/message_log.json",
+                    _message_log_cache,
+                    None,   # No sha tracking needed for log (always overwrite)
+                    f"log: {entry['ts']}"
+                )
+            threading.Thread(target=_push_log, daemon=True).start()
+
+    except Exception as e:
+        print(f"[MessageLog Error] {e}")
+
+
 def send_telegram(message: str, reply_markup: dict = None):
+    # Classify message type for the log
+    if "NUEVA ENTRADA" in message or "POSICIÓN ACUMULADA" in message:
+        msg_type = "TRADE_ALERT"
+    elif "SALIDA" in message or "VENDIÓ" in message:
+        msg_type = "SELL_ALERT"
+    elif "REPORTE SEMANAL" in message:
+        msg_type = "WEEKLY_REPORT"
+    elif "Bot v3 iniciado" in message or "Bot iniciado" in message:
+        msg_type = "BOT_START"
+    elif "Error" in message or "❌" in message:
+        msg_type = "ERROR"
+    else:
+        msg_type = "INFO"
+    log_message(msg_type, message, {"has_buttons": reply_markup is not None})
+
     url = f"https://api.telegram.org/bot{TELEGRAM_TOKEN}/sendMessage"
     payload = {
         "chat_id": TELEGRAM_CHAT_ID,
@@ -511,6 +578,7 @@ def send_trade_alert_with_buttons(message: str, trade_data: dict) -> str:
         }
 
     send_telegram(message, reply_markup=keyboard)
+    log_message("BUTTON_SENT", f"Botones enviados para {trade_data.get('trader','?')} — {trade_data.get('market','?')[:60]}", {"callback_id": callback_id, "trader": trade_data.get("trader"), "market": trade_data.get("market","")[:80]})
     print(f"[Buttons] Alerta con botones enviada | callback_id: {callback_id}")
     return callback_id
 
@@ -1548,6 +1616,25 @@ def run_dashboard_server():
                 except Exception as e:
                     self.send_error(500, str(e))
 
+            elif path == "/api/messages":
+                # Serve message log
+                try:
+                    if _message_log_cache is not None:
+                        body = json.dumps(_message_log_cache).encode()
+                    elif os.path.exists(MESSAGE_LOG_FILE):
+                        with open(MESSAGE_LOG_FILE, "rb") as f:
+                            body = f.read()
+                    else:
+                        body = b'{"messages":[]}'
+                    self.send_response(200)
+                    self.send_header("Content-Type", "application/json")
+                    self.send_header("Access-Control-Allow-Origin", "*")
+                    self.send_header("Content-Length", str(len(body)))
+                    self.end_headers()
+                    self.wfile.write(body)
+                except Exception as e:
+                    self.send_error(500, str(e))
+
             elif path == "/api/positions":
                 # Serve open positions
                 try:
@@ -1656,3 +1743,4 @@ def main():
 
 if __name__ == "__main__":
     main()
+    
