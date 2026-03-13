@@ -799,12 +799,28 @@
       "resolved_price": null,
       "pnl_if_followed": null,
       "pnl_if_ignored": null
+    },
+    {
+      "id": "de5nuts_20260313234405",
+      "timestamp": "2026-03-13T23:44:05.710920",
+      "trader": "de5nuts",
+      "market": "Will the U.S. invade Iran by March 31?",
+      "market_id": "0x705479cc3e7cf2907997c62b4245356c48b5133f7d82a47829a2354dd77a7c51",
+      "outcome": "Yes",
+      "entry_price": 0.12,
+      "recommendation": "NO ENTRAR",
+      "score": 28,
+      "suggested_amount": null,
+      "status": "PENDING",
+      "resolved_price": null,
+      "pnl_if_followed": null,
+      "pnl_if_ignored": null
     }
   ],
   "stats": {
-    "total": 50,
+    "total": 51,
     "entrar": 13,
-    "no_entrar": 36,
+    "no_entrar": 37,
     "observar": 1
   }
 }
