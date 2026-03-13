@@ -1,4 +1,5 @@
 import os
+import socket
 import time
 import json
 import requests
@@ -81,6 +82,8 @@ pending_approvals: dict = {}
 
 last_seen = {wallet: None for wallet in WALLETS}
 last_weekly_report = None
+_tracker_cache = None        # In-memory tracker cache (avoid GitHub on every call)
+_positions_cache = None      # In-memory positions cache
 
 # Pending trades buffer: groups transactions by (trader, market_id) within a time window
 # Structure: { "trader:market_id": {"trades": [...], "first_seen": timestamp, "market_info": {...}} }
@@ -92,12 +95,15 @@ pending_trades: dict = {}
 POSITIONS_FILE = "/tmp/positions.json"
 
 def load_positions() -> dict:
-    """Carga posiciones — desde GitHub primero, fallback a disco."""
-    global _github_positions_sha
+    """Carga posiciones — usa caché en memoria, solo lee GitHub al inicio."""
+    global _github_positions_sha, _positions_cache
+    if _positions_cache is not None:
+        return _positions_cache
     if GITHUB_TOKEN and GITHUB_REPO:
         data, sha = _github_get(GITHUB_POSITIONS_PATH)
         if data is not None:
             _github_positions_sha = sha
+            _positions_cache = data
             try:
                 with open(POSITIONS_FILE, "w") as f:
                     json.dump(data, f, indent=2)
@@ -107,14 +113,18 @@ def load_positions() -> dict:
     try:
         if os.path.exists(POSITIONS_FILE):
             with open(POSITIONS_FILE, "r") as f:
-                return json.load(f)
+                data = json.load(f)
+                _positions_cache = data
+                return data
     except Exception:
         pass
+    _positions_cache = {}
     return {}
 
 def save_positions(data: dict):
     """Guarda posiciones en disco y sincroniza a GitHub en background."""
-    global _github_positions_sha
+    global _github_positions_sha, _positions_cache
+    _positions_cache = data   # Update in-memory cache immediately
     try:
         with open(POSITIONS_FILE, "w") as f:
             json.dump(data, f, indent=2)
@@ -224,12 +234,17 @@ def _github_put(path: str, data: dict, sha: str, message: str) -> str:
 
 
 def load_tracker() -> dict:
-    """Carga el historial — primero desde GitHub, fallback a disco local."""
-    global _github_tracker_sha
+    """Carga el historial — usa caché en memoria, solo lee GitHub al inicio."""
+    global _github_tracker_sha, _tracker_cache
+    # Return in-memory cache if available (avoids GitHub call every cycle)
+    if _tracker_cache is not None:
+        return _tracker_cache
+    # First call: load from GitHub or disk
     if GITHUB_TOKEN and GITHUB_REPO:
         data, sha = _github_get(GITHUB_TRACKER_PATH)
         if data is not None:
             _github_tracker_sha = sha
+            _tracker_cache = data
             try:
                 with open(TRACKER_FILE, "w") as f:
                     json.dump(data, f, indent=2)
@@ -240,15 +255,20 @@ def load_tracker() -> dict:
     try:
         if os.path.exists(TRACKER_FILE):
             with open(TRACKER_FILE, "r") as f:
-                return json.load(f)
+                data = json.load(f)
+                _tracker_cache = data
+                return data
     except Exception:
         pass
-    return {"trades": [], "stats": {"total": 0, "entrar": 0, "no_entrar": 0, "observar": 0}}
+    empty = {"trades": [], "stats": {"total": 0, "entrar": 0, "no_entrar": 0, "observar": 0}}
+    _tracker_cache = empty
+    return empty
 
 
 def save_tracker(data: dict):
-    """Guarda en disco local inmediatamente, luego sincroniza a GitHub en background."""
-    global _github_tracker_sha
+    """Guarda en memoria, disco local y GitHub en background."""
+    global _github_tracker_sha, _tracker_cache
+    _tracker_cache = data   # Update in-memory cache immediately
     try:
         with open(TRACKER_FILE, "w") as f:
             json.dump(data, f, indent=2)
@@ -1565,9 +1585,19 @@ def run_dashboard_server():
             else:
                 self.send_error(404)
 
-    server = http.server.HTTPServer(("0.0.0.0", port), Handler)
-    print(f"[Dashboard] Servidor iniciado en puerto {port}")
-    server.serve_forever()
+    # Retry loop in case port is briefly in use after redeploy
+    for attempt in range(10):
+        try:
+            server = http.server.HTTPServer(("0.0.0.0", port), Handler)
+            server.socket.setsockopt(socket.SOL_SOCKET, socket.SO_REUSEADDR, 1)
+            print(f"[Dashboard] Servidor iniciado en puerto {port}")
+            server.serve_forever()
+            break
+        except OSError as e:
+            print(f"[Dashboard] Puerto {port} ocupado, reintentando en 5s... ({attempt+1}/10)")
+            time.sleep(5)
+    else:
+        print(f"[Dashboard] No se pudo iniciar el servidor en puerto {port} — bot continúa sin dashboard")
 
 
 def main():
@@ -1584,8 +1614,10 @@ def main():
     dashboard_thread = threading.Thread(target=run_dashboard_server, daemon=True)
     dashboard_thread.start()
 
+    # Wait for dashboard to bind before sending startup message
+    time.sleep(3)
     send_telegram(
-        "🤖 <b>Bot iniciado — con Tracker de Efectividad</b>\n"
+        "🤖 <b>Bot v3 iniciado — con Tracker de Efectividad</b>\n"
         f"Monitoreando: {', '.join(WALLETS.keys())}\n"
         f"✅ Cada decisión queda registrada\n"
         f"📊 Reporte semanal automático los lunes\n"
@@ -1594,25 +1626,30 @@ def main():
 
     cycle = 0
     while True:
-        # Cada 10 ciclos revisa si hay trades que resolvieron
-        if cycle % 10 == 0:
-            check_pending_resolutions()
+        try:
+            # Cada 10 ciclos revisa si hay trades que resolvieron
+            if cycle % 10 == 0:
+                check_pending_resolutions()
 
-        # Revisar si toca reporte semanal
-        maybe_send_weekly_report()
+            # Revisar si toca reporte semanal
+            maybe_send_weekly_report()
 
-        for name, wallet in WALLETS.items():
-            try:
-                check_wallet(name, wallet)
-            except Exception as e:
-                print(f"[Error] {name}: {e}")
+            for name, wallet in WALLETS.items():
+                try:
+                    check_wallet(name, wallet)
+                except Exception as e:
+                    print(f"[Error] {name}: {e}")
 
-        # Flush any pending trade groups whose window has expired
-        flush_stale_pending()
+            # Flush any pending trade groups whose window has expired
+            flush_stale_pending()
 
-        # Poll Telegram for button presses (every cycle)
-        poll_telegram_callbacks()
+            # Poll Telegram for button presses (every cycle)
+            poll_telegram_callbacks()
 
+        except Exception as e:
+            print(f"[LOOP ERROR] Excepción en ciclo principal: {e}")
+            # Never crash the main loop — log and continue
+        
         cycle += 1
         time.sleep(CHECK_INTERVAL)
 
