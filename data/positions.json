@@ -369,5 +369,12 @@
     "entry_time": "2026-03-13T09:25:47.785855",
     "market_title": "Will Janez Jan\u0161a be the next Prime Minister of Slovenia?",
     "trader": "Gohst"
+  },
+  "Gohst:0x3deb01dce09d900494ba740ee18b28b04f9f858303be33194999c071cbb1f976:": {
+    "avg_price": 0,
+    "total_amount": 0.0,
+    "entry_time": "2026-03-13T16:49:42.409108",
+    "market_title": "Will Israel strike Gaza on March 9, 2026?",
+    "trader": "Gohst"
   }
 }
