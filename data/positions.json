@@ -362,5 +362,12 @@
     "entry_time": "2026-03-13T07:43:34.642640",
     "market_title": "Tien vs. Sinner: Match O/U 22.5",
     "trader": "S-Works"
+  },
+  "Gohst:0xe94749bbf616139120735f9720de5b1a94b61cb7da0feb633f97f113d61a167b:yes": {
+    "avg_price": 0.26,
+    "total_amount": 119.9978,
+    "entry_time": "2026-03-13T09:25:47.785855",
+    "market_title": "Will Janez Jan\u0161a be the next Prime Minister of Slovenia?",
+    "trader": "Gohst"
   }
 }
