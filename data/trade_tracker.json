@@ -639,12 +639,28 @@
       "resolved_price": null,
       "pnl_if_followed": null,
       "pnl_if_ignored": null
+    },
+    {
+      "id": "Gohst_20260313164944",
+      "timestamp": "2026-03-13T16:49:44.483937",
+      "trader": "Gohst",
+      "market": "Will Israel strike Gaza on March 9, 2026?",
+      "market_id": "0x3deb01dce09d900494ba740ee18b28b04f9f858303be33194999c071cbb1f976",
+      "outcome": "",
+      "entry_price": 0,
+      "recommendation": "OBSERVAR",
+      "score": 35,
+      "suggested_amount": null,
+      "status": "PENDING",
+      "resolved_price": null,
+      "pnl_if_followed": null,
+      "pnl_if_ignored": null
     }
   ],
   "stats": {
-    "total": 40,
+    "total": 41,
     "entrar": 10,
     "no_entrar": 30,
-    "observar": 0
+    "observar": 1
   }
 }
