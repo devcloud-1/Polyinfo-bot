@@ -341,5 +341,12 @@
     "entry_time": "2026-03-13T07:43:26.666083",
     "market_title": "Set Handicap: Sinner (-1.5) vs Tien (+1.5)",
     "trader": "S-Works"
+  },
+  "S-Works:0x76ab7726e0a907db560bdeded3d710bf917478d434cb681a49c67cff959c18b1:": {
+    "avg_price": 0,
+    "total_amount": 106.88,
+    "entry_time": "2026-03-13T07:43:29.328804",
+    "market_title": "Tien vs. Sinner: Match O/U 21.5",
+    "trader": "S-Works"
   }
 }
