@@ -334,5 +334,12 @@
     "entry_time": "2026-03-13T07:43:23.383834",
     "market_title": "BNP Paribas Open: Learner Tien vs Jannik Sinner",
     "trader": "S-Works"
+  },
+  "S-Works:0x701fa7aaf62f0c71473d986c521055fab55d95aaacb0ae31ddf2765569974542:": {
+    "avg_price": 0,
+    "total_amount": 820.93,
+    "entry_time": "2026-03-13T07:43:26.666083",
+    "market_title": "Set Handicap: Sinner (-1.5) vs Tien (+1.5)",
+    "trader": "S-Works"
   }
 }
