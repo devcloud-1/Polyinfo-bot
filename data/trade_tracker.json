@@ -527,12 +527,28 @@
       "resolved_price": null,
       "pnl_if_followed": null,
       "pnl_if_ignored": null
+    },
+    {
+      "id": "S-Works_20260313074331",
+      "timestamp": "2026-03-13T07:43:31.491353",
+      "trader": "S-Works",
+      "market": "Tien vs. Sinner: Match O/U 21.5",
+      "market_id": "0x76ab7726e0a907db560bdeded3d710bf917478d434cb681a49c67cff959c18b1",
+      "outcome": "",
+      "entry_price": 0,
+      "recommendation": "NO ENTRAR",
+      "score": 15,
+      "suggested_amount": 0.0,
+      "status": "PENDING",
+      "resolved_price": null,
+      "pnl_if_followed": null,
+      "pnl_if_ignored": null
     }
   ],
   "stats": {
-    "total": 33,
+    "total": 34,
     "entrar": 9,
-    "no_entrar": 24,
+    "no_entrar": 25,
     "observar": 0
   }
 }
