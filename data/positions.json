@@ -411,5 +411,12 @@
     "entry_time": "2026-03-13T22:52:56.550140",
     "market_title": "Will Reza Pahlavi lead Iran in 2026?",
     "trader": "de5nuts"
+  },
+  "aenews2:0x16c63b7cc37f012b9f59ee164ec03877914c701d06d48291ae8d6fc08a088b0d:yes": {
+    "avg_price": 0.47,
+    "total_amount": 1646.2784,
+    "entry_time": "2026-03-13T23:35:34.137117",
+    "market_title": "2026 Balance of Power: D Senate, D House",
+    "trader": "aenews2"
   }
 }
