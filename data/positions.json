@@ -327,5 +327,12 @@
     "entry_time": "2026-03-12T22:22:01.805225",
     "market_title": "Will Benjamin Netanyahu be the next leader out before 2027?",
     "trader": "Gohst"
+  },
+  "S-Works:0x96d4962d11071df01c84be6686c4bb908a451581891bf01aa2797a5a719c4753:": {
+    "avg_price": 0,
+    "total_amount": 121235.07,
+    "entry_time": "2026-03-13T07:43:23.383834",
+    "market_title": "BNP Paribas Open: Learner Tien vs Jannik Sinner",
+    "trader": "S-Works"
   }
 }
