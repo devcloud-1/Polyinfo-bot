@@ -783,12 +783,28 @@
       "resolved_price": null,
       "pnl_if_followed": null,
       "pnl_if_ignored": null
+    },
+    {
+      "id": "aenews2_20260313233536",
+      "timestamp": "2026-03-13T23:35:36.472725",
+      "trader": "aenews2",
+      "market": "2026 Balance of Power: D Senate, D House",
+      "market_id": "0x16c63b7cc37f012b9f59ee164ec03877914c701d06d48291ae8d6fc08a088b0d",
+      "outcome": "Yes",
+      "entry_price": 0.47,
+      "recommendation": "NO ENTRAR",
+      "score": 15,
+      "suggested_amount": null,
+      "status": "PENDING",
+      "resolved_price": null,
+      "pnl_if_followed": null,
+      "pnl_if_ignored": null
     }
   ],
   "stats": {
-    "total": 49,
+    "total": 50,
     "entrar": 13,
-    "no_entrar": 35,
+    "no_entrar": 36,
     "observar": 1
   }
 }
