@@ -17,6 +17,7 @@ WALLETS = {
     "Gohst": os.getenv("WALLET_GOHST", "0x2d4bf8f846bf68f43b9157bf30810d334ac6ca7a"),
     "de5nuts": os.getenv("WALLET_DE5NUTS", "0x80a0da00fbdc8440b0ef601341f14c3e24795708"),
     "aenews2": os.getenv("WALLET_AENEWS2", "0x44c1dfe43260c94ed4f1d00de2e1f80fb113ebc1"),
+    "S-Works": os.getenv("WALLET_SWORKS", "0xee00ba338c59557141789b127927a55f5cc5cea1"),
 }
 
 TRADER_PROFILES = {
@@ -39,6 +40,12 @@ TRADER_PROFILES = {
         "specialty": "Geopolítica y Macro (Taiwan, conflictos internacionales, tech)",
         "style": "Contrarian extremo, fragmenta posiciones, concentra capital cuando está muy seguro",
         "months_active": 8,
+    },
+    "S-Works": {
+        "win_rate": 66.9, "pnl": 2229184, "profit_factor": 3.1,
+        "specialty": "Deportes (NBA, NFL, NHL, Tennis, UFC, Soccer, Esports, CS2) y Juegos",
+        "style": "Especialista deportivo puro, mayor ganancia individual $144k, 6923 predicciones, Rank #37 global, también opera política ocasionalmente",
+        "months_active": 19,
     },
 }
 
