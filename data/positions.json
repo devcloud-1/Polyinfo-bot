@@ -355,5 +355,12 @@
     "entry_time": "2026-03-13T07:43:32.009687",
     "market_title": "Tien vs. Sinner: Match O/U 23.5",
     "trader": "S-Works"
+  },
+  "S-Works:0x8aafeb56cca23260dcd404d783949e98f746d390eaaf8f3a3b0df9b06f74ef6e:": {
+    "avg_price": 0,
+    "total_amount": 25.0,
+    "entry_time": "2026-03-13T07:43:34.642640",
+    "market_title": "Tien vs. Sinner: Match O/U 22.5",
+    "trader": "S-Works"
   }
 }
