@@ -1,0 +1,10 @@
+{
+  "messages": [
+    {
+      "ts": "2026-03-13T01:34:40",
+      "type": "BOT_START",
+      "text": "\ud83e\udd16 <b>Bot v3 iniciado \u2014 con Tracker de Efectividad</b>\nMonitoreando: Gohst, de5nuts, aenews2\n\u2705 Cada decisi\u00f3n queda registrada\n\ud83d\udcca Reporte semanal autom\u00e1tico los lunes\n\u2705 An\u00e1lisis IA activo",
+      "has_buttons": false
+    }
+  ]
+}
