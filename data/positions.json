@@ -390,5 +390,12 @@
     "entry_time": "2026-03-13T19:57:31.640972",
     "market_title": "Will the U.S. invade Iran by March 31?",
     "trader": "de5nuts"
+  },
+  "aenews2:0x03bc660a4df5faeaee8e66d0e7bc4f2200b543340b7f7a5c83bfa1fecafa9ead:yes": {
+    "avg_price": 0.9829967430019096,
+    "total_amount": 44124.71848,
+    "entry_time": "2026-03-13T21:23:24.185590",
+    "market_title": "Will Iran strike Israel on March 10?",
+    "trader": "aenews2"
   }
 }
