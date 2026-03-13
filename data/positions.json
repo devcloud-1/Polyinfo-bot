@@ -376,5 +376,12 @@
     "entry_time": "2026-03-13T16:49:42.409108",
     "market_title": "Will Israel strike Gaza on March 9, 2026?",
     "trader": "Gohst"
+  },
+  "Gohst:0x462ab115b37bc0bf5d95870612dc64056c18a0c70595baf6743cb7e411d81888:no": {
+    "avg_price": 0.15,
+    "total_amount": 4.9995,
+    "entry_time": "2026-03-13T17:15:44.751011",
+    "market_title": "Will the Democratic Party win the NY-18 House seat?",
+    "trader": "Gohst"
   }
 }
