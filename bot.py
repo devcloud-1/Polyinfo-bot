@@ -86,6 +86,7 @@ last_weekly_report = None
 _tracker_cache = None        # In-memory tracker cache (avoid GitHub on every call)
 _positions_cache = None      # In-memory positions cache
 _message_log_cache = None    # In-memory message log cache
+_message_log_sha = ""        # GitHub SHA for message_log.json
 
 # Pending trades buffer: groups transactions by (trader, market_id) within a time window
 # Structure: { "trader:market_id": {"trades": [...], "first_seen": timestamp, "market_info": {...}} }
@@ -502,17 +503,24 @@ def log_message(msg_type: str, content: str, extra: dict = None):
         with open(MESSAGE_LOG_FILE, "w") as f:
             json.dump(_message_log_cache, f, indent=2, ensure_ascii=False)
 
-        # Sync to GitHub if configured (low priority — background thread)
+        # Sync to GitHub every 10 messages to avoid hammering the API
         if GITHUB_TOKEN and GITHUB_REPO:
-            import threading
-            def _push_log():
-                _github_put(
-                    "data/message_log.json",
-                    _message_log_cache,
-                    None,   # No sha tracking needed for log (always overwrite)
-                    f"log: {entry['ts']}"
-                )
-            threading.Thread(target=_push_log, daemon=True).start()
+            if len(_message_log_cache["messages"]) % 10 == 0:
+                import threading
+                snapshot = json.loads(json.dumps(_message_log_cache))  # deep copy for thread safety
+                def _push_log(data=snapshot):
+                    global _message_log_sha
+                    # Always get current SHA first (handles both new file and updates)
+                    _, current_sha = _github_get("data/message_log.json")
+                    new_sha = _github_put(
+                        "data/message_log.json",
+                        data,
+                        current_sha,
+                        f"log: {data['messages'][-1]['ts'] if data['messages'] else 'update'}"
+                    )
+                    if new_sha:
+                        _message_log_sha = new_sha
+                threading.Thread(target=_push_log, daemon=True).start()
 
     except Exception as e:
         print(f"[MessageLog Error] {e}")
@@ -1743,4 +1751,3 @@ def main():
 
 if __name__ == "__main__":
     main()
-    
