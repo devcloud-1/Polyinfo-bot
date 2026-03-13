@@ -404,5 +404,12 @@
     "entry_time": "2026-03-13T22:35:26.215215",
     "market_title": "Will the Republican Party control the Senate after the 2026 Midterm elections?",
     "trader": "aenews2"
+  },
+  "de5nuts:0xaa5cdb6830cbfa2ca711b7cf93bd42cf4f8e062d44ea188c0b8ec1fb2924c083:no": {
+    "avg_price": 0.8360000004970862,
+    "total_amount": 1237.805405,
+    "entry_time": "2026-03-13T22:52:56.550140",
+    "market_title": "Will Reza Pahlavi lead Iran in 2026?",
+    "trader": "de5nuts"
   }
 }
