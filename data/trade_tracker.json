@@ -1055,12 +1055,28 @@
       "resolved_price": null,
       "pnl_if_followed": null,
       "pnl_if_ignored": null
+    },
+    {
+      "id": "de5nuts_20260314070831",
+      "timestamp": "2026-03-14T07:08:31.582577",
+      "trader": "de5nuts",
+      "market": "Will Reza Pahlavi lead Iran in 2026?",
+      "market_id": "0xaa5cdb6830cbfa2ca711b7cf93bd42cf4f8e062d44ea188c0b8ec1fb2924c083",
+      "outcome": "No",
+      "entry_price": 0.8360000000801066,
+      "recommendation": "NO ENTRAR",
+      "score": 28,
+      "suggested_amount": null,
+      "status": "PENDING",
+      "resolved_price": null,
+      "pnl_if_followed": null,
+      "pnl_if_ignored": null
     }
   ],
   "stats": {
-    "total": 66,
+    "total": 67,
     "entrar": 20,
-    "no_entrar": 45,
+    "no_entrar": 46,
     "observar": 1
   }
 }
