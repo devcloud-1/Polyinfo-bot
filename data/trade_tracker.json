@@ -1391,12 +1391,28 @@
       "resolved_price": null,
       "pnl_if_followed": null,
       "pnl_if_ignored": null
+    },
+    {
+      "id": "Gohst_20260314160234",
+      "timestamp": "2026-03-14T16:02:34.002144",
+      "trader": "Gohst",
+      "market": "Will Iran strike Jordan in March?",
+      "market_id": "0x27ade12e788507af8c7723933e38c79c97d2f687c9daa7eb6c9e6951786bf247",
+      "outcome": "",
+      "entry_price": 0,
+      "recommendation": "NO ENTRAR",
+      "score": 28,
+      "suggested_amount": null,
+      "status": "PENDING",
+      "resolved_price": null,
+      "pnl_if_followed": null,
+      "pnl_if_ignored": null
     }
   ],
   "stats": {
-    "total": 87,
+    "total": 88,
     "entrar": 20,
-    "no_entrar": 66,
+    "no_entrar": 67,
     "observar": 1
   }
 }
