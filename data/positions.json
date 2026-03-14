@@ -446,5 +446,12 @@
     "entry_time": "2026-03-14T03:51:31.545925",
     "market_title": "Will Iran close the Strait of Hormuz by June 30?",
     "trader": "Gohst"
+  },
+  "aenews2:0x03bc660a4df5faeaee8e66d0e7bc4f2200b543340b7f7a5c83bfa1fecafa9ead:no": {
+    "avg_price": 0.002,
+    "total_amount": 137.08468,
+    "entry_time": "2026-03-14T04:47:53.216892",
+    "market_title": "Will Iran strike Israel on March 10?",
+    "trader": "aenews2"
   }
 }
