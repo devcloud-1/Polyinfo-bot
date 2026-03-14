@@ -439,5 +439,12 @@
     "entry_time": "2026-03-14T01:17:46.231322",
     "market_title": "Will \"Hoppers\" Opening Weekend Box Office be between 46m and 50m?",
     "trader": "aenews2"
+  },
+  "Gohst:0x43c7e8f73e867ebc035edf002617f67cf96b90c85eccac18090e553bfe7a8411:": {
+    "avg_price": 0,
+    "total_amount": 172.93,
+    "entry_time": "2026-03-14T03:51:31.545925",
+    "market_title": "Will Iran close the Strait of Hormuz by June 30?",
+    "trader": "Gohst"
   }
 }
