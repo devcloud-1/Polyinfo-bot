@@ -544,5 +544,12 @@
     "entry_time": "2026-03-14T20:03:45.619190",
     "market_title": "Spread: Real Madrid CF (-1.5)",
     "trader": "S-Works"
+  },
+  "S-Works:0x3fe5032148c141e64d7fbe9a8ee13a25a87c57252f69e24d079b39fa9aa5619e:aurora gaming": {
+    "avg_price": 0.58,
+    "total_amount": 4152.4926,
+    "entry_time": "2026-03-14T20:33:18.074942",
+    "market_title": "Counter-Strike: Aurora Gaming vs Astralis (BO3) - ESL Pro League Playoffs",
+    "trader": "S-Works"
   }
 }
