@@ -1215,12 +1215,28 @@
       "resolved_price": null,
       "pnl_if_followed": null,
       "pnl_if_ignored": null
+    },
+    {
+      "id": "S-Works_20260314093855",
+      "timestamp": "2026-03-14T09:38:55.397663",
+      "trader": "S-Works",
+      "market": "Dota 2: Tundra Esports vs Team Spirit - Game 2 Winner",
+      "market_id": "0xcb9fcf45337800825ccc7ac43ac8212c848206d4d48650cab271f64308af603d",
+      "outcome": "Team Spirit",
+      "entry_price": 0.5401426796607648,
+      "recommendation": "NO ENTRAR",
+      "score": 15,
+      "suggested_amount": 0.5,
+      "status": "PENDING",
+      "resolved_price": null,
+      "pnl_if_followed": null,
+      "pnl_if_ignored": null
     }
   ],
   "stats": {
-    "total": 76,
+    "total": 77,
     "entrar": 20,
-    "no_entrar": 55,
+    "no_entrar": 56,
     "observar": 1
   }
 }
