@@ -530,5 +530,12 @@
     "entry_time": "2026-03-14T18:59:46.103640",
     "market_title": "Counter-Strike: Natus Vincere vs FUT Esports - Map 1 Winner",
     "trader": "S-Works"
+  },
+  "S-Works:0xcb9fcf45337800825ccc7ac43ac8212c848206d4d48650cab271f64308af603d:": {
+    "avg_price": 0,
+    "total_amount": 8447.23,
+    "entry_time": "2026-03-14T18:59:49.702427",
+    "market_title": "Dota 2: Tundra Esports vs Team Spirit - Game 2 Winner",
+    "trader": "S-Works"
   }
 }
