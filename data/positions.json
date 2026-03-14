@@ -537,5 +537,12 @@
     "entry_time": "2026-03-14T18:59:49.702427",
     "market_title": "Dota 2: Tundra Esports vs Team Spirit - Game 2 Winner",
     "trader": "S-Works"
+  },
+  "S-Works:0xc21102343de45fa3cde23792c20fa31b3df90a21d1b431fb8bbc90a0ca865978:real madrid cf": {
+    "avg_price": 0.53,
+    "total_amount": 11.7342,
+    "entry_time": "2026-03-14T20:03:45.619190",
+    "market_title": "Spread: Real Madrid CF (-1.5)",
+    "trader": "S-Works"
   }
 }
