@@ -1007,12 +1007,28 @@
       "resolved_price": null,
       "pnl_if_followed": null,
       "pnl_if_ignored": null
+    },
+    {
+      "id": "Gohst_20260314035133",
+      "timestamp": "2026-03-14T03:51:33.575756",
+      "trader": "Gohst",
+      "market": "Will Iran close the Strait of Hormuz by June 30?",
+      "market_id": "0x43c7e8f73e867ebc035edf002617f67cf96b90c85eccac18090e553bfe7a8411",
+      "outcome": "",
+      "entry_price": 0,
+      "recommendation": "NO ENTRAR",
+      "score": 28,
+      "suggested_amount": null,
+      "status": "PENDING",
+      "resolved_price": null,
+      "pnl_if_followed": null,
+      "pnl_if_ignored": null
     }
   ],
   "stats": {
-    "total": 63,
+    "total": 64,
     "entrar": 19,
-    "no_entrar": 43,
+    "no_entrar": 44,
     "observar": 1
   }
 }
