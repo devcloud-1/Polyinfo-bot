@@ -1631,12 +1631,28 @@
       "resolved_price": null,
       "pnl_if_followed": null,
       "pnl_if_ignored": null
+    },
+    {
+      "id": "S-Works_20260314215942",
+      "timestamp": "2026-03-14T21:59:42.184692",
+      "trader": "S-Works",
+      "market": "Bruins vs. Capitals",
+      "market_id": "0x0e41a261926d080f28f6af0e105ec5c9990bb50a74165c9356c540f9b06eca09",
+      "outcome": "Capitals",
+      "entry_price": 0.45666667080778917,
+      "recommendation": "NO ENTRAR",
+      "score": 15,
+      "suggested_amount": 0.0,
+      "status": "PENDING",
+      "resolved_price": null,
+      "pnl_if_followed": null,
+      "pnl_if_ignored": null
     }
   ],
   "stats": {
-    "total": 102,
+    "total": 103,
     "entrar": 20,
-    "no_entrar": 81,
+    "no_entrar": 82,
     "observar": 1
   }
 }
