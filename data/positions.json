@@ -558,5 +558,12 @@
     "entry_time": "2026-03-14T20:42:34.814206",
     "market_title": "Dota 2: BetBoom Team vs Team Yandex (BO3) - PGL Wallachia Playoffs",
     "trader": "S-Works"
+  },
+  "S-Works:0x026952b400f7d3553bfba75f48e968162f2960817ca83ebefa47a75177db7ff8:": {
+    "avg_price": 0,
+    "total_amount": 15415.49,
+    "entry_time": "2026-03-14T20:42:37.696127",
+    "market_title": "Dota 2: BetBoom Team vs Team Yandex - Game 2 Winner",
+    "trader": "S-Works"
   }
 }
