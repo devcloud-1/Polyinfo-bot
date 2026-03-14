@@ -502,5 +502,12 @@
     "entry_time": "2026-03-14T16:02:31.965175",
     "market_title": "Will Iran strike Jordan in March?",
     "trader": "Gohst"
+  },
+  "S-Works:0x056e5327893e1488134b69ef7bff7c600219227939211974645e1f6ac1da0735:natus vincere": {
+    "avg_price": 0.9699697483090617,
+    "total_amount": 1649.279131,
+    "entry_time": "2026-03-14T17:32:51.151466",
+    "market_title": "Counter-Strike: Natus Vincere vs FUT Esports (BO3) - ESL Pro League Playoffs",
+    "trader": "S-Works"
   }
 }
