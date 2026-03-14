@@ -1519,12 +1519,28 @@
       "resolved_price": null,
       "pnl_if_followed": null,
       "pnl_if_ignored": null
+    },
+    {
+      "id": "S-Works_20260314203320",
+      "timestamp": "2026-03-14T20:33:20.085908",
+      "trader": "S-Works",
+      "market": "Counter-Strike: Aurora Gaming vs Astralis (BO3) - ESL Pro League Playoffs",
+      "market_id": "0x3fe5032148c141e64d7fbe9a8ee13a25a87c57252f69e24d079b39fa9aa5619e",
+      "outcome": "Aurora Gaming",
+      "entry_price": 0.58,
+      "recommendation": "NO ENTRAR",
+      "score": 15,
+      "suggested_amount": null,
+      "status": "PENDING",
+      "resolved_price": null,
+      "pnl_if_followed": null,
+      "pnl_if_ignored": null
     }
   ],
   "stats": {
-    "total": 95,
+    "total": 96,
     "entrar": 20,
-    "no_entrar": 74,
+    "no_entrar": 75,
     "observar": 1
   }
 }
