@@ -565,5 +565,12 @@
     "entry_time": "2026-03-14T20:42:37.696127",
     "market_title": "Dota 2: BetBoom Team vs Team Yandex - Game 2 Winner",
     "trader": "S-Works"
+  },
+  "aenews2:0xc19eed341534fd9e710b435d3eda630bdd9458a3c0c32d15027442f5835ec037:no": {
+    "avg_price": 0.58,
+    "total_amount": 3300.3566,
+    "entry_time": "2026-03-14T21:52:35.341279",
+    "market_title": "Will SPD win the most seats in the 2026 Rhineland-Palatinate parliamentary elections?",
+    "trader": "aenews2"
   }
 }
