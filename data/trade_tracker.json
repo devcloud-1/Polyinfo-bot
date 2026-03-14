@@ -1503,12 +1503,28 @@
       "resolved_price": null,
       "pnl_if_followed": null,
       "pnl_if_ignored": null
+    },
+    {
+      "id": "S-Works_20260314200347",
+      "timestamp": "2026-03-14T20:03:47.690127",
+      "trader": "S-Works",
+      "market": "Spread: Real Madrid CF (-1.5)",
+      "market_id": "0xc21102343de45fa3cde23792c20fa31b3df90a21d1b431fb8bbc90a0ca865978",
+      "outcome": "Real Madrid CF",
+      "entry_price": 0.53,
+      "recommendation": "NO ENTRAR",
+      "score": 15,
+      "suggested_amount": null,
+      "status": "PENDING",
+      "resolved_price": null,
+      "pnl_if_followed": null,
+      "pnl_if_ignored": null
     }
   ],
   "stats": {
-    "total": 94,
+    "total": 95,
     "entrar": 20,
-    "no_entrar": 73,
+    "no_entrar": 74,
     "observar": 1
   }
 }
