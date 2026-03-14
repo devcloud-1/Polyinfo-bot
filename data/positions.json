@@ -551,5 +551,12 @@
     "entry_time": "2026-03-14T20:33:18.074942",
     "market_title": "Counter-Strike: Aurora Gaming vs Astralis (BO3) - ESL Pro League Playoffs",
     "trader": "S-Works"
+  },
+  "S-Works:0x235a99ca3edfca26fcca57a422885a0ca60ed7d2c14f2502eccdef3982c965bf:": {
+    "avg_price": 0,
+    "total_amount": 22221.939237,
+    "entry_time": "2026-03-14T20:42:34.814206",
+    "market_title": "Dota 2: BetBoom Team vs Team Yandex (BO3) - PGL Wallachia Playoffs",
+    "trader": "S-Works"
   }
 }
