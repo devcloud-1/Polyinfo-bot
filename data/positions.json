@@ -523,5 +523,12 @@
     "entry_time": "2026-03-14T18:54:15.927305",
     "market_title": "Ducks vs. Senators",
     "trader": "S-Works"
+  },
+  "S-Works:0xad5b4c8942e7b985f6a93a2f0703898460a435aecec7a96b91bbae23a97eb4af:": {
+    "avg_price": 0,
+    "total_amount": 10936.418047,
+    "entry_time": "2026-03-14T18:59:46.103640",
+    "market_title": "Counter-Strike: Natus Vincere vs FUT Esports - Map 1 Winner",
+    "trader": "S-Works"
   }
 }
