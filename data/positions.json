@@ -579,5 +579,12 @@
     "entry_time": "2026-03-14T21:59:39.374169",
     "market_title": "Bruins vs. Capitals",
     "trader": "S-Works"
+  },
+  "de5nuts:0x2de69f043bbef4e0340eb7e1a08d59ae8cc6e33b938e827104e07b97df0ff992:yes": {
+    "avg_price": 0.04,
+    "total_amount": 3.8688,
+    "entry_time": "2026-03-14T22:21:22.520309",
+    "market_title": "US/Israel strike on Fordow nuclear facility by March 15?",
+    "trader": "de5nuts"
   }
 }
