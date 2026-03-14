@@ -1151,12 +1151,28 @@
       "resolved_price": null,
       "pnl_if_followed": null,
       "pnl_if_ignored": null
+    },
+    {
+      "id": "aenews2_20260314081658",
+      "timestamp": "2026-03-14T08:16:58.835804",
+      "trader": "aenews2",
+      "market": "Will Iran strike Israel on March 10?",
+      "market_id": "0x03bc660a4df5faeaee8e66d0e7bc4f2200b543340b7f7a5c83bfa1fecafa9ead",
+      "outcome": "No",
+      "entry_price": 0.002,
+      "recommendation": "NO ENTRAR",
+      "score": 28,
+      "suggested_amount": null,
+      "status": "PENDING",
+      "resolved_price": null,
+      "pnl_if_followed": null,
+      "pnl_if_ignored": null
     }
   ],
   "stats": {
-    "total": 72,
+    "total": 73,
     "entrar": 20,
-    "no_entrar": 51,
+    "no_entrar": 52,
     "observar": 1
   }
 }
