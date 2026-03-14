@@ -516,5 +516,12 @@
     "entry_time": "2026-03-14T18:35:51.758675",
     "market_title": "Counter-Strike: Aurora Gaming vs Astralis - Map 1 Winner",
     "trader": "S-Works"
+  },
+  "S-Works:0xd311f31f24fc009f37157404c55e1d0b93c7654945a2f4e6f10eb4a072d1e9d8:senators": {
+    "avg_price": 0.91,
+    "total_amount": 649.74,
+    "entry_time": "2026-03-14T18:54:15.927305",
+    "market_title": "Ducks vs. Senators",
+    "trader": "S-Works"
   }
 }
