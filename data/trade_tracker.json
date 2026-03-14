@@ -1407,12 +1407,28 @@
       "resolved_price": null,
       "pnl_if_followed": null,
       "pnl_if_ignored": null
+    },
+    {
+      "id": "S-Works_20260314173255",
+      "timestamp": "2026-03-14T17:32:55.671973",
+      "trader": "S-Works",
+      "market": "Counter-Strike: Natus Vincere vs FUT Esports (BO3) - ESL Pro League Playoffs",
+      "market_id": "0x056e5327893e1488134b69ef7bff7c600219227939211974645e1f6ac1da0735",
+      "outcome": "Natus Vincere",
+      "entry_price": 0.9699697483090617,
+      "recommendation": "NO ENTRAR",
+      "score": 15,
+      "suggested_amount": 0.0,
+      "status": "PENDING",
+      "resolved_price": null,
+      "pnl_if_followed": null,
+      "pnl_if_ignored": null
     }
   ],
   "stats": {
-    "total": 88,
+    "total": 89,
     "entrar": 20,
-    "no_entrar": 67,
+    "no_entrar": 68,
     "observar": 1
   }
 }
