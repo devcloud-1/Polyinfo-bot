@@ -460,5 +460,12 @@
     "entry_time": "2026-03-14T09:38:53.343294",
     "market_title": "Dota 2: Tundra Esports vs Team Spirit - Game 2 Winner",
     "trader": "S-Works"
+  },
+  "de5nuts:0x561cd8d035bac38ed04e23d7882a126da38d7ead9d6679f722ad62c0c9d54ad2:": {
+    "avg_price": 0,
+    "total_amount": 9999.994475,
+    "entry_time": "2026-03-14T10:28:37.881887",
+    "market_title": "Will Iran close the Strait of Hormuz by March 31?",
+    "trader": "de5nuts"
   }
 }
