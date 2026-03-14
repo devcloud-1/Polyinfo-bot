@@ -975,11 +975,27 @@
       "resolved_price": null,
       "pnl_if_followed": null,
       "pnl_if_ignored": null
+    },
+    {
+      "id": "aenews2_20260314023623",
+      "timestamp": "2026-03-14T02:36:23.259330",
+      "trader": "aenews2",
+      "market": "Will the Republican Party control the Senate after the 2026 Midterm elections?",
+      "market_id": "0x86bfb53af7250a40928975c551d12c185b762fa4ce0b40c6a64a50c946d72587",
+      "outcome": "No",
+      "entry_price": 0.5,
+      "recommendation": "ENTRAR",
+      "score": 78,
+      "suggested_amount": 1.5,
+      "status": "PENDING",
+      "resolved_price": null,
+      "pnl_if_followed": null,
+      "pnl_if_ignored": null
     }
   ],
   "stats": {
-    "total": 61,
-    "entrar": 18,
+    "total": 62,
+    "entrar": 19,
     "no_entrar": 42,
     "observar": 1
   }
