@@ -1551,12 +1551,28 @@
       "resolved_price": null,
       "pnl_if_followed": null,
       "pnl_if_ignored": null
+    },
+    {
+      "id": "S-Works_20260314204237",
+      "timestamp": "2026-03-14T20:42:37.268715",
+      "trader": "S-Works",
+      "market": "Dota 2: BetBoom Team vs Team Yandex (BO3) - PGL Wallachia Playoffs",
+      "market_id": "0x235a99ca3edfca26fcca57a422885a0ca60ed7d2c14f2502eccdef3982c965bf",
+      "outcome": "",
+      "entry_price": 0,
+      "recommendation": "NO ENTRAR",
+      "score": 15,
+      "suggested_amount": 0.0,
+      "status": "PENDING",
+      "resolved_price": null,
+      "pnl_if_followed": null,
+      "pnl_if_ignored": null
     }
   ],
   "stats": {
-    "total": 97,
+    "total": 98,
     "entrar": 20,
-    "no_entrar": 76,
+    "no_entrar": 77,
     "observar": 1
   }
 }
