@@ -495,5 +495,12 @@
     "entry_time": "2026-03-14T15:45:13.646002",
     "market_title": "Dota 2: BetBoom Team vs Team Yandex - Game 2 Winner",
     "trader": "S-Works"
+  },
+  "Gohst:0x27ade12e788507af8c7723933e38c79c97d2f687c9daa7eb6c9e6951786bf247:": {
+    "avg_price": 0,
+    "total_amount": 185.434694,
+    "entry_time": "2026-03-14T16:02:31.965175",
+    "market_title": "Will Iran strike Jordan in March?",
+    "trader": "Gohst"
   }
 }
