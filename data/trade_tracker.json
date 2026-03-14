@@ -1375,12 +1375,28 @@
       "resolved_price": null,
       "pnl_if_followed": null,
       "pnl_if_ignored": null
+    },
+    {
+      "id": "S-Works_20260314154515",
+      "timestamp": "2026-03-14T15:45:15.657330",
+      "trader": "S-Works",
+      "market": "Dota 2: BetBoom Team vs Team Yandex - Game 2 Winner",
+      "market_id": "0x026952b400f7d3553bfba75f48e968162f2960817ca83ebefa47a75177db7ff8",
+      "outcome": "Team Yandex",
+      "entry_price": 0.49881906446048746,
+      "recommendation": "NO ENTRAR",
+      "score": 15,
+      "suggested_amount": null,
+      "status": "PENDING",
+      "resolved_price": null,
+      "pnl_if_followed": null,
+      "pnl_if_ignored": null
     }
   ],
   "stats": {
-    "total": 86,
+    "total": 87,
     "entrar": 20,
-    "no_entrar": 65,
+    "no_entrar": 66,
     "observar": 1
   }
 }
