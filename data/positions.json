@@ -481,5 +481,12 @@
     "entry_time": "2026-03-14T14:51:27.997167",
     "market_title": "Counter-Strike: Natus Vincere vs FUT Esports - Map 1 Winner",
     "trader": "S-Works"
+  },
+  "S-Works:0x235a99ca3edfca26fcca57a422885a0ca60ed7d2c14f2502eccdef3982c965bf:team yandex": {
+    "avg_price": 0.7300000299834939,
+    "total_amount": 10794.898246,
+    "entry_time": "2026-03-14T15:21:46.349791",
+    "market_title": "Dota 2: BetBoom Team vs Team Yandex (BO3) - PGL Wallachia Playoffs",
+    "trader": "S-Works"
   }
 }
