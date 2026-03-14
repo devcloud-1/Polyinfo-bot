@@ -1423,12 +1423,28 @@
       "resolved_price": null,
       "pnl_if_followed": null,
       "pnl_if_ignored": null
+    },
+    {
+      "id": "S-Works_20260314183554",
+      "timestamp": "2026-03-14T18:35:54.573634",
+      "trader": "S-Works",
+      "market": "Counter-Strike: Aurora Gaming vs Astralis - Map 1 Winner",
+      "market_id": "0xca29c516d2389b53784ed071429364a0f5b7cc420e65b3a54e914ffa286e4d44",
+      "outcome": "Aurora Gaming",
+      "entry_price": 0.56,
+      "recommendation": "NO ENTRAR",
+      "score": 15,
+      "suggested_amount": null,
+      "status": "PENDING",
+      "resolved_price": null,
+      "pnl_if_followed": null,
+      "pnl_if_ignored": null
     }
   ],
   "stats": {
-    "total": 89,
+    "total": 90,
     "entrar": 20,
-    "no_entrar": 68,
+    "no_entrar": 69,
     "observar": 1
   }
 }
