@@ -1247,12 +1247,28 @@
       "resolved_price": null,
       "pnl_if_followed": null,
       "pnl_if_ignored": null
+    },
+    {
+      "id": "de5nuts_20260314102839",
+      "timestamp": "2026-03-14T10:28:39.953758",
+      "trader": "de5nuts",
+      "market": "Will Iran close the Strait of Hormuz by March 31?",
+      "market_id": "0x561cd8d035bac38ed04e23d7882a126da38d7ead9d6679f722ad62c0c9d54ad2",
+      "outcome": "",
+      "entry_price": 0,
+      "recommendation": "NO ENTRAR",
+      "score": 25,
+      "suggested_amount": 0.0,
+      "status": "PENDING",
+      "resolved_price": null,
+      "pnl_if_followed": null,
+      "pnl_if_ignored": null
     }
   ],
   "stats": {
-    "total": 78,
+    "total": 79,
     "entrar": 20,
-    "no_entrar": 57,
+    "no_entrar": 58,
     "observar": 1
   }
 }
