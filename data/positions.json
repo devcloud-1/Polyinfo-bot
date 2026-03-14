@@ -453,5 +453,12 @@
     "entry_time": "2026-03-14T08:45:11.139058",
     "market_title": "Will Crude Oil (CL) hit (HIGH) $110 by end of March?",
     "trader": "de5nuts"
+  },
+  "S-Works:0xcb9fcf45337800825ccc7ac43ac8212c848206d4d48650cab271f64308af603d:team spirit": {
+    "avg_price": 0.5401426796607648,
+    "total_amount": 4563.4221,
+    "entry_time": "2026-03-14T09:38:53.343294",
+    "market_title": "Dota 2: Tundra Esports vs Team Spirit - Game 2 Winner",
+    "trader": "S-Works"
   }
 }
