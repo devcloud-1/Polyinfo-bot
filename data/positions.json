@@ -747,5 +747,12 @@
     "entry_time": "2026-03-15T20:57:35.111937",
     "market_title": "Counter-Strike: Natus Vincere vs Aurora Gaming (BO5) - ESL Pro League Playoffs",
     "trader": "S-Works"
+  },
+  "Gohst:0x9ca29ccd6068cbaff7b108e3b32d90699bdd1afd139fb71ec5fba5e258b05a79:no": {
+    "avg_price": 0.11750000001887345,
+    "total_amount": 515.37019,
+    "entry_time": "2026-03-15T21:14:07.833073",
+    "market_title": "Will Pierre-Yves Bournazel advance to the second round of the 2026 Paris municipal election?",
+    "trader": "Gohst"
   }
 }
