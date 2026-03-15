@@ -691,5 +691,12 @@
     "entry_time": "2026-03-15T13:34:33.806325",
     "market_title": "Will \"Hoppers\" 2nd Weekend Box Office be between 26m and 29m?",
     "trader": "aenews2"
+  },
+  "S-Works:0xf5edbfaf29c7e9a158eeaa71f7748b3311a1d0bc9c500a9231d1094d376e93af:astralis": {
+    "avg_price": 0.43,
+    "total_amount": 681.0254,
+    "entry_time": "2026-03-15T14:04:14.323618",
+    "market_title": "Counter-Strike: FUT Esports vs Astralis (BO3) - ESL Pro League Playoffs",
+    "trader": "S-Works"
   }
 }
