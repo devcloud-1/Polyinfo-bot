@@ -656,5 +656,12 @@
     "entry_time": "2026-03-15T11:37:58.623694",
     "market_title": "Will One Battle After Another win Best Picture at the 98th Academy Awards?",
     "trader": "aenews2"
+  },
+  "de5nuts:0x0d14f5dc9fb3250ec888b1ac8d9fe9a0ce06f9d3ea60fdf138e8690622fea84c:yes": {
+    "avg_price": 0.05,
+    "total_amount": 62.8315,
+    "entry_time": "2026-03-15T11:45:13.390200",
+    "market_title": "Will the Fed decrease interest rates by 25 bps after the April 2026 meeting?",
+    "trader": "de5nuts"
   }
 }
