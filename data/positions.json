@@ -712,5 +712,12 @@
     "entry_time": "2026-03-15T19:46:35.602236",
     "market_title": "Will Pierre-Yves Bournazel advance to the second round of the 2026 Paris municipal election?",
     "trader": "Gohst"
+  },
+  "S-Works:0x61c33110d3c01e21db18eb02a93f850f93887fa87e55fb08570aa4e824419cad:": {
+    "avg_price": 0,
+    "total_amount": 55017.29,
+    "entry_time": "2026-03-15T20:32:50.709304",
+    "market_title": "Counter-Strike: FUT Esports vs Astralis - Map 2 Winner",
+    "trader": "S-Works"
   }
 }
