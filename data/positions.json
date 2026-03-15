@@ -733,5 +733,12 @@
     "entry_time": "2026-03-15T20:32:55.940139",
     "market_title": "Dota 2: BetBoom Team vs Team Liquid (BO3) - PGL Wallachia Playoffs",
     "trader": "S-Works"
+  },
+  "S-Works:0x7ad403c3508f8e3912940fd1a913f227591145ca0614074208e0b962d5fcc422:": {
+    "avg_price": 0,
+    "total_amount": 200000.0,
+    "entry_time": "2026-03-15T20:42:01.748999",
+    "market_title": "Will JD Vance win the 2028 US Presidential Election?",
+    "trader": "S-Works"
   }
 }
