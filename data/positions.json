@@ -726,5 +726,12 @@
     "entry_time": "2026-03-15T20:32:52.967930",
     "market_title": "Counter-Strike: FUT Esports vs Astralis - Map 1 Winner",
     "trader": "S-Works"
+  },
+  "S-Works:0x914dc543048ed3bc3ae6844206dd417c2859ae0f1b24f7800f2f9bcb4d22cfa6:": {
+    "avg_price": 0,
+    "total_amount": 36405.675575,
+    "entry_time": "2026-03-15T20:32:55.940139",
+    "market_title": "Dota 2: BetBoom Team vs Team Liquid (BO3) - PGL Wallachia Playoffs",
+    "trader": "S-Works"
   }
 }
