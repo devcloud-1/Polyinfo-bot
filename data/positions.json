@@ -607,5 +607,12 @@
     "entry_time": "2026-03-15T05:37:49.612433",
     "market_title": "Will Kevin Warsh be confirmed as Fed Chair?",
     "trader": "de5nuts"
+  },
+  "Gohst:0x30a892ea01a40602dd58029243f165a97ce22dbfeabf427f86d705ae650fad4b:": {
+    "avg_price": 0,
+    "total_amount": 2315.96,
+    "entry_time": "2026-03-15T09:43:31.843304",
+    "market_title": "US forces enter Iran by March 14?",
+    "trader": "Gohst"
   }
 }
