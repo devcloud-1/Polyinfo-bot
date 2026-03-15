@@ -2207,12 +2207,28 @@
       "resolved_price": null,
       "pnl_if_followed": null,
       "pnl_if_ignored": null
+    },
+    {
+      "id": "de5nuts_20260315061454",
+      "timestamp": "2026-03-15T06:14:54.510381",
+      "trader": "de5nuts",
+      "market": "Will Kevin Warsh be confirmed as Fed Chair?",
+      "market_id": "0x23dbb60ade08c2664ac29488325afbc0136735bc7beb9180d9c0cb72620b0b13",
+      "outcome": "Yes",
+      "entry_price": 0.946,
+      "recommendation": "NO ENTRAR",
+      "score": 28,
+      "suggested_amount": null,
+      "status": "PENDING",
+      "resolved_price": null,
+      "pnl_if_followed": null,
+      "pnl_if_ignored": null
     }
   ],
   "stats": {
-    "total": 138,
+    "total": 139,
     "entrar": 20,
-    "no_entrar": 116,
+    "no_entrar": 117,
     "observar": 2
   }
 }
