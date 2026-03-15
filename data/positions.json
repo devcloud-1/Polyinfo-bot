@@ -698,5 +698,12 @@
     "entry_time": "2026-03-15T14:04:14.323618",
     "market_title": "Counter-Strike: FUT Esports vs Astralis (BO3) - ESL Pro League Playoffs",
     "trader": "S-Works"
+  },
+  "S-Works:0x61c33110d3c01e21db18eb02a93f850f93887fa87e55fb08570aa4e824419cad:astralis": {
+    "avg_price": 0.999,
+    "total_amount": 11114.31456,
+    "entry_time": "2026-03-15T14:13:35.908252",
+    "market_title": "Counter-Strike: FUT Esports vs Astralis - Map 2 Winner",
+    "trader": "S-Works"
   }
 }
