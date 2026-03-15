@@ -614,5 +614,12 @@
     "entry_time": "2026-03-15T09:43:31.843304",
     "market_title": "US forces enter Iran by March 14?",
     "trader": "Gohst"
+  },
+  "S-Works:0x2fef0ad4c03cc34383f4cf29ffeb7fe0c58d914f560260c6e5ecf61a2e3763d6:team liquid": {
+    "avg_price": 0.4994182487925393,
+    "total_amount": 897.5345,
+    "entry_time": "2026-03-15T09:54:56.078958",
+    "market_title": "Dota 2: BetBoom Team vs Team Liquid - Game 1 Winner",
+    "trader": "S-Works"
   }
 }
