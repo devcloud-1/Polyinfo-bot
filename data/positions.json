@@ -712,12 +712,5 @@
     "entry_time": "2026-03-15T14:45:00.588281",
     "market_title": "Will \"Hoppers\" Opening Weekend Box Office be greater than 31m?",
     "trader": "aenews2"
-  },
-  "aenews2:0x7cb525e831729325d651017f81cbcb6f1adde5011c7b2283babea00b4ae93ae7:yes": {
-    "avg_price": 0.01948436615308003,
-    "total_amount": 2757.2095799999997,
-    "entry_time": "2026-03-15T14:51:38.076830",
-    "market_title": "Netanyahu out by March 31?",
-    "trader": "aenews2"
   }
 }
