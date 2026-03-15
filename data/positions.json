@@ -649,5 +649,12 @@
     "entry_time": "2026-03-15T11:05:51.884530",
     "market_title": "Dota 2: BetBoom Team vs Team Liquid (BO3) - PGL Wallachia Playoffs",
     "trader": "S-Works"
+  },
+  "aenews2:0x66af911f31ceabb5f9a3ef9203a73f0b23d18aa81bbba7888dec440c622c2528:yes": {
+    "avg_price": 0.8099856776652472,
+    "total_amount": 6115.8267000000005,
+    "entry_time": "2026-03-15T11:37:58.623694",
+    "market_title": "Will One Battle After Another win Best Picture at the 98th Academy Awards?",
+    "trader": "aenews2"
   }
 }
