@@ -768,5 +768,12 @@
     "entry_time": "2026-03-15T23:36:20.591270",
     "market_title": "Dota 2: BetBoom Team vs Team Liquid - Game 2 Winner",
     "trader": "S-Works"
+  },
+  "S-Works:0xca29c516d2389b53784ed071429364a0f5b7cc420e65b3a54e914ffa286e4d44:": {
+    "avg_price": 0,
+    "total_amount": 0.0,
+    "entry_time": "2026-03-15T23:36:22.886762",
+    "market_title": "Counter-Strike: Aurora Gaming vs Astralis - Map 1 Winner",
+    "trader": "S-Works"
   }
 }
