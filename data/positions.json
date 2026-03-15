@@ -754,5 +754,12 @@
     "entry_time": "2026-03-15T21:14:07.833073",
     "market_title": "Will Pierre-Yves Bournazel advance to the second round of the 2026 Paris municipal election?",
     "trader": "Gohst"
+  },
+  "Gohst:0x3f297f4f9083bb1dcd118683d2b75ee79064997cf6ad078a85fd612c3de85083:yes": {
+    "avg_price": 0.14000000001092539,
+    "total_amount": 416.44683999999995,
+    "entry_time": "2026-03-15T21:41:07.374072",
+    "market_title": "Italy Judicial Reform Referendum passes?",
+    "trader": "Gohst"
   }
 }
