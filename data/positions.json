@@ -391,13 +391,6 @@
     "market_title": "Will Iran strike Israel on March 10?",
     "trader": "aenews2"
   },
-  "aenews2:0x86bfb53af7250a40928975c551d12c185b762fa4ce0b40c6a64a50c946d72587:no": {
-    "avg_price": 0.5,
-    "total_amount": 413.56500000000005,
-    "entry_time": "2026-03-13T22:35:26.215215",
-    "market_title": "Will the Republican Party control the Senate after the 2026 Midterm elections?",
-    "trader": "aenews2"
-  },
   "de5nuts:0xaa5cdb6830cbfa2ca711b7cf93bd42cf4f8e062d44ea188c0b8ec1fb2924c083:no": {
     "avg_price": 0.8360000001416001,
     "total_amount": 8359.994646,
