@@ -3423,12 +3423,28 @@
       "resolved_price": null,
       "pnl_if_followed": null,
       "pnl_if_ignored": null
+    },
+    {
+      "id": "S-Works_20260315231344",
+      "timestamp": "2026-03-15T23:13:44.764666",
+      "trader": "S-Works",
+      "market": "Counter-Strike: Natus Vincere vs Aurora Gaming (BO5) - ESL Pro League Playoffs",
+      "market_id": "0x499c8b8dc0d44df1e30f90bb5c9ded8e6965bbb436b8fcc7da5b668e6de9dc8f",
+      "outcome": "Natus Vincere",
+      "entry_price": 0.999,
+      "recommendation": "NO ENTRAR",
+      "score": 15,
+      "suggested_amount": 0.0,
+      "status": "PENDING",
+      "resolved_price": null,
+      "pnl_if_followed": null,
+      "pnl_if_ignored": null
     }
   ],
   "stats": {
-    "total": 214,
+    "total": 215,
     "entrar": 22,
-    "no_entrar": 190,
+    "no_entrar": 191,
     "observar": 2
   }
 }
