@@ -2511,12 +2511,28 @@
       "resolved_price": null,
       "pnl_if_followed": null,
       "pnl_if_ignored": null
+    },
+    {
+      "id": "aenews2_20260315121458",
+      "timestamp": "2026-03-15T12:14:58.031640",
+      "trader": "aenews2",
+      "market": "Will \"Reminders of Him\" Opening Weekend Box Office be greater than 22m?",
+      "market_id": "0x3bbdb33107aee4c28fdf083f977f05e2cb639848e9e341daddc75a7124347567",
+      "outcome": "No",
+      "entry_price": 0.99,
+      "recommendation": "NO ENTRAR",
+      "score": 15,
+      "suggested_amount": 0.5,
+      "status": "PENDING",
+      "resolved_price": null,
+      "pnl_if_followed": null,
+      "pnl_if_ignored": null
     }
   ],
   "stats": {
-    "total": 157,
+    "total": 158,
     "entrar": 20,
-    "no_entrar": 135,
+    "no_entrar": 136,
     "observar": 2
   }
 }
