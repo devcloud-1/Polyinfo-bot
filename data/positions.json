@@ -635,5 +635,12 @@
     "entry_time": "2026-03-15T10:29:29.803459",
     "market_title": "Will \"Reminders of Him\" Opening Weekend Box Office be greater than 22m?",
     "trader": "aenews2"
+  },
+  "S-Works:0x4f2def2527214e340f9147679efae1d7f26d8cd11e0c75acff647f0ed3a44ac0:team liquid": {
+    "avg_price": 0.5800000092637406,
+    "total_amount": 9961.432331,
+    "entry_time": "2026-03-15T10:48:16.090472",
+    "market_title": "Dota 2: BetBoom Team vs Team Liquid - Game 2 Winner",
+    "trader": "S-Works"
   }
 }
