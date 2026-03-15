@@ -3087,12 +3087,28 @@
       "resolved_price": null,
       "pnl_if_followed": null,
       "pnl_if_ignored": null
+    },
+    {
+      "id": "S-Works_20260315204203",
+      "timestamp": "2026-03-15T20:42:03.948685",
+      "trader": "S-Works",
+      "market": "Will JD Vance win the 2028 US Presidential Election?",
+      "market_id": "0x7ad403c3508f8e3912940fd1a913f227591145ca0614074208e0b962d5fcc422",
+      "outcome": "",
+      "entry_price": 0,
+      "recommendation": "NO ENTRAR",
+      "score": 28,
+      "suggested_amount": 0.5,
+      "status": "PENDING",
+      "resolved_price": null,
+      "pnl_if_followed": null,
+      "pnl_if_ignored": null
     }
   ],
   "stats": {
-    "total": 193,
+    "total": 194,
     "entrar": 21,
-    "no_entrar": 170,
+    "no_entrar": 171,
     "observar": 2
   }
 }
