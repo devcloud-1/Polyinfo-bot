@@ -761,5 +761,12 @@
     "entry_time": "2026-03-15T21:41:07.374072",
     "market_title": "Italy Judicial Reform Referendum passes?",
     "trader": "Gohst"
+  },
+  "S-Works:0x4f2def2527214e340f9147679efae1d7f26d8cd11e0c75acff647f0ed3a44ac0:": {
+    "avg_price": 0,
+    "total_amount": 0.0,
+    "entry_time": "2026-03-15T23:36:20.591270",
+    "market_title": "Dota 2: BetBoom Team vs Team Liquid - Game 2 Winner",
+    "trader": "S-Works"
   }
 }
