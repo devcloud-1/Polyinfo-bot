@@ -705,5 +705,12 @@
     "entry_time": "2026-03-15T14:13:35.908252",
     "market_title": "Counter-Strike: FUT Esports vs Astralis - Map 2 Winner",
     "trader": "S-Works"
+  },
+  "aenews2:0xec7d15c6fcb73c9bfb0c2b975d3ef5fb5ce5d205313033816676c12eb0f29325:": {
+    "avg_price": 0,
+    "total_amount": 15968.92,
+    "entry_time": "2026-03-15T14:45:00.588281",
+    "market_title": "Will \"Hoppers\" Opening Weekend Box Office be greater than 31m?",
+    "trader": "aenews2"
   }
 }
