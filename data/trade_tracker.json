@@ -3151,11 +3151,27 @@
       "resolved_price": null,
       "pnl_if_followed": null,
       "pnl_if_ignored": null
+    },
+    {
+      "id": "Gohst_20260315211410",
+      "timestamp": "2026-03-15T21:14:10.971821",
+      "trader": "Gohst",
+      "market": "Will Pierre-Yves Bournazel advance to the second round of the 2026 Paris municipal election?",
+      "market_id": "0x9ca29ccd6068cbaff7b108e3b32d90699bdd1afd139fb71ec5fba5e258b05a79",
+      "outcome": "No",
+      "entry_price": 0.11750000001887345,
+      "recommendation": "ENTRAR",
+      "score": 72,
+      "suggested_amount": 1.5,
+      "status": "PENDING",
+      "resolved_price": null,
+      "pnl_if_followed": null,
+      "pnl_if_ignored": null
     }
   ],
   "stats": {
-    "total": 197,
-    "entrar": 21,
+    "total": 198,
+    "entrar": 22,
     "no_entrar": 174,
     "observar": 2
   }
