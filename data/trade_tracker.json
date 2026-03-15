@@ -2623,12 +2623,28 @@
       "resolved_price": null,
       "pnl_if_followed": null,
       "pnl_if_ignored": null
+    },
+    {
+      "id": "S-Works_20260315132218",
+      "timestamp": "2026-03-15T13:22:18.899868",
+      "trader": "S-Works",
+      "market": "Counter-Strike: FUT Esports vs Astralis (BO3) - ESL Pro League Playoffs",
+      "market_id": "0xf5edbfaf29c7e9a158eeaa71f7748b3311a1d0bc9c500a9231d1094d376e93af",
+      "outcome": "FUT Esports",
+      "entry_price": 0.730000002393896,
+      "recommendation": "NO ENTRAR",
+      "score": 15,
+      "suggested_amount": null,
+      "status": "PENDING",
+      "resolved_price": null,
+      "pnl_if_followed": null,
+      "pnl_if_ignored": null
     }
   ],
   "stats": {
-    "total": 164,
+    "total": 165,
     "entrar": 20,
-    "no_entrar": 142,
+    "no_entrar": 143,
     "observar": 2
   }
 }
