@@ -2463,12 +2463,28 @@
       "resolved_price": null,
       "pnl_if_followed": null,
       "pnl_if_ignored": null
+    },
+    {
+      "id": "de5nuts_20260315114515",
+      "timestamp": "2026-03-15T11:45:15.955055",
+      "trader": "de5nuts",
+      "market": "Will the Fed decrease interest rates by 25 bps after the April 2026 meeting?",
+      "market_id": "0x0d14f5dc9fb3250ec888b1ac8d9fe9a0ce06f9d3ea60fdf138e8690622fea84c",
+      "outcome": "Yes",
+      "entry_price": 0.05,
+      "recommendation": "NO ENTRAR",
+      "score": 32,
+      "suggested_amount": null,
+      "status": "PENDING",
+      "resolved_price": null,
+      "pnl_if_followed": null,
+      "pnl_if_ignored": null
     }
   ],
   "stats": {
-    "total": 154,
+    "total": 155,
     "entrar": 20,
-    "no_entrar": 132,
+    "no_entrar": 133,
     "observar": 2
   }
 }
