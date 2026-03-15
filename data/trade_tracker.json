@@ -2447,12 +2447,28 @@
       "resolved_price": null,
       "pnl_if_followed": null,
       "pnl_if_ignored": null
+    },
+    {
+      "id": "aenews2_20260315113800",
+      "timestamp": "2026-03-15T11:38:00.828664",
+      "trader": "aenews2",
+      "market": "Will One Battle After Another win Best Picture at the 98th Academy Awards?",
+      "market_id": "0x66af911f31ceabb5f9a3ef9203a73f0b23d18aa81bbba7888dec440c622c2528",
+      "outcome": "Yes",
+      "entry_price": 0.8099856776652472,
+      "recommendation": "NO ENTRAR",
+      "score": 28,
+      "suggested_amount": 0.5,
+      "status": "PENDING",
+      "resolved_price": null,
+      "pnl_if_followed": null,
+      "pnl_if_ignored": null
     }
   ],
   "stats": {
-    "total": 153,
+    "total": 154,
     "entrar": 20,
-    "no_entrar": 131,
+    "no_entrar": 132,
     "observar": 2
   }
 }
