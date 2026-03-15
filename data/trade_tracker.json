@@ -2367,12 +2367,28 @@
       "resolved_price": null,
       "pnl_if_followed": null,
       "pnl_if_ignored": null
+    },
+    {
+      "id": "S-Works_20260315104818",
+      "timestamp": "2026-03-15T10:48:18.780764",
+      "trader": "S-Works",
+      "market": "Dota 2: BetBoom Team vs Team Liquid - Game 2 Winner",
+      "market_id": "0x4f2def2527214e340f9147679efae1d7f26d8cd11e0c75acff647f0ed3a44ac0",
+      "outcome": "Team Liquid",
+      "entry_price": 0.5800000092637406,
+      "recommendation": "NO ENTRAR",
+      "score": 15,
+      "suggested_amount": null,
+      "status": "PENDING",
+      "resolved_price": null,
+      "pnl_if_followed": null,
+      "pnl_if_ignored": null
     }
   ],
   "stats": {
-    "total": 148,
+    "total": 149,
     "entrar": 20,
-    "no_entrar": 126,
+    "no_entrar": 127,
     "observar": 2
   }
 }
