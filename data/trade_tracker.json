@@ -2943,12 +2943,28 @@
       "resolved_price": null,
       "pnl_if_followed": null,
       "pnl_if_ignored": null
+    },
+    {
+      "id": "S-Works_20260315155936",
+      "timestamp": "2026-03-15T15:59:36.508444",
+      "trader": "S-Works",
+      "market": "Counter-Strike: FUT Esports vs Astralis - Map 2 Winner",
+      "market_id": "0x61c33110d3c01e21db18eb02a93f850f93887fa87e55fb08570aa4e824419cad",
+      "outcome": "Astralis",
+      "entry_price": 0.999,
+      "recommendation": "NO ENTRAR",
+      "score": 15,
+      "suggested_amount": null,
+      "status": "PENDING",
+      "resolved_price": null,
+      "pnl_if_followed": null,
+      "pnl_if_ignored": null
     }
   ],
   "stats": {
-    "total": 184,
+    "total": 185,
     "entrar": 20,
-    "no_entrar": 162,
+    "no_entrar": 163,
     "observar": 2
   }
 }
