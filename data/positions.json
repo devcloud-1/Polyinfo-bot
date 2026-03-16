@@ -810,5 +810,12 @@
     "entry_time": "2026-03-16T08:30:53.826657",
     "market_title": "Will One Battle After Another win Best Picture at the 98th Academy Awards?",
     "trader": "aenews2"
+  },
+  "aenews2:0x8df5deceb6164ab03aff80ed36e72a916d6bde004288dab11a6fd66aff6e08c0:no": {
+    "avg_price": 0.7671799829960585,
+    "total_amount": 11947.18647,
+    "entry_time": "2026-03-16T08:36:14.707403",
+    "market_title": "Will Trump say \"Ayatollah\" or \"Khamenei\" this week? (March 15)",
+    "trader": "aenews2"
   }
 }
