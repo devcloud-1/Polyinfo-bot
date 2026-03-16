@@ -796,5 +796,12 @@
     "entry_time": "2026-03-16T07:00:21.493770",
     "market_title": "Counter-Strike: Natus Vincere vs Aurora Gaming - Map 4 Winner",
     "trader": "S-Works"
+  },
+  "S-Works:0xb189090027cdc60621728814f77663bbdddc4c08772ec950c4c75e4b99733005:": {
+    "avg_price": 0,
+    "total_amount": 145.743219,
+    "entry_time": "2026-03-16T07:00:24.454978",
+    "market_title": "Dota 2: Team Yandex vs Team Liquid (BO5) - PGL Wallachia Playoffs",
+    "trader": "S-Works"
   }
 }
