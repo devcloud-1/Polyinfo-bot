@@ -803,5 +803,12 @@
     "entry_time": "2026-03-16T07:00:24.454978",
     "market_title": "Dota 2: Team Yandex vs Team Liquid (BO5) - PGL Wallachia Playoffs",
     "trader": "S-Works"
+  },
+  "aenews2:0x66af911f31ceabb5f9a3ef9203a73f0b23d18aa81bbba7888dec440c622c2528:": {
+    "avg_price": 0,
+    "total_amount": 8588.49,
+    "entry_time": "2026-03-16T08:30:53.826657",
+    "market_title": "Will One Battle After Another win Best Picture at the 98th Academy Awards?",
+    "trader": "aenews2"
   }
 }
