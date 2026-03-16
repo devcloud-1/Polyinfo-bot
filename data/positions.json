@@ -873,5 +873,12 @@
     "entry_time": "2026-03-16T19:13:13.559899",
     "market_title": "LoL: G2 Esports vs Team Secret Whales - Game 3 Winner",
     "trader": "S-Works"
+  },
+  "de5nuts:0x306d10d4a4d51b41910dbc779ca00908bd917c131541c5c42bbbc736258d2d56:yes": {
+    "avg_price": 0.23,
+    "total_amount": 2912.7568,
+    "entry_time": "2026-03-16T19:25:29.726771",
+    "market_title": "US forces enter Iran by March 31?",
+    "trader": "de5nuts"
   }
 }
