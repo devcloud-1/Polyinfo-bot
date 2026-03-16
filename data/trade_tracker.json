@@ -4479,12 +4479,28 @@
       "resolved_price": null,
       "pnl_if_followed": null,
       "pnl_if_ignored": null
+    },
+    {
+      "id": "de5nuts_20260316184902",
+      "timestamp": "2026-03-16T18:49:02.241611",
+      "trader": "de5nuts",
+      "market": "Will Crude Oil (CL) hit (LOW) $70 by end of March?",
+      "market_id": "0x968405389c88e2d11e379042be4893f34989b0086ae84029edffbec51ff5fd7f",
+      "outcome": "No",
+      "entry_price": 0.91,
+      "recommendation": "NO ENTRAR",
+      "score": 15,
+      "suggested_amount": 0.5,
+      "status": "PENDING",
+      "resolved_price": null,
+      "pnl_if_followed": null,
+      "pnl_if_ignored": null
     }
   ],
   "stats": {
-    "total": 280,
+    "total": 281,
     "entrar": 25,
-    "no_entrar": 253,
+    "no_entrar": 254,
     "observar": 2
   }
 }
