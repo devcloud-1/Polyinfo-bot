@@ -3951,12 +3951,28 @@
       "resolved_price": null,
       "pnl_if_followed": null,
       "pnl_if_ignored": null
+    },
+    {
+      "id": "aenews2_20260316111241",
+      "timestamp": "2026-03-16T11:12:41.744364",
+      "trader": "aenews2",
+      "market": "Netanyahu out by June 30?",
+      "market_id": "0x865303ccb9a48341d1bae33b3b4379ca86d5abbff3ce1e132716631cc0af3cce",
+      "outcome": "No",
+      "entry_price": 0.860000062573059,
+      "recommendation": "NO ENTRAR",
+      "score": 28,
+      "suggested_amount": null,
+      "status": "PENDING",
+      "resolved_price": null,
+      "pnl_if_followed": null,
+      "pnl_if_ignored": null
     }
   ],
   "stats": {
-    "total": 247,
+    "total": 248,
     "entrar": 25,
-    "no_entrar": 220,
+    "no_entrar": 221,
     "observar": 2
   }
 }
