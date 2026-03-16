@@ -728,8 +728,8 @@
     "trader": "S-Works"
   },
   "S-Works:0x7ad403c3508f8e3912940fd1a913f227591145ca0614074208e0b962d5fcc422:": {
-    "avg_price": 0,
-    "total_amount": 200000.0,
+    "avg_price": 0.0,
+    "total_amount": 400000.0,
     "entry_time": "2026-03-15T20:42:01.748999",
     "market_title": "Will JD Vance win the 2028 US Presidential Election?",
     "trader": "S-Works"
