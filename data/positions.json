@@ -866,5 +866,12 @@
     "entry_time": "2026-03-16T18:48:59.882253",
     "market_title": "Will Crude Oil (CL) hit (LOW) $70 by end of March?",
     "trader": "de5nuts"
+  },
+  "S-Works:0x6a8655bc7b8397d62b15a0b13fbf3402126db0839ed359686370321b94e7ef68:g2 esports": {
+    "avg_price": 0.6999999999999998,
+    "total_amount": 10291.435,
+    "entry_time": "2026-03-16T19:13:13.559899",
+    "market_title": "LoL: G2 Esports vs Team Secret Whales - Game 3 Winner",
+    "trader": "S-Works"
   }
 }
