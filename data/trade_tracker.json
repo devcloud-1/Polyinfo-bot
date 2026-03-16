@@ -4431,12 +4431,28 @@
       "resolved_price": null,
       "pnl_if_followed": null,
       "pnl_if_ignored": null
+    },
+    {
+      "id": "S-Works_20260316170933",
+      "timestamp": "2026-03-16T17:09:33.597203",
+      "trader": "S-Works",
+      "market": "LoL: Bilibili Gaming vs BNK FEARX (BO5) - First Stand Group A",
+      "market_id": "0xdf2152b30a80e37241936490bfbefcf32a6c045132015b01b1d292007e1de3e8",
+      "outcome": "Bilibili Gaming",
+      "entry_price": 0.999,
+      "recommendation": "NO ENTRAR",
+      "score": 15,
+      "suggested_amount": 0,
+      "status": "PENDING",
+      "resolved_price": null,
+      "pnl_if_followed": null,
+      "pnl_if_ignored": null
     }
   ],
   "stats": {
-    "total": 277,
+    "total": 278,
     "entrar": 25,
-    "no_entrar": 250,
+    "no_entrar": 251,
     "observar": 2
   }
 }
