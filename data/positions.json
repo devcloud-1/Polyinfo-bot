@@ -838,5 +838,12 @@
     "entry_time": "2026-03-16T13:05:41.550144",
     "market_title": "Will Crude Oil (CL) hit (LOW) $75 by end of March?",
     "trader": "de5nuts"
+  },
+  "aenews2:0xc1cdbabb5b6748e75b50572fc37ac354335f97aa117828c63e92a178791a0446:": {
+    "avg_price": 0,
+    "total_amount": 5874.35,
+    "entry_time": "2026-03-16T13:43:23.427515",
+    "market_title": "Will \"The Bride!\" Opening Weekend Box Office be less than 10m?",
+    "trader": "aenews2"
   }
 }
