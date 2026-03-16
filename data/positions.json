@@ -880,5 +880,12 @@
     "entry_time": "2026-03-16T19:25:29.726771",
     "market_title": "US forces enter Iran by March 31?",
     "trader": "de5nuts"
+  },
+  "S-Works:0x3008eea08078ed14e2fb7601cfaf14851f150f568d1ac573a9cd4046d7ae271c:g2 esports": {
+    "avg_price": 0.97,
+    "total_amount": 100507.0253,
+    "entry_time": "2026-03-16T19:33:20.941837",
+    "market_title": "LoL: G2 Esports vs Team Secret Whales (BO5) - First Stand Group A",
+    "trader": "S-Works"
   }
 }
