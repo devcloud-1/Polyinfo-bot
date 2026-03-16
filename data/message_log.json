@@ -1,9 +1,63 @@
 {
   "messages": [
     {
-      "ts": "2026-03-13T01:34:40",
+      "ts": "2026-03-16T00:40:53",
       "type": "BOT_START",
-      "text": "\ud83e\udd16 <b>Bot v3 iniciado \u2014 con Tracker de Efectividad</b>\nMonitoreando: Gohst, de5nuts, aenews2\n\u2705 Cada decisi\u00f3n queda registrada\n\ud83d\udcca Reporte semanal autom\u00e1tico los lunes\n\u2705 An\u00e1lisis IA activo",
+      "text": "\ud83e\udd16 <b>Bot v3 iniciado \u2014 con Tracker de Efectividad</b>\nMonitoreando: Gohst, de5nuts, aenews2, S-Works\n\u2705 Cada decisi\u00f3n queda registrada\n\ud83d\udcca Reporte semanal autom\u00e1tico los lunes\n\u2705 An\u00e1lisis IA activo",
+      "has_buttons": false
+    },
+    {
+      "ts": "2026-03-16T02:20:41",
+      "type": "SELL_ALERT",
+      "text": "\ud83d\udd34 <b>SALIDA \u2014 aenews2</b>\n\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\n\ud83d\udccb <b>Mercado:</b> Will the Republican Party control the Senate after the 2026 Midterm elections?\n\ud83c\udfaf <b>Posici\u00f3n:</b> No\n\ud83d\udcb5 <b>Precio salida:</b> 52.0\u00a2\n\ud83d\udcbc <b>Total vendido:</b> $10.26 USDC\n\ud83c\udf0a <b>Volumen mercado:</b> $536,542\n\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\n\u2139\ufe0f <i>Sin entrada registrada \u2014 no se puede calcular PnL</i>\n\u23f0 02:20:41",
+      "has_buttons": false
+    },
+    {
+      "ts": "2026-03-16T02:24:54",
+      "type": "SELL_ALERT",
+      "text": "\ud83d\udd34 <b>SALIDA \u2014 aenews2</b>\n\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\n\ud83d\udccb <b>Mercado:</b> Will the Republican Party control the Senate after the 2026 Midterm elections?\n\ud83c\udfaf <b>Posici\u00f3n:</b> No\n\ud83d\udcb5 <b>Precio salida:</b> 52.0\u00a2\n\ud83d\udcbc <b>Total vendido:</b> $10.26 USDC\n\ud83c\udf0a <b>Volumen mercado:</b> $536,582\n\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\n\u2139\ufe0f <i>Sin entrada registrada \u2014 no se puede calcular PnL</i>\n\u23f0 02:24:54",
+      "has_buttons": false
+    },
+    {
+      "ts": "2026-03-16T02:37:01",
+      "type": "SELL_ALERT",
+      "text": "\ud83d\udd34 <b>SALIDA \u2014 aenews2</b>\n\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\n\ud83d\udccb <b>Mercado:</b> Will the Republican Party control the Senate after the 2026 Midterm elections?\n\ud83c\udfaf <b>Posici\u00f3n:</b> No\n\ud83d\udcb5 <b>Precio salida:</b> 52.0\u00a2\n\ud83d\udcbc <b>Total vendido:</b> $6.91 USDC\n\ud83c\udf0a <b>Volumen mercado:</b> $536,643\n\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\n\u2139\ufe0f <i>Sin entrada registrada \u2014 no se puede calcular PnL</i>\n\u23f0 02:37:01",
+      "has_buttons": false
+    },
+    {
+      "ts": "2026-03-16T02:43:15",
+      "type": "SELL_ALERT",
+      "text": "\ud83d\udd34 <b>SALIDA \u2014 aenews2</b>\n\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\n\ud83d\udccb <b>Mercado:</b> Will the Republican Party control the Senate after the 2026 Midterm elections?\n\ud83c\udfaf <b>Posici\u00f3n:</b> No\n\ud83d\udcb5 <b>Precio salida:</b> 52.0\u00a2\n\ud83d\udcbc <b>Total vendido:</b> $5.32 USDC\n\ud83c\udf0a <b>Volumen mercado:</b> $536,684\n\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\n\u2139\ufe0f <i>Sin entrada registrada \u2014 no se puede calcular PnL</i>\n\u23f0 02:43:15",
+      "has_buttons": false
+    },
+    {
+      "ts": "2026-03-16T02:47:18",
+      "type": "SELL_ALERT",
+      "text": "\ud83d\udd34 <b>SALIDA \u2014 aenews2</b>\n\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\n\ud83d\udccb <b>Mercado:</b> Will the Republican Party control the Senate after the 2026 Midterm elections?\n\ud83c\udfaf <b>Posici\u00f3n:</b> No\n\ud83d\udcb5 <b>Precio salida:</b> 52.0\u00a2\n\ud83d\udcbc <b>Total vendido:</b> $5.20 USDC\n\ud83c\udf0a <b>Volumen mercado:</b> $536,684\n\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\n\u2139\ufe0f <i>Sin entrada registrada \u2014 no se puede calcular PnL</i>\n\u23f0 02:47:18",
+      "has_buttons": false
+    },
+    {
+      "ts": "2026-03-16T02:51:20",
+      "type": "SELL_ALERT",
+      "text": "\ud83d\udd34 <b>SALIDA \u2014 aenews2</b>\n\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\n\ud83d\udccb <b>Mercado:</b> Will the Republican Party control the Senate after the 2026 Midterm elections?\n\ud83c\udfaf <b>Posici\u00f3n:</b> No\n\ud83d\udcb5 <b>Precio salida:</b> 52.0\u00a2\n\ud83d\udcbc <b>Total vendido:</b> $3.56 USDC\n\ud83c\udf0a <b>Volumen mercado:</b> $536,758\n\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\n\u2139\ufe0f <i>Sin entrada registrada \u2014 no se puede calcular PnL</i>\n\u23f0 02:51:20",
+      "has_buttons": false
+    },
+    {
+      "ts": "2026-03-16T02:57:25",
+      "type": "SELL_ALERT",
+      "text": "\ud83d\udd34 <b>SALIDA \u2014 aenews2</b>\n\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\n\ud83d\udccb <b>Mercado:</b> Will the Republican Party control the Senate after the 2026 Midterm elections?\n\ud83c\udfaf <b>Posici\u00f3n:</b> No\n\ud83d\udcb5 <b>Precio salida:</b> 52.0\u00a2\n\ud83d\udcbc <b>Total vendido:</b> $2.88 USDC\n\ud83c\udf0a <b>Volumen mercado:</b> $536,790\n\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\n\u2139\ufe0f <i>Sin entrada registrada \u2014 no se puede calcular PnL</i>\n\u23f0 02:57:25",
+      "has_buttons": false
+    },
+    {
+      "ts": "2026-03-16T03:03:38",
+      "type": "SELL_ALERT",
+      "text": "\ud83d\udd34 <b>SALIDA \u2014 aenews2</b>\n\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\n\ud83d\udccb <b>Mercado:</b> Will the Republican Party control the Senate after the 2026 Midterm elections?\n\ud83c\udfaf <b>Posici\u00f3n:</b> No\n\ud83d\udcb5 <b>Precio salida:</b> 52.0\u00a2\n\ud83d\udcbc <b>Total vendido:</b> $3.44 USDC\n\ud83c\udf0a <b>Volumen mercado:</b> $536,807\n\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\n\u2139\ufe0f <i>Sin entrada registrada \u2014 no se puede calcular PnL</i>\n\u23f0 03:03:38",
+      "has_buttons": false
+    },
+    {
+      "ts": "2026-03-16T03:11:43",
+      "type": "SELL_ALERT",
+      "text": "\ud83d\udd34 <b>SALIDA \u2014 aenews2</b>\n\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\n\ud83d\udccb <b>Mercado:</b> Will the Republican Party control the Senate after the 2026 Midterm elections?\n\ud83c\udfaf <b>Posici\u00f3n:</b> No\n\ud83d\udcb5 <b>Precio salida:</b> 52.0\u00a2\n\ud83d\udcbc <b>Total vendido:</b> $7.92 USDC\n\ud83c\udf0a <b>Volumen mercado:</b> $536,827\n\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\n\u2139\ufe0f <i>Sin entrada registrada \u2014 no se puede calcular PnL</i>\n\u23f0 03:11:43",
       "has_buttons": false
     }
   ]
