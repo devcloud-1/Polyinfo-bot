@@ -782,5 +782,12 @@
     "entry_time": "2026-03-16T07:00:15.855571",
     "market_title": "Counter-Strike: Natus Vincere vs Aurora Gaming (BO5) - ESL Pro League Playoffs",
     "trader": "S-Works"
+  },
+  "S-Works:0xe47a7d4bc2ec888dfb951768a2d63e3866dca3e6baaece2a58850553a3d290ac:": {
+    "avg_price": 0,
+    "total_amount": 16066.84,
+    "entry_time": "2026-03-16T07:00:18.612403",
+    "market_title": "Games Total: O/U 3.5",
+    "trader": "S-Works"
   }
 }
