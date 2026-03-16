@@ -845,5 +845,12 @@
     "entry_time": "2026-03-16T13:43:23.427515",
     "market_title": "Will \"The Bride!\" Opening Weekend Box Office be less than 10m?",
     "trader": "aenews2"
+  },
+  "S-Works:0xdf2152b30a80e37241936490bfbefcf32a6c045132015b01b1d292007e1de3e8:bnk fearx": {
+    "avg_price": 0.03,
+    "total_amount": 56.350035,
+    "entry_time": "2026-03-16T16:59:00.912550",
+    "market_title": "LoL: Bilibili Gaming vs BNK FEARX (BO5) - First Stand Group A",
+    "trader": "S-Works"
   }
 }
