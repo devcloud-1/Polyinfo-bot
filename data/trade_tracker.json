@@ -4463,12 +4463,28 @@
       "resolved_price": null,
       "pnl_if_followed": null,
       "pnl_if_ignored": null
+    },
+    {
+      "id": "de5nuts_20260316173017",
+      "timestamp": "2026-03-16T17:30:17.559019",
+      "trader": "de5nuts",
+      "market": "Will Crude Oil (CL) hit (HIGH) $105 by end of March?",
+      "market_id": "0xf6890c707d1e327b006b9511bdba8c98ec4e4978646c6ffcf3ec8750c26a666a",
+      "outcome": "Yes",
+      "entry_price": 0.657,
+      "recommendation": "NO ENTRAR",
+      "score": 15,
+      "suggested_amount": null,
+      "status": "PENDING",
+      "resolved_price": null,
+      "pnl_if_followed": null,
+      "pnl_if_ignored": null
     }
   ],
   "stats": {
-    "total": 279,
+    "total": 280,
     "entrar": 25,
-    "no_entrar": 252,
+    "no_entrar": 253,
     "observar": 2
   }
 }
