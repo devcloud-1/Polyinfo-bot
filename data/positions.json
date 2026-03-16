@@ -775,5 +775,12 @@
     "entry_time": "2026-03-15T23:36:22.886762",
     "market_title": "Counter-Strike: Aurora Gaming vs Astralis - Map 1 Winner",
     "trader": "S-Works"
+  },
+  "S-Works:0x499c8b8dc0d44df1e30f90bb5c9ded8e6965bbb436b8fcc7da5b668e6de9dc8f:": {
+    "avg_price": 0,
+    "total_amount": 51712.17,
+    "entry_time": "2026-03-16T07:00:15.855571",
+    "market_title": "Counter-Strike: Natus Vincere vs Aurora Gaming (BO5) - ESL Pro League Playoffs",
+    "trader": "S-Works"
   }
 }
