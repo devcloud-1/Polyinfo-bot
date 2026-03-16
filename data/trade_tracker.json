@@ -4495,12 +4495,28 @@
       "resolved_price": null,
       "pnl_if_followed": null,
       "pnl_if_ignored": null
+    },
+    {
+      "id": "S-Works_20260316191316",
+      "timestamp": "2026-03-16T19:13:16.010258",
+      "trader": "S-Works",
+      "market": "LoL: G2 Esports vs Team Secret Whales - Game 3 Winner",
+      "market_id": "0x6a8655bc7b8397d62b15a0b13fbf3402126db0839ed359686370321b94e7ef68",
+      "outcome": "G2 Esports",
+      "entry_price": 0.6999999999999998,
+      "recommendation": "NO ENTRAR",
+      "score": 15,
+      "suggested_amount": null,
+      "status": "PENDING",
+      "resolved_price": null,
+      "pnl_if_followed": null,
+      "pnl_if_ignored": null
     }
   ],
   "stats": {
-    "total": 281,
+    "total": 282,
     "entrar": 25,
-    "no_entrar": 254,
+    "no_entrar": 255,
     "observar": 2
   }
 }
