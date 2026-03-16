@@ -4527,12 +4527,28 @@
       "resolved_price": null,
       "pnl_if_followed": null,
       "pnl_if_ignored": null
+    },
+    {
+      "id": "S-Works_20260316193322",
+      "timestamp": "2026-03-16T19:33:22.999009",
+      "trader": "S-Works",
+      "market": "LoL: G2 Esports vs Team Secret Whales (BO5) - First Stand Group A",
+      "market_id": "0x3008eea08078ed14e2fb7601cfaf14851f150f568d1ac573a9cd4046d7ae271c",
+      "outcome": "G2 Esports",
+      "entry_price": 0.97,
+      "recommendation": "NO ENTRAR",
+      "score": 15,
+      "suggested_amount": 0.0,
+      "status": "PENDING",
+      "resolved_price": null,
+      "pnl_if_followed": null,
+      "pnl_if_ignored": null
     }
   ],
   "stats": {
-    "total": 283,
+    "total": 284,
     "entrar": 25,
-    "no_entrar": 256,
+    "no_entrar": 257,
     "observar": 2
   }
 }
