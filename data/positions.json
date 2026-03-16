@@ -789,5 +789,12 @@
     "entry_time": "2026-03-16T07:00:18.612403",
     "market_title": "Games Total: O/U 3.5",
     "trader": "S-Works"
+  },
+  "S-Works:0xd15d06123bd05ea30afa3c046768497a5827c839bcfec6f3385bfb8aaa653c85:": {
+    "avg_price": 0,
+    "total_amount": 2958.69,
+    "entry_time": "2026-03-16T07:00:21.493770",
+    "market_title": "Counter-Strike: Natus Vincere vs Aurora Gaming - Map 4 Winner",
+    "trader": "S-Works"
   }
 }
