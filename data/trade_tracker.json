@@ -4367,12 +4367,28 @@
       "resolved_price": null,
       "pnl_if_followed": null,
       "pnl_if_ignored": null
+    },
+    {
+      "id": "aenews2_20260316155108",
+      "timestamp": "2026-03-16T15:51:08.400159",
+      "trader": "aenews2",
+      "market": "Will Trump say \"Ayatollah\" or \"Khamenei\" this week? (March 15)",
+      "market_id": "0x8df5deceb6164ab03aff80ed36e72a916d6bde004288dab11a6fd66aff6e08c0",
+      "outcome": "No",
+      "entry_price": 0.9619946650780454,
+      "recommendation": "NO ENTRAR",
+      "score": 22,
+      "suggested_amount": null,
+      "status": "PENDING",
+      "resolved_price": null,
+      "pnl_if_followed": null,
+      "pnl_if_ignored": null
     }
   ],
   "stats": {
-    "total": 273,
+    "total": 274,
     "entrar": 25,
-    "no_entrar": 246,
+    "no_entrar": 247,
     "observar": 2
   }
 }
