@@ -852,5 +852,12 @@
     "entry_time": "2026-03-16T16:59:00.912550",
     "market_title": "LoL: Bilibili Gaming vs BNK FEARX (BO5) - First Stand Group A",
     "trader": "S-Works"
+  },
+  "S-Works:0xdf2152b30a80e37241936490bfbefcf32a6c045132015b01b1d292007e1de3e8:bilibili gaming": {
+    "avg_price": 0.999,
+    "total_amount": 10386.26334,
+    "entry_time": "2026-03-16T17:09:31.409982",
+    "market_title": "LoL: Bilibili Gaming vs BNK FEARX (BO5) - First Stand Group A",
+    "trader": "S-Works"
   }
 }
