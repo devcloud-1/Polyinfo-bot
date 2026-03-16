@@ -377,13 +377,6 @@
     "market_title": "Will the Democratic Party win the NY-18 House seat?",
     "trader": "Gohst"
   },
-  "de5nuts:0x705479cc3e7cf2907997c62b4245356c48b5133f7d82a47829a2354dd77a7c51:yes": {
-    "avg_price": 0.12000000000000001,
-    "total_amount": 2034.3216,
-    "entry_time": "2026-03-13T19:57:31.640972",
-    "market_title": "Will the U.S. invade Iran by March 31?",
-    "trader": "de5nuts"
-  },
   "aenews2:0x03bc660a4df5faeaee8e66d0e7bc4f2200b543340b7f7a5c83bfa1fecafa9ead:yes": {
     "avg_price": 0.9902254101345338,
     "total_amount": 116941.716,
