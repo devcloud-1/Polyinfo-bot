@@ -558,5 +558,12 @@
     "entry_time": "2026-03-16T19:33:20.941837",
     "market_title": "LoL: G2 Esports vs Team Secret Whales (BO5) - First Stand Group A",
     "trader": "S-Works"
+  },
+  "Gohst:0x61619309efb1d47c90ccad819ff9975b027680b2b728a51e9a96f5521634b800:yes": {
+    "avg_price": 0.3799999011999269,
+    "total_amount": 0.999999,
+    "entry_time": "2026-03-17T12:56:40.685749",
+    "market_title": "Will Marco Rubio visit China by April 30, 2026?",
+    "trader": "Gohst"
   }
 }
