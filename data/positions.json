@@ -600,5 +600,12 @@
     "entry_time": "2026-03-17T20:43:09.763974",
     "market_title": "Will Manchester City FC win on 2026-03-17?",
     "trader": "S-Works"
+  },
+  "de5nuts:0xb1fb3aaa332db47a97b2478ca9433eefbfbcb4d69c64b2d8477eee574ad66a50:yes": {
+    "avg_price": 0.008,
+    "total_amount": 0.2932,
+    "entry_time": "2026-03-17T21:53:19.995171",
+    "market_title": "US strike on Colombia by March 31?",
+    "trader": "de5nuts"
   }
 }
