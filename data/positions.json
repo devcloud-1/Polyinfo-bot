@@ -593,5 +593,12 @@
     "entry_time": "2026-03-17T20:09:18.735670",
     "market_title": "Will Chelsea win the 2025\u201326 Champions League?",
     "trader": "S-Works"
+  },
+  "S-Works:0x02a64b7c7ddb3f8fa184e42f4f00e005bf28c183c756fe2712b15ea033cf275b:no": {
+    "avg_price": 0.8900003858112646,
+    "total_amount": 2.030009,
+    "entry_time": "2026-03-17T20:43:09.763974",
+    "market_title": "Will Manchester City FC win on 2026-03-17?",
+    "trader": "S-Works"
   }
 }
