@@ -586,5 +586,12 @@
     "entry_time": "2026-03-17T17:23:05.770123",
     "market_title": "Will the U.S. invade Iran by March 31?",
     "trader": "de5nuts"
+  },
+  "S-Works:0xc2ecc146cbbc8f24186766ef0b2cd56a1757227aee4cc9f951920538769a3490:no": {
+    "avg_price": 0.994,
+    "total_amount": 1944.25406,
+    "entry_time": "2026-03-17T20:09:18.735670",
+    "market_title": "Will Chelsea win the 2025\u201326 Champions League?",
+    "trader": "S-Works"
   }
 }
