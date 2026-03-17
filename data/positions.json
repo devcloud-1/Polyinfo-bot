@@ -908,5 +908,12 @@
     "entry_time": "2026-03-17T03:37:29.951479",
     "market_title": "Will 150 or more tornadoes occur in the United States in March 2026?",
     "trader": "aenews2"
+  },
+  "aenews2:0x83aed2c392271ac86cd19d3f4197754eb24eec1b643bb42b857bfecae0f68b35:no": {
+    "avg_price": 0.868613997117546,
+    "total_amount": 1765.88357,
+    "entry_time": "2026-03-17T06:18:24.365333",
+    "market_title": "Will \"Undertone\" Opening Weekend Box Office be between 9m and 10m?",
+    "trader": "aenews2"
   }
 }
