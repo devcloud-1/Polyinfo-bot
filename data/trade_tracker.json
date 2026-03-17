@@ -1471,12 +1471,28 @@
       "resolved_price": null,
       "pnl_if_followed": null,
       "pnl_if_ignored": null
+    },
+    {
+      "id": "aenews2_20260317150838",
+      "timestamp": "2026-03-17T15:08:38.228883",
+      "trader": "aenews2",
+      "market": "Will A Minecraft Movie be the 2025 film with the highest domestic gross on March 15?",
+      "market_id": "0x52030aa0da19332af6acd888f99c0a112faa088135ec3094ba78928c25fae330",
+      "outcome": "",
+      "entry_price": 0,
+      "recommendation": "NO ENTRAR",
+      "score": 10,
+      "suggested_amount": 0.0,
+      "status": "PENDING",
+      "resolved_price": null,
+      "pnl_if_followed": null,
+      "pnl_if_ignored": null
     }
   ],
   "stats": {
-    "total": 92,
+    "total": 93,
     "entrar": 14,
-    "no_entrar": 76,
+    "no_entrar": 77,
     "observar": 2
   }
 }
