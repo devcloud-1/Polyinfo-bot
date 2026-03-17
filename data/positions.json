@@ -922,5 +922,12 @@
     "entry_time": "2026-03-17T10:12:11.256358",
     "market_title": "Will Sarah Knafo advance to the second round of the 2026 Paris municipal election?",
     "trader": "Gohst"
+  },
+  "Gohst:0xcef6eb62edc0fdc47f90a7e8ed8dbb17194efc01dc7ae9cd0837e66d71b8900e:": {
+    "avg_price": 0,
+    "total_amount": 342.85,
+    "entry_time": "2026-03-17T11:37:26.789558",
+    "market_title": "Mojtaba Khamenei seen in public by March 16?",
+    "trader": "Gohst"
   }
 }
