@@ -915,5 +915,12 @@
     "entry_time": "2026-03-17T07:44:12.675530",
     "market_title": "US/Israel strike Yemen by March 14?",
     "trader": "Gohst"
+  },
+  "Gohst:0x84dafaed1275f878da543e1ae4e89634c70ead7ba43d4d067512ae5dcaeb0b1f:yes": {
+    "avg_price": 0.17142857492854047,
+    "total_amount": 436.566028,
+    "entry_time": "2026-03-17T10:12:11.256358",
+    "market_title": "Will Sarah Knafo advance to the second round of the 2026 Paris municipal election?",
+    "trader": "Gohst"
   }
 }
