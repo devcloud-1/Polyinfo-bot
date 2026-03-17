@@ -565,5 +565,12 @@
     "entry_time": "2026-03-17T14:04:04.123743",
     "market_title": "Will 15-19 ships transit the Strait of Hormuz between March 10-16?",
     "trader": "Gohst"
+  },
+  "Gohst:0x257d9c62557f0936ffacf3adb7cb7826caa0888dcb9d963f4e7546a03e695609:yes": {
+    "avg_price": 0.16,
+    "total_amount": 47.4624,
+    "entry_time": "2026-03-17T14:24:09.730213",
+    "market_title": "Will 15-19 ships transit the Strait of Hormuz between March 10-16?",
+    "trader": "Gohst"
   }
 }
