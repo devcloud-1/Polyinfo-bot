@@ -237,13 +237,6 @@
     "market_title": "Will Reza Pahlavi lead Iran in 2026?",
     "trader": "de5nuts"
   },
-  "aenews2:0x307a1ed89d60b61002dd5bbf00e1408c5ed2ab3fcdb056191ca7ef9bc34d38f3:yes": {
-    "avg_price": 0.5,
-    "total_amount": 6017.605,
-    "entry_time": "2026-03-14T00:15:54.492228",
-    "market_title": "Will the Democratic Party control the Senate after the 2026 Midterm elections?",
-    "trader": "aenews2"
-  },
   "de5nuts:0x814657a16a3c5b39834864251372e30f68ddcd0f040c5c6a83a52cddb2c35226:yes": {
     "avg_price": 0.6326078378411447,
     "total_amount": 10417.686139,
