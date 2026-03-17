@@ -1455,12 +1455,28 @@
       "resolved_price": null,
       "pnl_if_followed": null,
       "pnl_if_ignored": null
+    },
+    {
+      "id": "Gohst_20260317140407",
+      "timestamp": "2026-03-17T14:04:07.226171",
+      "trader": "Gohst",
+      "market": "Will 15-19 ships transit the Strait of Hormuz between March 10-16?",
+      "market_id": "0x257d9c62557f0936ffacf3adb7cb7826caa0888dcb9d963f4e7546a03e695609",
+      "outcome": "No",
+      "entry_price": 0.355,
+      "recommendation": "NO ENTRAR",
+      "score": 35,
+      "suggested_amount": null,
+      "status": "PENDING",
+      "resolved_price": null,
+      "pnl_if_followed": null,
+      "pnl_if_ignored": null
     }
   ],
   "stats": {
-    "total": 91,
+    "total": 92,
     "entrar": 14,
-    "no_entrar": 75,
+    "no_entrar": 76,
     "observar": 2
   }
 }
