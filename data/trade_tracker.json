@@ -4735,12 +4735,28 @@
       "resolved_price": null,
       "pnl_if_followed": null,
       "pnl_if_ignored": null
+    },
+    {
+      "id": "Gohst_20260317074415",
+      "timestamp": "2026-03-17T07:44:15.061638",
+      "trader": "Gohst",
+      "market": "US/Israel strike Yemen by March 14?",
+      "market_id": "0xbf5952e2f44f1251863da558fb625484230648a9709807eeb39fb08670a87e01",
+      "outcome": "",
+      "entry_price": 0,
+      "recommendation": "NO ENTRAR",
+      "score": 28,
+      "suggested_amount": null,
+      "status": "PENDING",
+      "resolved_price": null,
+      "pnl_if_followed": null,
+      "pnl_if_ignored": null
     }
   ],
   "stats": {
-    "total": 296,
+    "total": 297,
     "entrar": 25,
-    "no_entrar": 269,
+    "no_entrar": 270,
     "observar": 2
   }
 }
