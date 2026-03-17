@@ -154,6 +154,17 @@ def save_positions(data: dict):
 
 def record_entry(trader: str, market_id: str, outcome: str, avg_price: float, total_amount: float, market_title: str):
     """Record an entry position for later PnL calculation on exit."""
+    # FIX: Skip garbage entries — no price or no outcome means API returned bad data
+    if avg_price <= 0:
+        print(f"[Positions] Ignorado — precio=0 en {trader}:{market_id[:20]}...")
+        return
+    if not outcome or not outcome.strip():
+        print(f"[Positions] Ignorado — outcome vacío en {trader}:{market_id[:20]}...")
+        return
+    if total_amount <= 0:
+        print(f"[Positions] Ignorado — amount=0 en {trader}:{market_id[:20]}...")
+        return
+
     positions = load_positions()
     key = f"{trader}:{market_id}:{outcome.lower()}"
     if key in positions:
@@ -301,8 +312,33 @@ def save_tracker(data: dict):
 def log_trade(trader: str, market: str, outcome: str, price: float,
               recommendation: str, score: int, suggested_amount: float,
               market_id: str):
-    """Registra un trade nuevo con estado pendiente."""
+    """Registra un trade — actualiza si el market_id+trader ya existe (evita duplicados)."""
     tracker = load_tracker()
+
+    # ── Deduplication: check if this market+trader already logged ──
+    existing = None
+    for t in tracker["trades"]:
+        if t.get("market_id") == market_id and t.get("trader") == trader:
+            existing = t
+            break
+
+    if existing is not None:
+        # Update only if new score is better or recommendation changed
+        if score > existing.get("score", 0):
+            old_rec = existing.get("recommendation", "")
+            existing["score"] = score
+            existing["recommendation"] = recommendation
+            existing["suggested_amount"] = suggested_amount
+            existing["entry_price"] = price if price > 0 else existing["entry_price"]
+            existing["outcome"] = outcome if outcome else existing["outcome"]
+            existing["timestamp"] = datetime.now().isoformat()
+            save_tracker(tracker)
+            print(f"[Tracker] Trade actualizado (mejor score {score}): {existing['id']}")
+        else:
+            print(f"[Tracker] Duplicado ignorado — {trader}:{market_id[:20]}... ya registrado")
+        return existing["id"]
+
+    # ── New trade ──
     trade_entry = {
         "id": f"{trader}_{datetime.now().strftime('%Y%m%d%H%M%S')}",
         "timestamp": datetime.now().isoformat(),
@@ -314,15 +350,15 @@ def log_trade(trader: str, market: str, outcome: str, price: float,
         "recommendation": recommendation,
         "score": score,
         "suggested_amount": suggested_amount,
-        "status": "PENDING",   # PENDING → WIN | LOSS | EXPIRED
+        "status": "PENDING",
         "resolved_price": None,
         "pnl_if_followed": None,
         "pnl_if_ignored": None,
     }
     tracker["trades"].append(trade_entry)
-    tracker["stats"]["total"] += 1
-    tracker["stats"][recommendation.lower().replace(" ", "_")] = \
-        tracker["stats"].get(recommendation.lower().replace(" ", "_"), 0) + 1
+    tracker["stats"]["total"] = len(tracker["trades"])
+    rec_key = recommendation.lower().replace(" ", "_")
+    tracker["stats"][rec_key] = tracker["stats"].get(rec_key, 0) + 1
     save_tracker(tracker)
     print(f"[Tracker] Trade registrado: {trade_entry['id']}")
     return trade_entry["id"]
@@ -1141,6 +1177,19 @@ def analyze_trade_with_claude(trader_name: str, trade: dict, market_info: dict, 
     except Exception:
         pass
 
+    # Skip analysis entirely when we have no usable trade data
+    if price <= 0 and not outcome:
+        print(f"[Claude] Omitiendo análisis — sin precio ni outcome para {trader_name}:{market_title[:40]}")
+        return {
+            "recommendation": "NO ENTRAR",
+            "score": 10,
+            "risk_level": "ALTO",
+            "suggested_amount": 0.0,
+            "reasoning": "Datos insuficientes — precio y outcome desconocidos. No se puede evaluar el trade.",
+            "key_factor": "Sin datos de precio/outcome",
+            "best_date": None,
+        }
+
     # Flag near-certain markets (price > 0.95) — usually not worth copying
     near_certain = price > 0.95
     near_certain_note = (
@@ -1149,15 +1198,41 @@ def analyze_trade_with_claude(trader_name: str, trade: dict, market_info: dict, 
         f"Evalua si vale la pena dado el riesgo residual.\n"
     ) if near_certain else ""
 
-    # Check if this trade is in the trader's specialty area
-    specialty = profile.get("specialty", "").lower()
+    # Check if this trade is in the trader's specialty area (explicit keyword maps)
+    SPECIALTY_KEYWORDS = {
+        "aenews2": ["iran", "israel", "trump", "senate", "republican", "democrat", "hormuz",
+                    "middle east", "gaza", "ukraine", "khamenei", "ayatollah", "netanyahu",
+                    "congress", "election", "white house", "tariff", "fed chair"],
+        "Gohst":   ["iran", "netanyahu", "israel", "middle east", "yemen", "ukraine", "russia",
+                    "nato", "khamenei", "hamas", "hezbollah", "ceasefire", "strike", "military",
+                    "republican", "democrat", "house", "senate", "primary", "nomination"],
+        "de5nuts": ["taiwan", "china", "bitcoin", "crypto", "btc", "eth", "fed", "inflation",
+                    "oil", "crude", "macro", "interest rate", "gdp", "recession", "warsh",
+                    "iran", "regime", "pahlavi", "reza"],
+        "S-Works": ["nba", "nfl", "nhl", "mlb", "tennis", "ufc", "soccer", "esports",
+                    "counter-strike", "cs2", "dota", "lol", "league of legends",
+                    "champions league", "premier league", "la liga", "serie a", "bundesliga",
+                    "match winner", "map winner", "game winner", "set handicap", "over/under",
+                    "bol", "bo3", "bo5", "astralis", "furia", "navi", "natus vincere",
+                    "g2", "vitality", "faze", "heroic", "liquid", "spirit", "playoff",
+                    "tournament", "open", "masters", "slam", "wimbledon", "roland garros",
+                    "sinner", "alcaraz", "djokovic", "federer", "nadal", "arsenal", "chelsea",
+                    "barcelona", "real madrid", "manchester", "liverpool", "psg", "bayern",
+                    "warriors", "lakers", "celtics", "bulls", "heat", "nuggets", "knicks",
+                    "mma", "boxing", "fight", "vs.", "game 1", "game 2", "game 3",
+                    "bilibili", "bnk", "fearx", "betboom", "tundra", "aurora gaming",
+                    "fut esports", "bnp paribas", "atp", "wta", "itf"],
+    }
     market_lower = market_title.lower()
-    specialty_keywords = [w for w in specialty.replace(",", " ").split() if len(w) > 3]
-    specialty_match = any(kw in market_lower for kw in specialty_keywords)
+    trader_keys = SPECIALTY_KEYWORDS.get(trader_name, [])
+    specialty_match = any(kw in market_lower for kw in trader_keys)
     specialty_note = (
         f"IMPORTANTE: Este mercado cae DIRECTAMENTE en la especialidad de {trader_name} "
         f"({profile.get('specialty')}). Su historial en esta area es especialmente relevante.\n"
-    ) if specialty_match else ""
+    ) if specialty_match else (
+        f"NOTA: Este mercado esta FUERA de la especialidad principal de {trader_name}. "
+        f"Aplica criterio mas exigente.\n"
+    )
 
     # Max suggested amount scales with trader conviction (amount bet) and bankroll
     max_suggest = min(USER_BANKROLL * 0.15, MAX_PER_TRADE)  # up to 15% of bankroll
