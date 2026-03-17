@@ -1503,12 +1503,28 @@
       "resolved_price": null,
       "pnl_if_followed": null,
       "pnl_if_ignored": null
+    },
+    {
+      "id": "S-Works_20260317200921",
+      "timestamp": "2026-03-17T20:09:21.453856",
+      "trader": "S-Works",
+      "market": "Will Chelsea win the 2025\u201326 Champions League?",
+      "market_id": "0xc2ecc146cbbc8f24186766ef0b2cd56a1757227aee4cc9f951920538769a3490",
+      "outcome": "No",
+      "entry_price": 0.994,
+      "recommendation": "NO ENTRAR",
+      "score": 15,
+      "suggested_amount": null,
+      "status": "PENDING",
+      "resolved_price": null,
+      "pnl_if_followed": null,
+      "pnl_if_ignored": null
     }
   ],
   "stats": {
-    "total": 94,
+    "total": 95,
     "entrar": 14,
-    "no_entrar": 78,
+    "no_entrar": 79,
     "observar": 2
   }
 }
