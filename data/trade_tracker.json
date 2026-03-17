@@ -1535,12 +1535,28 @@
       "resolved_price": null,
       "pnl_if_followed": null,
       "pnl_if_ignored": null
+    },
+    {
+      "id": "de5nuts_20260317215322",
+      "timestamp": "2026-03-17T21:53:22.488597",
+      "trader": "de5nuts",
+      "market": "US strike on Colombia by March 31?",
+      "market_id": "0xb1fb3aaa332db47a97b2478ca9433eefbfbcb4d69c64b2d8477eee574ad66a50",
+      "outcome": "Yes",
+      "entry_price": 0.008,
+      "recommendation": "NO ENTRAR",
+      "score": 28,
+      "suggested_amount": null,
+      "status": "PENDING",
+      "resolved_price": null,
+      "pnl_if_followed": null,
+      "pnl_if_ignored": null
     }
   ],
   "stats": {
-    "total": 96,
+    "total": 97,
     "entrar": 14,
-    "no_entrar": 80,
+    "no_entrar": 81,
     "observar": 2
   }
 }
