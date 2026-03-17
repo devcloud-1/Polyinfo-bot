@@ -572,5 +572,12 @@
     "entry_time": "2026-03-17T15:08:38.892150",
     "market_title": "Will 2026 be the fourth-hottest year on record?",
     "trader": "aenews2"
+  },
+  "de5nuts:0xc5300759dc2089042380795fe7384010a6b6ebdf9e6da7ed3f786d9a5f61c563:yes": {
+    "avg_price": 0.78,
+    "total_amount": 3628.9422,
+    "entry_time": "2026-03-17T16:19:37.698620",
+    "market_title": "Will Crude Oil (CL) hit (HIGH) $100 by end of March?",
+    "trader": "de5nuts"
   }
 }
