@@ -558,5 +558,12 @@
     "entry_time": "2026-03-17T12:56:40.685749",
     "market_title": "Will Marco Rubio visit China by April 30, 2026?",
     "trader": "Gohst"
+  },
+  "Gohst:0x257d9c62557f0936ffacf3adb7cb7826caa0888dcb9d963f4e7546a03e695609:no": {
+    "avg_price": 0.355,
+    "total_amount": 269.9946,
+    "entry_time": "2026-03-17T14:04:04.123743",
+    "market_title": "Will 15-19 ships transit the Strait of Hormuz between March 10-16?",
+    "trader": "Gohst"
   }
 }
