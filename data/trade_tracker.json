@@ -4767,12 +4767,28 @@
       "resolved_price": null,
       "pnl_if_followed": null,
       "pnl_if_ignored": null
+    },
+    {
+      "id": "Gohst_20260317113729",
+      "timestamp": "2026-03-17T11:37:29.202053",
+      "trader": "Gohst",
+      "market": "Mojtaba Khamenei seen in public by March 16?",
+      "market_id": "0xcef6eb62edc0fdc47f90a7e8ed8dbb17194efc01dc7ae9cd0837e66d71b8900e",
+      "outcome": "",
+      "entry_price": 0,
+      "recommendation": "NO ENTRAR",
+      "score": 35,
+      "suggested_amount": null,
+      "status": "PENDING",
+      "resolved_price": null,
+      "pnl_if_followed": null,
+      "pnl_if_ignored": null
     }
   ],
   "stats": {
-    "total": 298,
+    "total": 299,
     "entrar": 26,
-    "no_entrar": 270,
+    "no_entrar": 271,
     "observar": 2
   }
 }
