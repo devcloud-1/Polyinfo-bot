@@ -1439,12 +1439,28 @@
       "resolved_price": null,
       "pnl_if_followed": null,
       "pnl_if_ignored": null
+    },
+    {
+      "id": "Gohst_20260317125643",
+      "timestamp": "2026-03-17T12:56:43.133342",
+      "trader": "Gohst",
+      "market": "Will Marco Rubio visit China by April 30, 2026?",
+      "market_id": "0x61619309efb1d47c90ccad819ff9975b027680b2b728a51e9a96f5521634b800",
+      "outcome": "Yes",
+      "entry_price": 0.3799999011999269,
+      "recommendation": "NO ENTRAR",
+      "score": 35,
+      "suggested_amount": null,
+      "status": "PENDING",
+      "resolved_price": null,
+      "pnl_if_followed": null,
+      "pnl_if_ignored": null
     }
   ],
   "stats": {
-    "total": 90,
+    "total": 91,
     "entrar": 14,
-    "no_entrar": 74,
+    "no_entrar": 75,
     "observar": 2
   }
 }
