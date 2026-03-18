@@ -64,6 +64,8 @@ TAKE_PROFIT_PCT = float(os.getenv("TAKE_PROFIT_PCT", "50"))  # alert at +50% gai
 STOP_LOSS_PCT   = float(os.getenv("STOP_LOSS_PCT",   "35"))  # alert at -35% loss
 # Track which positions already triggered an alert to avoid spam
 _price_alerts_sent: set = set()
+GITHUB_ALERTS_PATH = os.getenv("GITHUB_ALERTS_PATH", "data/price_alerts_sent.json")
+_github_alerts_sha = ""
 
 # Cross-trader convergence: track recent entries per market across all traders
 # Structure: { market_id: [{"trader": str, "outcome": str, "price": float, "ts": float}] }
@@ -183,6 +185,20 @@ def record_entry(trader: str, market_id: str, outcome: str, avg_price: float, to
     if total_amount <= 0:
         print(f"[Positions] Ignorado — amount=0 en {trader}:{market_id[:20]}...")
         return
+
+    # FIX: Skip near-certain entries (>90c) — not worth tracking SL/TP,
+    # and these are often already-resolved markets the API returns stale data for
+    if avg_price >= 0.90:
+        print(f"[Positions] Ignorado — precio >=90c ({avg_price*100:.1f}c), mercado casi resuelto en {trader}:{market_id[:20]}...")
+        return
+
+    # FIX: Warn on conflicting positions (same trader, same market, opposite outcome)
+    positions = load_positions()
+    existing_keys = [k for k in positions if k.startswith(f"{trader}:{market_id}:")]
+    if existing_keys:
+        existing_outcomes = [k.split(":", 2)[2] for k in existing_keys]
+        if outcome.lower() not in [o.lower() for o in existing_outcomes]:
+            print(f"[Positions] ⚠️ Posición conflictiva detectada — {trader} ya tiene {existing_outcomes} en este mercado, ahora agrega {outcome}. Registrando igual (hedging).")
 
     positions = load_positions()
     key = f"{trader}:{market_id}:{outcome.lower()}"
@@ -1908,12 +1924,69 @@ def get_current_interval() -> int:
 # PRICE MONITOR — stop loss / take profit on open positions
 # ============================================================
 
+def _load_price_alerts():
+    """Load persisted SL/TP alert keys from GitHub to survive restarts."""
+    global _price_alerts_sent, _github_alerts_sha
+    if not GITHUB_TOKEN or not GITHUB_REPO:
+        return
+    try:
+        data, sha = _github_get(GITHUB_ALERTS_PATH)
+        if data is not None:
+            _github_alerts_sent = set(data.get("sent", []))
+            _price_alerts_sent = _github_alerts_sent
+            _github_alerts_sha = sha
+            print(f"[PriceMonitor] {len(_price_alerts_sent)} alertas previas cargadas desde GitHub")
+    except Exception as e:
+        print(f"[PriceMonitor] Error cargando alertas: {e}")
+
+def _save_price_alerts():
+    """Persist SL/TP alert keys to GitHub so they survive restarts."""
+    global _github_alerts_sha
+    if not GITHUB_TOKEN or not GITHUB_REPO:
+        return
+    import threading
+    snapshot = list(_price_alerts_sent)
+    def _push():
+        global _github_alerts_sha
+        new_sha = _github_put(
+            GITHUB_ALERTS_PATH, {"sent": snapshot}, _github_alerts_sha,
+            f"alerts: {len(snapshot)} [{datetime.now().strftime('%Y-%m-%d %H:%M')}]"
+        )
+        if new_sha:
+            _github_alerts_sha = new_sha
+    threading.Thread(target=_push, daemon=True).start()
+
+
+def _auto_close_stale_positions():
+    """Auto-close positions at >97c — market is virtually resolved, stop monitoring."""
+    positions = load_positions()
+    to_close = []
+    for key, pos in positions.items():
+        price = pos.get("avg_price", 0)
+        if price >= 0.97:
+            to_close.append(key)
+    if to_close:
+        for key in to_close:
+            parts = key.split(":", 2)
+            if len(parts) == 3:
+                trader, market_id, outcome = parts
+                close_position(trader, market_id, outcome)
+                print(f"[PriceMonitor] Auto-cerrada posición a >97c: {key[:50]}")
+        print(f"[PriceMonitor] {len(to_close)} posiciones estancadas auto-cerradas")
+
+
 def check_position_prices():
     """Check current prices of all open positions and alert on SL/TP hits."""
     global _price_alerts_sent
+
+    # FIX: Auto-close positions at >=97c — virtually resolved, prevents false SL/TP spam
+    _auto_close_stale_positions()
+
     positions = load_positions()
     if not positions:
         return
+
+    alerts_fired = 0
     for key, pos in positions.items():
         try:
             parts = key.split(":", 2)
@@ -1923,10 +1996,24 @@ def check_position_prices():
             entry_price = pos.get("avg_price", 0)
             if entry_price <= 0:
                 continue
+
+            # FIX: Skip positions entered at >90c — near-certain markets,
+            # SL/TP math doesn't apply meaningfully
+            if entry_price >= 0.90:
+                continue
+
             r = requests.get(f"{CLOB_API}/markets/{market_id}", timeout=8)
             if not r.ok:
                 continue
-            tokens = r.json().get("tokens", [])
+
+            # FIX: Also check if market is resolved — skip if so
+            market_data = r.json()
+            if market_data.get("closed", False) or market_data.get("resolved", False):
+                close_position(trader, market_id, outcome)
+                print(f"[PriceMonitor] Mercado resuelto — cerrando posición: {key[:50]}")
+                continue
+
+            tokens = market_data.get("tokens", [])
             current_price = None
             for t in tokens:
                 if t.get("outcome", "").lower() == outcome.lower():
@@ -1934,12 +2021,15 @@ def check_position_prices():
                     break
             if current_price is None or current_price <= 0:
                 continue
+
             pnl_pct = (current_price - entry_price) / entry_price * 100
             market_title = pos.get("market_title", market_id[:40])
             tp_key = f"tp:{key}"
             sl_key = f"sl:{key}"
+
             if pnl_pct >= TAKE_PROFIT_PCT and tp_key not in _price_alerts_sent:
                 _price_alerts_sent.add(tp_key)
+                alerts_fired += 1
                 msg = (
                     f"🟩 <b>TAKE PROFIT ALCANZADO — {trader}</b>\n"
                     f"━━━━━━━━━━━━━━━━━━━━\n"
@@ -1952,8 +2042,10 @@ def check_position_prices():
                 )
                 send_telegram(msg)
                 print(f"[PriceMonitor] TP hit: {key} +{pnl_pct:.1f}%")
+
             elif pnl_pct <= -STOP_LOSS_PCT and sl_key not in _price_alerts_sent:
                 _price_alerts_sent.add(sl_key)
+                alerts_fired += 1
                 msg = (
                     f"🟥 <b>STOP LOSS ALCANZADO — {trader}</b>\n"
                     f"━━━━━━━━━━━━━━━━━━━━\n"
@@ -1966,8 +2058,13 @@ def check_position_prices():
                 )
                 send_telegram(msg)
                 print(f"[PriceMonitor] SL hit: {key} {pnl_pct:.1f}%")
+
         except Exception as e:
             print(f"[PriceMonitor Error] {key}: {e}")
+
+    # FIX: Persist alert keys to GitHub after each check so restarts don't re-spam
+    if alerts_fired > 0:
+        _save_price_alerts()
 
 
 # ============================================================
@@ -2084,6 +2181,10 @@ def main():
     import threading
     dashboard_thread = threading.Thread(target=run_dashboard_server, daemon=True)
     dashboard_thread.start()
+
+    # Load persisted SL/TP alert keys so restart does not re-spam
+    _load_price_alerts()
+    _auto_close_stale_positions()  # Clean up stale >=97c positions on startup
 
     # Wait for dashboard to bind before sending startup message
     time.sleep(3)
