@@ -187,5 +187,12 @@
     "entry_time": "2026-03-17T21:53:19.995171",
     "market_title": "US strike on Colombia by March 31?",
     "trader": "de5nuts"
+  },
+  "de5nuts:0x4c80df6f557bb0b9de08c0301ebdce500dd9bdc58400d9269fb8fab1709ed584:yes": {
+    "avg_price": 0.14,
+    "total_amount": 2.8546,
+    "entry_time": "2026-03-18T20:17:54.997272",
+    "market_title": "China x Taiwan military clash before 2027?",
+    "trader": "de5nuts"
   }
 }
