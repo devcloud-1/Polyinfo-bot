@@ -1631,12 +1631,28 @@
       "resolved_price": null,
       "pnl_if_followed": null,
       "pnl_if_ignored": null
+    },
+    {
+      "id": "S-Works_20260318150054",
+      "timestamp": "2026-03-18T15:00:54.277046",
+      "trader": "S-Works",
+      "market": "Counter-Strike: Team Falcons vs NRG (BO3) - BLAST Open Rotterdam Group A",
+      "market_id": "0x8dbd6b3b4bb738f148529a8f1a7d3723a3230787c0b51d0a025de7a289577b2d",
+      "outcome": "",
+      "entry_price": 0,
+      "recommendation": "NO ENTRAR",
+      "score": 10,
+      "suggested_amount": 0.0,
+      "status": "PENDING",
+      "resolved_price": null,
+      "pnl_if_followed": null,
+      "pnl_if_ignored": null
     }
   ],
   "stats": {
-    "total": 102,
+    "total": 103,
     "entrar": 14,
-    "no_entrar": 86,
+    "no_entrar": 87,
     "observar": 2
   }
 }
