@@ -1599,12 +1599,28 @@
       "resolved_price": null,
       "pnl_if_followed": null,
       "pnl_if_ignored": null
+    },
+    {
+      "id": "Gohst_20260318100521",
+      "timestamp": "2026-03-18T10:05:21.060370",
+      "trader": "Gohst",
+      "market": "Will James Mendrick win the 2026 Illinois Governor Republican primary election?",
+      "market_id": "0x57cfca4488cb8042d74c1cfc38f6664604632d63bb01201c8884e34142a046ea",
+      "outcome": "",
+      "entry_price": 0,
+      "recommendation": "NO ENTRAR",
+      "score": 10,
+      "suggested_amount": 0.0,
+      "status": "PENDING",
+      "resolved_price": null,
+      "pnl_if_followed": null,
+      "pnl_if_ignored": null
     }
   ],
   "stats": {
-    "total": 100,
+    "total": 101,
     "entrar": 14,
-    "no_entrar": 84,
+    "no_entrar": 85,
     "observar": 2
   }
 }
