@@ -426,13 +426,6 @@
     "market_title": "LoL: Bilibili Gaming vs BNK FEARX (BO5) - First Stand Group A",
     "trader": "S-Works"
   },
-  "S-Works:0xdf2152b30a80e37241936490bfbefcf32a6c045132015b01b1d292007e1de3e8:bilibili gaming": {
-    "avg_price": 0.999,
-    "total_amount": 10386.26334,
-    "entry_time": "2026-03-16T17:09:31.409982",
-    "market_title": "LoL: Bilibili Gaming vs BNK FEARX (BO5) - First Stand Group A",
-    "trader": "S-Works"
-  },
   "de5nuts:0x968405389c88e2d11e379042be4893f34989b0086ae84029edffbec51ff5fd7f:no": {
     "avg_price": 0.91,
     "total_amount": 303.03,
@@ -445,13 +438,6 @@
     "total_amount": 10291.435,
     "entry_time": "2026-03-16T19:13:13.559899",
     "market_title": "LoL: G2 Esports vs Team Secret Whales - Game 3 Winner",
-    "trader": "S-Works"
-  },
-  "S-Works:0x3008eea08078ed14e2fb7601cfaf14851f150f568d1ac573a9cd4046d7ae271c:g2 esports": {
-    "avg_price": 0.97,
-    "total_amount": 100507.0253,
-    "entry_time": "2026-03-16T19:33:20.941837",
-    "market_title": "LoL: G2 Esports vs Team Secret Whales (BO5) - First Stand Group A",
     "trader": "S-Works"
   },
   "Gohst:0x61619309efb1d47c90ccad819ff9975b027680b2b728a51e9a96f5521634b800:yes": {
@@ -496,13 +482,6 @@
     "market_title": "Will the U.S. invade Iran by March 31?",
     "trader": "de5nuts"
   },
-  "S-Works:0xc2ecc146cbbc8f24186766ef0b2cd56a1757227aee4cc9f951920538769a3490:no": {
-    "avg_price": 0.994,
-    "total_amount": 1944.25406,
-    "entry_time": "2026-03-17T20:09:18.735670",
-    "market_title": "Will Chelsea win the 2025\u201326 Champions League?",
-    "trader": "S-Works"
-  },
   "S-Works:0x02a64b7c7ddb3f8fa184e42f4f00e005bf28c183c756fe2712b15ea033cf275b:no": {
     "avg_price": 0.8900003858112646,
     "total_amount": 2.030009,
@@ -516,20 +495,6 @@
     "entry_time": "2026-03-17T21:53:19.995171",
     "market_title": "US strike on Colombia by March 31?",
     "trader": "de5nuts"
-  },
-  "aenews2:0x0e521c254b70d3299cbf702ccd826a6b25717d18c10046d55442d599560919e2:yes": {
-    "avg_price": 0.9945206649499202,
-    "total_amount": 220.81301999999997,
-    "entry_time": "2026-03-18T01:54:05.522559",
-    "market_title": "Will Juliana Stratton be the Democratic nominee for Senate in Illinois?",
-    "trader": "aenews2"
-  },
-  "aenews2:0x8df5deceb6164ab03aff80ed36e72a916d6bde004288dab11a6fd66aff6e08c0:no": {
-    "avg_price": 0.9956525962765433,
-    "total_amount": 89567.31564,
-    "entry_time": "2026-03-18T10:13:06.131497",
-    "market_title": "Will Trump say \"Ayatollah\" or \"Khamenei\" this week? (March 15)",
-    "trader": "aenews2"
   },
   "S-Works:0x3d1ef5a2e87274b2d22988e5546e0773ff1664a85630d9665135469791631dfa:team falcons": {
     "avg_price": 0.9989640691751615,
