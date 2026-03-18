@@ -104,13 +104,6 @@
     "market_title": "Will SPD win the most seats in the 2026 Rhineland-Palatinate parliamentary elections?",
     "trader": "aenews2"
   },
-  "S-Works:0x0e41a261926d080f28f6af0e105ec5c9990bb50a74165c9356c540f9b06eca09:capitals": {
-    "avg_price": 0.4568604859589698,
-    "total_amount": 2101.135671,
-    "entry_time": "2026-03-14T21:59:39.374169",
-    "market_title": "Bruins vs. Capitals",
-    "trader": "S-Works"
-  },
   "aenews2:0x01e6a091de6901308e9b936debef526d0232fe1c3fab4adef3185289a34038ce:no": {
     "avg_price": 0.8959228926603615,
     "total_amount": 3996.942665,
