@@ -20,46 +20,11 @@
     "market_title": "Will Bitcoin dip to $55,000 in March?",
     "trader": "de5nuts"
   },
-  "aenews2:0x3536d7d6b2a69f9eed544bf089619692dbd8fa40f53bd96c78410be7c6ded24e:no": {
-    "avg_price": 0.9485456352907335,
-    "total_amount": 2029.38156,
-    "entry_time": "2026-03-11T15:01:15.120389",
-    "market_title": "Will global temperature increase by more than 1.24\u00baC in February 2026?",
-    "trader": "aenews2"
-  },
-  "Gohst:0xde865d7a11ea6a57a790f6fc86d53c9dbfeef4c03fdc019197a34fdc338d44cb:down": {
-    "avg_price": 0.3899999859599991,
-    "total_amount": 9.999999,
-    "entry_time": "2026-03-11T16:06:52.629002",
-    "market_title": "Bitcoin Up or Down - March 11, 12:00PM-12:15PM ET",
-    "trader": "Gohst"
-  },
-  "Gohst:0xdb830615d0cf20272077885d6221ecc152ca7da4b665737ad6b3ed22bd46e17d:up": {
-    "avg_price": 0.46999999153999933,
-    "total_amount": 9.999999,
-    "entry_time": "2026-03-11T16:22:28.592999",
-    "market_title": "Bitcoin Up or Down - March 11, 12:15PM-12:30PM ET",
-    "trader": "Gohst"
-  },
-  "Gohst:0xe0d714dd0d6d4b5f44adcabc0e617a77d2886bb7e05e92f0d5f2e76231070a22:down": {
-    "avg_price": 0.24956482653472517,
-    "total_amount": 29.999997999999998,
-    "entry_time": "2026-03-11T16:35:58.384357",
-    "market_title": "Bitcoin Up or Down - March 11, 12:30PM-12:45PM ET",
-    "trader": "Gohst"
-  },
   "Gohst:0x8aab152fc4bc00948af5b09be024d4791c9becc1c74f925337c32f6405d52390:no": {
     "avg_price": 0.26000000149717056,
     "total_amount": 20.839309,
     "entry_time": "2026-03-11T20:44:26.943980",
     "market_title": "US strikes Yemen by March 31, 2026?",
-    "trader": "Gohst"
-  },
-  "Gohst:0xbf5952e2f44f1251863da558fb625484230648a9709807eeb39fb08670a87e01:no": {
-    "avg_price": 0.3,
-    "total_amount": 39.999,
-    "entry_time": "2026-03-11T20:49:40.655460",
-    "market_title": "US/Israel strike Yemen by March 14?",
     "trader": "Gohst"
   },
   "aenews2:0x771de080638c0fd0deff3e2016dfb22f16c1f6edad690c75d1f4cb9b240add51:no": {
@@ -75,27 +40,6 @@
     "entry_time": "2026-03-12T02:45:20.137615",
     "market_title": "Will the Iranian regime fall by April 30?",
     "trader": "de5nuts"
-  },
-  "de5nuts:0x30a892ea01a40602dd58029243f165a97ce22dbfeabf427f86d705ae650fad4b:yes": {
-    "avg_price": 0.04773536940577583,
-    "total_amount": 1239.9115900000002,
-    "entry_time": "2026-03-12T09:28:16.807979",
-    "market_title": "US forces enter Iran by March 14?",
-    "trader": "de5nuts"
-  },
-  "Gohst:0xcef6eb62edc0fdc47f90a7e8ed8dbb17194efc01dc7ae9cd0837e66d71b8900e:no": {
-    "avg_price": 0.35,
-    "total_amount": 119.9975,
-    "entry_time": "2026-03-12T12:15:38.165764",
-    "market_title": "Mojtaba Khamenei seen in public by March 16?",
-    "trader": "Gohst"
-  },
-  "Gohst:0xb93df4cab70e63c3f4c0e4137d9ff03ca7ec17241076b54c24cffb9b8fab4ee2:no": {
-    "avg_price": 0.25688607686795006,
-    "total_amount": 434.293248,
-    "entry_time": "2026-03-12T13:00:27.609706",
-    "market_title": "Mojtaba Khamenei seen in public by March 13?",
-    "trader": "Gohst"
   },
   "Gohst:0x7cb525e831729325d651017f81cbcb6f1adde5011c7b2283babea00b4ae93ae7:no": {
     "avg_price": 0.355,
@@ -195,25 +139,11 @@
     "market_title": "Dota 2: BetBoom Team vs Team Yandex - Game 2 Winner",
     "trader": "S-Works"
   },
-  "S-Works:0x056e5327893e1488134b69ef7bff7c600219227939211974645e1f6ac1da0735:natus vincere": {
-    "avg_price": 0.9699697483090617,
-    "total_amount": 1649.279131,
-    "entry_time": "2026-03-14T17:32:51.151466",
-    "market_title": "Counter-Strike: Natus Vincere vs FUT Esports (BO3) - ESL Pro League Playoffs",
-    "trader": "S-Works"
-  },
   "S-Works:0xca29c516d2389b53784ed071429364a0f5b7cc420e65b3a54e914ffa286e4d44:aurora gaming": {
     "avg_price": 0.56,
     "total_amount": 1249.9592,
     "entry_time": "2026-03-14T18:35:51.758675",
     "market_title": "Counter-Strike: Aurora Gaming vs Astralis - Map 1 Winner",
-    "trader": "S-Works"
-  },
-  "S-Works:0xd311f31f24fc009f37157404c55e1d0b93c7654945a2f4e6f10eb4a072d1e9d8:senators": {
-    "avg_price": 0.91,
-    "total_amount": 649.74,
-    "entry_time": "2026-03-14T18:54:15.927305",
-    "market_title": "Ducks vs. Senators",
     "trader": "S-Works"
   },
   "S-Works:0xc21102343de45fa3cde23792c20fa31b3df90a21d1b431fb8bbc90a0ca865978:real madrid cf": {
@@ -244,33 +174,12 @@
     "market_title": "Bruins vs. Capitals",
     "trader": "S-Works"
   },
-  "de5nuts:0x2de69f043bbef4e0340eb7e1a08d59ae8cc6e33b938e827104e07b97df0ff992:yes": {
-    "avg_price": 0.04,
-    "total_amount": 3.8688,
-    "entry_time": "2026-03-14T22:21:22.520309",
-    "market_title": "US/Israel strike on Fordow nuclear facility by March 15?",
-    "trader": "de5nuts"
-  },
-  "aenews2:0x7cb525e831729325d651017f81cbcb6f1adde5011c7b2283babea00b4ae93ae7:no": {
-    "avg_price": 0.9528087637375169,
-    "total_amount": 552345.0359299998,
-    "entry_time": "2026-03-14T22:45:45.545106",
-    "market_title": "Netanyahu out by March 31?",
-    "trader": "aenews2"
-  },
   "aenews2:0x01e6a091de6901308e9b936debef526d0232fe1c3fab4adef3185289a34038ce:no": {
     "avg_price": 0.8959228926603615,
     "total_amount": 3996.942665,
     "entry_time": "2026-03-15T03:47:10.472179",
     "market_title": "Will \"Reminders of Him\" Opening Weekend Box Office be between 19m and 22m?",
     "trader": "aenews2"
-  },
-  "de5nuts:0x23dbb60ade08c2664ac29488325afbc0136735bc7beb9180d9c0cb72620b0b13:yes": {
-    "avg_price": 0.9460000035119922,
-    "total_amount": 7651.726604999998,
-    "entry_time": "2026-03-15T05:37:49.612433",
-    "market_title": "Will Kevin Warsh be confirmed as Fed Chair?",
-    "trader": "de5nuts"
   },
   "S-Works:0x2fef0ad4c03cc34383f4cf29ffeb7fe0c58d914f560260c6e5ecf61a2e3763d6:team liquid": {
     "avg_price": 0.4994182487925393,
@@ -328,13 +237,6 @@
     "market_title": "Dota 2: BetBoom Team vs Team Liquid (BO3) - PGL Wallachia Playoffs",
     "trader": "S-Works"
   },
-  "S-Works:0xa1c4eecb6d5514b5ad756552b6e84c4526384877e626f137a7c80189664eec48:fut esports": {
-    "avg_price": 0.92,
-    "total_amount": 39776.798,
-    "entry_time": "2026-03-15T13:04:59.668928",
-    "market_title": "Counter-Strike: FUT Esports vs Astralis - Map 1 Winner",
-    "trader": "S-Works"
-  },
   "S-Works:0xf5edbfaf29c7e9a158eeaa71f7748b3311a1d0bc9c500a9231d1094d376e93af:fut esports": {
     "avg_price": 0.730000002393896,
     "total_amount": 521.2010740000001,
@@ -370,13 +272,6 @@
     "market_title": "Italy Judicial Reform Referendum passes?",
     "trader": "Gohst"
   },
-  "aenews2:0x8df5deceb6164ab03aff80ed36e72a916d6bde004288dab11a6fd66aff6e08c0:yes": {
-    "avg_price": 0.031000000003819344,
-    "total_amount": 89.2824,
-    "entry_time": "2026-03-16T09:17:31.663807",
-    "market_title": "Will Trump say \"Ayatollah\" or \"Khamenei\" this week? (March 15)",
-    "trader": "aenews2"
-  },
   "aenews2:0x865303ccb9a48341d1bae33b3b4379ca86d5abbff3ce1e132716631cc0af3cce:no": {
     "avg_price": 0.8377018388209239,
     "total_amount": 49998.58389000001,
@@ -398,13 +293,6 @@
     "market_title": "LoL: Bilibili Gaming vs BNK FEARX (BO5) - First Stand Group A",
     "trader": "S-Works"
   },
-  "de5nuts:0x968405389c88e2d11e379042be4893f34989b0086ae84029edffbec51ff5fd7f:no": {
-    "avg_price": 0.91,
-    "total_amount": 303.03,
-    "entry_time": "2026-03-16T18:48:59.882253",
-    "market_title": "Will Crude Oil (CL) hit (LOW) $70 by end of March?",
-    "trader": "de5nuts"
-  },
   "S-Works:0x6a8655bc7b8397d62b15a0b13fbf3402126db0839ed359686370321b94e7ef68:g2 esports": {
     "avg_price": 0.6999999999999998,
     "total_amount": 10291.435,
@@ -417,20 +305,6 @@
     "total_amount": 0.999999,
     "entry_time": "2026-03-17T12:56:40.685749",
     "market_title": "Will Marco Rubio visit China by April 30, 2026?",
-    "trader": "Gohst"
-  },
-  "Gohst:0x257d9c62557f0936ffacf3adb7cb7826caa0888dcb9d963f4e7546a03e695609:no": {
-    "avg_price": 0.355,
-    "total_amount": 269.9946,
-    "entry_time": "2026-03-17T14:04:04.123743",
-    "market_title": "Will 15-19 ships transit the Strait of Hormuz between March 10-16?",
-    "trader": "Gohst"
-  },
-  "Gohst:0x257d9c62557f0936ffacf3adb7cb7826caa0888dcb9d963f4e7546a03e695609:yes": {
-    "avg_price": 0.16,
-    "total_amount": 47.4624,
-    "entry_time": "2026-03-17T14:24:09.730213",
-    "market_title": "Will 15-19 ships transit the Strait of Hormuz between March 10-16?",
     "trader": "Gohst"
   },
   "aenews2:0x6c8a4426ea2278ce7936c770cbf4d66ad2dead1c8ee50e90232e0379f6f42562:no": {
@@ -453,13 +327,6 @@
     "entry_time": "2026-03-17T17:23:05.770123",
     "market_title": "Will the U.S. invade Iran by March 31?",
     "trader": "de5nuts"
-  },
-  "S-Works:0x02a64b7c7ddb3f8fa184e42f4f00e005bf28c183c756fe2712b15ea033cf275b:no": {
-    "avg_price": 0.8900003858112646,
-    "total_amount": 2.030009,
-    "entry_time": "2026-03-17T20:43:09.763974",
-    "market_title": "Will Manchester City FC win on 2026-03-17?",
-    "trader": "S-Works"
   },
   "de5nuts:0xb1fb3aaa332db47a97b2478ca9433eefbfbcb4d69c64b2d8477eee574ad66a50:yes": {
     "avg_price": 0.008,
