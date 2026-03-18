@@ -119,15 +119,20 @@ def load_positions() -> dict:
                     json.dump(data, f, indent=2)
             except Exception:
                 pass
+            print(f"[Positions] ✓ Cargado desde GitHub ({len(data)} posiciones abiertas)")
             return data
+        else:
+            print(f"[Positions] ⚠️ No se encontró positions.json en GitHub — posiciones en blanco. Las salidas no podrán calcular PnL hasta que se registren nuevas entradas.")
     try:
         if os.path.exists(POSITIONS_FILE):
             with open(POSITIONS_FILE, "r") as f:
                 data = json.load(f)
                 _positions_cache = data
+                print(f"[Positions] Cargado desde disco ({len(data)} posiciones)")
                 return data
     except Exception:
         pass
+    print(f"[Positions] ⚠️ Sin posiciones previas — tracker de PnL parte desde cero")
     _positions_cache = {}
     return {}
 
@@ -313,6 +318,11 @@ def log_trade(trader: str, market: str, outcome: str, price: float,
               recommendation: str, score: int, suggested_amount: float,
               market_id: str):
     """Registra un trade — actualiza si el market_id+trader ya existe (evita duplicados)."""
+    # FIX: Skip garbage entries with no usable data
+    if price <= 0 and not outcome.strip():
+        print(f"[Tracker] Ignorado — sin precio ni outcome para {trader}:{market[:40]}")
+        return None
+
     tracker = load_tracker()
 
     # ── Deduplication: check if this market+trader already logged ──
@@ -462,8 +472,33 @@ def generate_weekly_report() -> str:
     # Por trader
     gohst_trades = [t for t in resolved if t["trader"] == "Gohst"]
     de5nuts_trades = [t for t in resolved if t["trader"] == "de5nuts"]
+    aenews2_trades = [t for t in resolved if t["trader"] == "aenews2"]
+    sworks_trades = [t for t in resolved if t["trader"] == "S-Works"]
     gohst_wins = len([t for t in gohst_trades if t["status"] == "WIN"])
     de5nuts_wins = len([t for t in de5nuts_trades if t["status"] == "WIN"])
+    aenews2_wins = len([t for t in aenews2_trades if t["status"] == "WIN"])
+    sworks_wins = len([t for t in sworks_trades if t["status"] == "WIN"])
+
+    gohst_line = (
+        f"👻 Gohst: {len(gohst_trades)} trades, {gohst_wins} wins "
+        f"({gohst_wins/len(gohst_trades)*100:.0f}%)\n"
+        if gohst_trades else ""
+    )
+    de5nuts_line = (
+        f"🌰 de5nuts: {len(de5nuts_trades)} trades, {de5nuts_wins} wins "
+        f"({de5nuts_wins/len(de5nuts_trades)*100:.0f}%)\n"
+        if de5nuts_trades else ""
+    )
+    aenews2_line = (
+        f"📰 aenews2: {len(aenews2_trades)} trades, {aenews2_wins} wins "
+        f"({aenews2_wins/len(aenews2_trades)*100:.0f}%)\n"
+        if aenews2_trades else ""
+    )
+    sworks_line = (
+        f"🏆 S-Works: {len(sworks_trades)} trades, {sworks_wins} wins "
+        f"({sworks_wins/len(sworks_trades)*100:.0f}%)\n"
+        if sworks_trades else ""
+    )
 
     report = (
         f"📊 <b>REPORTE SEMANAL — Efectividad IA</b>\n"
@@ -482,11 +517,10 @@ def generate_weekly_report() -> str:
         f"💸 Ignorando la IA: ${pnl_ignorando_ia:+.2f}\n\n"
 
         f"<b>POR TRADER:</b>\n"
-        f"👻 Gohst: {len(gohst_trades)} trades, {gohst_wins} wins "
-        f"({gohst_wins/len(gohst_trades)*100:.0f}%)\n" if gohst_trades else ""
-        f"🌰 de5nuts: {len(de5nuts_trades)} trades, {de5nuts_wins} wins "
-        f"({de5nuts_wins/len(de5nuts_trades)*100:.0f}%)\n" if de5nuts_trades else ""
-
+        f"{gohst_line}"
+        f"{de5nuts_line}"
+        f"{aenews2_line}"
+        f"{sworks_line}"
         f"━━━━━━━━━━━━━━━━━━━━\n"
         f"⚠️ <i>PnL simulado — no dinero real</i>"
     )
@@ -1237,17 +1271,57 @@ def analyze_trade_with_claude(trader_name: str, trade: dict, market_info: dict, 
     # Max suggested amount scales with trader conviction (amount bet) and bankroll
     max_suggest = min(USER_BANKROLL * 0.15, MAX_PER_TRADE)  # up to 15% of bankroll
 
+    # ── Trader-specific thresholds ──────────────────────────────
+    # High-conviction traders in their specialty = lean ENTRAR by default
+    # Contrarian/exploratory traders = lean NO ENTRAR unless very clear signal
+    if trader_name == "aenews2" and specialty_match:
+        threshold_note = (
+            "UMBRAL BAJO: aenews2 tiene 74.6% win rate y $1.9M en ganancias. "
+            "Cuando opera en su especialidad, recomienda ENTRAR salvo razón concreta en contra "
+            "(mercado casi resuelto, apuesta pequeña <$100 = sondeo, precio >0.92).\n"
+        )
+    elif trader_name == "S-Works" and specialty_match:
+        threshold_note = (
+            "UMBRAL BAJO: S-Works tiene 66.9% win rate en deportes y $2.2M en ganancias, Rank #37 global. "
+            "Cuando opera en deportes, recomienda ENTRAR salvo que el mercado esté muy próximo a resolverse "
+            "o la apuesta sea pequeña (<$50).\n"
+        )
+    elif trader_name == "Gohst":
+        threshold_note = (
+            "UMBRAL MEDIO: Gohst es contrarian con 57.1% win rate. Apuesta baja probabilidad con alta convicción. "
+            "Prioriza trades donde apostó grande (>$200) y el precio es bajo (<30c = alto retorno potencial). "
+            "Fuera de su especialidad, aplica criterio más exigente.\n"
+        )
+    elif trader_name == "de5nuts":
+        threshold_note = (
+            "UMBRAL ALTO: de5nuts tiene 48.6% win rate pero profit factor 4.69x — gana en pocos trades muy grandes. "
+            "Solo recomienda ENTRAR si la apuesta fue grande (>$300, señal de alta convicción) "
+            "y el mercado cae directamente en su especialidad. De lo contrario, NO ENTRAR o OBSERVAR.\n"
+        )
+    else:
+        threshold_note = (
+            "UMBRAL MEDIO: Aplica criterio balanceado. Recomienda ENTRAR cuando haya señales positivas claras.\n"
+        )
+
+    # ── Conviction signal from bet size ──────────────────────────
+    if amount >= 500:
+        conviction_note = f"🔥 ALTA CONVICCIÓN: apostó ${amount:.0f} — señal fuerte de que está muy seguro.\n"
+    elif amount >= 100:
+        conviction_note = f"📊 CONVICCIÓN MEDIA: apostó ${amount:.0f} — señal razonable.\n"
+    else:
+        conviction_note = f"⚠️ APUESTA PEQUEÑA: solo ${amount:.0f} — posiblemente sondeo o posición exploratoria. Pesa esto negativamente.\n"
+
     prompt = (
-        f"Eres un analista de prediction markets. Tu trabajo es evaluar si copiar este trade.\n"
-        f"REGLA CRITICA: Debes recomendar ENTRAR cuando haya señales positivas claras. "
-        f"Ser siempre conservador es un ERROR — significa perder oportunidades reales. "
-        f"Calibra tu respuesta: aproximadamente 1 de cada 3 trades buenos deberia ser ENTRAR.\n\n"
+        f"Eres un analista de prediction markets especializado en copy trading. "
+        f"Tu objetivo es maximizar ganancias copiando a traders con track record probado.\n\n"
         f"TRADER: {trader_name}\n"
         f"- Win Rate: {profile.get('win_rate')}% | PnL total: ${profile.get('pnl'):,} | Profit Factor: {profile.get('profit_factor')}x\n"
         f"- Especialidad: {profile.get('specialty')}\n"
         f"- Estilo: {profile.get('style')}\n"
         f"- Meses activo: {profile.get('months_active')}\n"
         f"{specialty_note}"
+        f"{threshold_note}"
+        f"{conviction_note}"
         f"\nTRADE DETECTADO:\n"
         f"- Mercado: {market_title}\n"
         f"- Posicion: {outcome} | Accion: {side}\n"
@@ -1259,9 +1333,8 @@ def analyze_trade_with_claude(trader_name: str, trade: dict, market_info: dict, 
         f"- Descripcion: {market_info.get('description', '')[:300]}\n"
         f"{siblings_text}\n"
         f"BANKROLL DEL USUARIO: ${USER_BANKROLL} USD. suggested_amount debe ser entre $0.50 y ${max_suggest:.2f}.\n"
-        f"Solo recomienda NO ENTRAR si hay razon concreta (mercado casi resuelto, fuera de especialidad, trader apostando pequeño = sin conviccion).\n"
-        f'Responde SOLO con este JSON, sin texto adicional:\n'
-        f'{{"recommendation":"ENTRAR"|"NO ENTRAR"|"OBSERVAR","score":<0-100>,"risk_level":"BAJO"|"MEDIO"|"ALTO","suggested_amount":<0.50-{max_suggest:.2f}>,"reasoning":"<max 2 oraciones>","key_factor":"<factor decisivo>","best_date":"<fecha recomendada o null>"}}'
+        f"Razona brevemente y responde SOLO con este JSON, sin texto adicional:\n"
+        f'{{"recommendation":"ENTRAR"|"NO ENTRAR"|"OBSERVAR","score":<0-100>,"risk_level":"BAJO"|"MEDIO"|"ALTO","suggested_amount":<0.50-{max_suggest:.2f}>,"reasoning":"<max 2 oraciones>","key_factor":"<factor decisivo en una frase>","best_date":"<fecha recomendada o null>"}}'
     )
 
     try:
@@ -1503,7 +1576,15 @@ def flush_pending(key: str):
             close_position(trader_name, market_id, outcome)
             print(f"[{trader_name}] Alerta de salida con PnL enviada ✓ | {pnl_pct:+.1f}%")
         else:
-            # No recorded entry — send basic exit alert (no IA analysis for exits)
+            # No recorded entry — evaluate if current price is still a good entry
+            # The trader may be exiting with profit but market may still have value
+            exit_analysis = None
+            if ANTHROPIC_API_KEY and market_info.get("volume", 0) >= MIN_VOLUME:
+                # Build a synthetic trade to ask Claude about current value
+                synthetic = dict(consolidated)
+                synthetic["side"] = "BUY"  # ask as if we were entering now
+                exit_analysis = analyze_trade_with_claude(trader_name, synthetic, market_info)
+
             exit_parts = [
                 f"🔴 <b>SALIDA — {trader_name}</b>{'(' + str(n) + ' transacciones)' if n > 1 else ''}",
                 "━━━━━━━━━━━━━━━━━━━━",
@@ -1514,8 +1595,20 @@ def flush_pending(key: str):
                 f"🌊 <b>Volumen mercado:</b> ${market_info.get('volume', 0):,.0f}",
                 "━━━━━━━━━━━━━━━━━━━━",
                 "ℹ️ <i>Sin entrada registrada — no se puede calcular PnL</i>",
-                f"⏰ {datetime.now().strftime('%H:%M:%S')}",
             ]
+
+            if exit_analysis:
+                rec = exit_analysis.get("recommendation", "OBSERVAR")
+                score = exit_analysis.get("score", 0)
+                reasoning = exit_analysis.get("reasoning", "")
+                rec_emoji = {"ENTRAR": "✅", "NO ENTRAR": "❌", "OBSERVAR": "👁"}.get(rec, "👁")
+                exit_parts += [
+                    f"\n🧠 <b>¿Sigue siendo buena entrada ahora?</b>",
+                    f"{rec_emoji} <b>{rec}</b> (score {score}/100)",
+                    f"💡 {reasoning}",
+                ]
+
+            exit_parts.append(f"⏰ {datetime.now().strftime('%H:%M:%S')}")
             send_telegram("\n".join(exit_parts))
             print(f"[{trader_name}] Salida sin entrada registrada — alerta básica enviada")
         return
