@@ -55,6 +55,20 @@ USER_BANKROLL = float(os.getenv("USER_BANKROLL", "25"))
 TRACKER_FILE = "/tmp/trade_tracker.json"
 MESSAGE_LOG_FILE = "/tmp/message_log.json"   # Full Telegram message history
 
+# Smart interval: faster polling during active hours (6am-11pm Santiago = UTC-3)
+ACTIVE_INTERVAL = int(os.getenv("ACTIVE_INTERVAL", "40"))    # seconds during active hours
+SLEEP_INTERVAL  = int(os.getenv("SLEEP_INTERVAL",  "120"))   # seconds overnight
+
+# Price monitoring: stop loss and take profit on open positions
+TAKE_PROFIT_PCT = float(os.getenv("TAKE_PROFIT_PCT", "50"))  # alert at +50% gain
+STOP_LOSS_PCT   = float(os.getenv("STOP_LOSS_PCT",   "35"))  # alert at -35% loss
+# Track which positions already triggered an alert to avoid spam
+_price_alerts_sent: set = set()
+
+# Cross-trader convergence: track recent entries per market across all traders
+# Structure: { market_id: [{"trader": str, "outcome": str, "price": float, "ts": float}] }
+_market_convergence: dict = {}
+
 # Trading config
 MY_PRIVATE_KEY = os.getenv("MY_PRIVATE_KEY", "")           # Polygon private key
 MY_WALLET = os.getenv("MY_WALLET", "")                      # Your Polygon wallet address
@@ -842,12 +856,12 @@ def get_token_id_for_market(market_id: str, outcome: str) -> str:
 last_update_id = 0
 
 def poll_telegram_callbacks():
-    """Poll Telegram for button presses and handle them."""
+    """Poll Telegram for button presses and /status command."""
     global last_update_id, pending_approvals
     try:
         r = requests.get(
             f"https://api.telegram.org/bot{TELEGRAM_TOKEN}/getUpdates",
-            params={"offset": last_update_id + 1, "timeout": 1, "allowed_updates": ["callback_query"]},
+            params={"offset": last_update_id + 1, "timeout": 1, "allowed_updates": ["callback_query", "message"]},
             timeout=5,
         )
         if not r.ok:
@@ -855,6 +869,15 @@ def poll_telegram_callbacks():
         updates = r.json().get("result", [])
         for update in updates:
             last_update_id = update["update_id"]
+
+            # Handle /status command
+            msg_update = update.get("message", {})
+            if msg_update:
+                text = msg_update.get("text", "").strip().lower()
+                if text.startswith("/status"):
+                    handle_status_command()
+                    continue
+
             cb = update.get("callback_query")
             if not cb:
                 continue
@@ -1615,6 +1638,7 @@ def flush_pending(key: str):
 
     # BUY — record position and send entry alert with buttons
     record_entry(trader_name, market_id, outcome, avg_price, total_amount, market_title)
+    register_convergence(trader_name, market_id, outcome, avg_price, market_title)
 
     print(f"[{trader_name}] Analizando posición consolidada ({n} trades, ${total_amount:.0f} total)...")
     siblings = get_sibling_markets(market_id)
@@ -1870,6 +1894,183 @@ def run_dashboard_server():
         print(f"[Dashboard] No se pudo iniciar el servidor en puerto {port} — bot continúa sin dashboard")
 
 
+# ============================================================
+# SMART INTERVAL
+# ============================================================
+
+def get_current_interval() -> int:
+    """Return faster interval during active hours (6am-11pm Santiago, UTC-3)."""
+    hour_santiago = (datetime.utcnow().hour - 3) % 24
+    return ACTIVE_INTERVAL if 6 <= hour_santiago < 23 else SLEEP_INTERVAL
+
+
+# ============================================================
+# PRICE MONITOR — stop loss / take profit on open positions
+# ============================================================
+
+def check_position_prices():
+    """Check current prices of all open positions and alert on SL/TP hits."""
+    global _price_alerts_sent
+    positions = load_positions()
+    if not positions:
+        return
+    for key, pos in positions.items():
+        try:
+            parts = key.split(":", 2)
+            if len(parts) < 3:
+                continue
+            trader, market_id, outcome = parts
+            entry_price = pos.get("avg_price", 0)
+            if entry_price <= 0:
+                continue
+            r = requests.get(f"{CLOB_API}/markets/{market_id}", timeout=8)
+            if not r.ok:
+                continue
+            tokens = r.json().get("tokens", [])
+            current_price = None
+            for t in tokens:
+                if t.get("outcome", "").lower() == outcome.lower():
+                    current_price = float(t.get("price", 0))
+                    break
+            if current_price is None or current_price <= 0:
+                continue
+            pnl_pct = (current_price - entry_price) / entry_price * 100
+            market_title = pos.get("market_title", market_id[:40])
+            tp_key = f"tp:{key}"
+            sl_key = f"sl:{key}"
+            if pnl_pct >= TAKE_PROFIT_PCT and tp_key not in _price_alerts_sent:
+                _price_alerts_sent.add(tp_key)
+                msg = (
+                    f"🟩 <b>TAKE PROFIT ALCANZADO — {trader}</b>\n"
+                    f"━━━━━━━━━━━━━━━━━━━━\n"
+                    f"📋 {market_title}\n"
+                    f"🎯 Posición: {outcome}\n"
+                    f"📥 Entrada: {entry_price*100:.1f}¢ → 📤 Ahora: {current_price*100:.1f}¢\n"
+                    f"💰 <b>PnL: +{pnl_pct:.1f}% (objetivo: +{TAKE_PROFIT_PCT:.0f}%)</b>\n"
+                    f"━━━━━━━━━━━━━━━━━━━━\n"
+                    f"⚠️ El trader original no ha salido aún — decides tú"
+                )
+                send_telegram(msg)
+                print(f"[PriceMonitor] TP hit: {key} +{pnl_pct:.1f}%")
+            elif pnl_pct <= -STOP_LOSS_PCT and sl_key not in _price_alerts_sent:
+                _price_alerts_sent.add(sl_key)
+                msg = (
+                    f"🟥 <b>STOP LOSS ALCANZADO — {trader}</b>\n"
+                    f"━━━━━━━━━━━━━━━━━━━━\n"
+                    f"📋 {market_title}\n"
+                    f"🎯 Posición: {outcome}\n"
+                    f"📥 Entrada: {entry_price*100:.1f}¢ → 📤 Ahora: {current_price*100:.1f}¢\n"
+                    f"🩸 <b>PnL: {pnl_pct:.1f}% (límite: -{STOP_LOSS_PCT:.0f}%)</b>\n"
+                    f"━━━━━━━━━━━━━━━━━━━━\n"
+                    f"⚠️ Considera salir — el trader original sigue dentro"
+                )
+                send_telegram(msg)
+                print(f"[PriceMonitor] SL hit: {key} {pnl_pct:.1f}%")
+        except Exception as e:
+            print(f"[PriceMonitor Error] {key}: {e}")
+
+
+# ============================================================
+# CROSS-TRADER CONVERGENCE
+# ============================================================
+
+def register_convergence(trader_name: str, market_id: str, outcome: str, price: float, market_title: str):
+    """Register a new entry and alert if multiple traders are in the same market."""
+    global _market_convergence
+    now = time.time()
+    for mid in list(_market_convergence.keys()):
+        _market_convergence[mid] = [e for e in _market_convergence[mid] if now - e["ts"] < 172800]
+        if not _market_convergence[mid]:
+            del _market_convergence[mid]
+    if market_id not in _market_convergence:
+        _market_convergence[market_id] = []
+    already = any(e["trader"] == trader_name for e in _market_convergence[market_id])
+    if already:
+        return
+    _market_convergence[market_id].append({
+        "trader": trader_name, "outcome": outcome,
+        "price": price, "ts": now, "title": market_title,
+    })
+    entries = _market_convergence[market_id]
+    if len(entries) < 2:
+        return
+    outcomes_set = set(e["outcome"].lower() for e in entries)
+    has_conflict = len(outcomes_set) > 1
+    traders_str = ", ".join(e["trader"] for e in entries)
+    avg_p = sum(e["price"] for e in entries) / len(entries)
+    if has_conflict:
+        sides = ", ".join(f"{e['trader']}→{e['outcome']}" for e in entries)
+        msg = (
+            f"⚡ <b>CONFLICTO ENTRE TRADERS</b>\n"
+            f"━━━━━━━━━━━━━━━━━━━━\n"
+            f"📋 {market_title}\n"
+            f"🔀 Posiciones opuestas: {sides}\n"
+            f"━━━━━━━━━━━━━━━━━━━━\n"
+            f"⚠️ <i>Traders en lados opuestos — NO copiar hasta tener más claridad</i>"
+        )
+        send_telegram(msg)
+        print(f"[Convergence] CONFLICTO en {market_id[:20]}: {sides}")
+    else:
+        msg = (
+            f"🔥 <b>CONVERGENCIA — {len(entries)} TRADERS EN EL MISMO MERCADO</b>\n"
+            f"━━━━━━━━━━━━━━━━━━━━\n"
+            f"📋 {market_title}\n"
+            f"🎯 Posición: {entries[0]['outcome']}\n"
+            f"👥 Traders: {traders_str}\n"
+            f"💵 Precio promedio: {avg_p*100:.1f}¢\n"
+            f"━━━━━━━━━━━━━━━━━━━━\n"
+            f"✅ <b>Señal fuerte — múltiples traders con track record apuestan lo mismo</b>"
+        )
+        send_telegram(msg)
+        print(f"[Convergence] {len(entries)} traders en {market_id[:20]}: {traders_str}")
+
+
+# ============================================================
+# /status COMMAND
+# ============================================================
+
+def handle_status_command():
+    """Respond to /status Telegram command."""
+    positions = load_positions()
+    tracker = load_tracker()
+    now = datetime.now()
+    pos_lines = []
+    for key, pos in positions.items():
+        parts = key.split(":", 2)
+        trader = parts[0] if parts else "?"
+        outcome = parts[2] if len(parts) > 2 else "?"
+        title = pos.get("market_title", "?")[:45]
+        entry_p = pos.get("avg_price", 0)
+        amount = pos.get("total_amount", 0)
+        entry_dt = pos.get("entry_time", "")
+        age = ""
+        try:
+            delta = now - datetime.fromisoformat(entry_dt)
+            age = f"{delta.days}d {delta.seconds//3600}h" if delta.days > 0 else f"{delta.seconds//3600}h"
+        except Exception:
+            pass
+        pos_lines.append(f"  • [{trader}] {title} | {outcome} @ {entry_p*100:.0f}¢ ${amount:.2f} ({age})")
+    week_ago = now - timedelta(days=7)
+    weekly = [t for t in tracker.get("trades", []) if datetime.fromisoformat(t["timestamp"]) > week_ago]
+    resolved = [t for t in weekly if t["status"] in ("WIN", "LOSS")]
+    wins = len([t for t in resolved if t["status"] == "WIN"])
+    win_rate = wins / len(resolved) * 100 if resolved else 0
+    lines = [
+        f"📊 <b>STATUS — {now.strftime('%H:%M:%S')}</b>",
+        "━━━━━━━━━━━━━━━━━━━━",
+        f"⏱ Intervalo: {get_current_interval()}s ({'activo' if get_current_interval() == ACTIVE_INTERVAL else 'nocturno'})",
+        f"📂 Posiciones abiertas: {len(positions)}",
+    ]
+    lines += pos_lines if pos_lines else ["  (ninguna)"]
+    lines += [
+        "━━━━━━━━━━━━━━━━━━━━",
+        f"📈 Última semana: {len(weekly)} alertas | {len(resolved)} resueltas | {wins} wins ({win_rate:.0f}%)",
+        f"⏳ Trades en buffer: {len(pending_trades)}",
+    ]
+    send_telegram("\n".join(lines))
+    print("[Status] Enviado")
+
+
 def main():
     print("=" * 50)
     print("🤖 Polymarket Copy Alert Bot v3 — con Tracker")
@@ -1887,10 +2088,13 @@ def main():
     # Wait for dashboard to bind before sending startup message
     time.sleep(3)
     send_telegram(
-        "🤖 <b>Bot v3 iniciado — con Tracker de Efectividad</b>\n"
+        "🤖 <b>Bot v4 iniciado</b>\n"
         f"Monitoreando: {', '.join(WALLETS.keys())}\n"
-        f"✅ Cada decisión queda registrada\n"
-        f"📊 Reporte semanal automático los lunes\n"
+        f"✅ Tracker · Convergencia · Monitor SL/TP\n"
+        f"📊 Reporte semanal los lunes\n"
+        f"⏱ Intervalo activo: {ACTIVE_INTERVAL}s | nocturno: {SLEEP_INTERVAL}s\n"
+        f"🔔 SL: -{STOP_LOSS_PCT:.0f}% | TP: +{TAKE_PROFIT_PCT:.0f}%\n"
+        f"💬 Escribe /status para ver estado en tiempo real\n"
         f"{'✅ Análisis IA activo' if ANTHROPIC_API_KEY else '⚠️ Agrega ANTHROPIC_API_KEY en Railway'}"
     )
 
@@ -1913,15 +2117,23 @@ def main():
             # Flush any pending trade groups whose window has expired
             flush_stale_pending()
 
-            # Poll Telegram for button presses (every cycle)
+            # Check open position prices for SL/TP (every 5 cycles)
+            if cycle % 5 == 0:
+                try:
+                    check_position_prices()
+                except Exception as e:
+                    print(f"[PriceMonitor Error] {e}")
+
+            # Poll Telegram for button presses and /status command
             poll_telegram_callbacks()
 
         except Exception as e:
             print(f"[LOOP ERROR] Excepción en ciclo principal: {e}")
             # Never crash the main loop — log and continue
-        
+
         cycle += 1
-        time.sleep(CHECK_INTERVAL)
+        interval = get_current_interval()
+        time.sleep(interval)
 
 
 if __name__ == "__main__":
