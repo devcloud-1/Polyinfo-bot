@@ -1679,12 +1679,28 @@
       "resolved_price": null,
       "pnl_if_followed": null,
       "pnl_if_ignored": null
+    },
+    {
+      "id": "Gohst_20260318234158",
+      "timestamp": "2026-03-18T23:41:58.744938",
+      "trader": "Gohst",
+      "market": "Will the Pirate Party of Slovenia (PPS) be part of the next Government of Slovenia?",
+      "market_id": "0x242cfa13ed5e551ab70184842aabbdb2d6cf33028ec4f841bd92dc74d69e5d97",
+      "outcome": "Yes",
+      "entry_price": 0.18,
+      "recommendation": "NO ENTRAR",
+      "score": 28,
+      "suggested_amount": null,
+      "status": "PENDING",
+      "resolved_price": null,
+      "pnl_if_followed": null,
+      "pnl_if_ignored": null
     }
   ],
   "stats": {
-    "total": 105,
+    "total": 106,
     "entrar": 14,
-    "no_entrar": 88,
+    "no_entrar": 89,
     "observar": 3
   }
 }
