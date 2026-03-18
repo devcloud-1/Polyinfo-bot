@@ -153,13 +153,6 @@
     "market_title": "Will Crude Oil (CL) hit (LOW) $75 by end of March?",
     "trader": "de5nuts"
   },
-  "S-Works:0xdf2152b30a80e37241936490bfbefcf32a6c045132015b01b1d292007e1de3e8:bnk fearx": {
-    "avg_price": 0.03,
-    "total_amount": 56.350035,
-    "entry_time": "2026-03-16T16:59:00.912550",
-    "market_title": "LoL: Bilibili Gaming vs BNK FEARX (BO5) - First Stand Group A",
-    "trader": "S-Works"
-  },
   "S-Works:0x6a8655bc7b8397d62b15a0b13fbf3402126db0839ed359686370321b94e7ef68:g2 esports": {
     "avg_price": 0.6999999999999998,
     "total_amount": 10291.435,
