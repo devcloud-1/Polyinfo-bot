@@ -1583,12 +1583,28 @@
       "resolved_price": null,
       "pnl_if_followed": null,
       "pnl_if_ignored": null
+    },
+    {
+      "id": "Gohst_20260318091601",
+      "timestamp": "2026-03-18T09:16:01.544960",
+      "trader": "Gohst",
+      "market": "Will Adal Regis be the Democratic Nominee for IL-02?",
+      "market_id": "0xd1275a0090429f89b14c61a9280a704c338add8458e88d22b8315ced272a562d",
+      "outcome": "",
+      "entry_price": 0,
+      "recommendation": "NO ENTRAR",
+      "score": 10,
+      "suggested_amount": 0.0,
+      "status": "PENDING",
+      "resolved_price": null,
+      "pnl_if_followed": null,
+      "pnl_if_ignored": null
     }
   ],
   "stats": {
-    "total": 99,
+    "total": 100,
     "entrar": 14,
-    "no_entrar": 83,
+    "no_entrar": 84,
     "observar": 2
   }
 }
