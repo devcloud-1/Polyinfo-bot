@@ -1663,12 +1663,28 @@
       "resolved_price": null,
       "pnl_if_followed": null,
       "pnl_if_ignored": null
+    },
+    {
+      "id": "de5nuts_20260318201757",
+      "timestamp": "2026-03-18T20:17:57.181009",
+      "trader": "de5nuts",
+      "market": "China x Taiwan military clash before 2027?",
+      "market_id": "0x4c80df6f557bb0b9de08c0301ebdce500dd9bdc58400d9269fb8fab1709ed584",
+      "outcome": "Yes",
+      "entry_price": 0.14,
+      "recommendation": "OBSERVAR",
+      "score": 42,
+      "suggested_amount": null,
+      "status": "PENDING",
+      "resolved_price": null,
+      "pnl_if_followed": null,
+      "pnl_if_ignored": null
     }
   ],
   "stats": {
-    "total": 104,
+    "total": 105,
     "entrar": 14,
     "no_entrar": 88,
-    "observar": 2
+    "observar": 3
   }
 }
