@@ -1,183 +1,63 @@
 {
   "messages": [
     {
-      "ts": "2026-03-18T18:09:33",
+      "ts": "2026-03-18T18:10:42",
       "type": "INFO",
       "text": "\ud83e\udd16 <b>Bot v4 iniciado</b>\nMonitoreando: Gohst, de5nuts, aenews2, S-Works\n\u2705 Tracker \u00b7 Convergencia \u00b7 Monitor SL/TP\n\ud83d\udcca Reporte semanal los lunes\n\u23f1 Intervalo activo: 40s | nocturno: 120s\n\ud83d\udd14 SL: -35% | TP: +50%\n\ud83d\udcac Escribe /status para ver estado en tiempo real\n\u2705 An\u00e1lisis IA activo",
       "has_buttons": false
     },
     {
-      "ts": "2026-03-18T18:09:40",
+      "ts": "2026-03-18T18:10:48",
       "type": "INFO",
       "text": "\ud83d\udfe9 <b>TAKE PROFIT ALCANZADO \u2014 Gohst</b>\n\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\n\ud83d\udccb Will Ron Eller be the Republican Nominee for MS-02?\n\ud83c\udfaf Posici\u00f3n: yes\n\ud83d\udce5 Entrada: 27.0\u00a2 \u2192 \ud83d\udce4 Ahora: 94.2\u00a2\n\ud83d\udcb0 <b>PnL: +248.7% (objetivo: +50%)</b>\n\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\n\u26a0\ufe0f El trader original no ha salido a\u00fan \u2014 decides t\u00fa",
       "has_buttons": false
     },
     {
-      "ts": "2026-03-18T18:09:40",
+      "ts": "2026-03-18T18:10:49",
       "type": "INFO",
       "text": "\ud83d\udfe5 <b>STOP LOSS ALCANZADO \u2014 de5nuts</b>\n\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\n\ud83d\udccb Will Bitcoin dip to $60,000 in March?\n\ud83c\udfaf Posici\u00f3n: yes\n\ud83d\udce5 Entrada: 25.5\u00a2 \u2192 \ud83d\udce4 Ahora: 13.5\u00a2\n\ud83e\ude78 <b>PnL: -47.1% (l\u00edmite: -35%)</b>\n\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\n\u26a0\ufe0f Considera salir \u2014 el trader original sigue dentro",
       "has_buttons": false
     },
     {
-      "ts": "2026-03-18T18:09:40",
+      "ts": "2026-03-18T18:10:49",
       "type": "INFO",
-      "text": "\ud83d\udfe5 <b>STOP LOSS ALCANZADO \u2014 de5nuts</b>\n\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\n\ud83d\udccb Will Bitcoin dip to $55,000 in March?\n\ud83c\udfaf Posici\u00f3n: yes\n\ud83d\udce5 Entrada: 11.0\u00a2 \u2192 \ud83d\udce4 Ahora: 6.2\u00a2\n\ud83e\ude78 <b>PnL: -43.6% (l\u00edmite: -35%)</b>\n\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\n\u26a0\ufe0f Considera salir \u2014 el trader original sigue dentro",
+      "text": "\ud83d\udfe5 <b>STOP LOSS ALCANZADO \u2014 de5nuts</b>\n\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\n\ud83d\udccb Will Bitcoin dip to $55,000 in March?\n\ud83c\udfaf Posici\u00f3n: yes\n\ud83d\udce5 Entrada: 11.0\u00a2 \u2192 \ud83d\udce4 Ahora: 6.3\u00a2\n\ud83e\ude78 <b>PnL: -42.7% (l\u00edmite: -35%)</b>\n\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\n\u26a0\ufe0f Considera salir \u2014 el trader original sigue dentro",
       "has_buttons": false
     },
     {
-      "ts": "2026-03-18T18:09:41",
+      "ts": "2026-03-18T18:10:49",
       "type": "INFO",
       "text": "\ud83d\udfe9 <b>TAKE PROFIT ALCANZADO \u2014 Gohst</b>\n\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\n\ud83d\udccb Bitcoin Up or Down - March 11, 10:40AM-10:45AM ET\n\ud83c\udfaf Posici\u00f3n: up\n\ud83d\udce5 Entrada: 45.0\u00a2 \u2192 \ud83d\udce4 Ahora: 100.0\u00a2\n\ud83d\udcb0 <b>PnL: +122.2% (objetivo: +50%)</b>\n\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\n\u26a0\ufe0f El trader original no ha salido a\u00fan \u2014 decides t\u00fa",
       "has_buttons": false
     },
     {
-      "ts": "2026-03-18T18:09:41",
+      "ts": "2026-03-18T18:10:49",
       "type": "INFO",
       "text": "\ud83d\udfe9 <b>TAKE PROFIT ALCANZADO \u2014 Gohst</b>\n\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\n\ud83d\udccb Bitcoin Up or Down - March 11, 11:30AM-11:45AM ET\n\ud83c\udfaf Posici\u00f3n: down\n\ud83d\udce5 Entrada: 40.6\u00a2 \u2192 \ud83d\udce4 Ahora: 100.0\u00a2\n\ud83d\udcb0 <b>PnL: +146.1% (objetivo: +50%)</b>\n\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\n\u26a0\ufe0f El trader original no ha salido a\u00fan \u2014 decides t\u00fa",
       "has_buttons": false
     },
     {
-      "ts": "2026-03-18T18:09:41",
+      "ts": "2026-03-18T18:10:50",
       "type": "INFO",
       "text": "\ud83d\udfe9 <b>TAKE PROFIT ALCANZADO \u2014 Gohst</b>\n\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\n\ud83d\udccb Bitcoin Up or Down - March 11, 11:45AM-12:00PM ET\n\ud83c\udfaf Posici\u00f3n: up\n\ud83d\udce5 Entrada: 39.9\u00a2 \u2192 \ud83d\udce4 Ahora: 100.0\u00a2\n\ud83d\udcb0 <b>PnL: +150.6% (objetivo: +50%)</b>\n\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\n\u26a0\ufe0f El trader original no ha salido a\u00fan \u2014 decides t\u00fa",
       "has_buttons": false
     },
     {
-      "ts": "2026-03-18T18:09:41",
+      "ts": "2026-03-18T18:10:50",
       "type": "INFO",
       "text": "\ud83d\udfe9 <b>TAKE PROFIT ALCANZADO \u2014 Gohst</b>\n\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\n\ud83d\udccb Bitcoin Up or Down - March 11, 12:15PM-12:30PM ET\n\ud83c\udfaf Posici\u00f3n: up\n\ud83d\udce5 Entrada: 47.0\u00a2 \u2192 \ud83d\udce4 Ahora: 100.0\u00a2\n\ud83d\udcb0 <b>PnL: +112.8% (objetivo: +50%)</b>\n\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\n\u26a0\ufe0f El trader original no ha salido a\u00fan \u2014 decides t\u00fa",
       "has_buttons": false
     },
     {
-      "ts": "2026-03-18T18:09:42",
+      "ts": "2026-03-18T18:10:50",
       "type": "INFO",
       "text": "\ud83d\udfe9 <b>TAKE PROFIT ALCANZADO \u2014 Gohst</b>\n\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\n\ud83d\udccb US strikes Yemen by March 31, 2026?\n\ud83c\udfaf Posici\u00f3n: no\n\ud83d\udce5 Entrada: 26.0\u00a2 \u2192 \ud83d\udce4 Ahora: 83.0\u00a2\n\ud83d\udcb0 <b>PnL: +219.2% (objetivo: +50%)</b>\n\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\n\u26a0\ufe0f El trader original no ha salido a\u00fan \u2014 decides t\u00fa",
       "has_buttons": false
     },
     {
-      "ts": "2026-03-18T18:09:42",
+      "ts": "2026-03-18T18:10:50",
       "type": "INFO",
       "text": "\ud83d\udfe9 <b>TAKE PROFIT ALCANZADO \u2014 Gohst</b>\n\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\n\ud83d\udccb US/Israel strike Yemen by March 14?\n\ud83c\udfaf Posici\u00f3n: no\n\ud83d\udce5 Entrada: 30.0\u00a2 \u2192 \ud83d\udce4 Ahora: 100.0\u00a2\n\ud83d\udcb0 <b>PnL: +233.3% (objetivo: +50%)</b>\n\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\n\u26a0\ufe0f El trader original no ha salido a\u00fan \u2014 decides t\u00fa",
-      "has_buttons": false
-    },
-    {
-      "ts": "2026-03-18T18:09:42",
-      "type": "INFO",
-      "text": "\ud83d\udfe9 <b>TAKE PROFIT ALCANZADO \u2014 Gohst</b>\n\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\n\ud83d\udccb Mojtaba Khamenei seen in public by March 16?\n\ud83c\udfaf Posici\u00f3n: no\n\ud83d\udce5 Entrada: 35.0\u00a2 \u2192 \ud83d\udce4 Ahora: 100.0\u00a2\n\ud83d\udcb0 <b>PnL: +185.7% (objetivo: +50%)</b>\n\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\n\u26a0\ufe0f El trader original no ha salido a\u00fan \u2014 decides t\u00fa",
-      "has_buttons": false
-    },
-    {
-      "ts": "2026-03-18T18:09:42",
-      "type": "INFO",
-      "text": "\ud83d\udfe9 <b>TAKE PROFIT ALCANZADO \u2014 Gohst</b>\n\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\n\ud83d\udccb Mojtaba Khamenei seen in public by March 13?\n\ud83c\udfaf Posici\u00f3n: no\n\ud83d\udce5 Entrada: 25.7\u00a2 \u2192 \ud83d\udce4 Ahora: 100.0\u00a2\n\ud83d\udcb0 <b>PnL: +289.3% (objetivo: +50%)</b>\n\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\n\u26a0\ufe0f El trader original no ha salido a\u00fan \u2014 decides t\u00fa",
-      "has_buttons": false
-    },
-    {
-      "ts": "2026-03-18T18:09:42",
-      "type": "INFO",
-      "text": "\ud83d\udfe9 <b>TAKE PROFIT ALCANZADO \u2014 Gohst</b>\n\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\n\ud83d\udccb Netanyahu out by March 31?\n\ud83c\udfaf Posici\u00f3n: no\n\ud83d\udce5 Entrada: 35.5\u00a2 \u2192 \ud83d\udce4 Ahora: 97.0\u00a2\n\ud83d\udcb0 <b>PnL: +173.1% (objetivo: +50%)</b>\n\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\n\u26a0\ufe0f El trader original no ha salido a\u00fan \u2014 decides t\u00fa",
-      "has_buttons": false
-    },
-    {
-      "ts": "2026-03-18T18:09:43",
-      "type": "INFO",
-      "text": "\ud83d\udfe9 <b>TAKE PROFIT ALCANZADO \u2014 Gohst</b>\n\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\n\ud83d\udccb Military action against Iran ends on March 30, 2026?\n\ud83c\udfaf Posici\u00f3n: no\n\ud83d\udce5 Entrada: 39.0\u00a2 \u2192 \ud83d\udce4 Ahora: 98.0\u00a2\n\ud83d\udcb0 <b>PnL: +151.4% (objetivo: +50%)</b>\n\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\n\u26a0\ufe0f El trader original no ha salido a\u00fan \u2014 decides t\u00fa",
-      "has_buttons": false
-    },
-    {
-      "ts": "2026-03-18T18:09:43",
-      "type": "INFO",
-      "text": "\ud83d\udfe9 <b>TAKE PROFIT ALCANZADO \u2014 Gohst</b>\n\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\n\ud83d\udccb Will Marco Rubio visit China by April 30, 2026?\n\ud83c\udfaf Posici\u00f3n: no\n\ud83d\udce5 Entrada: 12.3\u00a2 \u2192 \ud83d\udce4 Ahora: 70.0\u00a2\n\ud83d\udcb0 <b>PnL: +467.6% (objetivo: +50%)</b>\n\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\n\u26a0\ufe0f El trader original no ha salido a\u00fan \u2014 decides t\u00fa",
-      "has_buttons": false
-    },
-    {
-      "ts": "2026-03-18T18:09:43",
-      "type": "INFO",
-      "text": "\ud83d\udfe9 <b>TAKE PROFIT ALCANZADO \u2014 Gohst</b>\n\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\n\ud83d\udccb Will Janez Jan\u0161a be the next Prime Minister of Slovenia?\n\ud83c\udfaf Posici\u00f3n: yes\n\ud83d\udce5 Entrada: 26.0\u00a2 \u2192 \ud83d\udce4 Ahora: 56.5\u00a2\n\ud83d\udcb0 <b>PnL: +117.3% (objetivo: +50%)</b>\n\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\n\u26a0\ufe0f El trader original no ha salido a\u00fan \u2014 decides t\u00fa",
-      "has_buttons": false
-    },
-    {
-      "ts": "2026-03-18T18:09:44",
-      "type": "INFO",
-      "text": "\ud83d\udfe5 <b>STOP LOSS ALCANZADO \u2014 Gohst</b>\n\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\n\ud83d\udccb Will the Democratic Party win the NY-18 House seat?\n\ud83c\udfaf Posici\u00f3n: no\n\ud83d\udce5 Entrada: 15.0\u00a2 \u2192 \ud83d\udce4 Ahora: 9.0\u00a2\n\ud83e\ude78 <b>PnL: -40.0% (l\u00edmite: -35%)</b>\n\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\n\u26a0\ufe0f Considera salir \u2014 el trader original sigue dentro",
-      "has_buttons": false
-    },
-    {
-      "ts": "2026-03-18T18:09:44",
-      "type": "INFO",
-      "text": "\ud83d\udfe5 <b>STOP LOSS ALCANZADO \u2014 de5nuts</b>\n\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\n\ud83d\udccb Will Crude Oil (CL) hit (HIGH) $110 by end of March?\n\ud83c\udfaf Posici\u00f3n: yes\n\ud83d\udce5 Entrada: 59.1\u00a2 \u2192 \ud83d\udce4 Ahora: 38.2\u00a2\n\ud83e\ude78 <b>PnL: -35.4% (l\u00edmite: -35%)</b>\n\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\n\u26a0\ufe0f Considera salir \u2014 el trader original sigue dentro",
-      "has_buttons": false
-    },
-    {
-      "ts": "2026-03-18T18:09:44",
-      "type": "INFO",
-      "text": "\ud83d\udfe9 <b>TAKE PROFIT ALCANZADO \u2014 S-Works</b>\n\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\n\ud83d\udccb Dota 2: Tundra Esports vs Team Spirit - Game 2 Winner\n\ud83c\udfaf Posici\u00f3n: team spirit\n\ud83d\udce5 Entrada: 54.0\u00a2 \u2192 \ud83d\udce4 Ahora: 100.0\u00a2\n\ud83d\udcb0 <b>PnL: +85.1% (objetivo: +50%)</b>\n\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\n\u26a0\ufe0f El trader original no ha salido a\u00fan \u2014 decides t\u00fa",
-      "has_buttons": false
-    },
-    {
-      "ts": "2026-03-18T18:09:44",
-      "type": "INFO",
-      "text": "\ud83d\udfe9 <b>TAKE PROFIT ALCANZADO \u2014 S-Works</b>\n\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\n\ud83d\udccb Dota 2: BetBoom Team vs Team Yandex - Game 1 Winner\n\ud83c\udfaf Posici\u00f3n: team yandex\n\ud83d\udce5 Entrada: 53.8\u00a2 \u2192 \ud83d\udce4 Ahora: 100.0\u00a2\n\ud83d\udcb0 <b>PnL: +85.9% (objetivo: +50%)</b>\n\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\n\u26a0\ufe0f El trader original no ha salido a\u00fan \u2014 decides t\u00fa",
-      "has_buttons": false
-    },
-    {
-      "ts": "2026-03-18T18:09:45",
-      "type": "INFO",
-      "text": "\ud83d\udfe9 <b>TAKE PROFIT ALCANZADO \u2014 S-Works</b>\n\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\n\ud83d\udccb Counter-Strike: Natus Vincere vs FUT Esports - Map 1 Winner\n\ud83c\udfaf Posici\u00f3n: natus vincere\n\ud83d\udce5 Entrada: 59.0\u00a2 \u2192 \ud83d\udce4 Ahora: 100.0\u00a2\n\ud83d\udcb0 <b>PnL: +69.5% (objetivo: +50%)</b>\n\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\n\u26a0\ufe0f El trader original no ha salido a\u00fan \u2014 decides t\u00fa",
-      "has_buttons": false
-    },
-    {
-      "ts": "2026-03-18T18:09:45",
-      "type": "INFO",
-      "text": "\ud83d\udfe9 <b>TAKE PROFIT ALCANZADO \u2014 S-Works</b>\n\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\n\ud83d\udccb Dota 2: BetBoom Team vs Team Yandex - Game 2 Winner\n\ud83c\udfaf Posici\u00f3n: team yandex\n\ud83d\udce5 Entrada: 49.9\u00a2 \u2192 \ud83d\udce4 Ahora: 100.0\u00a2\n\ud83d\udcb0 <b>PnL: +100.5% (objetivo: +50%)</b>\n\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\n\u26a0\ufe0f El trader original no ha salido a\u00fan \u2014 decides t\u00fa",
-      "has_buttons": false
-    },
-    {
-      "ts": "2026-03-18T18:09:45",
-      "type": "INFO",
-      "text": "\ud83d\udfe9 <b>TAKE PROFIT ALCANZADO \u2014 S-Works</b>\n\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\n\ud83d\udccb Spread: Real Madrid CF (-1.5)\n\ud83c\udfaf Posici\u00f3n: real madrid cf\n\ud83d\udce5 Entrada: 53.0\u00a2 \u2192 \ud83d\udce4 Ahora: 100.0\u00a2\n\ud83d\udcb0 <b>PnL: +88.7% (objetivo: +50%)</b>\n\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\n\u26a0\ufe0f El trader original no ha salido a\u00fan \u2014 decides t\u00fa",
-      "has_buttons": false
-    },
-    {
-      "ts": "2026-03-18T18:09:46",
-      "type": "INFO",
-      "text": "\ud83d\udfe9 <b>TAKE PROFIT ALCANZADO \u2014 S-Works</b>\n\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\n\ud83d\udccb Dota 2: BetBoom Team vs Team Liquid - Game 1 Winner\n\ud83c\udfaf Posici\u00f3n: team liquid\n\ud83d\udce5 Entrada: 49.9\u00a2 \u2192 \ud83d\udce4 Ahora: 100.0\u00a2\n\ud83d\udcb0 <b>PnL: +100.2% (objetivo: +50%)</b>\n\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\n\u26a0\ufe0f El trader original no ha salido a\u00fan \u2014 decides t\u00fa",
-      "has_buttons": false
-    },
-    {
-      "ts": "2026-03-18T18:09:46",
-      "type": "INFO",
-      "text": "\ud83d\udfe9 <b>TAKE PROFIT ALCANZADO \u2014 S-Works</b>\n\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\n\ud83d\udccb Dota 2: BetBoom Team vs Team Liquid (BO3) - PGL Wallachia Playoffs\n\ud83c\udfaf Posici\u00f3n: team liquid\n\ud83d\udce5 Entrada: 56.5\u00a2 \u2192 \ud83d\udce4 Ahora: 100.0\u00a2\n\ud83d\udcb0 <b>PnL: +76.9% (objetivo: +50%)</b>\n\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\n\u26a0\ufe0f El trader original no ha salido a\u00fan \u2014 decides t\u00fa",
-      "has_buttons": false
-    },
-    {
-      "ts": "2026-03-18T18:09:47",
-      "type": "INFO",
-      "text": "\ud83d\udfe9 <b>TAKE PROFIT ALCANZADO \u2014 S-Works</b>\n\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\n\ud83d\udccb Counter-Strike: FUT Esports vs Astralis (BO3) - ESL Pro League Playoffs\n\ud83c\udfaf Posici\u00f3n: astralis\n\ud83d\udce5 Entrada: 43.0\u00a2 \u2192 \ud83d\udce4 Ahora: 100.0\u00a2\n\ud83d\udcb0 <b>PnL: +132.6% (objetivo: +50%)</b>\n\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\n\u26a0\ufe0f El trader original no ha salido a\u00fan \u2014 decides t\u00fa",
-      "has_buttons": false
-    },
-    {
-      "ts": "2026-03-18T18:09:47",
-      "type": "INFO",
-      "text": "\ud83d\udfe5 <b>STOP LOSS ALCANZADO \u2014 Gohst</b>\n\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\n\ud83d\udccb Will Pierre-Yves Bournazel advance to the second round of the 2026 Paris municipal election?\n\ud83c\udfaf Posici\u00f3n: yes\n\ud83d\udce5 Entrada: 17.0\u00a2 \u2192 \ud83d\udce4 Ahora: 0.5\u00a2\n\ud83e\ude78 <b>PnL: -96.8% (l\u00edmite: -35%)</b>\n\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\n\u26a0\ufe0f Considera salir \u2014 el trader original sigue dentro",
-      "has_buttons": false
-    },
-    {
-      "ts": "2026-03-18T18:09:47",
-      "type": "INFO",
-      "text": "\ud83d\udfe9 <b>TAKE PROFIT ALCANZADO \u2014 Gohst</b>\n\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\n\ud83d\udccb Will Pierre-Yves Bournazel advance to the second round of the 2026 Paris municipal election?\n\ud83c\udfaf Posici\u00f3n: no\n\ud83d\udce5 Entrada: 11.8\u00a2 \u2192 \ud83d\udce4 Ahora: 99.5\u00a2\n\ud83d\udcb0 <b>PnL: +746.4% (objetivo: +50%)</b>\n\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\n\u26a0\ufe0f El trader original no ha salido a\u00fan \u2014 decides t\u00fa",
-      "has_buttons": false
-    },
-    {
-      "ts": "2026-03-18T18:09:47",
-      "type": "INFO",
-      "text": "\ud83d\udfe9 <b>TAKE PROFIT ALCANZADO \u2014 Gohst</b>\n\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\n\ud83d\udccb Italy Judicial Reform Referendum passes?\n\ud83c\udfaf Posici\u00f3n: yes\n\ud83d\udce5 Entrada: 14.0\u00a2 \u2192 \ud83d\udce4 Ahora: 37.5\u00a2\n\ud83d\udcb0 <b>PnL: +167.9% (objetivo: +50%)</b>\n\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\n\u26a0\ufe0f El trader original no ha salido a\u00fan \u2014 decides t\u00fa",
-      "has_buttons": false
-    },
-    {
-      "ts": "2026-03-18T18:09:47",
-      "type": "INFO",
-      "text": "\ud83d\udfe5 <b>STOP LOSS ALCANZADO \u2014 aenews2</b>\n\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\n\ud83d\udccb Will Trump say \"Ayatollah\" or \"Khamenei\" this week? (March 15)\n\ud83c\udfaf Posici\u00f3n: yes\n\ud83d\udce5 Entrada: 3.1\u00a2 \u2192 \ud83d\udce4 Ahora: 0.2\u00a2\n\ud83e\ude78 <b>PnL: -91.9% (l\u00edmite: -35%)</b>\n\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\n\u26a0\ufe0f Considera salir \u2014 el trader original sigue dentro",
       "has_buttons": false
     }
   ]
