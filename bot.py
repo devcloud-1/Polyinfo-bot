@@ -1957,22 +1957,58 @@ def _save_price_alerts():
     threading.Thread(target=_push, daemon=True).start()
 
 
+# Keywords that indicate a market title references a past date
+_PAST_DATE_MARKERS = [
+    # Specific past dates — update monthly or derive dynamically
+    "March 6", "March 7", "March 8", "March 9", "March 10",
+    "March 11", "March 12", "March 13", "March 14", "March 15",
+    "March 16", "March 17",
+    # Short-duration market patterns
+    "10:40AM", "10:45AM", "11:15AM", "11:30AM", "11:45AM",
+    "12:00PM", "12:15PM", "12:30PM", "12:45PM",
+]
+
+def _is_stale_position(pos: dict) -> bool:
+    """Return True if this position should be auto-closed on startup."""
+    price = pos.get("avg_price", 0)
+    title = pos.get("market_title", "")
+    # Near-certain: market almost resolved
+    if price >= 0.95:
+        return True
+    # Title contains a known past date marker
+    if any(m in title for m in _PAST_DATE_MARKERS):
+        return True
+    # Entry time older than 30 days — almost certainly resolved
+    try:
+        from datetime import timedelta
+        entry_dt = datetime.fromisoformat(pos.get("entry_time", ""))
+        if datetime.now() - entry_dt > timedelta(days=30):
+            return True
+    except Exception:
+        pass
+    return False
+
+
 def _auto_close_stale_positions():
-    """Auto-close positions at >97c — market is virtually resolved, stop monitoring."""
+    """Auto-close stale positions on startup: >=95c, past-date titles, or >30 days old."""
     positions = load_positions()
     to_close = []
     for key, pos in positions.items():
-        price = pos.get("avg_price", 0)
-        if price >= 0.97:
-            to_close.append(key)
+        if _is_stale_position(pos):
+            to_close.append((key, pos.get("market_title","")[:50], pos.get("avg_price",0)*100))
     if to_close:
-        for key in to_close:
+        for key, title, price in to_close:
             parts = key.split(":", 2)
             if len(parts) == 3:
                 trader, market_id, outcome = parts
                 close_position(trader, market_id, outcome)
-                print(f"[PriceMonitor] Auto-cerrada posición a >97c: {key[:50]}")
-        print(f"[PriceMonitor] {len(to_close)} posiciones estancadas auto-cerradas")
+                print(f"[AutoClose] {trader} | {price:.0f}c | {title}")
+        print(f"[AutoClose] {len(to_close)} posiciones estancadas eliminadas al arrancar")
+        send_telegram(
+            f"🧹 <b>Auto-limpieza al arrancar</b>\n"
+            f"Se eliminaron {len(to_close)} posiciones estancadas (ya resueltas o con fecha pasada).\n"
+            f"Quedan {len(positions) - len(to_close)} posiciones activas en seguimiento."
+        )
 
 
 def check_position_prices():
@@ -1997,9 +2033,8 @@ def check_position_prices():
             if entry_price <= 0:
                 continue
 
-            # FIX: Skip positions entered at >90c — near-certain markets,
-            # SL/TP math doesn't apply meaningfully
-            if entry_price >= 0.90:
+            # FIX: Skip stale positions — near-certain, past-date title, or >30 days old
+            if _is_stale_position(pos):
                 continue
 
             r = requests.get(f"{CLOB_API}/markets/{market_id}", timeout=8)
