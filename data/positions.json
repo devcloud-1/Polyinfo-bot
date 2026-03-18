@@ -27,13 +27,6 @@
     "market_title": "Will global temperature increase by more than 1.24\u00baC in February 2026?",
     "trader": "aenews2"
   },
-  "Gohst:0x85f729e88f5fae40070bcdab5a36f9fb579e9209917e528710f93896966dbda6:down": {
-    "avg_price": 0.4063334671431567,
-    "total_amount": 14.814909,
-    "entry_time": "2026-03-11T15:35:00.043252",
-    "market_title": "Bitcoin Up or Down - March 11, 11:30AM-11:45AM ET",
-    "trader": "Gohst"
-  },
   "Gohst:0xcc2df9921c69e493ee77dd950abaafd221641b8acbcf24145bd135514c396883:up": {
     "avg_price": 0.3990026211280187,
     "total_amount": 10.0,
