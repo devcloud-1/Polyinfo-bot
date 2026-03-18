@@ -20,13 +20,6 @@
     "market_title": "Will Bitcoin dip to $55,000 in March?",
     "trader": "de5nuts"
   },
-  "Gohst:0xc0c04eb5d01d6446dd0534ddb5013cf4814d09e6f239f5f2999fe7682dde7263:up": {
-    "avg_price": 0.45,
-    "total_amount": 4.5,
-    "entry_time": "2026-03-11T14:42:58.106791",
-    "market_title": "Bitcoin Up or Down - March 11, 10:40AM-10:45AM ET",
-    "trader": "Gohst"
-  },
   "aenews2:0x3536d7d6b2a69f9eed544bf089619692dbd8fa40f53bd96c78410be7c6ded24e:no": {
     "avg_price": 0.9485456352907335,
     "total_amount": 2029.38156,
@@ -495,12 +488,5 @@
     "entry_time": "2026-03-17T21:53:19.995171",
     "market_title": "US strike on Colombia by March 31?",
     "trader": "de5nuts"
-  },
-  "S-Works:0xb585ff160794d4031704faf1dd11ae6cc7ddd9b0a0c88cc4fe8fe016b1f2b12c:b8": {
-    "avg_price": 0.99,
-    "total_amount": 1592.3655,
-    "entry_time": "2026-03-18T15:14:27.826968",
-    "market_title": "Counter-Strike: Natus Vincere vs B8 - Map 2 Winner",
-    "trader": "S-Works"
   }
 }
