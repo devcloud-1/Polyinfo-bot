@@ -614,5 +614,12 @@
     "entry_time": "2026-03-18T01:15:27.669868",
     "market_title": "Will the U.S. invade Cuba in 2026?",
     "trader": "Gohst"
+  },
+  "aenews2:0x0e521c254b70d3299cbf702ccd826a6b25717d18c10046d55442d599560919e2:yes": {
+    "avg_price": 0.994,
+    "total_amount": 192.07062,
+    "entry_time": "2026-03-18T01:54:05.522559",
+    "market_title": "Will Juliana Stratton be the Democratic nominee for Senate in Illinois?",
+    "trader": "aenews2"
   }
 }
