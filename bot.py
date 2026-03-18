@@ -935,7 +935,7 @@ def poll_telegram_callbacks():
                     continue
 
                 answer_callback(cq_id, "⏳ Ejecutando orden...")
-                send_telegram("⏳ <b>Ejecutando orden en Polymarket...</b>")
+                # No mandar "ejecutando..." — el resultado habla solo
 
                 token_id = get_token_id_for_market(
                     trade_data.get("market_id", ""),
@@ -1405,71 +1405,55 @@ def analyze_trade_with_claude(trader_name: str, trade: dict, market_info: dict, 
 # ============================================================
 
 def format_alert(trader_name: str, trade: dict, market_info: dict, analysis: dict) -> str:
+    """Formato limpio y accionable. Solo lo que importa para decidir."""
     side = trade.get("side", trade.get("type", "?")).upper()
     market = trade.get("title", trade.get("market", "Mercado desconocido"))
     outcome = trade.get("outcome", trade.get("answer", ""))
     price = float(trade.get("price", trade.get("avgPrice", 0)) or 0)
     amount = float(trade.get("usdcSize", trade.get("size", 0)) or 0)
     volume = market_info.get("volume", 0)
-    timestamp = datetime.now().strftime("%H:%M:%S")
     n_trades = trade.get("_n_trades", 1)
-    price_range = trade.get("_price_range", None)
-
-    action_emoji = "🟢" if "BUY" in side else "🔴"
-    action_text = "COMPRÓ" if "BUY" in side else "VENDIÓ"
     multiplier = round(1 / price, 1) if 0 < price < 1 else "?"
+    is_accum = n_trades > 1
 
-    # Consolidated vs single trade labels
-    is_sell = "SELL" in side or "VEND" in side.upper()
-    trades_label = f" ({n_trades} transacciones)" if n_trades > 1 else ""
-    price_line = (
-        f"💵 <b>Precio promedio:</b> {price*100:.1f}¢  |  Rango: {price_range}"
-        if n_trades > 1 and price_range
-        else f"💵 <b>Precio:</b> {price:.3f} ({price*100:.1f}¢)"
-    )
-    if is_sell:
-        header_label = "SALIDA CONSOLIDADA" if n_trades > 1 else "SALIDA"
-    else:
-        header_label = "POSICIÓN ACUMULADA" if n_trades > 1 else "NUEVA ENTRADA"
-
-    if analysis:
-        rec = analysis.get("recommendation", "OBSERVAR")
-        score = analysis.get("score", 0)
-        risk = analysis.get("risk_level", "?")
-        suggested = analysis.get("suggested_amount", 0)
-        reasoning = analysis.get("reasoning", "")
-        key_factor = analysis.get("key_factor", "")
-        rec_emoji = {"ENTRAR": "✅", "NO ENTRAR": "❌", "OBSERVAR": "👁"}.get(rec, "👁")
-        best_date = analysis.get("best_date", None)
-        best_date_line = f"\n📅 <b>Mejor fecha:</b> {best_date}" if best_date and best_date != "null" else ""
-
-        analysis_block = (
-            f"\n━━━━━━━━━━━━━━━━━━━━\n"
-            f"🧠 <b>ANÁLISIS IA</b>\n"
-            f"{rec_emoji} <b>Veredicto: {rec}</b>\n"
-            f"📊 Score: {score}/100  |  Riesgo: {risk}\n"
-            f"💡 {reasoning}\n"
-            f"🔑 <b>Factor clave:</b> {key_factor}"
-            f"{best_date_line}\n"
-            f"💰 <b>Monto sugerido:</b> ${suggested:.2f} de tus $25\n"
-            f"📁 <i>Guardado en tracker para medir efectividad</i>"
+    if not analysis:
+        # Sin IA: mensaje mínimo sin ruido
+        label = "POSICIÓN" if not is_accum else f"POSICIÓN ({n_trades} entradas)"
+        p = TRADER_PROFILES.get(trader_name, {})
+        return (
+            f"🟢 <b>{trader_name}</b> — {label}\n"
+            f"<b>{market}</b>\n"
+            f"{outcome.upper()} · {price*100:.1f}¢ · {multiplier}x · ${amount:.0f}\n"
+            f"Vol: ${volume:,.0f}"
         )
+
+    rec = analysis.get("recommendation", "OBSERVAR")
+    score = analysis.get("score", 0)
+    suggested = analysis.get("suggested_amount", 0)
+    reasoning = analysis.get("reasoning", "")
+    best_date = analysis.get("best_date")
+    rec_emoji = {"ENTRAR": "✅", "NO ENTRAR": "❌", "OBSERVAR": "👁"}.get(rec, "👁")
+
+    # Header — diferente según veredicto
+    if rec == "ENTRAR":
+        header = f"✅ <b>{trader_name} entró — COPIAR</b>"
+    elif rec == "NO ENTRAR":
+        header = f"👁 <b>{trader_name} entró — IGNORAR</b>"
     else:
-        analysis_block = "\n━━━━━━━━━━━━━━━━━━━━\n⚠️ Análisis IA no disponible"
+        header = f"👁 <b>{trader_name} entró — OBSERVAR</b>"
+
+    accum_note = f" · {n_trades} entradas" if is_accum else ""
+    date_note = f"\n📅 Mejor fecha: {best_date}" if best_date and best_date != "null" else ""
 
     return (
-        f"{action_emoji} <b>{header_label} — {trader_name}</b>{trades_label}\n"
-        f"━━━━━━━━━━━━━━━━━━━━\n"
-        f"📋 <b>Mercado:</b> {market}\n"
-        f"🎯 <b>Posición:</b> {outcome}\n"
-        f"⚡ <b>Acción:</b> {action_text}\n"
-        f"{price_line}\n"
-        f"💼 <b>Total invertido:</b> ${amount:.2f} USDC\n"
-        f"📈 <b>Retorno potencial:</b> {multiplier}x\n"
-        f"🌊 <b>Volumen mercado:</b> ${volume:,.0f}"
-        f"{analysis_block}\n"
-        f"━━━━━━━━━━━━━━━━━━━━\n"
-        f"⏰ {timestamp} | 🔗 <a href='https://polymarket.com'>Ver en Polymarket</a>"
+        f"{header}\n"
+        f"\n"
+        f"<b>{market}</b>\n"
+        f"{outcome.upper()} · {price*100:.1f}¢ → {multiplier}x · ${amount:.0f}{accum_note}\n"
+        f"Vol ${volume:,.0f}{date_note}\n"
+        f"\n"
+        f"Score {score}/100 · {reasoning}"
+        + (f"\n💰 Sugerido: ${suggested:.2f}" if rec == "ENTRAR" else "")
     )
 
 
@@ -1554,8 +1538,8 @@ def flush_pending(key: str):
             "━━━━━━━━━━━━━━━━━━━━",
             "ℹ️ <i>Mercado pequeño — observar, no copiar</i>",
         ]
-        send_telegram("\n".join(parts))
-        print(f"[{trader_name}] Alerta volumen bajo consolidada ({n} trades) ✓")
+        print(f"[{trader_name}] Volumen bajo ({n} trades) — ignorado silenciosamente")
+        # No mandar a Telegram — mercados pequeños no son accionables
         return
 
     is_sell = "SELL" in side.upper()
@@ -1581,23 +1565,15 @@ def flush_pending(key: str):
 
             emoji = "🟩" if pnl_usd >= 0 else "🟥"
             pnl_sign = "+" if pnl_usd >= 0 else ""
+            pnl_icon = "🟢" if pnl_usd >= 0 else "🔴"
             exit_parts = [
-                f"🚨 <b>SALIDA CON GANANCIA — {trader_name}</b> ({n} transacciones)",
-                "━━━━━━━━━━━━━━━━━━━━",
-                f"📋 <b>Mercado:</b> {market_title}",
-                f"🎯 <b>Posición:</b> {outcome}",
-                "━━━━━━━━━━━━━━━━━━━━",
-                f"📥 <b>Entrada:</b> {entry_price*100:.1f}¢  |  Invertido: ${entry_amount:.2f}",
-                f"📤 <b>Salida:</b> {avg_price*100:.1f}¢  |  Recuperado: ${entry_amount*multiplier:.2f}",
-                "━━━━━━━━━━━━━━━━━━━━",
-                f"{emoji} <b>PnL: {pnl_sign}{pnl_usd:.2f} USDC ({pnl_sign}{pnl_pct:.1f}%)</b>",
-                f"📈 <b>Multiplicador:</b> {multiplier}x",
-                f"⏱ <b>Tiempo en posición:</b> {hold_time}",
-                "━━━━━━━━━━━━━━━━━━━━",
-                "⚠️ <b>Si copiaste esta entrada: considera salir ahora</b>",
-                f"🌊 Volumen mercado: ${market_info.get('volume', 0):,.0f}",
-                f"⏰ {datetime.now().strftime('%H:%M:%S')}",
+                f"{pnl_icon} <b>{trader_name} salió</b> — {market_title}",
+                f"",
+                f"{outcome.upper()} · {entry_price*100:.1f}¢ → {avg_price*100:.1f}¢ · {hold_time}",
+                f"<b>PnL: {pnl_sign}{pnl_usd:.2f} USDC ({pnl_sign}{pnl_pct:.1f}%)</b>",
+                f"" if pnl_usd < 0 else "⚠️ Si copiaste: considera salir ahora",
             ]
+            exit_parts = [p for p in exit_parts if p != "" or True]
             exit_msg = "\n".join(exit_parts)
             if MY_PRIVATE_KEY and MY_WALLET:
                 exit_trade_data = {
@@ -1647,9 +1623,13 @@ def flush_pending(key: str):
                     f"💡 {reasoning}",
                 ]
 
-            exit_parts.append(f"⏰ {datetime.now().strftime('%H:%M:%S')}")
-            send_telegram("\n".join(exit_parts))
-            print(f"[{trader_name}] Salida sin entrada registrada — alerta básica enviada")
+            # Solo mandar si hay análisis útil (si no hay entrada registrada
+            # y tampoco hay análisis, el mensaje no aporta nada accionable)
+            if exit_analysis and exit_analysis.get("recommendation") == "ENTRAR":
+                send_telegram("\n".join(exit_parts))
+                print(f"[{trader_name}] Salida sin entrada — precio actual sigue siendo buena entrada")
+            else:
+                print(f"[{trader_name}] Salida sin entrada registrada — omitida (no accionable)")
         return
 
     # BUY — record position and send entry alert with buttons
@@ -2004,11 +1984,7 @@ def _auto_close_stale_positions():
                 close_position(trader, market_id, outcome)
                 print(f"[AutoClose] {trader} | {price:.0f}c | {title}")
         print(f"[AutoClose] {len(to_close)} posiciones estancadas eliminadas al arrancar")
-        send_telegram(
-            f"🧹 <b>Auto-limpieza al arrancar</b>\n"
-            f"Se eliminaron {len(to_close)} posiciones estancadas (ya resueltas o con fecha pasada).\n"
-            f"Quedan {len(positions) - len(to_close)} posiciones activas en seguimiento."
-        )
+        # Auto-limpieza silenciosa — solo log en consola, no molestar en Telegram
 
 
 def check_position_prices():
@@ -2066,14 +2042,10 @@ def check_position_prices():
                 _price_alerts_sent.add(tp_key)
                 alerts_fired += 1
                 msg = (
-                    f"🟩 <b>TAKE PROFIT ALCANZADO — {trader}</b>\n"
-                    f"━━━━━━━━━━━━━━━━━━━━\n"
-                    f"📋 {market_title}\n"
-                    f"🎯 Posición: {outcome}\n"
-                    f"📥 Entrada: {entry_price*100:.1f}¢ → 📤 Ahora: {current_price*100:.1f}¢\n"
-                    f"💰 <b>PnL: +{pnl_pct:.1f}% (objetivo: +{TAKE_PROFIT_PCT:.0f}%)</b>\n"
-                    f"━━━━━━━━━━━━━━━━━━━━\n"
-                    f"⚠️ El trader original no ha salido aún — decides tú"
+                    f"🟢 <b>{trader} · Take Profit +{pnl_pct:.0f}%</b>\n"
+                    f"{market_title}\n"
+                    f"{outcome.upper()} · {entry_price*100:.1f}¢ → {current_price*100:.1f}¢\n"
+                    f"El trader sigue dentro — decides tú"
                 )
                 send_telegram(msg)
                 print(f"[PriceMonitor] TP hit: {key} +{pnl_pct:.1f}%")
@@ -2082,14 +2054,10 @@ def check_position_prices():
                 _price_alerts_sent.add(sl_key)
                 alerts_fired += 1
                 msg = (
-                    f"🟥 <b>STOP LOSS ALCANZADO — {trader}</b>\n"
-                    f"━━━━━━━━━━━━━━━━━━━━\n"
-                    f"📋 {market_title}\n"
-                    f"🎯 Posición: {outcome}\n"
-                    f"📥 Entrada: {entry_price*100:.1f}¢ → 📤 Ahora: {current_price*100:.1f}¢\n"
-                    f"🩸 <b>PnL: {pnl_pct:.1f}% (límite: -{STOP_LOSS_PCT:.0f}%)</b>\n"
-                    f"━━━━━━━━━━━━━━━━━━━━\n"
-                    f"⚠️ Considera salir — el trader original sigue dentro"
+                    f"🔴 <b>{trader} · Stop Loss {pnl_pct:.0f}%</b>\n"
+                    f"{market_title}\n"
+                    f"{outcome.upper()} · {entry_price*100:.1f}¢ → {current_price*100:.1f}¢\n"
+                    f"Considera salir — el trader sigue dentro"
                 )
                 send_telegram(msg)
                 print(f"[PriceMonitor] SL hit: {key} {pnl_pct:.1f}%")
@@ -2131,27 +2099,19 @@ def register_convergence(trader_name: str, market_id: str, outcome: str, price: 
     traders_str = ", ".join(e["trader"] for e in entries)
     avg_p = sum(e["price"] for e in entries) / len(entries)
     if has_conflict:
-        sides = ", ".join(f"{e['trader']}→{e['outcome']}" for e in entries)
+        sides = ", ".join(f"{e['trader']}\u2192{e['outcome']}" for e in entries)
         msg = (
-            f"⚡ <b>CONFLICTO ENTRE TRADERS</b>\n"
-            f"━━━━━━━━━━━━━━━━━━━━\n"
-            f"📋 {market_title}\n"
-            f"🔀 Posiciones opuestas: {sides}\n"
-            f"━━━━━━━━━━━━━━━━━━━━\n"
-            f"⚠️ <i>Traders en lados opuestos — NO copiar hasta tener más claridad</i>"
+            f"\u26a1 <b>Conflicto \u2014 {traders_str}</b>\n"
+            f"{market_title}\n"
+            f"{sides} \u2014 no copiar hasta tener m\u00e1s claridad"
         )
         send_telegram(msg)
         print(f"[Convergence] CONFLICTO en {market_id[:20]}: {sides}")
     else:
         msg = (
-            f"🔥 <b>CONVERGENCIA — {len(entries)} TRADERS EN EL MISMO MERCADO</b>\n"
-            f"━━━━━━━━━━━━━━━━━━━━\n"
-            f"📋 {market_title}\n"
-            f"🎯 Posición: {entries[0]['outcome']}\n"
-            f"👥 Traders: {traders_str}\n"
-            f"💵 Precio promedio: {avg_p*100:.1f}¢\n"
-            f"━━━━━━━━━━━━━━━━━━━━\n"
-            f"✅ <b>Señal fuerte — múltiples traders con track record apuestan lo mismo</b>"
+            f"\U0001f525 <b>Convergencia \u2014 {traders_str}</b>\n"
+            f"{market_title}\n"
+            f"{entries[0]['outcome'].upper()} \u00b7 {avg_p*100:.1f}\u00a2 \u00b7 se\u00f1al fuerte"
         )
         send_telegram(msg)
         print(f"[Convergence] {len(entries)} traders en {market_id[:20]}: {traders_str}")
@@ -2223,16 +2183,8 @@ def main():
 
     # Wait for dashboard to bind before sending startup message
     time.sleep(3)
-    send_telegram(
-        "🤖 <b>Bot v4 iniciado</b>\n"
-        f"Monitoreando: {', '.join(WALLETS.keys())}\n"
-        f"✅ Tracker · Convergencia · Monitor SL/TP\n"
-        f"📊 Reporte semanal los lunes\n"
-        f"⏱ Intervalo activo: {ACTIVE_INTERVAL}s | nocturno: {SLEEP_INTERVAL}s\n"
-        f"🔔 SL: -{STOP_LOSS_PCT:.0f}% | TP: +{TAKE_PROFIT_PCT:.0f}%\n"
-        f"💬 Escribe /status para ver estado en tiempo real\n"
-        f"{'✅ Análisis IA activo' if ANTHROPIC_API_KEY else '⚠️ Agrega ANTHROPIC_API_KEY en Railway'}"
-    )
+    # Startup silencioso — sin mensaje de ruido a Telegram
+    print(f"[Bot] Iniciado. IA: {'ON' if ANTHROPIC_API_KEY else 'OFF'} | Intervalo: {ACTIVE_INTERVAL}s/{SLEEP_INTERVAL}s")
 
     cycle = 0
     while True:
