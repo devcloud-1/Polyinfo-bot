@@ -371,8 +371,8 @@
     "trader": "S-Works"
   },
   "de5nuts:0xf6890c707d1e327b006b9511bdba8c98ec4e4978646c6ffcf3ec8750c26a666a:yes": {
-    "avg_price": 0.6770826903199961,
-    "total_amount": 4189.74591,
+    "avg_price": 0.6531976970603933,
+    "total_amount": 5243.232457,
     "entry_time": "2026-03-15T10:04:41.575994",
     "market_title": "Will Crude Oil (CL) hit (HIGH) $105 by end of March?",
     "trader": "de5nuts"
@@ -600,13 +600,6 @@
     "entry_time": "2026-03-17T21:53:19.995171",
     "market_title": "US strike on Colombia by March 31?",
     "trader": "de5nuts"
-  },
-  "Gohst:0x80ebf0a88a44bf737d4047b3accd7108285c69b84257e5c684bdc4c715c81139:no": {
-    "avg_price": 0.19333333333333333,
-    "total_amount": 1389.674604,
-    "entry_time": "2026-03-18T01:15:27.669868",
-    "market_title": "Will the U.S. invade Cuba in 2026?",
-    "trader": "Gohst"
   },
   "aenews2:0x0e521c254b70d3299cbf702ccd826a6b25717d18c10046d55442d599560919e2:yes": {
     "avg_price": 0.9945206649499202,
