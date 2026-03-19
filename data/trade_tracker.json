@@ -1695,12 +1695,28 @@
       "resolved_price": null,
       "pnl_if_followed": null,
       "pnl_if_ignored": null
+    },
+    {
+      "id": "Gohst_20260319024939",
+      "timestamp": "2026-03-19T02:49:39.619585",
+      "trader": "Gohst",
+      "market": "Will there be between 0 and 10 average daily transits of the Strait of Hormuz on March 31?",
+      "market_id": "0xd79f14c4afe6cadccdba46dce08d0a60714b2bac7b8665be3bb6ed2c7121e3e5",
+      "outcome": "Yes",
+      "entry_price": 0.26,
+      "recommendation": "NO ENTRAR",
+      "score": 28,
+      "suggested_amount": null,
+      "status": "PENDING",
+      "resolved_price": null,
+      "pnl_if_followed": null,
+      "pnl_if_ignored": null
     }
   ],
   "stats": {
-    "total": 106,
+    "total": 107,
     "entrar": 14,
-    "no_entrar": 89,
+    "no_entrar": 90,
     "observar": 3
   }
 }
