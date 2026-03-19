@@ -201,5 +201,12 @@
     "entry_time": "2026-03-18T23:41:56.146477",
     "market_title": "Will the Pirate Party of Slovenia (PPS) be part of the next Government of Slovenia?",
     "trader": "Gohst"
+  },
+  "Gohst:0xd79f14c4afe6cadccdba46dce08d0a60714b2bac7b8665be3bb6ed2c7121e3e5:yes": {
+    "avg_price": 0.26,
+    "total_amount": 87.7994,
+    "entry_time": "2026-03-19T02:49:37.414311",
+    "market_title": "Will there be between 0 and 10 average daily transits of the Strait of Hormuz on March 31?",
+    "trader": "Gohst"
   }
 }
