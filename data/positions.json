@@ -118,13 +118,6 @@
     "market_title": "Will the Fed decrease interest rates by 25 bps after the April 2026 meeting?",
     "trader": "de5nuts"
   },
-  "Gohst:0x9ca29ccd6068cbaff7b108e3b32d90699bdd1afd139fb71ec5fba5e258b05a79:yes": {
-    "avg_price": 0.17000000022947512,
-    "total_amount": 81.490319,
-    "entry_time": "2026-03-15T19:46:35.602236",
-    "market_title": "Will Pierre-Yves Bournazel advance to the second round of the 2026 Paris municipal election?",
-    "trader": "Gohst"
-  },
   "Gohst:0x9ca29ccd6068cbaff7b108e3b32d90699bdd1afd139fb71ec5fba5e258b05a79:no": {
     "avg_price": 0.11750000001887345,
     "total_amount": 515.37019,
