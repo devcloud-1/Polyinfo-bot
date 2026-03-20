@@ -1759,12 +1759,28 @@
       "resolved_price": null,
       "pnl_if_followed": null,
       "pnl_if_ignored": null
+    },
+    {
+      "id": "de5nuts_20260320103223",
+      "timestamp": "2026-03-20T10:32:23.162957",
+      "trader": "de5nuts",
+      "market": "US forces enter Iran by April 30?",
+      "market_id": "0x6d0e09d0f04572d9b1adad84703458b0297bc5603b69dccbde93147ee4443246",
+      "outcome": "Yes",
+      "entry_price": 0.57,
+      "recommendation": "NO ENTRAR",
+      "score": 15,
+      "suggested_amount": null,
+      "status": "PENDING",
+      "resolved_price": null,
+      "pnl_if_followed": null,
+      "pnl_if_ignored": null
     }
   ],
   "stats": {
-    "total": 110,
+    "total": 111,
     "entrar": 15,
-    "no_entrar": 91,
+    "no_entrar": 92,
     "observar": 4
   }
 }
