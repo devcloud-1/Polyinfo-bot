@@ -1823,12 +1823,28 @@
       "resolved_price": null,
       "pnl_if_followed": null,
       "pnl_if_ignored": null
+    },
+    {
+      "id": "Gohst_20260320212329",
+      "timestamp": "2026-03-20T21:23:29.982721",
+      "trader": "Gohst",
+      "market": "Will the Democrats (D) be part of the next Government of Slovenia?",
+      "market_id": "0x883071589ea4b08809b303dd974bff410f5bf0a2002941678001ca7996c23513",
+      "outcome": "No",
+      "entry_price": 0.15,
+      "recommendation": "NO ENTRAR",
+      "score": 15,
+      "suggested_amount": null,
+      "status": "PENDING",
+      "resolved_price": null,
+      "pnl_if_followed": null,
+      "pnl_if_ignored": null
     }
   ],
   "stats": {
-    "total": 114,
+    "total": 115,
     "entrar": 15,
-    "no_entrar": 95,
+    "no_entrar": 96,
     "observar": 4
   }
 }
