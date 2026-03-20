@@ -1839,12 +1839,28 @@
       "resolved_price": null,
       "pnl_if_followed": null,
       "pnl_if_ignored": null
+    },
+    {
+      "id": "aenews2_20260320220727",
+      "timestamp": "2026-03-20T22:07:27.819673",
+      "trader": "aenews2",
+      "market": "Will \"Undertone\" Opening Weekend Box Office be between 9m and 10m?",
+      "market_id": "0x83aed2c392271ac86cd19d3f4197754eb24eec1b643bb42b857bfecae0f68b35",
+      "outcome": "No",
+      "entry_price": 0.105,
+      "recommendation": "NO ENTRAR",
+      "score": 28,
+      "suggested_amount": null,
+      "status": "PENDING",
+      "resolved_price": null,
+      "pnl_if_followed": null,
+      "pnl_if_ignored": null
     }
   ],
   "stats": {
-    "total": 115,
+    "total": 116,
     "entrar": 15,
-    "no_entrar": 96,
+    "no_entrar": 97,
     "observar": 4
   }
 }
