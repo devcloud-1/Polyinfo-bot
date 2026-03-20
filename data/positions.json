@@ -222,5 +222,12 @@
     "entry_time": "2026-03-20T17:22:42.821626",
     "market_title": "Counter-Strike: Team Falcons vs Natus Vincere (BO3) - BLAST Open Rotterdam Group A",
     "trader": "S-Works"
+  },
+  "Gohst:0x24026080b17f4e88729eab0ac2929ee37c13bfbb4a159179ec63deb4a242d9c9:no": {
+    "avg_price": 0.34,
+    "total_amount": 559.9942,
+    "entry_time": "2026-03-20T17:54:24.541399",
+    "market_title": "Will France, UK, or Germany strike Iran by March 31?",
+    "trader": "Gohst"
   }
 }
