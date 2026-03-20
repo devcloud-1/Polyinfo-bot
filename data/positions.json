@@ -243,5 +243,12 @@
     "entry_time": "2026-03-20T21:23:22.752068",
     "market_title": "Will the Democrats (D) be part of the next Government of Slovenia?",
     "trader": "Gohst"
+  },
+  "aenews2:0x83aed2c392271ac86cd19d3f4197754eb24eec1b643bb42b857bfecae0f68b35:no": {
+    "avg_price": 0.105,
+    "total_amount": 124.28115,
+    "entry_time": "2026-03-20T22:07:20.696711",
+    "market_title": "Will \"Undertone\" Opening Weekend Box Office be between 9m and 10m?",
+    "trader": "aenews2"
   }
 }
