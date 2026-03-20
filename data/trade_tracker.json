@@ -1791,12 +1791,28 @@
       "resolved_price": null,
       "pnl_if_followed": null,
       "pnl_if_ignored": null
+    },
+    {
+      "id": "Gohst_20260320175426",
+      "timestamp": "2026-03-20T17:54:26.728198",
+      "trader": "Gohst",
+      "market": "Will France, UK, or Germany strike Iran by March 31?",
+      "market_id": "0x24026080b17f4e88729eab0ac2929ee37c13bfbb4a159179ec63deb4a242d9c9",
+      "outcome": "No",
+      "entry_price": 0.34,
+      "recommendation": "NO ENTRAR",
+      "score": 15,
+      "suggested_amount": null,
+      "status": "PENDING",
+      "resolved_price": null,
+      "pnl_if_followed": null,
+      "pnl_if_ignored": null
     }
   ],
   "stats": {
-    "total": 112,
+    "total": 113,
     "entrar": 15,
-    "no_entrar": 93,
+    "no_entrar": 94,
     "observar": 4
   }
 }
