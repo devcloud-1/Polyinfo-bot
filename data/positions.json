@@ -209,13 +209,6 @@
     "market_title": "Will France, UK, or Germany strike Iran by March 31?",
     "trader": "Gohst"
   },
-  "S-Works:0xbc5c11242d7a45250c286f781104d3ecaf2ece28099b14c03ebb81d7769a5495:team falcons": {
-    "avg_price": 0.812,
-    "total_amount": 69976.4891,
-    "entry_time": "2026-03-20T18:38:08.225705",
-    "market_title": "Counter-Strike: Team Falcons vs Natus Vincere (BO3) - BLAST Open Rotterdam Group A",
-    "trader": "S-Works"
-  },
   "aenews2:0x6e2f46c94467925128da12923b71d7c4b36bf606b8729e7f932fe7a71993bfd1:yes": {
     "avg_price": 0.151,
     "total_amount": 200.226,
