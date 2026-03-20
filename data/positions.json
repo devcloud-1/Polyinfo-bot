@@ -215,5 +215,12 @@
     "entry_time": "2026-03-20T10:32:20.692312",
     "market_title": "US forces enter Iran by April 30?",
     "trader": "de5nuts"
+  },
+  "S-Works:0xbc5c11242d7a45250c286f781104d3ecaf2ece28099b14c03ebb81d7769a5495:natus vincere": {
+    "avg_price": 0.39666667224649516,
+    "total_amount": 4037.376048,
+    "entry_time": "2026-03-20T17:22:42.821626",
+    "market_title": "Counter-Strike: Team Falcons vs Natus Vincere (BO3) - BLAST Open Rotterdam Group A",
+    "trader": "S-Works"
   }
 }
