@@ -1775,12 +1775,28 @@
       "resolved_price": null,
       "pnl_if_followed": null,
       "pnl_if_ignored": null
+    },
+    {
+      "id": "S-Works_20260320172245",
+      "timestamp": "2026-03-20T17:22:45.023250",
+      "trader": "S-Works",
+      "market": "Counter-Strike: Team Falcons vs Natus Vincere (BO3) - BLAST Open Rotterdam Group A",
+      "market_id": "0xbc5c11242d7a45250c286f781104d3ecaf2ece28099b14c03ebb81d7769a5495",
+      "outcome": "Natus Vincere",
+      "entry_price": 0.39666667224649516,
+      "recommendation": "NO ENTRAR",
+      "score": 15,
+      "suggested_amount": null,
+      "status": "PENDING",
+      "resolved_price": null,
+      "pnl_if_followed": null,
+      "pnl_if_ignored": null
     }
   ],
   "stats": {
-    "total": 111,
+    "total": 112,
     "entrar": 15,
-    "no_entrar": 92,
+    "no_entrar": 93,
     "observar": 4
   }
 }
