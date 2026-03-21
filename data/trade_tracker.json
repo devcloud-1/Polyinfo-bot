@@ -2079,12 +2079,28 @@
       "resolved_price": null,
       "pnl_if_followed": null,
       "pnl_if_ignored": null
+    },
+    {
+      "id": "S-Works_20260321211320",
+      "timestamp": "2026-03-21T21:13:20.538182",
+      "trader": "S-Works",
+      "market": "Flyers vs. Sharks",
+      "market_id": "0x088c589df54ea087b3117cd89737153b53a91175bf27d5970869be5c4ecca8f2",
+      "outcome": "Flyers",
+      "entry_price": 0.4600000138860577,
+      "recommendation": "NO ENTRAR",
+      "score": 15,
+      "suggested_amount": 0.5,
+      "status": "PENDING",
+      "resolved_price": null,
+      "pnl_if_followed": null,
+      "pnl_if_ignored": null
     }
   ],
   "stats": {
-    "total": 130,
+    "total": 131,
     "entrar": 19,
-    "no_entrar": 107,
+    "no_entrar": 108,
     "observar": 4
   }
 }
