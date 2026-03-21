@@ -243,5 +243,12 @@
     "entry_time": "2026-03-21T04:57:42.021380",
     "market_title": "Will Crude Oil (CL) hit (HIGH) $150 by end of June?",
     "trader": "de5nuts"
+  },
+  "de5nuts:0x924a2942747dd75703321a7c8d809c68f6a514c3b0f2a2e64274e02310634669:no": {
+    "avg_price": 0.74,
+    "total_amount": 6660.0,
+    "entry_time": "2026-03-21T11:54:21.654544",
+    "market_title": "Strait of Hormuz traffic returns to normal by end of April?",
+    "trader": "de5nuts"
   }
 }
