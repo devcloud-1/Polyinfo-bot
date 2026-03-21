@@ -1903,12 +1903,28 @@
       "resolved_price": null,
       "pnl_if_followed": null,
       "pnl_if_ignored": null
+    },
+    {
+      "id": "aenews2_20260321043625",
+      "timestamp": "2026-03-21T04:36:25.249420",
+      "trader": "aenews2",
+      "market": "Will \"Hoppers\" 3rd Weekend Box Office be less than 16.5m?",
+      "market_id": "0xe90bcff2bd0306f6bab4632a899a041192f3782b367a5f7640f6aad7bac84e1d",
+      "outcome": "No",
+      "entry_price": 0.9741666666666666,
+      "recommendation": "NO ENTRAR",
+      "score": 18,
+      "suggested_amount": 0.5,
+      "status": "PENDING",
+      "resolved_price": null,
+      "pnl_if_followed": null,
+      "pnl_if_ignored": null
     }
   ],
   "stats": {
-    "total": 119,
+    "total": 120,
     "entrar": 15,
-    "no_entrar": 100,
+    "no_entrar": 101,
     "observar": 4
   }
 }
