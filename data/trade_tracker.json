@@ -2031,11 +2031,27 @@
       "resolved_price": null,
       "pnl_if_followed": null,
       "pnl_if_ignored": null
+    },
+    {
+      "id": "Gohst_20260321172609",
+      "timestamp": "2026-03-21T17:26:09.467834",
+      "trader": "Gohst",
+      "market": "Will Iran strike Dimona by March 31?",
+      "market_id": "0xd8a0743208fe1018a2585ee5fe18ae6db78177ddfe8a96717f5fa275c0b6680e",
+      "outcome": "Yes",
+      "entry_price": 0.19,
+      "recommendation": "ENTRAR",
+      "score": 72,
+      "suggested_amount": 1.5,
+      "status": "PENDING",
+      "resolved_price": null,
+      "pnl_if_followed": null,
+      "pnl_if_ignored": null
     }
   ],
   "stats": {
-    "total": 127,
-    "entrar": 18,
+    "total": 128,
+    "entrar": 19,
     "no_entrar": 105,
     "observar": 4
   }
