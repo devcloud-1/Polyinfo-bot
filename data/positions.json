@@ -202,13 +202,6 @@
     "market_title": "US forces enter Iran by April 30?",
     "trader": "de5nuts"
   },
-  "Gohst:0x24026080b17f4e88729eab0ac2929ee37c13bfbb4a159179ec63deb4a242d9c9:no": {
-    "avg_price": 0.34,
-    "total_amount": 559.9942,
-    "entry_time": "2026-03-20T17:54:24.541399",
-    "market_title": "Will France, UK, or Germany strike Iran by March 31?",
-    "trader": "Gohst"
-  },
   "Gohst:0x883071589ea4b08809b303dd974bff410f5bf0a2002941678001ca7996c23513:no": {
     "avg_price": 0.15,
     "total_amount": 159.999,
@@ -231,8 +224,8 @@
     "trader": "de5nuts"
   },
   "aenews2:0x64d6a172e63a085198fcd8032da984cc42398e21d8984eaf4813ce6e3f0469a6:no": {
-    "avg_price": 0.59,
-    "total_amount": 221.3975,
+    "avg_price": 0.5900000005151109,
+    "total_amount": 233.19476500000002,
     "entry_time": "2026-03-21T00:58:52.438429",
     "market_title": "Will the Slovenian Democratic Party (SDS) win the most seats in the 2026 Slovenian parliamentary election?",
     "trader": "aenews2"
