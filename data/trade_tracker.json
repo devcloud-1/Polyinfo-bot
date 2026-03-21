@@ -1983,11 +1983,27 @@
       "resolved_price": null,
       "pnl_if_followed": null,
       "pnl_if_ignored": null
+    },
+    {
+      "id": "Gohst_20260321143838",
+      "timestamp": "2026-03-21T14:38:38.022496",
+      "trader": "Gohst",
+      "market": "Will Russia capture Rodynske by March 31?",
+      "market_id": "0x03522ed2c837f74f93785c9e3c8a12cca8a6b5a19dec15f8a91052fc2301cbfd",
+      "outcome": "No",
+      "entry_price": 0.252,
+      "recommendation": "ENTRAR",
+      "score": 78,
+      "suggested_amount": 1.5,
+      "status": "PENDING",
+      "resolved_price": null,
+      "pnl_if_followed": null,
+      "pnl_if_ignored": null
     }
   ],
   "stats": {
-    "total": 124,
-    "entrar": 17,
+    "total": 125,
+    "entrar": 18,
     "no_entrar": 103,
     "observar": 4
   }
