@@ -292,5 +292,12 @@
     "entry_time": "2026-03-21T21:13:21.104376",
     "market_title": "Sabres vs. Kings",
     "trader": "S-Works"
+  },
+  "Gohst:0x773abaa5fe55e5cde51a261f444b7921652a4e059ead6b3be9fe56499c2d4609:no": {
+    "avg_price": 0.22599999999999998,
+    "total_amount": 1039.9962,
+    "entry_time": "2026-03-21T22:58:18.164430",
+    "market_title": "US x Iran ceasefire by April 15?",
+    "trader": "Gohst"
   }
 }
