@@ -264,5 +264,12 @@
     "entry_time": "2026-03-21T14:38:29.579649",
     "market_title": "Will Russia capture all of Rodynske by April 30?",
     "trader": "Gohst"
+  },
+  "S-Works:0xb05f87492cd379d27deccf1eb38a8aba71216317b31b5f15d1f41b9bc18319f3:bilibili gaming": {
+    "avg_price": 0.8700000319295386,
+    "total_amount": 2238.696043,
+    "entry_time": "2026-03-21T17:04:15.495755",
+    "market_title": "LoL: Bilibili Gaming vs JD Gaming (BO5) - First Stand Playoffs",
+    "trader": "S-Works"
   }
 }
