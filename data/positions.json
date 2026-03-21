@@ -243,5 +243,12 @@
     "entry_time": "2026-03-20T23:56:18.917289",
     "market_title": "Will Crude Oil (CL) hit (HIGH) $105 by end of March?",
     "trader": "de5nuts"
+  },
+  "aenews2:0x64d6a172e63a085198fcd8032da984cc42398e21d8984eaf4813ce6e3f0469a6:no": {
+    "avg_price": 0.59,
+    "total_amount": 221.3975,
+    "entry_time": "2026-03-21T00:58:52.438429",
+    "market_title": "Will the Slovenian Democratic Party (SDS) win the most seats in the 2026 Slovenian parliamentary election?",
+    "trader": "aenews2"
   }
 }
