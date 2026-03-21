@@ -243,5 +243,12 @@
     "entry_time": "2026-03-21T01:51:17.674097",
     "market_title": "Will Iran conduct a military action against Israel on March 19, 2026?",
     "trader": "aenews2"
+  },
+  "aenews2:0x13a615acd213301dde436be32316fbf72ac4fea5583c99cb555d220b1ab791e8:no": {
+    "avg_price": 0.88,
+    "total_amount": 51.832,
+    "entry_time": "2026-03-21T04:36:19.976625",
+    "market_title": "Will \"Hoppers\" 3rd Weekend Box Office be between 16.5m and 18m?",
+    "trader": "aenews2"
   }
 }
