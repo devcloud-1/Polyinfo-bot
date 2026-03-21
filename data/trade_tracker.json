@@ -1999,12 +1999,28 @@
       "resolved_price": null,
       "pnl_if_followed": null,
       "pnl_if_ignored": null
+    },
+    {
+      "id": "S-Works_20260321154242",
+      "timestamp": "2026-03-21T15:42:42.666189",
+      "trader": "S-Works",
+      "market": "LoL: Gen.G vs G2 Esports (BO5) - First Stand Playoffs",
+      "market_id": "0x79c98c99467097f0a00bf7ad55e4fed572cfe759e5200ef6c6564af307c18407",
+      "outcome": "G2 Esports",
+      "entry_price": 0.999,
+      "recommendation": "NO ENTRAR",
+      "score": 15,
+      "suggested_amount": 0,
+      "status": "PENDING",
+      "resolved_price": null,
+      "pnl_if_followed": null,
+      "pnl_if_ignored": null
     }
   ],
   "stats": {
-    "total": 125,
+    "total": 126,
     "entrar": 18,
-    "no_entrar": 103,
+    "no_entrar": 104,
     "observar": 4
   }
 }
