@@ -278,5 +278,12 @@
     "entry_time": "2026-03-21T17:26:07.444445",
     "market_title": "Will Iran strike Dimona by March 31?",
     "trader": "Gohst"
+  },
+  "aenews2:0x24fb7c2d95c93a68018e6c4a90d88043bb67d32fd1454924cef8ebdd550228f3:no": {
+    "avg_price": 0.023,
+    "total_amount": 345.0,
+    "entry_time": "2026-03-21T21:13:13.184597",
+    "market_title": "Will Israel launch a major ground offensive in Lebanon by March 31?",
+    "trader": "aenews2"
   }
 }
