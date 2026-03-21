@@ -1,72 +1,72 @@
 {
   "messages": [
     {
-      "ts": "2026-03-21T18:49:59",
+      "ts": "2026-03-21T20:53:04",
       "type": "INFO",
-      "text": "\ud83d\udc41 <b>S-Works entr\u00f3 \u2014 IGNORAR</b>\n\n<b>LoL: Bilibili Gaming vs JD Gaming (BO5) - First Stand Playoffs</b>\nBILIBILI GAMING \u00b7 99.9\u00a2 \u2192 1.0x \u00b7 $15034 \u00b7 14 entradas\nVol $32,257\n\nScore 15/100 \u00b7 El mercado ya est\u00e1 casi resuelto a 0.999 (retorno ~0.1c por d\u00f3lar), eliminando pr\u00e1cticamente toda oportunidad de ganancia incluso con victoria segura. La categor\u00eda 'US-current-affairs' sobre COVID-19 de Biden (cierre 2020-11-04) no es especialidad de S-Works, contradiciendo la se\u00f1al de alta convicci\u00f3n.",
+      "text": "\ud83d\udc41 <b>S-Works entr\u00f3 \u2014 IGNORAR</b>\n\n<b>LoL: Gen.G vs G2 Esports (BO5) - First Stand Playoffs</b>\n \u00b7 0.0\u00a2 \u2192 ?x \u00b7 $518884\nVol $32,257\n\nScore 10/100 \u00b7 Datos insuficientes \u2014 precio y outcome desconocidos. No se puede evaluar el trade.",
       "has_buttons": true
     },
     {
-      "ts": "2026-03-21T18:49:59",
+      "ts": "2026-03-21T20:53:04",
       "type": "BUTTON_SENT",
       "text": "Botones enviados para S-Works \u2014 ?",
-      "callback_id": "393c63c8a10e",
+      "callback_id": "e5a1c9618199",
       "trader": "S-Works",
       "market": ""
     },
     {
-      "ts": "2026-03-21T19:10:07",
+      "ts": "2026-03-21T20:53:04",
       "type": "INFO",
-      "text": "\ud83d\udc41 <b>S-Works entr\u00f3 \u2014 IGNORAR</b>\n\n<b>LoL: Bilibili Gaming vs JD Gaming (BO5) - First Stand Playoffs</b>\nBILIBILI GAMING \u00b7 99.9\u00a2 \u2192 1.0x \u00b7 $3098 \u00b7 8 entradas\nVol $32,257\n\nScore 15/100 \u00b7 El mercado est\u00e1 casi resuelto a 99.9c con retorno m\u00ednimo (~0.1c), y adem\u00e1s es sobre pol\u00edtica (COVID Biden 2020), FUERA de la especialidad de S-Works en deportes. El riesgo residual no justifica la entrada con bankroll limitado.",
+      "text": "\ud83d\udc41 <b>S-Works entr\u00f3 \u2014 IGNORAR</b>\n\n<b>LoL: Bilibili Gaming vs JD Gaming - Game 2 Winner</b>\n \u00b7 0.0\u00a2 \u2192 ?x \u00b7 $13706\nVol $32,257\n\nScore 10/100 \u00b7 Datos insuficientes \u2014 precio y outcome desconocidos. No se puede evaluar el trade.",
       "has_buttons": true
     },
     {
-      "ts": "2026-03-21T19:10:07",
+      "ts": "2026-03-21T20:53:04",
       "type": "BUTTON_SENT",
       "text": "Botones enviados para S-Works \u2014 ?",
-      "callback_id": "fcfc5e31f167",
+      "callback_id": "62457c864219",
       "trader": "S-Works",
       "market": ""
     },
     {
-      "ts": "2026-03-21T19:30:17",
+      "ts": "2026-03-21T20:53:07",
       "type": "INFO",
-      "text": "\ud83d\udc41 <b>S-Works entr\u00f3 \u2014 IGNORAR</b>\n\n<b>LoL: Bilibili Gaming vs JD Gaming (BO5) - First Stand Playoffs</b>\nBILIBILI GAMING \u00b7 99.9\u00a2 \u2192 1.0x \u00b7 $906 \u00b7 11 entradas\nVol $32,257\n\nScore 15/100 \u00b7 El mercado est\u00e1 pr\u00e1cticamente resuelto a 99.9c con retorno m\u00ednimo (~0.1c), y hay inconsistencia cr\u00edtica: el mercado es sobre COVID-19 de Biden (US-current-affairs, cierre 2020-11-04) pero S-Works apost\u00f3 en LoL/esports. El dato de mercado no coincide con el trade detectado.",
+      "text": "\ud83d\udc41 <b>S-Works entr\u00f3 \u2014 IGNORAR</b>\n\n<b>LoL: Bilibili Gaming vs JD Gaming (BO5) - First Stand Playoffs</b>\nBILIBILI GAMING \u00b7 99.9\u00a2 \u2192 1.0x \u00b7 $686 \u00b7 4 entradas\nVol $32,257\n\nScore 15/100 \u00b7 El mercado est\u00e1 casi resuelto (99.9c) con retorno m\u00ednimo (~0.1c), y adem\u00e1s es sobre pol\u00edtica (Biden COVID-19 en 2020), FUERA de la especialidad de S-Works en deportes. La apuesta de $686 de S-Works no es en este mercado espec\u00edfico.",
       "has_buttons": true
     },
     {
-      "ts": "2026-03-21T19:30:18",
+      "ts": "2026-03-21T20:53:07",
       "type": "BUTTON_SENT",
       "text": "Botones enviados para S-Works \u2014 ?",
-      "callback_id": "63d43650de27",
+      "callback_id": "8be238d20758",
       "trader": "S-Works",
       "market": ""
     },
     {
-      "ts": "2026-03-21T19:50:26",
+      "ts": "2026-03-21T21:13:14",
       "type": "INFO",
-      "text": "\ud83d\udc41 <b>S-Works entr\u00f3 \u2014 IGNORAR</b>\n\n<b>LoL: Bilibili Gaming vs JD Gaming (BO5) - First Stand Playoffs</b>\nBILIBILI GAMING \u00b7 99.9\u00a2 \u2192 1.0x \u00b7 $531 \u00b7 3 entradas\nVol $32,257\n\nScore 15/100 \u00b7 El mercado est\u00e1 pr\u00e1cticamente resuelto a 0.999 con retorno m\u00ednimo (~0.1c), y la descripci\u00f3n refiere a COVID-19 de Biden con cierre 2020-11-04 (evento hist\u00f3rico ya ocurrido). Hay desconexi\u00f3n cr\u00edtica entre el trade anunciado (LoL) y los datos del mercado (pol\u00edtica 2020).",
+      "text": "\u2705 <b>aenews2 entr\u00f3 \u2014 COPIAR</b>\n\n<b>Will Israel launch a major ground offensive in Lebanon by March 31?</b>\nNO \u00b7 2.3\u00a2 \u2192 43.5x \u00b7 $345\nVol $6,492,699\n\nScore 72/100 \u00b7 aenews2 opera en su especialidad (Geopol\u00edtica Middle East) con convicci\u00f3n media ($345) y 74.6% win rate. Precio extremadamente bajo (0.023) ofrece asymmetric payoff (43.5x) con riesgo limitado al 1.50 sugerido.\n\ud83d\udcb0 Sugerido: $1.50",
       "has_buttons": true
     },
     {
-      "ts": "2026-03-21T19:50:27",
+      "ts": "2026-03-21T21:13:15",
       "type": "BUTTON_SENT",
-      "text": "Botones enviados para S-Works \u2014 ?",
-      "callback_id": "4db7847840ab",
-      "trader": "S-Works",
+      "text": "Botones enviados para aenews2 \u2014 ?",
+      "callback_id": "01fd93e87ae3",
+      "trader": "aenews2",
       "market": ""
     },
     {
-      "ts": "2026-03-21T20:10:40",
+      "ts": "2026-03-21T21:13:17",
       "type": "INFO",
-      "text": "\ud83d\udc41 <b>S-Works entr\u00f3 \u2014 IGNORAR</b>\n\n<b>LoL: Bilibili Gaming vs JD Gaming (BO5) - First Stand Playoffs</b>\nBILIBILI GAMING \u00b7 99.9\u00a2 \u2192 1.0x \u00b7 $259 \u00b7 5 entradas\nVol $32,257\n\nScore 15/100 \u00b7 El mercado est\u00e1 pr\u00e1cticamente resuelto a 99.9c con retorno m\u00ednimo (~0.1c), lo que viola el umbral de entrada de S-Works incluso considerando su track record. La combinaci\u00f3n de precio extremo, liquidez cero y bankroll limitado ($25 USD) hace que el riesgo/recompensa sea desfavorable.",
+      "text": "\ud83d\udc41 <b>S-Works entr\u00f3 \u2014 IGNORAR</b>\n\n<b>LoL: Bilibili Gaming vs JD Gaming (BO5) - First Stand Playoffs</b>\nBILIBILI GAMING \u00b7 99.9\u00a2 \u2192 1.0x \u00b7 $324 \u00b7 4 entradas\nVol $32,257\n\nScore 15/100 \u00b7 El mercado est\u00e1 pr\u00e1cticamente resuelto a 0.999 (retorno de solo ~0.1c por d\u00f3lar), lo que viola el umbral bajo de rentabilidad m\u00ednima. Adem\u00e1s, hay inconsistencia cr\u00edtica: el mercado es sobre COVID-19 de Biden con cierre 2020-11-04, pero S-Works opera LoL/deportes esports, no pol\u00edtica de 2020 resuelta.",
       "has_buttons": true
     },
     {
-      "ts": "2026-03-21T20:10:41",
+      "ts": "2026-03-21T21:13:17",
       "type": "BUTTON_SENT",
       "text": "Botones enviados para S-Works \u2014 ?",
-      "callback_id": "674852b8f12a",
+      "callback_id": "9e18369d338a",
       "trader": "S-Works",
       "market": ""
     }
