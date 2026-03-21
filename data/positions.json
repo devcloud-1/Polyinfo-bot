@@ -209,13 +209,6 @@
     "market_title": "Will France, UK, or Germany strike Iran by March 31?",
     "trader": "Gohst"
   },
-  "aenews2:0x6e2f46c94467925128da12923b71d7c4b36bf606b8729e7f932fe7a71993bfd1:yes": {
-    "avg_price": 0.151,
-    "total_amount": 200.226,
-    "entry_time": "2026-03-20T19:50:36.887043",
-    "market_title": "Will \"Undertone\" Opening Weekend Box Office be between 8m and 9m?",
-    "trader": "aenews2"
-  },
   "Gohst:0x883071589ea4b08809b303dd974bff410f5bf0a2002941678001ca7996c23513:no": {
     "avg_price": 0.15,
     "total_amount": 159.999,
