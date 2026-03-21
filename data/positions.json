@@ -285,5 +285,12 @@
     "entry_time": "2026-03-21T21:13:13.184597",
     "market_title": "Will Israel launch a major ground offensive in Lebanon by March 31?",
     "trader": "aenews2"
+  },
+  "S-Works:0x088c589df54ea087b3117cd89737153b53a91175bf27d5970869be5c4ecca8f2:flyers": {
+    "avg_price": 0.4600000138860577,
+    "total_amount": 89.82028000000001,
+    "entry_time": "2026-03-21T21:13:18.304163",
+    "market_title": "Flyers vs. Sharks",
+    "trader": "S-Works"
   }
 }
