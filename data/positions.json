@@ -292,5 +292,12 @@
     "entry_time": "2026-03-21T21:13:18.304163",
     "market_title": "Flyers vs. Sharks",
     "trader": "S-Works"
+  },
+  "S-Works:0x00f6e2dcbdaa165e36668c5b9fa1eabb52665bbfef19fd0444f44d7b429b27d6:kings": {
+    "avg_price": 0.62,
+    "total_amount": 20666.46,
+    "entry_time": "2026-03-21T21:13:21.104376",
+    "market_title": "Sabres vs. Kings",
+    "trader": "S-Works"
   }
 }
