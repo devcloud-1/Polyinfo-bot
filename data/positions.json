@@ -257,5 +257,12 @@
     "entry_time": "2026-03-21T13:36:11.089544",
     "market_title": "Will Crude Oil (CL) hit (HIGH) $100 by end of March?",
     "trader": "de5nuts"
+  },
+  "Gohst:0x84ce2b0b8c6fd692d60cb619e24723143a9bb5fa48ad963e795788f9ddd2f66c:no": {
+    "avg_price": 0.193333333361667,
+    "total_amount": 559.996972,
+    "entry_time": "2026-03-21T14:38:29.579649",
+    "market_title": "Will Russia capture all of Rodynske by April 30?",
+    "trader": "Gohst"
   }
 }
