@@ -2127,12 +2127,28 @@
       "resolved_price": null,
       "pnl_if_followed": null,
       "pnl_if_ignored": null
+    },
+    {
+      "id": "de5nuts_20260322091029",
+      "timestamp": "2026-03-22T09:10:29.730772",
+      "trader": "de5nuts",
+      "market": "US strike on Cuba by December 31?",
+      "market_id": "0x3de0f3d7d7efb40cde68e814d40a0b232832083653c8e78260eb999baa967de0",
+      "outcome": "Yes",
+      "entry_price": 0.30755258008351183,
+      "recommendation": "NO ENTRAR",
+      "score": 32,
+      "suggested_amount": 0.0,
+      "status": "PENDING",
+      "resolved_price": null,
+      "pnl_if_followed": null,
+      "pnl_if_ignored": null
     }
   ],
   "stats": {
-    "total": 133,
+    "total": 134,
     "entrar": 19,
-    "no_entrar": 110,
+    "no_entrar": 111,
     "observar": 4
   }
 }
