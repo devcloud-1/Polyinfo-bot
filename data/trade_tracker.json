@@ -2223,12 +2223,28 @@
       "resolved_price": null,
       "pnl_if_followed": null,
       "pnl_if_ignored": null
+    },
+    {
+      "id": "Gohst_20260322234850",
+      "timestamp": "2026-03-22T23:48:50.329575",
+      "trader": "Gohst",
+      "market": "Will Luis Fernando Camacho win the 2026 Santa Cruz gubernatorial election?",
+      "market_id": "0x2cbe75bfd0627891fd1357a206caac995eac01645a50c5284068f52241b70add",
+      "outcome": "No",
+      "entry_price": 0.355,
+      "recommendation": "NO ENTRAR",
+      "score": 18,
+      "suggested_amount": null,
+      "status": "PENDING",
+      "resolved_price": null,
+      "pnl_if_followed": null,
+      "pnl_if_ignored": null
     }
   ],
   "stats": {
-    "total": 139,
+    "total": 140,
     "entrar": 19,
-    "no_entrar": 116,
+    "no_entrar": 117,
     "observar": 4
   }
 }
