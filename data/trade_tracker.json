@@ -2143,12 +2143,28 @@
       "resolved_price": null,
       "pnl_if_followed": null,
       "pnl_if_ignored": null
+    },
+    {
+      "id": "S-Works_20260322143412",
+      "timestamp": "2026-03-22T14:34:12.341196",
+      "trader": "S-Works",
+      "market": "LoL: G2 Esports vs Bilibili Gaming - Game 2 Winner",
+      "market_id": "0x2c1a9f7cadb9c15728e9488165dfd236819f0c70dff2535b97b53549d143fb05",
+      "outcome": "Bilibili Gaming",
+      "entry_price": 0.5800000092623444,
+      "recommendation": "NO ENTRAR",
+      "score": 15,
+      "suggested_amount": 0.5,
+      "status": "PENDING",
+      "resolved_price": null,
+      "pnl_if_followed": null,
+      "pnl_if_ignored": null
     }
   ],
   "stats": {
-    "total": 134,
+    "total": 135,
     "entrar": 19,
-    "no_entrar": 111,
+    "no_entrar": 112,
     "observar": 4
   }
 }
