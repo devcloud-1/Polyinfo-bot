@@ -2191,12 +2191,28 @@
       "resolved_price": null,
       "pnl_if_followed": null,
       "pnl_if_ignored": null
+    },
+    {
+      "id": "S-Works_20260322173027",
+      "timestamp": "2026-03-22T17:30:27.218550",
+      "trader": "S-Works",
+      "market": "Counter-Strike: NRG vs FURIA (BO3) - BLAST Open Rotterdam Group A",
+      "market_id": "0x02c5217f323f111d1b2a76415903fe393d863a66faa3923312fa7c51692540dd",
+      "outcome": "FURIA",
+      "entry_price": 0.999,
+      "recommendation": "NO ENTRAR",
+      "score": 15,
+      "suggested_amount": 0.5,
+      "status": "PENDING",
+      "resolved_price": null,
+      "pnl_if_followed": null,
+      "pnl_if_ignored": null
     }
   ],
   "stats": {
-    "total": 137,
+    "total": 138,
     "entrar": 19,
-    "no_entrar": 114,
+    "no_entrar": 115,
     "observar": 4
   }
 }
