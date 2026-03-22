@@ -278,5 +278,12 @@
     "entry_time": "2026-03-21T22:58:18.164430",
     "market_title": "US x Iran ceasefire by April 15?",
     "trader": "Gohst"
+  },
+  "de5nuts:0x3de0f3d7d7efb40cde68e814d40a0b232832083653c8e78260eb999baa967de0:yes": {
+    "avg_price": 0.30755258008351183,
+    "total_amount": 1397.2329,
+    "entry_time": "2026-03-22T09:10:26.819889",
+    "market_title": "US strike on Cuba by December 31?",
+    "trader": "de5nuts"
   }
 }
