@@ -278,5 +278,12 @@
     "entry_time": "2026-03-22T09:10:26.819889",
     "market_title": "US strike on Cuba by December 31?",
     "trader": "de5nuts"
+  },
+  "Gohst:0x2cbe75bfd0627891fd1357a206caac995eac01645a50c5284068f52241b70add:no": {
+    "avg_price": 0.355,
+    "total_amount": 359.99879999999996,
+    "entry_time": "2026-03-22T23:48:48.137905",
+    "market_title": "Will Luis Fernando Camacho win the 2026 Santa Cruz gubernatorial election?",
+    "trader": "Gohst"
   }
 }
