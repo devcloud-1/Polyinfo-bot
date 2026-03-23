@@ -272,13 +272,6 @@
     "market_title": "Will Luis Fernando Camacho win the 2026 Santa Cruz gubernatorial election?",
     "trader": "Gohst"
   },
-  "aenews2:0x307a1ed89d60b61002dd5bbf00e1408c5ed2ab3fcdb056191ca7ef9bc34d38f3:yes": {
-    "avg_price": 0.47,
-    "total_amount": 895.2419,
-    "entry_time": "2026-03-23T00:42:16.707474",
-    "market_title": "Will the Democratic Party control the Senate after the 2026 Midterm elections?",
-    "trader": "aenews2"
-  },
   "Gohst:0x1881756420bf29f7cca15fbc7bf6c91af782b82a1c99587b4c229be036de8f6f:yes": {
     "avg_price": 0.25,
     "total_amount": 215.83870000000002,
