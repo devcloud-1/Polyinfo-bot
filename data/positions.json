@@ -299,5 +299,12 @@
     "entry_time": "2026-03-23T02:50:00.226527",
     "market_title": "Lightning vs. Flames",
     "trader": "S-Works"
+  },
+  "Gohst:0x01ffd0acf0d6e42558a7cbd521efde937166a1bf09f3a2dfcdf36950c2dd3635:no": {
+    "avg_price": 0.2,
+    "total_amount": 50.184,
+    "entry_time": "2026-03-23T05:04:43.871483",
+    "market_title": "US escorts commercial ship through Hormuz by April 30?",
+    "trader": "Gohst"
   }
 }
