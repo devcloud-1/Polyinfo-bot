@@ -348,9 +348,9 @@ def log_trade(trader: str, market: str, outcome: str, price: float,
               recommendation: str, score: int, suggested_amount: float,
               market_id: str):
     """Registra un trade — actualiza si el market_id+trader ya existe (evita duplicados)."""
-    # FIX: Skip garbage entries with no usable data
-    if price <= 0 and not outcome.strip():
-        print(f"[Tracker] Ignorado — sin precio ni outcome para {trader}:{market[:40]}")
+    # Skip entries without both price and outcome — unusable for analysis
+    if price <= 0 or not outcome.strip():
+        print(f"[Tracker] Ignorado — precio={price:.3f} outcome='{outcome}' en {trader}:{market[:40]}")
         return None
 
     tracker = load_tracker()
@@ -1373,7 +1373,7 @@ def analyze_trade_with_claude(trader_name: str, trade: dict, market_info: dict, 
         f"{siblings_text}\n"
         f"BANKROLL DEL USUARIO: ${USER_BANKROLL} USD. suggested_amount debe ser entre $0.50 y ${max_suggest:.2f}.\n"
         f"Razona brevemente y responde SOLO con este JSON, sin texto adicional:\n"
-        f'{{"recommendation":"ENTRAR"|"NO ENTRAR"|"OBSERVAR","score":<0-100>,"risk_level":"BAJO"|"MEDIO"|"ALTO","suggested_amount":<0.50-{max_suggest:.2f}>,"reasoning":"<max 2 oraciones>","key_factor":"<factor decisivo en una frase>","best_date":"<fecha recomendada o null>"}}'
+        f'{{"recommendation":"ENTRAR"|"NO ENTRAR"|"OBSERVAR","score":<0-100 — usa TODO el rango: menos de 45 es malo, 66-80 bueno, mas de 80 fuerte>,"risk_level":"BAJO"|"MEDIO"|"ALTO","suggested_amount":<decimal 0.50-{max_suggest:.2f}>,"reasoning":"<2 oraciones con datos concretos, NO frases genericas>","key_factor":"<dato clave>","best_date":"<fecha o null>"}}'
     )
 
     try:
@@ -1519,27 +1519,20 @@ def flush_pending(key: str):
     consolidated["_n_trades"] = n
     consolidated["_price_range"] = f"{min_price*100:.1f}¢ – {max_price*100:.1f}¢" if n > 1 else None
 
+    # Descartar si precio=0 y outcome vacío — no hay datos suficientes para mostrar nada útil
+    if avg_price <= 0 and not outcome.strip():
+        print(f"[{trader_name}] Trade descartado — sin precio ni outcome (datos API incompletos)")
+        return
+
+    # Descartar si volumen=0 — lookup de mercado falló completamente
+    if market_info.get("volume", 0) == 0:
+        print(f"[{trader_name}] Trade descartado — volumen=0 (mercado no encontrado en API)")
+        return
+
     # Check volume filter
     low_volume = 0 < market_info["volume"] < MIN_VOLUME
     if low_volume:
-        ae = "🟢" if "BUY" in side else "🔴"
-        at = "COMPRÓ" if "BUY" in side else "VENDIÓ"
-        vol = market_info["volume"]
-        parts = [
-            f"⚠️ <b>VOLUMEN BAJO — {trader_name}</b> (info only, no copiar)",
-            "━━━━━━━━━━━━━━━━━━━━",
-            f"{ae} <b>Acción:</b> {at} ({n} transacciones)",
-            f"📋 <b>Mercado:</b> {market_title}",
-            f"🎯 <b>Posición:</b> {outcome}",
-            f"💵 <b>Precio promedio:</b> {avg_price*100:.1f}¢  |  Rango: {min_price*100:.1f}¢–{max_price*100:.1f}¢" if n > 1 else f"💵 <b>Precio:</b> {avg_price*100:.1f}¢",
-            f"💼 <b>Total apostado:</b> ${total_amount:.2f} USDC",
-            f"📈 <b>Retorno potencial:</b> {mult}x",
-            f"🌊 <b>Volumen mercado:</b> ${vol:,.0f} (mínimo: ${MIN_VOLUME:,})",
-            "━━━━━━━━━━━━━━━━━━━━",
-            "ℹ️ <i>Mercado pequeño — observar, no copiar</i>",
-        ]
-        print(f"[{trader_name}] Volumen bajo ({n} trades) — ignorado silenciosamente")
-        # No mandar a Telegram — mercados pequeños no son accionables
+        print(f"[{trader_name}] Volumen bajo {market_info['volume']:,.0f} < {MIN_VOLUME:,} — ignorado")
         return
 
     is_sell = "SELL" in side.upper()
@@ -1938,15 +1931,27 @@ def _save_price_alerts():
 
 
 # Keywords that indicate a market title references a past date
-_PAST_DATE_MARKERS = [
-    # Specific past dates — update monthly or derive dynamically
-    "March 6", "March 7", "March 8", "March 9", "March 10",
-    "March 11", "March 12", "March 13", "March 14", "March 15",
-    "March 16", "March 17",
-    # Short-duration market patterns
-    "10:40AM", "10:45AM", "11:15AM", "11:30AM", "11:45AM",
-    "12:00PM", "12:15PM", "12:30PM", "12:45PM",
-]
+def _get_past_date_markers() -> list:
+    """Genera dinámicamente los marcadores de fechas pasadas basado en la fecha actual."""
+    from datetime import datetime, timedelta
+    now = datetime.now()
+    markers = []
+    month_names = {
+        1:"January", 2:"February", 3:"March", 4:"April", 5:"May", 6:"June",
+        7:"July", 8:"August", 9:"September", 10:"October", 11:"November", 12:"December"
+    }
+    month = month_names[now.month]
+    # Todos los días del mes hasta hoy (inclusive — si ya pasó la hora de cierre)
+    for day in range(1, now.day + 1):
+        markers.append(f"{month} {day},")   # "March 19," — con coma evita falsos positivos
+        markers.append(f"{month} {day} ")   # "March 19 " — con espacio
+    # Patrones de mercados intraday (siempre pasados)
+    for h in ["10:40AM", "10:45AM", "11:15AM", "11:30AM", "11:45AM",
+              "12:00PM", "12:15PM", "12:30PM", "12:45PM"]:
+        markers.append(h)
+    return markers
+
+_PAST_DATE_MARKERS = _get_past_date_markers()
 
 def _is_stale_position(pos: dict) -> bool:
     """Return True if this position should be auto-closed on startup."""
@@ -1971,6 +1976,8 @@ def _is_stale_position(pos: dict) -> bool:
 
 def _auto_close_stale_positions():
     """Auto-close stale positions on startup: >=95c, past-date titles, or >30 days old."""
+    global _PAST_DATE_MARKERS
+    _PAST_DATE_MARKERS = _get_past_date_markers()  # Refresh to today's date
     positions = load_positions()
     to_close = []
     for key, pos in positions.items():
