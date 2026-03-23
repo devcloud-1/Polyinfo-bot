@@ -293,13 +293,6 @@
     "market_title": "Will Juan Pablo Velasco win the 2026 Santa Cruz gubernatorial election?",
     "trader": "Gohst"
   },
-  "S-Works:0x0d478dd6e5f1d97c61ce38796684e615af82c1e0401ab7ca2b1094801a823b0a:flames": {
-    "avg_price": 0.4300000001891917,
-    "total_amount": 4244.301793,
-    "entry_time": "2026-03-23T02:50:00.226527",
-    "market_title": "Lightning vs. Flames",
-    "trader": "S-Works"
-  },
   "Gohst:0x01ffd0acf0d6e42558a7cbd521efde937166a1bf09f3a2dfcdf36950c2dd3635:no": {
     "avg_price": 0.2,
     "total_amount": 50.184,
