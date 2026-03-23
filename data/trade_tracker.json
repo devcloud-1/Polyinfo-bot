@@ -2319,12 +2319,28 @@
       "resolved_price": null,
       "pnl_if_followed": null,
       "pnl_if_ignored": null
+    },
+    {
+      "id": "aenews2_20260323074906",
+      "timestamp": "2026-03-23T07:49:06.729568",
+      "trader": "aenews2",
+      "market": "Will Trump say \"Nancy\" or \"Pelosi\" this week? (March 22)",
+      "market_id": "0x5fe26ab36783a7a418c2d6336420ce8356e81cf37044bc028977a0f6ebc316cc",
+      "outcome": "No",
+      "entry_price": 0.3311429475202159,
+      "recommendation": "NO ENTRAR",
+      "score": 28,
+      "suggested_amount": null,
+      "status": "PENDING",
+      "resolved_price": null,
+      "pnl_if_followed": null,
+      "pnl_if_ignored": null
     }
   ],
   "stats": {
-    "total": 145,
+    "total": 146,
     "entrar": 19,
-    "no_entrar": 122,
+    "no_entrar": 123,
     "observar": 4
   }
 }
