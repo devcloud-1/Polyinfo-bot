@@ -306,5 +306,12 @@
     "entry_time": "2026-03-23T08:31:15.030816",
     "market_title": "Will Trump say \"Nancy\" or \"Pelosi\" this week? (March 22)",
     "trader": "aenews2"
+  },
+  "aenews2:0x3c6bcb7da14ea576e5af25547dbd96f2bb24ac34e748e76aecff2ee9195dd1ac:yes": {
+    "avg_price": 0.3071428571428571,
+    "total_amount": 7571.5784,
+    "entry_time": "2026-03-23T11:48:20.899087",
+    "market_title": "US x Iran ceasefire by March 31?",
+    "trader": "aenews2"
   }
 }
