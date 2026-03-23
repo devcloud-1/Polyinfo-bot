@@ -299,5 +299,12 @@
     "entry_time": "2026-03-23T07:49:04.334955",
     "market_title": "Will Trump say \"Nancy\" or \"Pelosi\" this week? (March 22)",
     "trader": "aenews2"
+  },
+  "aenews2:0x5fe26ab36783a7a418c2d6336420ce8356e81cf37044bc028977a0f6ebc316cc:yes": {
+    "avg_price": 0.335,
+    "total_amount": 3.35,
+    "entry_time": "2026-03-23T08:31:15.030816",
+    "market_title": "Will Trump say \"Nancy\" or \"Pelosi\" this week? (March 22)",
+    "trader": "aenews2"
   }
 }
