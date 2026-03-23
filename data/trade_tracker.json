@@ -2271,12 +2271,28 @@
       "resolved_price": null,
       "pnl_if_followed": null,
       "pnl_if_ignored": null
+    },
+    {
+      "id": "Gohst_20260323022740",
+      "timestamp": "2026-03-23T02:27:40.387757",
+      "trader": "Gohst",
+      "market": "Will Juan Pablo Velasco win the 2026 Santa Cruz gubernatorial election?",
+      "market_id": "0x1881756420bf29f7cca15fbc7bf6c91af782b82a1c99587b4c229be036de8f6f",
+      "outcome": "Yes",
+      "entry_price": 0.25,
+      "recommendation": "NO ENTRAR",
+      "score": 18,
+      "suggested_amount": null,
+      "status": "PENDING",
+      "resolved_price": null,
+      "pnl_if_followed": null,
+      "pnl_if_ignored": null
     }
   ],
   "stats": {
-    "total": 142,
+    "total": 143,
     "entrar": 19,
-    "no_entrar": 119,
+    "no_entrar": 120,
     "observar": 4
   }
 }
