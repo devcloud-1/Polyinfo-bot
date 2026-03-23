@@ -202,13 +202,6 @@
     "market_title": "Will the Slovenian Democratic Party (SDS) win the most seats in the 2026 Slovenian parliamentary election?",
     "trader": "aenews2"
   },
-  "aenews2:0x4d5ea69b6c75c608a269c97eaca8d2c1ddbe9f01a788aa7082678fe5839efae9:no": {
-    "avg_price": 0.6214999999999999,
-    "total_amount": 80.22745,
-    "entry_time": "2026-03-21T01:51:17.674097",
-    "market_title": "Will Iran conduct a military action against Israel on March 19, 2026?",
-    "trader": "aenews2"
-  },
   "aenews2:0x13a615acd213301dde436be32316fbf72ac4fea5583c99cb555d220b1ab791e8:no": {
     "avg_price": 0.88,
     "total_amount": 51.832,
