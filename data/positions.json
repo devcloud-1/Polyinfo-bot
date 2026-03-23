@@ -300,13 +300,6 @@
     "market_title": "US x Iran ceasefire by March 31?",
     "trader": "aenews2"
   },
-  "S-Works:0x6da6c9ee75e7192f0689a8b128a91f06e67e12d0a7e2be09485f89941f120c23:team falcons": {
-    "avg_price": 0.78,
-    "total_amount": 14252.261400000001,
-    "entry_time": "2026-03-23T15:01:21.858881",
-    "market_title": "Counter-Strike: Team Falcons vs FURIA (BO3) - BLAST Open Rotterdam Group A",
-    "trader": "S-Works"
-  },
   "aenews2:0x307a1ed89d60b61002dd5bbf00e1408c5ed2ab3fcdb056191ca7ef9bc34d38f3:no": {
     "avg_price": 0.525,
     "total_amount": 1561.6469000000002,
