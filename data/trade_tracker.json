@@ -2399,12 +2399,28 @@
       "resolved_price": null,
       "pnl_if_followed": null,
       "pnl_if_ignored": null
+    },
+    {
+      "id": "S-Works_20260323191047",
+      "timestamp": "2026-03-23T19:10:47.107556",
+      "trader": "S-Works",
+      "market": "Counter-Strike: PARIVISION vs Vitality - Map 2 Winner",
+      "market_id": "0xe5d01c083dc49497cb1041ec459865be8d97b0a97a7b33fe2c7b2947ab509fe0",
+      "outcome": "Vitality",
+      "entry_price": 0.76,
+      "recommendation": "NO ENTRAR",
+      "score": 15,
+      "suggested_amount": null,
+      "status": "PENDING",
+      "resolved_price": null,
+      "pnl_if_followed": null,
+      "pnl_if_ignored": null
     }
   ],
   "stats": {
-    "total": 150,
+    "total": 151,
     "entrar": 20,
-    "no_entrar": 126,
+    "no_entrar": 127,
     "observar": 4
   }
 }
