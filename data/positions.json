@@ -299,5 +299,12 @@
     "entry_time": "2026-03-23T01:13:32.825108",
     "market_title": "Sabres vs. Ducks",
     "trader": "S-Works"
+  },
+  "Gohst:0x1881756420bf29f7cca15fbc7bf6c91af782b82a1c99587b4c229be036de8f6f:yes": {
+    "avg_price": 0.25,
+    "total_amount": 215.83870000000002,
+    "entry_time": "2026-03-23T02:27:37.954040",
+    "market_title": "Will Juan Pablo Velasco win the 2026 Santa Cruz gubernatorial election?",
+    "trader": "Gohst"
   }
 }
