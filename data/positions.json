@@ -313,5 +313,12 @@
     "entry_time": "2026-03-23T11:48:20.899087",
     "market_title": "US x Iran ceasefire by March 31?",
     "trader": "aenews2"
+  },
+  "aenews2:0x773abaa5fe55e5cde51a261f444b7921652a4e059ead6b3be9fe56499c2d4609:yes": {
+    "avg_price": 0.313213096738744,
+    "total_amount": 290.715,
+    "entry_time": "2026-03-23T12:11:10.568549",
+    "market_title": "US x Iran ceasefire by April 15?",
+    "trader": "aenews2"
   }
 }
