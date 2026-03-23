@@ -313,5 +313,12 @@
     "entry_time": "2026-03-23T15:01:21.858881",
     "market_title": "Counter-Strike: Team Falcons vs FURIA (BO3) - BLAST Open Rotterdam Group A",
     "trader": "S-Works"
+  },
+  "aenews2:0x307a1ed89d60b61002dd5bbf00e1408c5ed2ab3fcdb056191ca7ef9bc34d38f3:no": {
+    "avg_price": 0.525,
+    "total_amount": 1561.6469000000002,
+    "entry_time": "2026-03-23T17:54:41.194840",
+    "market_title": "Will the Democratic Party control the Senate after the 2026 Midterm elections?",
+    "trader": "aenews2"
   }
 }
