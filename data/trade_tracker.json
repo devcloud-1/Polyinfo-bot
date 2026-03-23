@@ -2255,12 +2255,28 @@
       "resolved_price": null,
       "pnl_if_followed": null,
       "pnl_if_ignored": null
+    },
+    {
+      "id": "S-Works_20260323011334",
+      "timestamp": "2026-03-23T01:13:34.962240",
+      "trader": "S-Works",
+      "market": "Sabres vs. Ducks",
+      "market_id": "0x1a94f7cde06cee95128d12bc1c3703933d1dcd55f0e40826e28c05cfef75808d",
+      "outcome": "Ducks",
+      "entry_price": 0.4600000002169001,
+      "recommendation": "NO ENTRAR",
+      "score": 15,
+      "suggested_amount": 0.5,
+      "status": "PENDING",
+      "resolved_price": null,
+      "pnl_if_followed": null,
+      "pnl_if_ignored": null
     }
   ],
   "stats": {
-    "total": 141,
+    "total": 142,
     "entrar": 19,
-    "no_entrar": 118,
+    "no_entrar": 119,
     "observar": 4
   }
 }
