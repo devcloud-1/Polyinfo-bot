@@ -2335,11 +2335,27 @@
       "resolved_price": null,
       "pnl_if_followed": null,
       "pnl_if_ignored": null
+    },
+    {
+      "id": "aenews2_20260323114823",
+      "timestamp": "2026-03-23T11:48:23.164964",
+      "trader": "aenews2",
+      "market": "US x Iran ceasefire by March 31?",
+      "market_id": "0x3c6bcb7da14ea576e5af25547dbd96f2bb24ac34e748e76aecff2ee9195dd1ac",
+      "outcome": "Yes",
+      "entry_price": 0.3071428571428571,
+      "recommendation": "ENTRAR",
+      "score": 78,
+      "suggested_amount": 1.5,
+      "status": "PENDING",
+      "resolved_price": null,
+      "pnl_if_followed": null,
+      "pnl_if_ignored": null
     }
   ],
   "stats": {
-    "total": 146,
-    "entrar": 19,
+    "total": 147,
+    "entrar": 20,
     "no_entrar": 123,
     "observar": 4
   }
