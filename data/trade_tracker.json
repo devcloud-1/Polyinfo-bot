@@ -2303,12 +2303,28 @@
       "resolved_price": null,
       "pnl_if_followed": null,
       "pnl_if_ignored": null
+    },
+    {
+      "id": "Gohst_20260323050446",
+      "timestamp": "2026-03-23T05:04:46.252093",
+      "trader": "Gohst",
+      "market": "US escorts commercial ship through Hormuz by April 30?",
+      "market_id": "0x01ffd0acf0d6e42558a7cbd521efde937166a1bf09f3a2dfcdf36950c2dd3635",
+      "outcome": "No",
+      "entry_price": 0.2,
+      "recommendation": "NO ENTRAR",
+      "score": 28,
+      "suggested_amount": null,
+      "status": "PENDING",
+      "resolved_price": null,
+      "pnl_if_followed": null,
+      "pnl_if_ignored": null
     }
   ],
   "stats": {
-    "total": 144,
+    "total": 145,
     "entrar": 19,
-    "no_entrar": 121,
+    "no_entrar": 122,
     "observar": 4
   }
 }
