@@ -313,5 +313,12 @@
     "entry_time": "2026-03-23T19:10:44.395145",
     "market_title": "Counter-Strike: PARIVISION vs Vitality - Map 2 Winner",
     "trader": "S-Works"
+  },
+  "Gohst:0x46471128dc2d95254dcdfc95efaa4b0e3e95dde4b81257a38f07ef8bb0eae916:yes": {
+    "avg_price": 0.18000000015007564,
+    "total_amount": 119.939509,
+    "entry_time": "2026-03-23T21:50:34.909435",
+    "market_title": "US federally charges ex-Cuba leader Raul Castro?",
+    "trader": "Gohst"
   }
 }
