@@ -2383,12 +2383,28 @@
       "resolved_price": null,
       "pnl_if_followed": null,
       "pnl_if_ignored": null
+    },
+    {
+      "id": "S-Works_20260323190042",
+      "timestamp": "2026-03-23T19:00:42.698137",
+      "trader": "S-Works",
+      "market": "Counter-Strike: PARIVISION vs Vitality (BO3) - BLAST Open Rotterdam Group B",
+      "market_id": "0x48052326e0fca4282a1ca461d2663a7d51e65e25f2f7021598d728cbcb4a2460",
+      "outcome": "Vitality",
+      "entry_price": 0.9100000101657012,
+      "recommendation": "NO ENTRAR",
+      "score": 15,
+      "suggested_amount": 0.0,
+      "status": "PENDING",
+      "resolved_price": null,
+      "pnl_if_followed": null,
+      "pnl_if_ignored": null
     }
   ],
   "stats": {
-    "total": 149,
+    "total": 150,
     "entrar": 20,
-    "no_entrar": 125,
+    "no_entrar": 126,
     "observar": 4
   }
 }
