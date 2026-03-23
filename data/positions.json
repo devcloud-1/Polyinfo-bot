@@ -292,5 +292,12 @@
     "entry_time": "2026-03-23T00:42:16.707474",
     "market_title": "Will the Democratic Party control the Senate after the 2026 Midterm elections?",
     "trader": "aenews2"
+  },
+  "S-Works:0x1a94f7cde06cee95128d12bc1c3703933d1dcd55f0e40826e28c05cfef75808d:ducks": {
+    "avg_price": 0.4600000002169001,
+    "total_amount": 437.53819699999997,
+    "entry_time": "2026-03-23T01:13:32.825108",
+    "market_title": "Sabres vs. Ducks",
+    "trader": "S-Works"
   }
 }
