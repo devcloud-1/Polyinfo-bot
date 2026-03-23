@@ -313,5 +313,12 @@
     "entry_time": "2026-03-23T17:54:41.194840",
     "market_title": "Will the Democratic Party control the Senate after the 2026 Midterm elections?",
     "trader": "aenews2"
+  },
+  "S-Works:0xe5d01c083dc49497cb1041ec459865be8d97b0a97a7b33fe2c7b2947ab509fe0:vitality": {
+    "avg_price": 0.76,
+    "total_amount": 2276.2,
+    "entry_time": "2026-03-23T19:10:44.395145",
+    "market_title": "Counter-Strike: PARIVISION vs Vitality - Map 2 Winner",
+    "trader": "S-Works"
   }
 }
