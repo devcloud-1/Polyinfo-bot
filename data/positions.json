@@ -97,13 +97,6 @@
     "market_title": "Will Crude Oil (CL) hit (HIGH) $110 by end of March?",
     "trader": "de5nuts"
   },
-  "aenews2:0xc19eed341534fd9e710b435d3eda630bdd9458a3c0c32d15027442f5835ec037:no": {
-    "avg_price": 0.58,
-    "total_amount": 3300.3566,
-    "entry_time": "2026-03-14T21:52:35.341279",
-    "market_title": "Will SPD win the most seats in the 2026 Rhineland-Palatinate parliamentary elections?",
-    "trader": "aenews2"
-  },
   "de5nuts:0x0d14f5dc9fb3250ec888b1ac8d9fe9a0ce06f9d3ea60fdf138e8690622fea84c:yes": {
     "avg_price": 0.05,
     "total_amount": 62.8315,
