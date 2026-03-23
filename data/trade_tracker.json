@@ -2239,12 +2239,28 @@
       "resolved_price": null,
       "pnl_if_followed": null,
       "pnl_if_ignored": null
+    },
+    {
+      "id": "S-Works_20260323001004",
+      "timestamp": "2026-03-23T00:10:04.203791",
+      "trader": "S-Works",
+      "market": "Wizards vs. Knicks",
+      "market_id": "0xaf909d86fd19683505d1a120be3ad8563a6c1c846747e46c22973abab4af1fde",
+      "outcome": "Knicks",
+      "entry_price": 0.9697204652972218,
+      "recommendation": "NO ENTRAR",
+      "score": 15,
+      "suggested_amount": 0.5,
+      "status": "PENDING",
+      "resolved_price": null,
+      "pnl_if_followed": null,
+      "pnl_if_ignored": null
     }
   ],
   "stats": {
-    "total": 140,
+    "total": 141,
     "entrar": 19,
-    "no_entrar": 117,
+    "no_entrar": 118,
     "observar": 4
   }
 }
