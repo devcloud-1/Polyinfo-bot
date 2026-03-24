@@ -2511,12 +2511,28 @@
       "resolved_price": null,
       "pnl_if_followed": null,
       "pnl_if_ignored": null
+    },
+    {
+      "id": "S-Works_20260324214138",
+      "timestamp": "2026-03-24T21:41:38.470800",
+      "trader": "S-Works",
+      "market": "Dota 2: paiN Gaming vs Nigma Galaxy - Game 1 Winner",
+      "market_id": "0x473c0617dc3f13ad3824359e3a9cb145b177ce1dcd47b1e040eaa2088eed7558",
+      "outcome": "paiN Gaming",
+      "entry_price": 0.999,
+      "recommendation": "NO ENTRAR",
+      "score": 12,
+      "suggested_amount": 0.0,
+      "status": "PENDING",
+      "resolved_price": null,
+      "pnl_if_followed": null,
+      "pnl_if_ignored": null
     }
   ],
   "stats": {
-    "total": 157,
+    "total": 158,
     "entrar": 21,
-    "no_entrar": 132,
+    "no_entrar": 133,
     "observar": 4
   }
 }
