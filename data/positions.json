@@ -313,5 +313,12 @@
     "entry_time": "2026-03-24T20:38:03.613494",
     "market_title": "US x Iran ceasefire by March 31?",
     "trader": "de5nuts"
+  },
+  "de5nuts:0x306d10d4a4d51b41910dbc779ca00908bd917c131541c5c42bbbc736258d2d56:yes": {
+    "avg_price": 0.16,
+    "total_amount": 1502.0064,
+    "entry_time": "2026-03-24T21:20:06.327561",
+    "market_title": "US forces enter Iran by March 31?",
+    "trader": "de5nuts"
   }
 }
