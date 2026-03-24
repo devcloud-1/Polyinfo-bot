@@ -2431,12 +2431,28 @@
       "resolved_price": null,
       "pnl_if_followed": null,
       "pnl_if_ignored": null
+    },
+    {
+      "id": "S-Works_20260324003625",
+      "timestamp": "2026-03-24T00:36:25.458034",
+      "trader": "S-Works",
+      "market": "Spurs vs. Heat",
+      "market_id": "0x1745319c9ef1e4c73b9c942fbb615990d05dfd9972b987419add5983dab62dc2",
+      "outcome": "Spurs",
+      "entry_price": 0.9300000049000006,
+      "recommendation": "NO ENTRAR",
+      "score": 15,
+      "suggested_amount": 0.0,
+      "status": "PENDING",
+      "resolved_price": null,
+      "pnl_if_followed": null,
+      "pnl_if_ignored": null
     }
   ],
   "stats": {
-    "total": 152,
+    "total": 153,
     "entrar": 20,
-    "no_entrar": 128,
+    "no_entrar": 129,
     "observar": 4
   }
 }
