@@ -2479,12 +2479,28 @@
       "resolved_price": null,
       "pnl_if_followed": null,
       "pnl_if_ignored": null
+    },
+    {
+      "id": "S-Works_20260324190323",
+      "timestamp": "2026-03-24T19:03:23.372833",
+      "trader": "S-Works",
+      "market": "Dota 2: Nigma Galaxy vs Xtreme Gaming - Game 2 Winner",
+      "market_id": "0x9feadd208ca70695f540795df159fd5c7a46aa03d50ecf8df9def23a7ddeb978",
+      "outcome": "Xtreme Gaming",
+      "entry_price": 0.5199794563323801,
+      "recommendation": "NO ENTRAR",
+      "score": 15,
+      "suggested_amount": 0.5,
+      "status": "PENDING",
+      "resolved_price": null,
+      "pnl_if_followed": null,
+      "pnl_if_ignored": null
     }
   ],
   "stats": {
-    "total": 155,
+    "total": 156,
     "entrar": 20,
-    "no_entrar": 131,
+    "no_entrar": 132,
     "observar": 4
   }
 }
