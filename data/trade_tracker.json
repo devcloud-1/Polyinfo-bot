@@ -2495,11 +2495,27 @@
       "resolved_price": null,
       "pnl_if_followed": null,
       "pnl_if_ignored": null
+    },
+    {
+      "id": "de5nuts_20260324203806",
+      "timestamp": "2026-03-24T20:38:06.132282",
+      "trader": "de5nuts",
+      "market": "US x Iran ceasefire by March 31?",
+      "market_id": "0x3c6bcb7da14ea576e5af25547dbd96f2bb24ac34e748e76aecff2ee9195dd1ac",
+      "outcome": "No",
+      "entry_price": 0.7600000096000014,
+      "recommendation": "ENTRAR",
+      "score": 78,
+      "suggested_amount": 1.5,
+      "status": "PENDING",
+      "resolved_price": null,
+      "pnl_if_followed": null,
+      "pnl_if_ignored": null
     }
   ],
   "stats": {
-    "total": 156,
-    "entrar": 20,
+    "total": 157,
+    "entrar": 21,
     "no_entrar": 132,
     "observar": 4
   }
