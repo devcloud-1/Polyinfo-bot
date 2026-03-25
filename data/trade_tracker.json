@@ -2527,12 +2527,28 @@
       "resolved_price": null,
       "pnl_if_followed": null,
       "pnl_if_ignored": null
+    },
+    {
+      "id": "S-Works_20260325014845",
+      "timestamp": "2026-03-25T01:48:45.494788",
+      "trader": "S-Works",
+      "market": "Kraken vs. Panthers",
+      "market_id": "0x5c65b56cb4d63d16e788d115d6cbe2e415bc1e513b739bbc6361e14c076dafc9",
+      "outcome": "Kraken",
+      "entry_price": 0.44400000016086527,
+      "recommendation": "NO ENTRAR",
+      "score": 12,
+      "suggested_amount": 0.5,
+      "status": "PENDING",
+      "resolved_price": null,
+      "pnl_if_followed": null,
+      "pnl_if_ignored": null
     }
   ],
   "stats": {
-    "total": 158,
+    "total": 159,
     "entrar": 21,
-    "no_entrar": 133,
+    "no_entrar": 134,
     "observar": 4
   }
 }
