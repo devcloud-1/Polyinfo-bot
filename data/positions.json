@@ -313,5 +313,12 @@
     "entry_time": "2026-03-24T21:20:06.327561",
     "market_title": "US forces enter Iran by March 31?",
     "trader": "de5nuts"
+  },
+  "S-Works:0x5c65b56cb4d63d16e788d115d6cbe2e415bc1e513b739bbc6361e14c076dafc9:kraken": {
+    "avg_price": 0.44400000016086527,
+    "total_amount": 375.370057,
+    "entry_time": "2026-03-25T01:48:43.421757",
+    "market_title": "Kraken vs. Panthers",
+    "trader": "S-Works"
   }
 }
