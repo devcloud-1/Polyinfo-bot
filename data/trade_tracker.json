@@ -2591,12 +2591,28 @@
       "resolved_price": null,
       "pnl_if_followed": null,
       "pnl_if_ignored": null
+    },
+    {
+      "id": "S-Works_20260325164552",
+      "timestamp": "2026-03-25T16:45:52.520811",
+      "trader": "S-Works",
+      "market": "Dota 2: Team Falcons vs Virtus.pro - Game 2 Winner",
+      "market_id": "0x6a83f316aa94a4258dae7df8c87d85eb376c1518ac83f21f513e3f18637e1f5e",
+      "outcome": "Virtus.pro",
+      "entry_price": 0.27,
+      "recommendation": "NO ENTRAR",
+      "score": 15,
+      "suggested_amount": 0.5,
+      "status": "PENDING",
+      "resolved_price": null,
+      "pnl_if_followed": null,
+      "pnl_if_ignored": null
     }
   ],
   "stats": {
-    "total": 162,
+    "total": 163,
     "entrar": 21,
-    "no_entrar": 137,
+    "no_entrar": 138,
     "observar": 4
   }
 }
