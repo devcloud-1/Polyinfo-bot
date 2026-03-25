@@ -2639,12 +2639,28 @@
       "resolved_price": null,
       "pnl_if_followed": null,
       "pnl_if_ignored": null
+    },
+    {
+      "id": "aenews2_20260325231201",
+      "timestamp": "2026-03-25T23:12:01.364012",
+      "trader": "aenews2",
+      "market": "Will the Virginia redistricting referendum pass?",
+      "market_id": "0xc8e9ba9e25f5adcf7e159e62c24ca3bda9a5245a049acb94fdd534e67ed1969e",
+      "outcome": "No",
+      "entry_price": 0.24,
+      "recommendation": "OBSERVAR",
+      "score": 52,
+      "suggested_amount": null,
+      "status": "PENDING",
+      "resolved_price": null,
+      "pnl_if_followed": null,
+      "pnl_if_ignored": null
     }
   ],
   "stats": {
-    "total": 165,
+    "total": 166,
     "entrar": 21,
     "no_entrar": 140,
-    "observar": 4
+    "observar": 5
   }
 }
