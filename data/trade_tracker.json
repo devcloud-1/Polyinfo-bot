@@ -2623,12 +2623,28 @@
       "resolved_price": null,
       "pnl_if_followed": null,
       "pnl_if_ignored": null
+    },
+    {
+      "id": "S-Works_20260325192401",
+      "timestamp": "2026-03-25T19:24:01.888195",
+      "trader": "S-Works",
+      "market": "Dota 2: GamerLegion vs PARIVISION (BO1) - ESL One Birmingham Group A",
+      "market_id": "0x3b29a72a78906d7e9b6bc5c05ddf04a9cfdcc055d361b01bc75f0ad606bfe54e",
+      "outcome": "PARIVISION",
+      "entry_price": 0.999,
+      "recommendation": "NO ENTRAR",
+      "score": 15,
+      "suggested_amount": 0.0,
+      "status": "PENDING",
+      "resolved_price": null,
+      "pnl_if_followed": null,
+      "pnl_if_ignored": null
     }
   ],
   "stats": {
-    "total": 164,
+    "total": 165,
     "entrar": 21,
-    "no_entrar": 139,
+    "no_entrar": 140,
     "observar": 4
   }
 }
