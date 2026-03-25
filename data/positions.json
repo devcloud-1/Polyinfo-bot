@@ -320,5 +320,12 @@
     "entry_time": "2026-03-25T13:22:16.654883",
     "market_title": "Will Crude Oil (CL) hit (HIGH) $95 by end of March?",
     "trader": "de5nuts"
+  },
+  "aenews2:0xc8e9ba9e25f5adcf7e159e62c24ca3bda9a5245a049acb94fdd534e67ed1969e:no": {
+    "avg_price": 0.24,
+    "total_amount": 3259.4688,
+    "entry_time": "2026-03-25T23:11:58.785997",
+    "market_title": "Will the Virginia redistricting referendum pass?",
+    "trader": "aenews2"
   }
 }
