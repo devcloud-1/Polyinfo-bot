@@ -320,5 +320,12 @@
     "entry_time": "2026-03-25T12:38:58.608340",
     "market_title": "Will Crude Oil (CL) hit (HIGH) $90 by end of March?",
     "trader": "de5nuts"
+  },
+  "de5nuts:0x45ef931481efcd612937079d4533a2feff45e720719dede6ef7b129aefe315a6:yes": {
+    "avg_price": 0.450000000201832,
+    "total_amount": 3149.978725,
+    "entry_time": "2026-03-25T13:22:16.654883",
+    "market_title": "Will Crude Oil (CL) hit (HIGH) $95 by end of March?",
+    "trader": "de5nuts"
   }
 }
