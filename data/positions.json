@@ -327,12 +327,5 @@
     "entry_time": "2026-03-25T16:45:49.635189",
     "market_title": "Dota 2: Team Falcons vs Virtus.pro - Game 2 Winner",
     "trader": "S-Works"
-  },
-  "S-Works:0x74ab85fa8f9da18336d561467ed858bba3bc9b30bbbed3a75a43bffedad7f28a:team spirit": {
-    "avg_price": 0.68,
-    "total_amount": 7788.108,
-    "entry_time": "2026-03-25T16:45:53.043894",
-    "market_title": "Dota 2: Team Spirit vs Nigma Galaxy - Game 2 Winner",
-    "trader": "S-Works"
   }
 }
