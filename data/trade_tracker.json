@@ -2543,12 +2543,28 @@
       "resolved_price": null,
       "pnl_if_followed": null,
       "pnl_if_ignored": null
+    },
+    {
+      "id": "S-Works_20260325025127",
+      "timestamp": "2026-03-25T02:51:27.925212",
+      "trader": "S-Works",
+      "market": "Capitals vs. Blues",
+      "market_id": "0x71096d55892eb82f9661993472396dedb3068f79c68d2487f636fee86244a697",
+      "outcome": "Blues",
+      "entry_price": 0.96,
+      "recommendation": "NO ENTRAR",
+      "score": 15,
+      "suggested_amount": 0.0,
+      "status": "PENDING",
+      "resolved_price": null,
+      "pnl_if_followed": null,
+      "pnl_if_ignored": null
     }
   ],
   "stats": {
-    "total": 159,
+    "total": 160,
     "entrar": 21,
-    "no_entrar": 134,
+    "no_entrar": 135,
     "observar": 4
   }
 }
