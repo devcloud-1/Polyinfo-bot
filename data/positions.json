@@ -306,5 +306,12 @@
     "entry_time": "2026-03-26T16:07:58.951933",
     "market_title": "Dota 2: Aurora vs Tundra Esports - Game 1 Winner",
     "trader": "S-Works"
+  },
+  "Gohst:0xe94749bbf616139120735f9720de5b1a94b61cb7da0feb633f97f113d61a167b:no": {
+    "avg_price": 0.34,
+    "total_amount": 159.9972,
+    "entry_time": "2026-03-26T19:04:51.530166",
+    "market_title": "Will Janez Jan\u0161a be the next Prime Minister of Slovenia?",
+    "trader": "Gohst"
   }
 }
