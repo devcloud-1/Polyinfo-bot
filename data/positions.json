@@ -313,5 +313,12 @@
     "entry_time": "2026-03-26T19:04:51.530166",
     "market_title": "Will Janez Jan\u0161a be the next Prime Minister of Slovenia?",
     "trader": "Gohst"
+  },
+  "S-Works:0x58d77bc749c46ad4b4617b8c8693c62c9e0378ed73407beb113bd8a2d4e13eab:aurora": {
+    "avg_price": 0.4549812569846051,
+    "total_amount": 1279.737975,
+    "entry_time": "2026-03-26T19:26:11.187259",
+    "market_title": "Dota 2: Aurora vs Tundra Esports (BO3) - ESL One Birmingham Playoffs",
+    "trader": "S-Works"
   }
 }
