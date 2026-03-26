@@ -2655,12 +2655,28 @@
       "resolved_price": null,
       "pnl_if_followed": null,
       "pnl_if_ignored": null
+    },
+    {
+      "id": "S-Works_20260326000315",
+      "timestamp": "2026-03-26T00:03:15.756507",
+      "trader": "S-Works",
+      "market": "Bulls vs. 76ers",
+      "market_id": "0x87267b5b1cc40a8a0f18a0f16c99ff29a62b5904bf2b29ddd2fbfe62c9c3bb9a",
+      "outcome": "Bulls",
+      "entry_price": 0.10000000000000002,
+      "recommendation": "NO ENTRAR",
+      "score": 12,
+      "suggested_amount": null,
+      "status": "PENDING",
+      "resolved_price": null,
+      "pnl_if_followed": null,
+      "pnl_if_ignored": null
     }
   ],
   "stats": {
-    "total": 166,
+    "total": 167,
     "entrar": 21,
-    "no_entrar": 140,
+    "no_entrar": 141,
     "observar": 5
   }
 }
