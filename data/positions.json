@@ -299,5 +299,12 @@
     "entry_time": "2026-03-26T03:52:05.386006",
     "market_title": "AWS service disrupted by March 31?",
     "trader": "aenews2"
+  },
+  "S-Works:0x274c73330f01e1bcf53753fb505a074eb13b0c341110b8634f2c154c8caa0da2:aurora": {
+    "avg_price": 0.48470588359587563,
+    "total_amount": 8013.059194,
+    "entry_time": "2026-03-26T16:07:58.951933",
+    "market_title": "Dota 2: Aurora vs Tundra Esports - Game 1 Winner",
+    "trader": "S-Works"
   }
 }
