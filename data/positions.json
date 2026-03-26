@@ -327,5 +327,12 @@
     "entry_time": "2026-03-26T00:58:02.338896",
     "market_title": "Thunder vs. Celtics",
     "trader": "S-Works"
+  },
+  "aenews2:0x77508b9cb5962ff587890f79e3e39a1789384405b6ff530afbccb9d70743352a:no": {
+    "avg_price": 0.055,
+    "total_amount": 1044.3384,
+    "entry_time": "2026-03-26T02:15:25.386760",
+    "market_title": "Will Israel take military action in Lebanon on March 20, 2026?",
+    "trader": "aenews2"
   }
 }
