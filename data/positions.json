@@ -327,5 +327,12 @@
     "entry_time": "2026-03-26T00:58:02.338896",
     "market_title": "Thunder vs. Celtics",
     "trader": "S-Works"
+  },
+  "S-Works:0x9b51d021c60ec92110e2af1a7970923aa1c2ff5dc2baaff0ea11766f427b2797:rockets": {
+    "avg_price": 0.56,
+    "total_amount": 0.0112,
+    "entry_time": "2026-03-26T03:19:28.333185",
+    "market_title": "Rockets vs. Timberwolves",
+    "trader": "S-Works"
   }
 }
