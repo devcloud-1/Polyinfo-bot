@@ -307,13 +307,6 @@
     "market_title": "Will the Virginia redistricting referendum pass?",
     "trader": "aenews2"
   },
-  "S-Works:0x87267b5b1cc40a8a0f18a0f16c99ff29a62b5904bf2b29ddd2fbfe62c9c3bb9a:76ers": {
-    "avg_price": 0.3057030838663229,
-    "total_amount": 8921.33774,
-    "entry_time": "2026-03-26T00:25:37.817604",
-    "market_title": "Bulls vs. 76ers",
-    "trader": "S-Works"
-  },
   "S-Works:0xae0bacd8397c67269daea66181ae83fdb39c522616db9d93f69e63eadc975daa:thunder": {
     "avg_price": 0.64,
     "total_amount": 87151.7248,
