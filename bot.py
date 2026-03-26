@@ -1103,12 +1103,20 @@ def get_market_info(market_id: str, trade_title: str = "") -> dict:
         if market_id:
             clob_data = _fetch_by_clob(market_id)
             if clob_data and clob_data.get("question"):
-                sim = _title_similarity(trade_title, clob_data.get("question", "")) if trade_title else 1.0
-                if sim >= 0.2 or not trade_title:
-                    print(f"[Market] ✓ CLOB match (sim={sim:.2f}) Vol:${float(clob_data.get('volume',0)):,.0f} | {clob_data.get('question','')[:60]}")
-                    return _parse_market(clob_data, market_id)
+                clob_q = clob_data.get("question", "")
+                if trade_title:
+                    sim = _title_similarity(trade_title, clob_q)
+                    if sim >= 0.3:
+                        print(f"[Market] ✓ CLOB match (sim={sim:.2f}) Vol:${float(clob_data.get('volume',0)):,.0f} | {clob_q[:60]}")
+                        return _parse_market(clob_data, market_id)
+                    else:
+                        print(f"[Market] CLOB found but low similarity ({sim:.2f}): '{clob_q[:50]}' vs '{trade_title[:50]}'")
                 else:
-                    print(f"[Market] CLOB found but low similarity ({sim:.2f}): '{clob_data.get('question','')[:50]}'")
+                    # No title to validate against — use CLOB result directly
+                    # but only if the question looks reasonable (not a 2020 Biden market)
+                    if clob_data.get("volume", 0) > 0:
+                        print(f"[Market] ✓ CLOB match (no title) Vol:${float(clob_data.get('volume',0)):,.0f} | {clob_q[:60]}")
+                        return _parse_market(clob_data, market_id)
 
         # STRATEGY 1: If we have a title, build slug and search directly
         if trade_title:
@@ -1151,13 +1159,20 @@ def get_market_info(market_id: str, trade_title: str = "") -> dict:
                     search_results = r3.json()
                     best2 = max(search_results, key=lambda m: _title_similarity(trade_title, m.get("question", "")))
                     sim2 = _title_similarity(trade_title, best2.get("question", ""))
-                    # Accept any improvement over current best, or any match > 0.1
-                    if sim2 > sim or sim2 >= 0.1:
+                    # Only accept if significantly better than current best
+                    if sim2 >= 0.3 and sim2 > sim:
                         print(f"[Market] ✓ Keyword search match (sim={sim2:.2f}) Vol:${float(best2.get('volume',0)):,.0f} | {best2.get('question','')[:60]}")
                         return _parse_market(best2, market_id)
+                    else:
+                        print(f"[Market] Keyword search insufficient (sim={sim2:.2f}) — returning empty")
 
         elif candidates:
-            return _parse_market(candidates[0], market_id)
+            # Only accept if we have no title to compare against
+            # (if we had a title and got here, it means similarity was too low)
+            if not trade_title:
+                return _parse_market(candidates[0], market_id)
+            # With a title but no match found — return empty to trigger discard
+            print(f"[Market] No se encontró match válido para: '{trade_title[:50]}'")
 
     except Exception as e:
         print(f"[Market Info Error] {e}")
@@ -1243,7 +1258,7 @@ def analyze_trade_with_claude(trader_name: str, trade: dict, market_info: dict, 
         if raw_end:
             ed = datetime.fromisoformat(raw_end.replace("Z", "+00:00").replace("z", "+00:00"))
             ed_naive = ed.replace(tzinfo=None)
-            if ed_naive > datetime(2020, 1, 1):
+            if ed_naive > datetime(2024, 1, 1):  # Reject dates before 2024 — clearly stale API data
                 end_date_display = ed_naive.strftime("%Y-%m-%d")
             else:
                 end_date_display = "desconocida (dato API posiblemente incorrecto)"
@@ -1271,84 +1286,41 @@ def analyze_trade_with_claude(trader_name: str, trade: dict, market_info: dict, 
         f"Evalua si vale la pena dado el riesgo residual.\n"
     ) if near_certain else ""
 
-    # Check if this trade is in the trader's specialty area (explicit keyword maps)
-    SPECIALTY_KEYWORDS = {
-        "aenews2": ["iran", "israel", "trump", "senate", "republican", "democrat", "hormuz",
-                    "middle east", "gaza", "ukraine", "khamenei", "ayatollah", "netanyahu",
-                    "congress", "election", "white house", "tariff", "fed chair"],
-        "Gohst":   ["iran", "netanyahu", "israel", "middle east", "yemen", "ukraine", "russia",
-                    "nato", "khamenei", "hamas", "hezbollah", "ceasefire", "strike", "military",
-                    "republican", "democrat", "house", "senate", "primary", "nomination"],
-        "de5nuts": ["taiwan", "china", "bitcoin", "crypto", "btc", "eth", "fed", "inflation",
-                    "oil", "crude", "macro", "interest rate", "gdp", "recession", "warsh",
-                    "iran", "regime", "pahlavi", "reza"],
-        "S-Works": ["nba", "nfl", "nhl", "mlb", "tennis", "ufc", "soccer", "esports",
-                    "counter-strike", "cs2", "dota", "lol", "league of legends",
-                    "champions league", "premier league", "la liga", "serie a", "bundesliga",
-                    "match winner", "map winner", "game winner", "set handicap", "over/under",
-                    "bol", "bo3", "bo5", "astralis", "furia", "navi", "natus vincere",
-                    "g2", "vitality", "faze", "heroic", "liquid", "spirit", "playoff",
-                    "tournament", "open", "masters", "slam", "wimbledon", "roland garros",
-                    "sinner", "alcaraz", "djokovic", "federer", "nadal", "arsenal", "chelsea",
-                    "barcelona", "real madrid", "manchester", "liverpool", "psg", "bayern",
-                    "warriors", "lakers", "celtics", "bulls", "heat", "nuggets", "knicks",
-                    "mma", "boxing", "fight", "vs.", "game 1", "game 2", "game 3",
-                    "bilibili", "bnk", "fearx", "betboom", "tundra", "aurora gaming",
-                    "fut esports", "bnp paribas", "atp", "wta", "itf"],
-    }
-    market_lower = market_title.lower()
-    trader_keys = SPECIALTY_KEYWORDS.get(trader_name, [])
-    specialty_match = any(kw in market_lower for kw in trader_keys)
-    specialty_note = (
-        f"IMPORTANTE: Este mercado cae DIRECTAMENTE en la especialidad de {trader_name} "
-        f"({profile.get('specialty')}). Su historial en esta area es especialmente relevante.\n"
-    ) if specialty_match else (
-        f"NOTA: Este mercado esta FUERA de la especialidad principal de {trader_name}. "
-        f"Aplica criterio mas exigente.\n"
-    )
-
     # Max suggested amount scales with trader conviction (amount bet) and bankroll
     max_suggest = min(USER_BANKROLL * 0.15, MAX_PER_TRADE)  # up to 15% of bankroll
 
-    # ── Trader-specific thresholds ──────────────────────────────
-    # High-conviction traders in their specialty = lean ENTRAR by default
-    # Contrarian/exploratory traders = lean NO ENTRAR unless very clear signal
-    if trader_name == "aenews2" and specialty_match:
+    # ── Trader-specific guidance (sin penalizar por especialidad) ──────────────────
+    if trader_name == "aenews2":
         threshold_note = (
-            "UMBRAL BAJO: aenews2 tiene 74.6% win rate y $1.9M en ganancias. "
-            "Cuando opera en su especialidad, recomienda ENTRAR salvo razón concreta en contra "
-            "(mercado casi resuelto, apuesta pequeña <$100 = sondeo, precio >0.92).\n"
+            "aenews2: 74.6% win rate, $1.9M ganancias, especialidad política US y Medio Oriente. "
+            "Recomienda ENTRAR salvo mercado casi resuelto (precio >0.90) o apuesta pequeña (<$100 = sondeo).\n"
         )
-    elif trader_name == "S-Works" and specialty_match:
+    elif trader_name == "S-Works":
         threshold_note = (
-            "UMBRAL BAJO: S-Works tiene 66.9% win rate en deportes y $2.2M en ganancias, Rank #37 global. "
-            "Cuando opera en deportes, recomienda ENTRAR salvo que el mercado esté muy próximo a resolverse "
-            "o la apuesta sea pequeña (<$50).\n"
+            "S-Works: 66.9% win rate, $2.2M ganancias, Rank #37 global, especialidad deportes y esports. "
+            "Recomienda ENTRAR si el mercado no está casi resuelto y la apuesta supera $100. "
+            "NO penalizar por tipo de deporte — confía en su criterio dentro de deportes.\n"
         )
     elif trader_name == "Gohst":
         threshold_note = (
-            "UMBRAL MEDIO: Gohst es contrarian con 57.1% win rate. Apuesta baja probabilidad con alta convicción. "
-            "Prioriza trades donde apostó grande (>$200) y el precio es bajo (<30c = alto retorno potencial). "
-            "Fuera de su especialidad, aplica criterio más exigente.\n"
+            "Gohst: 57.1% win rate, contrarian, apuesta baja probabilidad con alta convicción. "
+            "Prioriza si apostó >$200 y precio <35c. Con apuestas pequeñas o precio >50c, OBSERVAR.\n"
         )
     elif trader_name == "de5nuts":
         threshold_note = (
-            "UMBRAL ALTO: de5nuts tiene 48.6% win rate pero profit factor 4.69x — gana en pocos trades muy grandes. "
-            "Solo recomienda ENTRAR si la apuesta fue grande (>$300, señal de alta convicción) "
-            "y el mercado cae directamente en su especialidad. De lo contrario, NO ENTRAR o OBSERVAR.\n"
+            "de5nuts: 48.6% win rate pero profit factor 4.69x — gana en pocos trades muy grandes. "
+            "ENTRAR solo si apostó >$500 (señal de alta convicción). Con <$500, OBSERVAR o NO ENTRAR.\n"
         )
     else:
-        threshold_note = (
-            "UMBRAL MEDIO: Aplica criterio balanceado. Recomienda ENTRAR cuando haya señales positivas claras.\n"
-        )
+        threshold_note = "Aplica criterio balanceado según el track record del trader.\n"
 
     # ── Conviction signal from bet size ──────────────────────────
-    if amount >= 500:
-        conviction_note = f"🔥 ALTA CONVICCIÓN: apostó ${amount:.0f} — señal fuerte de que está muy seguro.\n"
-    elif amount >= 100:
+    if amount >= 1000:
+        conviction_note = f"🔥 ALTA CONVICCIÓN: apostó ${amount:.0f} — señal muy fuerte.\n"
+    elif amount >= 200:
         conviction_note = f"📊 CONVICCIÓN MEDIA: apostó ${amount:.0f} — señal razonable.\n"
     else:
-        conviction_note = f"⚠️ APUESTA PEQUEÑA: solo ${amount:.0f} — posiblemente sondeo o posición exploratoria. Pesa esto negativamente.\n"
+        conviction_note = f"⚠️ APUESTA PEQUEÑA: ${amount:.0f} — posiblemente exploratorio. Considera OBSERVAR.\n"
 
     prompt = (
         f"Eres un analista de prediction markets especializado en copy trading. "
@@ -1358,7 +1330,6 @@ def analyze_trade_with_claude(trader_name: str, trade: dict, market_info: dict, 
         f"- Especialidad: {profile.get('specialty')}\n"
         f"- Estilo: {profile.get('style')}\n"
         f"- Meses activo: {profile.get('months_active')}\n"
-        f"{specialty_note}"
         f"{threshold_note}"
         f"{conviction_note}"
         f"\nTRADE DETECTADO:\n"
