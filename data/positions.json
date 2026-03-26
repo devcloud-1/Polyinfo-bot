@@ -307,13 +307,6 @@
     "market_title": "Will the Virginia redistricting referendum pass?",
     "trader": "aenews2"
   },
-  "S-Works:0x9b51d021c60ec92110e2af1a7970923aa1c2ff5dc2baaff0ea11766f427b2797:rockets": {
-    "avg_price": 0.56,
-    "total_amount": 0.0112,
-    "entry_time": "2026-03-26T03:19:28.333185",
-    "market_title": "Rockets vs. Timberwolves",
-    "trader": "S-Works"
-  },
   "aenews2:0xe05deeac0c18014dd36d66d6bd39ce56805906f3966c786ed1998e68717f252b:yes": {
     "avg_price": 0.1,
     "total_amount": 0.111111,
