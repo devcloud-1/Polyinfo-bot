@@ -314,13 +314,6 @@
     "market_title": "AWS service disrupted by March 31?",
     "trader": "aenews2"
   },
-  "S-Works:0xd92d321e9b7b5c855a33b2b3adf3cd0518d10fbad42e93208c819d028ac7a11d:warriors": {
-    "avg_price": 0.6600000219587563,
-    "total_amount": 6887.992938,
-    "entry_time": "2026-03-26T03:52:08.230896",
-    "market_title": "Nets vs. Warriors",
-    "trader": "S-Works"
-  },
   "S-Works:0xd92d321e9b7b5c855a33b2b3adf3cd0518d10fbad42e93208c819d028ac7a11d:nets": {
     "avg_price": 0.3800000088677671,
     "total_amount": 79.102024,
