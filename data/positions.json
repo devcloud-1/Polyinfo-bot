@@ -341,5 +341,12 @@
     "entry_time": "2026-03-26T00:25:37.817604",
     "market_title": "Bulls vs. 76ers",
     "trader": "S-Works"
+  },
+  "S-Works:0xae0bacd8397c67269daea66181ae83fdb39c522616db9d93f69e63eadc975daa:thunder": {
+    "avg_price": 0.64,
+    "total_amount": 87151.7248,
+    "entry_time": "2026-03-26T00:58:02.338896",
+    "market_title": "Thunder vs. Celtics",
+    "trader": "S-Works"
   }
 }
