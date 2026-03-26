@@ -2735,12 +2735,28 @@
       "resolved_price": null,
       "pnl_if_followed": null,
       "pnl_if_ignored": null
+    },
+    {
+      "id": "aenews2_20260326035207",
+      "timestamp": "2026-03-26T03:52:07.688286",
+      "trader": "aenews2",
+      "market": "AWS service disrupted by March 31?",
+      "market_id": "0xe05deeac0c18014dd36d66d6bd39ce56805906f3966c786ed1998e68717f252b",
+      "outcome": "Yes",
+      "entry_price": 0.1,
+      "recommendation": "NO ENTRAR",
+      "score": 28,
+      "suggested_amount": 0.0,
+      "status": "PENDING",
+      "resolved_price": null,
+      "pnl_if_followed": null,
+      "pnl_if_ignored": null
     }
   ],
   "stats": {
-    "total": 171,
+    "total": 172,
     "entrar": 22,
-    "no_entrar": 144,
+    "no_entrar": 145,
     "observar": 5
   }
 }
