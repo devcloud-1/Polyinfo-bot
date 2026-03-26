@@ -2799,12 +2799,28 @@
       "resolved_price": null,
       "pnl_if_followed": null,
       "pnl_if_ignored": null
+    },
+    {
+      "id": "S-Works_20260326192613",
+      "timestamp": "2026-03-26T19:26:13.814281",
+      "trader": "S-Works",
+      "market": "Dota 2: Aurora vs Tundra Esports (BO3) - ESL One Birmingham Playoffs",
+      "market_id": "0x58d77bc749c46ad4b4617b8c8693c62c9e0378ed73407beb113bd8a2d4e13eab",
+      "outcome": "Aurora",
+      "entry_price": 0.4549812569846051,
+      "recommendation": "NO ENTRAR",
+      "score": 12,
+      "suggested_amount": 0.0,
+      "status": "PENDING",
+      "resolved_price": null,
+      "pnl_if_followed": null,
+      "pnl_if_ignored": null
     }
   ],
   "stats": {
-    "total": 175,
+    "total": 176,
     "entrar": 22,
-    "no_entrar": 148,
+    "no_entrar": 149,
     "observar": 5
   }
 }
