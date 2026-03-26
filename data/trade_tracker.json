@@ -2703,12 +2703,28 @@
       "resolved_price": null,
       "pnl_if_followed": null,
       "pnl_if_ignored": null
+    },
+    {
+      "id": "S-Works_20260326024816",
+      "timestamp": "2026-03-26T02:48:16.516226",
+      "trader": "S-Works",
+      "market": "Wizards vs. Jazz",
+      "market_id": "0x655a0130edfb5fb0962a0444ea73ccd3bed3752f21dbac918436411f6d6b2465",
+      "outcome": "Wizards",
+      "entry_price": 0.969,
+      "recommendation": "NO ENTRAR",
+      "score": 15,
+      "suggested_amount": 0.5,
+      "status": "PENDING",
+      "resolved_price": null,
+      "pnl_if_followed": null,
+      "pnl_if_ignored": null
     }
   ],
   "stats": {
-    "total": 169,
+    "total": 170,
     "entrar": 22,
-    "no_entrar": 142,
+    "no_entrar": 143,
     "observar": 5
   }
 }
