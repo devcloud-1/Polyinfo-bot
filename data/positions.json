@@ -334,5 +334,12 @@
     "entry_time": "2026-03-27T17:15:44.768059",
     "market_title": "Dota 2: Team Falcons vs PARIVISION (BO3) - ESL One Birmingham Playoffs",
     "trader": "S-Works"
+  },
+  "Gohst:0x553a941e8a11cac22eb746b6bbea0530695ee3e1b0693d80433d7b943c91cab7:no": {
+    "avg_price": 0.14,
+    "total_amount": 494.0389,
+    "entry_time": "2026-03-27T18:00:42.348505",
+    "market_title": "Will Trump be impeached before his term ends?",
+    "trader": "Gohst"
   }
 }
