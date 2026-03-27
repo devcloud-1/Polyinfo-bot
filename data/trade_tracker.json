@@ -2831,12 +2831,28 @@
       "resolved_price": null,
       "pnl_if_followed": null,
       "pnl_if_ignored": null
+    },
+    {
+      "id": "S-Works_20260327031637",
+      "timestamp": "2026-03-27T03:16:37.938862",
+      "trader": "S-Works",
+      "market": "Capitals vs. Utah",
+      "market_id": "0x813540567fcb76210b35bbdaf0707bfccc01e529749f523108f761366592f6d7",
+      "outcome": "Utah",
+      "entry_price": 0.5300000705000419,
+      "recommendation": "NO ENTRAR",
+      "score": 12,
+      "suggested_amount": null,
+      "status": "PENDING",
+      "resolved_price": null,
+      "pnl_if_followed": null,
+      "pnl_if_ignored": null
     }
   ],
   "stats": {
-    "total": 177,
+    "total": 178,
     "entrar": 22,
-    "no_entrar": 150,
+    "no_entrar": 151,
     "observar": 5
   }
 }
