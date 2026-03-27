@@ -2959,12 +2959,28 @@
       "resolved_price": null,
       "pnl_if_followed": null,
       "pnl_if_ignored": null
+    },
+    {
+      "id": "S-Works_20260327151636",
+      "timestamp": "2026-03-27T15:16:36.435687",
+      "trader": "S-Works",
+      "market": "Counter-Strike: Aurora Gaming vs TheMongolz - Map 2 Winner",
+      "market_id": "0xb47c3144b33a9a07361237cf3a773618fa7bf74e5e53099033400a56873763f3",
+      "outcome": "Aurora Gaming",
+      "entry_price": 0.4000000018239856,
+      "recommendation": "NO ENTRAR",
+      "score": 15,
+      "suggested_amount": 0.5,
+      "status": "PENDING",
+      "resolved_price": null,
+      "pnl_if_followed": null,
+      "pnl_if_ignored": null
     }
   ],
   "stats": {
-    "total": 185,
+    "total": 186,
     "entrar": 22,
-    "no_entrar": 157,
+    "no_entrar": 158,
     "observar": 6
   }
 }
