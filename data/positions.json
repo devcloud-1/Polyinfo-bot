@@ -307,13 +307,6 @@
     "market_title": "US x Iran ceasefire by April 30?",
     "trader": "aenews2"
   },
-  "S-Works:0xcbffad6c4225b734e7488a3bd514e8c89cf9ef6a634514daf16a2ff8d9f2e5a8:parivision": {
-    "avg_price": 0.7113031507458876,
-    "total_amount": 8535.795097,
-    "entry_time": "2026-03-27T17:15:44.768059",
-    "market_title": "Dota 2: Team Falcons vs PARIVISION (BO3) - ESL One Birmingham Playoffs",
-    "trader": "S-Works"
-  },
   "Gohst:0x553a941e8a11cac22eb746b6bbea0530695ee3e1b0693d80433d7b943c91cab7:no": {
     "avg_price": 0.14,
     "total_amount": 494.0389,
