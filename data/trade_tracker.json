@@ -3071,12 +3071,28 @@
       "resolved_price": null,
       "pnl_if_followed": null,
       "pnl_if_ignored": null
+    },
+    {
+      "id": "Gohst_20260327214422",
+      "timestamp": "2026-03-27T21:44:22.258250",
+      "trader": "Gohst",
+      "market": "Will the DHS shutdown last 60 days or more?",
+      "market_id": "0x2f1f643ab7589b143e35a6545241cfb80890a5dbd63b74c600baa35c26d0b315",
+      "outcome": "No",
+      "entry_price": 0.2,
+      "recommendation": "OBSERVAR",
+      "score": 38,
+      "suggested_amount": null,
+      "status": "PENDING",
+      "resolved_price": null,
+      "pnl_if_followed": null,
+      "pnl_if_ignored": null
     }
   ],
   "stats": {
-    "total": 192,
+    "total": 193,
     "entrar": 23,
     "no_entrar": 163,
-    "observar": 6
+    "observar": 7
   }
 }
