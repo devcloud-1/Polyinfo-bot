@@ -3007,12 +3007,28 @@
       "resolved_price": null,
       "pnl_if_followed": null,
       "pnl_if_ignored": null
+    },
+    {
+      "id": "S-Works_20260327171547",
+      "timestamp": "2026-03-27T17:15:47.165638",
+      "trader": "S-Works",
+      "market": "Dota 2: Team Falcons vs PARIVISION (BO3) - ESL One Birmingham Playoffs",
+      "market_id": "0xcbffad6c4225b734e7488a3bd514e8c89cf9ef6a634514daf16a2ff8d9f2e5a8",
+      "outcome": "PARIVISION",
+      "entry_price": 0.7000000726091495,
+      "recommendation": "NO ENTRAR",
+      "score": 12,
+      "suggested_amount": 0.0,
+      "status": "PENDING",
+      "resolved_price": null,
+      "pnl_if_followed": null,
+      "pnl_if_ignored": null
     }
   ],
   "stats": {
-    "total": 188,
+    "total": 189,
     "entrar": 22,
-    "no_entrar": 160,
+    "no_entrar": 161,
     "observar": 6
   }
 }
