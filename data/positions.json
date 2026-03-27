@@ -341,5 +341,12 @@
     "entry_time": "2026-03-27T18:00:42.348505",
     "market_title": "Will Trump be impeached before his term ends?",
     "trader": "Gohst"
+  },
+  "S-Works:0xf50387313a4cbfe0b39568f02237c4bd76b2672ec9b54d0d7b83db9e189faee0:parivision": {
+    "avg_price": 0.6500000257723689,
+    "total_amount": 802.045211,
+    "entry_time": "2026-03-27T18:00:45.811687",
+    "market_title": "Counter-Strike: Team Falcons vs PARIVISION (BO3) - BLAST Open Rotterdam Playoffs",
+    "trader": "S-Works"
   }
 }
