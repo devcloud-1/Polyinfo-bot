@@ -348,5 +348,12 @@
     "entry_time": "2026-03-27T20:50:42.130533",
     "market_title": "Dota 2: Team Spirit vs Xtreme Gaming - Game 2 Winner",
     "trader": "S-Works"
+  },
+  "Gohst:0x2f1f643ab7589b143e35a6545241cfb80890a5dbd63b74c600baa35c26d0b315:no": {
+    "avg_price": 0.2,
+    "total_amount": 160.0,
+    "entry_time": "2026-03-27T21:44:19.888361",
+    "market_title": "Will the DHS shutdown last 60 days or more?",
+    "trader": "Gohst"
   }
 }
