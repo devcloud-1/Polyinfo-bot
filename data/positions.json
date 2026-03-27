@@ -327,5 +327,12 @@
     "entry_time": "2026-03-27T15:16:33.782278",
     "market_title": "Counter-Strike: Aurora Gaming vs TheMongolz - Map 2 Winner",
     "trader": "S-Works"
+  },
+  "S-Works:0xcbffad6c4225b734e7488a3bd514e8c89cf9ef6a634514daf16a2ff8d9f2e5a8:parivision": {
+    "avg_price": 0.7000000726091495,
+    "total_amount": 3022.585997,
+    "entry_time": "2026-03-27T17:15:44.768059",
+    "market_title": "Dota 2: Team Falcons vs PARIVISION (BO3) - ESL One Birmingham Playoffs",
+    "trader": "S-Works"
   }
 }
