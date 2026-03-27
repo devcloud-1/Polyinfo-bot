@@ -348,5 +348,12 @@
     "entry_time": "2026-03-27T18:00:45.811687",
     "market_title": "Counter-Strike: Team Falcons vs PARIVISION (BO3) - BLAST Open Rotterdam Playoffs",
     "trader": "S-Works"
+  },
+  "S-Works:0xf50387313a4cbfe0b39568f02237c4bd76b2672ec9b54d0d7b83db9e189faee0:team falcons": {
+    "avg_price": 0.05,
+    "total_amount": 26.918,
+    "entry_time": "2026-03-27T18:53:54.282040",
+    "market_title": "Counter-Strike: Team Falcons vs PARIVISION (BO3) - BLAST Open Rotterdam Playoffs",
+    "trader": "S-Works"
   }
 }
