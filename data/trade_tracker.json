@@ -3023,11 +3023,27 @@
       "resolved_price": null,
       "pnl_if_followed": null,
       "pnl_if_ignored": null
+    },
+    {
+      "id": "Gohst_20260327180044",
+      "timestamp": "2026-03-27T18:00:44.862372",
+      "trader": "Gohst",
+      "market": "Will Trump be impeached before his term ends?",
+      "market_id": "0x553a941e8a11cac22eb746b6bbea0530695ee3e1b0693d80433d7b943c91cab7",
+      "outcome": "No",
+      "entry_price": 0.14,
+      "recommendation": "ENTRAR",
+      "score": 72,
+      "suggested_amount": 1.5,
+      "status": "PENDING",
+      "resolved_price": null,
+      "pnl_if_followed": null,
+      "pnl_if_ignored": null
     }
   ],
   "stats": {
-    "total": 189,
-    "entrar": 22,
+    "total": 190,
+    "entrar": 23,
     "no_entrar": 161,
     "observar": 6
   }
