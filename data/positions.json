@@ -320,5 +320,12 @@
     "entry_time": "2026-03-27T03:16:34.374035",
     "market_title": "Capitals vs. Utah",
     "trader": "S-Works"
+  },
+  "S-Works:0x350ef0d87df99d532893bef1a17faa72e0437266c8b1233a78c2f858283117b4:oilers": {
+    "avg_price": 0.690000000217286,
+    "total_amount": 1937.077732,
+    "entry_time": "2026-03-27T03:48:16.891174",
+    "market_title": "Oilers vs. Golden Knights",
+    "trader": "S-Works"
   }
 }
