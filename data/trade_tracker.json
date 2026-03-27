@@ -2975,12 +2975,28 @@
       "resolved_price": null,
       "pnl_if_followed": null,
       "pnl_if_ignored": null
+    },
+    {
+      "id": "S-Works_20260327163150",
+      "timestamp": "2026-03-27T16:31:50.671111",
+      "trader": "S-Works",
+      "market": "Dota 2: Team Falcons vs PARIVISION - Game 1 Winner",
+      "market_id": "0x338fb73892386ee2a7cf4cfada755dd050242ad1fe3a964ac0edb42c2abd8356",
+      "outcome": "Team Falcons",
+      "entry_price": 0.5400000534722114,
+      "recommendation": "NO ENTRAR",
+      "score": 15,
+      "suggested_amount": null,
+      "status": "PENDING",
+      "resolved_price": null,
+      "pnl_if_followed": null,
+      "pnl_if_ignored": null
     }
   ],
   "stats": {
-    "total": 186,
+    "total": 187,
     "entrar": 22,
-    "no_entrar": 158,
+    "no_entrar": 159,
     "observar": 6
   }
 }
