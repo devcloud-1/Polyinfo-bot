@@ -2847,12 +2847,28 @@
       "resolved_price": null,
       "pnl_if_followed": null,
       "pnl_if_ignored": null
+    },
+    {
+      "id": "S-Works_20260327034819",
+      "timestamp": "2026-03-27T03:48:19.774574",
+      "trader": "S-Works",
+      "market": "Oilers vs. Golden Knights",
+      "market_id": "0x350ef0d87df99d532893bef1a17faa72e0437266c8b1233a78c2f858283117b4",
+      "outcome": "Oilers",
+      "entry_price": 0.690000000217286,
+      "recommendation": "NO ENTRAR",
+      "score": 15,
+      "suggested_amount": 0.5,
+      "status": "PENDING",
+      "resolved_price": null,
+      "pnl_if_followed": null,
+      "pnl_if_ignored": null
     }
   ],
   "stats": {
-    "total": 178,
+    "total": 179,
     "entrar": 22,
-    "no_entrar": 151,
+    "no_entrar": 152,
     "observar": 5
   }
 }
