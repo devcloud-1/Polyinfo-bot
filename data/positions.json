@@ -327,5 +327,12 @@
     "entry_time": "2026-03-27T03:48:16.891174",
     "market_title": "Oilers vs. Golden Knights",
     "trader": "S-Works"
+  },
+  "aenews2:0x773abaa5fe55e5cde51a261f444b7921652a4e059ead6b3be9fe56499c2d4609:yes": {
+    "avg_price": 0.27267735378617086,
+    "total_amount": 17898.307,
+    "entry_time": "2026-03-27T04:31:24.340392",
+    "market_title": "US x Iran ceasefire by April 15?",
+    "trader": "aenews2"
   }
 }
