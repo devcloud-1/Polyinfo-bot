@@ -2879,12 +2879,28 @@
       "resolved_price": null,
       "pnl_if_followed": null,
       "pnl_if_ignored": null
+    },
+    {
+      "id": "aenews2_20260327051456",
+      "timestamp": "2026-03-27T05:14:56.582209",
+      "trader": "aenews2",
+      "market": "Will Iran conduct a military action against Israel on March 23, 2026?",
+      "market_id": "0x7d6e384367079c316716325cb08697f96ccc90a1b165ee8e798b580b31b4313a",
+      "outcome": "No",
+      "entry_price": 0.34,
+      "recommendation": "OBSERVAR",
+      "score": 28,
+      "suggested_amount": null,
+      "status": "PENDING",
+      "resolved_price": null,
+      "pnl_if_followed": null,
+      "pnl_if_ignored": null
     }
   ],
   "stats": {
-    "total": 180,
+    "total": 181,
     "entrar": 22,
     "no_entrar": 153,
-    "observar": 5
+    "observar": 6
   }
 }
