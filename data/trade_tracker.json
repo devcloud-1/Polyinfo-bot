@@ -3055,12 +3055,28 @@
       "resolved_price": null,
       "pnl_if_followed": null,
       "pnl_if_ignored": null
+    },
+    {
+      "id": "S-Works_20260327205044",
+      "timestamp": "2026-03-27T20:50:44.497828",
+      "trader": "S-Works",
+      "market": "Dota 2: Team Spirit vs Xtreme Gaming - Game 2 Winner",
+      "market_id": "0x8a01e84afd1ebddfff4ad3d677ec24ddfd439eb8247bc56a9cc021899c9adca8",
+      "outcome": "Team Spirit",
+      "entry_price": 0.5400000039836318,
+      "recommendation": "NO ENTRAR",
+      "score": 18,
+      "suggested_amount": 0.5,
+      "status": "PENDING",
+      "resolved_price": null,
+      "pnl_if_followed": null,
+      "pnl_if_ignored": null
     }
   ],
   "stats": {
-    "total": 191,
+    "total": 192,
     "entrar": 23,
-    "no_entrar": 162,
+    "no_entrar": 163,
     "observar": 6
   }
 }
