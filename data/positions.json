@@ -320,5 +320,12 @@
     "entry_time": "2026-03-27T14:22:25.971468",
     "market_title": "Counter-Strike: Aurora Gaming vs TheMongolz (BO3) - BLAST Open Rotterdam Playoffs",
     "trader": "S-Works"
+  },
+  "S-Works:0xfe7f0ad03ffe549e03805a35452e3f62a5e1e23245f3e1616f03ec3c9b2c9fb0:mouz": {
+    "avg_price": 0.4181818210633571,
+    "total_amount": 6808.408363,
+    "entry_time": "2026-03-27T14:43:47.881180",
+    "market_title": "Dota 2: MOUZ vs Xtreme Gaming (BO3) - ESL One Birmingham Playoffs",
+    "trader": "S-Works"
   }
 }
