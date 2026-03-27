@@ -2927,12 +2927,28 @@
       "resolved_price": null,
       "pnl_if_followed": null,
       "pnl_if_ignored": null
+    },
+    {
+      "id": "S-Works_20260327142228",
+      "timestamp": "2026-03-27T14:22:28.671139",
+      "trader": "S-Works",
+      "market": "Counter-Strike: Aurora Gaming vs TheMongolz (BO3) - BLAST Open Rotterdam Playoffs",
+      "market_id": "0xe8e998f70289030f391412f08333a6d1f6f7a675f832c5f33ce1d6406d032172",
+      "outcome": "Aurora Gaming",
+      "entry_price": 0.5200000093100038,
+      "recommendation": "NO ENTRAR",
+      "score": 15,
+      "suggested_amount": 0.0,
+      "status": "PENDING",
+      "resolved_price": null,
+      "pnl_if_followed": null,
+      "pnl_if_ignored": null
     }
   ],
   "stats": {
-    "total": 183,
+    "total": 184,
     "entrar": 22,
-    "no_entrar": 155,
+    "no_entrar": 156,
     "observar": 6
   }
 }
