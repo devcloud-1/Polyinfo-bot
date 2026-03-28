@@ -3311,12 +3311,28 @@
       "resolved_price": null,
       "pnl_if_followed": null,
       "pnl_if_ignored": null
+    },
+    {
+      "id": "Gohst_20260328163112",
+      "timestamp": "2026-03-28T16:31:12.855887",
+      "trader": "Gohst",
+      "market": "Will Israel conduct military action in Greater Beirut on March 24, 2026?",
+      "market_id": "0x9a6e8f321e3cfc98ac4cb3e00be22a34f3fc9daf185cb353d63000f7f2a7ca0d",
+      "outcome": "No",
+      "entry_price": 0.15,
+      "recommendation": "OBSERVAR",
+      "score": 52,
+      "suggested_amount": null,
+      "status": "PENDING",
+      "resolved_price": null,
+      "pnl_if_followed": null,
+      "pnl_if_ignored": null
     }
   ],
   "stats": {
-    "total": 207,
+    "total": 208,
     "entrar": 23,
     "no_entrar": 177,
-    "observar": 7
+    "observar": 8
   }
 }
