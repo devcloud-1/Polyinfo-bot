@@ -3343,12 +3343,28 @@
       "resolved_price": null,
       "pnl_if_followed": null,
       "pnl_if_ignored": null
+    },
+    {
+      "id": "S-Works_20260328181753",
+      "timestamp": "2026-03-28T18:17:53.213334",
+      "trader": "S-Works",
+      "market": "Counter-Strike: Natus Vincere vs PARIVISION (BO3) - BLAST Open Rotterdam Playoffs",
+      "market_id": "0xd68a4a7894db695093a2b621f6917ef083d8811d720680434aa2e2334ea52483",
+      "outcome": "Natus Vincere",
+      "entry_price": 0.7833333397997048,
+      "recommendation": "NO ENTRAR",
+      "score": 12,
+      "suggested_amount": 0.0,
+      "status": "PENDING",
+      "resolved_price": null,
+      "pnl_if_followed": null,
+      "pnl_if_ignored": null
     }
   ],
   "stats": {
-    "total": 209,
+    "total": 210,
     "entrar": 23,
-    "no_entrar": 178,
+    "no_entrar": 179,
     "observar": 8
   }
 }
