@@ -341,12 +341,5 @@
     "entry_time": "2026-03-28T03:22:05.331764",
     "market_title": "Jazz vs. Nuggets",
     "trader": "S-Works"
-  },
-  "aenews2:0x9dd53abf4c8b6b25961ebcf61c5413900ece7b3cc08a9511d0c61b3ef9e5a6e3:no": {
-    "avg_price": 0.24997453102856243,
-    "total_amount": 492.11736,
-    "entry_time": "2026-03-28T05:27:20.525121",
-    "market_title": "Will Hezbollah conduct military action against Israel on March 22, 2026?",
-    "trader": "aenews2"
   }
 }
