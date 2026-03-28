@@ -3263,12 +3263,28 @@
       "resolved_price": null,
       "pnl_if_followed": null,
       "pnl_if_ignored": null
+    },
+    {
+      "id": "S-Works_20260328153650",
+      "timestamp": "2026-03-28T15:36:50.135103",
+      "trader": "S-Works",
+      "market": "Game Handicap: TY (-1.5) vs Tundra Esports (+1.5)",
+      "market_id": "0xefd78bf13d4631f06be14549b2770f3ca2ee91570c54064dbe9693799f9e3bfc",
+      "outcome": "Tundra Esports",
+      "entry_price": 0.7168410741039529,
+      "recommendation": "NO ENTRAR",
+      "score": 18,
+      "suggested_amount": 0.5,
+      "status": "PENDING",
+      "resolved_price": null,
+      "pnl_if_followed": null,
+      "pnl_if_ignored": null
     }
   ],
   "stats": {
-    "total": 204,
+    "total": 205,
     "entrar": 23,
-    "no_entrar": 174,
+    "no_entrar": 175,
     "observar": 7
   }
 }
