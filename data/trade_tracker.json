@@ -3119,12 +3119,28 @@
       "resolved_price": null,
       "pnl_if_followed": null,
       "pnl_if_ignored": null
+    },
+    {
+      "id": "S-Works_20260328011545",
+      "timestamp": "2026-03-28T01:15:45.702330",
+      "trader": "S-Works",
+      "market": "Heat vs. Cavaliers",
+      "market_id": "0x795cf457372a694aa0e30de28a499ad2adbd2c7d6c754440fe69d3f1951234d0",
+      "outcome": "Cavaliers",
+      "entry_price": 0.9910000011166398,
+      "recommendation": "NO ENTRAR",
+      "score": 18,
+      "suggested_amount": 0,
+      "status": "PENDING",
+      "resolved_price": null,
+      "pnl_if_followed": null,
+      "pnl_if_ignored": null
     }
   ],
   "stats": {
-    "total": 195,
+    "total": 196,
     "entrar": 23,
-    "no_entrar": 165,
+    "no_entrar": 166,
     "observar": 7
   }
 }
