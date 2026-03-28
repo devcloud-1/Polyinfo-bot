@@ -3375,12 +3375,28 @@
       "resolved_price": null,
       "pnl_if_followed": null,
       "pnl_if_ignored": null
+    },
+    {
+      "id": "S-Works_20260328195433",
+      "timestamp": "2026-03-28T19:54:33.590054",
+      "trader": "S-Works",
+      "market": "Dota 2: Xtreme Gaming vs PARIVISION (BO3) - ESL One Birmingham Playoffs",
+      "market_id": "0x0de242f3ed4e79909f3f6d8a63eac84ae1d9fa314dd12a2cbf7a1642a461c39d",
+      "outcome": "PARIVISION",
+      "entry_price": 0.84,
+      "recommendation": "NO ENTRAR",
+      "score": 18,
+      "suggested_amount": 0.5,
+      "status": "PENDING",
+      "resolved_price": null,
+      "pnl_if_followed": null,
+      "pnl_if_ignored": null
     }
   ],
   "stats": {
-    "total": 211,
+    "total": 212,
     "entrar": 23,
-    "no_entrar": 180,
+    "no_entrar": 181,
     "observar": 8
   }
 }
