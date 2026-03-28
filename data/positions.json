@@ -348,5 +348,12 @@
     "entry_time": "2026-03-28T00:43:39.215600",
     "market_title": "Clippers vs. Pacers",
     "trader": "S-Works"
+  },
+  "S-Works:0xa0da0105d7c4d12aca76e33b00977a5f9aecc05ca6d7798114a2f4f84e026eb4:red wings": {
+    "avg_price": 0.8600000056000001,
+    "total_amount": 104.428571,
+    "entry_time": "2026-03-28T01:15:46.166813",
+    "market_title": "Red Wings vs. Sabres",
+    "trader": "S-Works"
   }
 }
