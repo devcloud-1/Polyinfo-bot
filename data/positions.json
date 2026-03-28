@@ -362,5 +362,12 @@
     "entry_time": "2026-03-28T19:32:01.439878",
     "market_title": "Dota 2: Xtreme Gaming vs PARIVISION - Game 1 Winner",
     "trader": "S-Works"
+  },
+  "S-Works:0x0de242f3ed4e79909f3f6d8a63eac84ae1d9fa314dd12a2cbf7a1642a461c39d:parivision": {
+    "avg_price": 0.84,
+    "total_amount": 149.031225,
+    "entry_time": "2026-03-28T19:54:30.952798",
+    "market_title": "Dota 2: Xtreme Gaming vs PARIVISION (BO3) - ESL One Birmingham Playoffs",
+    "trader": "S-Works"
   }
 }
