@@ -321,13 +321,6 @@
     "market_title": "Dota 2: Team Spirit vs Xtreme Gaming (BO3) - ESL One Birmingham Playoffs",
     "trader": "S-Works"
   },
-  "S-Works:0x8a01e84afd1ebddfff4ad3d677ec24ddfd439eb8247bc56a9cc021899c9adca8:team spirit": {
-    "avg_price": 0.5400000039836318,
-    "total_amount": 3082.707625,
-    "entry_time": "2026-03-27T20:50:42.130533",
-    "market_title": "Dota 2: Team Spirit vs Xtreme Gaming - Game 2 Winner",
-    "trader": "S-Works"
-  },
   "Gohst:0x2f1f643ab7589b143e35a6545241cfb80890a5dbd63b74c600baa35c26d0b315:no": {
     "avg_price": 0.2,
     "total_amount": 160.0,
