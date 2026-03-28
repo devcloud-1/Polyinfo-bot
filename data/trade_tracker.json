@@ -3167,12 +3167,28 @@
       "resolved_price": null,
       "pnl_if_followed": null,
       "pnl_if_ignored": null
+    },
+    {
+      "id": "S-Works_20260328022843",
+      "timestamp": "2026-03-28T02:28:43.907624",
+      "trader": "S-Works",
+      "market": "Wizards vs. Warriors",
+      "market_id": "0x358e85188c9a7f86675242d16256d86ef12801ae44b2a2e914a0c9a2743740da",
+      "outcome": "Warriors",
+      "entry_price": 0.88,
+      "recommendation": "NO ENTRAR",
+      "score": 12,
+      "suggested_amount": 0.5,
+      "status": "PENDING",
+      "resolved_price": null,
+      "pnl_if_followed": null,
+      "pnl_if_ignored": null
     }
   ],
   "stats": {
-    "total": 198,
+    "total": 199,
     "entrar": 23,
-    "no_entrar": 168,
+    "no_entrar": 169,
     "observar": 7
   }
 }
