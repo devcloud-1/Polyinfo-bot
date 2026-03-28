@@ -327,5 +327,12 @@
     "entry_time": "2026-03-28T13:50:13.127450",
     "market_title": "Dota 2: Aurora vs PARIVISION (BO3) - ESL One Birmingham Playoffs",
     "trader": "S-Works"
+  },
+  "S-Works:0x0391cd0e3c25e8ccd17c0c32999f728a1267c919d1d4c4b79e11f904374e0292:aurora": {
+    "avg_price": 0.4854555197635658,
+    "total_amount": 6409.3867,
+    "entry_time": "2026-03-28T13:50:15.794771",
+    "market_title": "Dota 2: Aurora vs PARIVISION - Game 2 Winner",
+    "trader": "S-Works"
   }
 }
