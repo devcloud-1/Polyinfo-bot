@@ -369,5 +369,12 @@
     "entry_time": "2026-03-28T22:07:47.798473",
     "market_title": "Stars vs. Penguins",
     "trader": "S-Works"
+  },
+  "S-Works:0xfd14e97766d15985095d0da70e66aabfae2ca0e4da8ef5d01bbd69a7d1fe8f6d:wild": {
+    "avg_price": 0.03972834945126589,
+    "total_amount": 14.6248,
+    "entry_time": "2026-03-28T23:30:59.747805",
+    "market_title": "Wild vs. Bruins",
+    "trader": "S-Works"
   }
 }
