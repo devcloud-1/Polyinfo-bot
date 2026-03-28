@@ -335,13 +335,6 @@
     "market_title": "Rockets vs. Grizzlies",
     "trader": "S-Works"
   },
-  "S-Works:0x946833228cae9572bc293e26a19d7333d162bec248b18df7ba0166c7ec76690b:pacers": {
-    "avg_price": 0.5083333356950362,
-    "total_amount": 13594.851521,
-    "entry_time": "2026-03-28T00:43:39.215600",
-    "market_title": "Clippers vs. Pacers",
-    "trader": "S-Works"
-  },
   "S-Works:0xa0da0105d7c4d12aca76e33b00977a5f9aecc05ca6d7798114a2f4f84e026eb4:red wings": {
     "avg_price": 0.8600000056000001,
     "total_amount": 104.428571,
