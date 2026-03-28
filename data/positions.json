@@ -341,5 +341,12 @@
     "entry_time": "2026-03-28T00:43:36.121697",
     "market_title": "Rockets vs. Grizzlies",
     "trader": "S-Works"
+  },
+  "S-Works:0x946833228cae9572bc293e26a19d7333d162bec248b18df7ba0166c7ec76690b:pacers": {
+    "avg_price": 0.5083333356950362,
+    "total_amount": 13594.851521,
+    "entry_time": "2026-03-28T00:43:39.215600",
+    "market_title": "Clippers vs. Pacers",
+    "trader": "S-Works"
   }
 }
