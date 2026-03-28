@@ -369,5 +369,12 @@
     "entry_time": "2026-03-28T20:17:08.379976",
     "market_title": "Ducks vs. Oilers",
     "trader": "S-Works"
+  },
+  "S-Works:0x06d23cbd28fa8673b44c5397b6aab7d049dec4da54aee42e021ddb421996e4ee:oilers": {
+    "avg_price": 0.55,
+    "total_amount": 97.39399999999999,
+    "entry_time": "2026-03-28T20:39:35.652043",
+    "market_title": "Ducks vs. Oilers",
+    "trader": "S-Works"
   }
 }
