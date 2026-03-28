@@ -3103,12 +3103,28 @@
       "resolved_price": null,
       "pnl_if_followed": null,
       "pnl_if_ignored": null
+    },
+    {
+      "id": "S-Works_20260328004341",
+      "timestamp": "2026-03-28T00:43:41.741360",
+      "trader": "S-Works",
+      "market": "Clippers vs. Pacers",
+      "market_id": "0x946833228cae9572bc293e26a19d7333d162bec248b18df7ba0166c7ec76690b",
+      "outcome": "Pacers",
+      "entry_price": 0.5083333356950362,
+      "recommendation": "NO ENTRAR",
+      "score": 12,
+      "suggested_amount": 0.0,
+      "status": "PENDING",
+      "resolved_price": null,
+      "pnl_if_followed": null,
+      "pnl_if_ignored": null
     }
   ],
   "stats": {
-    "total": 194,
+    "total": 195,
     "entrar": 23,
-    "no_entrar": 164,
+    "no_entrar": 165,
     "observar": 7
   }
 }
