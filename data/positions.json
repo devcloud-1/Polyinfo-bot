@@ -320,5 +320,12 @@
     "entry_time": "2026-03-27T21:44:19.888361",
     "market_title": "Will the DHS shutdown last 60 days or more?",
     "trader": "Gohst"
+  },
+  "S-Works:0x79b9641e131b88536fcb5d72a9db62bafc6633d27ffc8c2c1fd4e94d2a6a7093:parivision": {
+    "avg_price": 0.7000000600000239,
+    "total_amount": 13201.995333,
+    "entry_time": "2026-03-28T13:50:13.127450",
+    "market_title": "Dota 2: Aurora vs PARIVISION (BO3) - ESL One Birmingham Playoffs",
+    "trader": "S-Works"
   }
 }
