@@ -321,13 +321,6 @@
     "market_title": "Will the DHS shutdown last 60 days or more?",
     "trader": "Gohst"
   },
-  "S-Works:0x0391cd0e3c25e8ccd17c0c32999f728a1267c919d1d4c4b79e11f904374e0292:aurora": {
-    "avg_price": 0.4854555197635658,
-    "total_amount": 6409.3867,
-    "entry_time": "2026-03-28T13:50:15.794771",
-    "market_title": "Dota 2: Aurora vs PARIVISION - Game 2 Winner",
-    "trader": "S-Works"
-  },
   "S-Works:0xe7e5dde374d7eaeb11e5b0e3ebb595313425e02001f9bcbf0942db30fd2af076:vitality": {
     "avg_price": 0.8585714376031481,
     "total_amount": 1908.5993979999998,
