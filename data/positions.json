@@ -355,5 +355,12 @@
     "entry_time": "2026-03-28T18:17:50.253746",
     "market_title": "Counter-Strike: Natus Vincere vs PARIVISION (BO3) - BLAST Open Rotterdam Playoffs",
     "trader": "S-Works"
+  },
+  "S-Works:0xf074295638da0719e65aede1b9587da326b8405b5de25ad9a33a541261b4e6ce:xtreme gaming": {
+    "avg_price": 0.3912500269729193,
+    "total_amount": 2757.583872,
+    "entry_time": "2026-03-28T19:32:01.439878",
+    "market_title": "Dota 2: Xtreme Gaming vs PARIVISION - Game 1 Winner",
+    "trader": "S-Works"
   }
 }
