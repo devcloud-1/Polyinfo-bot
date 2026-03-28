@@ -3391,12 +3391,28 @@
       "resolved_price": null,
       "pnl_if_followed": null,
       "pnl_if_ignored": null
+    },
+    {
+      "id": "S-Works_20260328201711",
+      "timestamp": "2026-03-28T20:17:11.064306",
+      "trader": "S-Works",
+      "market": "Ducks vs. Oilers",
+      "market_id": "0x06d23cbd28fa8673b44c5397b6aab7d049dec4da54aee42e021ddb421996e4ee",
+      "outcome": "Ducks",
+      "entry_price": 0.42,
+      "recommendation": "NO ENTRAR",
+      "score": 15,
+      "suggested_amount": 0.0,
+      "status": "PENDING",
+      "resolved_price": null,
+      "pnl_if_followed": null,
+      "pnl_if_ignored": null
     }
   ],
   "stats": {
-    "total": 212,
+    "total": 213,
     "entrar": 23,
-    "no_entrar": 181,
+    "no_entrar": 182,
     "observar": 8
   }
 }
