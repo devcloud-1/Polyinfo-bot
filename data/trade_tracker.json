@@ -3295,12 +3295,28 @@
       "resolved_price": null,
       "pnl_if_followed": null,
       "pnl_if_ignored": null
+    },
+    {
+      "id": "S-Works_20260328155854",
+      "timestamp": "2026-03-28T15:58:54.639948",
+      "trader": "S-Works",
+      "market": "Dota 2: Team Yandex vs Tundra Esports - Game 1 Winner",
+      "market_id": "0x3dd276f10193bb8c36b4647af3400e2fcb116ccb7683d8d834739d111512c907",
+      "outcome": "Tundra Esports",
+      "entry_price": 0.43000001256586085,
+      "recommendation": "NO ENTRAR",
+      "score": 22,
+      "suggested_amount": 0.5,
+      "status": "PENDING",
+      "resolved_price": null,
+      "pnl_if_followed": null,
+      "pnl_if_ignored": null
     }
   ],
   "stats": {
-    "total": 206,
+    "total": 207,
     "entrar": 23,
-    "no_entrar": 176,
+    "no_entrar": 177,
     "observar": 7
   }
 }
