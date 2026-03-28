@@ -3247,12 +3247,28 @@
       "resolved_price": null,
       "pnl_if_followed": null,
       "pnl_if_ignored": null
+    },
+    {
+      "id": "S-Works_20260328142256",
+      "timestamp": "2026-03-28T14:22:56.828840",
+      "trader": "S-Works",
+      "market": "Counter-Strike: Vitality vs Aurora Gaming (BO3) - BLAST Open Rotterdam Playoffs",
+      "market_id": "0xe7e5dde374d7eaeb11e5b0e3ebb595313425e02001f9bcbf0942db30fd2af076",
+      "outcome": "Vitality",
+      "entry_price": 0.8585714376031481,
+      "recommendation": "NO ENTRAR",
+      "score": 12,
+      "suggested_amount": 0.0,
+      "status": "PENDING",
+      "resolved_price": null,
+      "pnl_if_followed": null,
+      "pnl_if_ignored": null
     }
   ],
   "stats": {
-    "total": 203,
+    "total": 204,
     "entrar": 23,
-    "no_entrar": 173,
+    "no_entrar": 174,
     "observar": 7
   }
 }
