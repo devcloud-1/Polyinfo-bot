@@ -3423,12 +3423,28 @@
       "resolved_price": null,
       "pnl_if_followed": null,
       "pnl_if_ignored": null
+    },
+    {
+      "id": "S-Works_20260328220750",
+      "timestamp": "2026-03-28T22:07:50.162083",
+      "trader": "S-Works",
+      "market": "Stars vs. Penguins",
+      "market_id": "0x992bc2a1d68dc380f63d192759726d9f924126eb8e041caf696f8e484ea4e472",
+      "outcome": "Stars",
+      "entry_price": 0.3400000608729901,
+      "recommendation": "NO ENTRAR",
+      "score": 15,
+      "suggested_amount": 0.5,
+      "status": "PENDING",
+      "resolved_price": null,
+      "pnl_if_followed": null,
+      "pnl_if_ignored": null
     }
   ],
   "stats": {
-    "total": 214,
+    "total": 215,
     "entrar": 23,
-    "no_entrar": 183,
+    "no_entrar": 184,
     "observar": 8
   }
 }
