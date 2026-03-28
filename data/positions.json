@@ -355,5 +355,12 @@
     "entry_time": "2026-03-28T17:05:59.934502",
     "market_title": "Dota 2: Team Yandex vs Tundra Esports - Game 2 Winner",
     "trader": "S-Works"
+  },
+  "S-Works:0xd68a4a7894db695093a2b621f6917ef083d8811d720680434aa2e2334ea52483:natus vincere": {
+    "avg_price": 0.7833333397997048,
+    "total_amount": 37622.985631999996,
+    "entry_time": "2026-03-28T18:17:50.253746",
+    "market_title": "Counter-Strike: Natus Vincere vs PARIVISION (BO3) - BLAST Open Rotterdam Playoffs",
+    "trader": "S-Works"
   }
 }
