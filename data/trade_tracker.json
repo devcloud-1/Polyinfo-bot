@@ -3359,12 +3359,28 @@
       "resolved_price": null,
       "pnl_if_followed": null,
       "pnl_if_ignored": null
+    },
+    {
+      "id": "S-Works_20260328193204",
+      "timestamp": "2026-03-28T19:32:04.230774",
+      "trader": "S-Works",
+      "market": "Dota 2: Xtreme Gaming vs PARIVISION - Game 1 Winner",
+      "market_id": "0xf074295638da0719e65aede1b9587da326b8405b5de25ad9a33a541261b4e6ce",
+      "outcome": "Xtreme Gaming",
+      "entry_price": 0.3912500269729193,
+      "recommendation": "NO ENTRAR",
+      "score": 15,
+      "suggested_amount": 0.0,
+      "status": "PENDING",
+      "resolved_price": null,
+      "pnl_if_followed": null,
+      "pnl_if_ignored": null
     }
   ],
   "stats": {
-    "total": 210,
+    "total": 211,
     "entrar": 23,
-    "no_entrar": 179,
+    "no_entrar": 180,
     "observar": 8
   }
 }
