@@ -320,12 +320,5 @@
     "entry_time": "2026-03-27T21:44:19.888361",
     "market_title": "Will the DHS shutdown last 60 days or more?",
     "trader": "Gohst"
-  },
-  "aenews2:0x9dd53abf4c8b6b25961ebcf61c5413900ece7b3cc08a9511d0c61b3ef9e5a6e3:no": {
-    "avg_price": 0.047701053986391566,
-    "total_amount": 60.78116,
-    "entry_time": "2026-03-28T10:07:23.301602",
-    "market_title": "Will Hezbollah conduct military action against Israel on March 22, 2026?",
-    "trader": "aenews2"
   }
 }
