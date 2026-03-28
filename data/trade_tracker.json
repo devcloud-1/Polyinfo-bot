@@ -3407,12 +3407,28 @@
       "resolved_price": null,
       "pnl_if_followed": null,
       "pnl_if_ignored": null
+    },
+    {
+      "id": "S-Works_20260328212511",
+      "timestamp": "2026-03-28T21:25:11.295665",
+      "trader": "S-Works",
+      "market": "Sharks vs. Blue Jackets",
+      "market_id": "0x605ffdd2d8cacf5b0c96f74f95293858299560686460a490575e9df16c9b3300",
+      "outcome": "Blue Jackets",
+      "entry_price": 0.75,
+      "recommendation": "NO ENTRAR",
+      "score": 18,
+      "suggested_amount": 0.5,
+      "status": "PENDING",
+      "resolved_price": null,
+      "pnl_if_followed": null,
+      "pnl_if_ignored": null
     }
   ],
   "stats": {
-    "total": 213,
+    "total": 214,
     "entrar": 23,
-    "no_entrar": 182,
+    "no_entrar": 183,
     "observar": 8
   }
 }
