@@ -321,13 +321,6 @@
     "market_title": "Will the DHS shutdown last 60 days or more?",
     "trader": "Gohst"
   },
-  "S-Works:0xe7e5dde374d7eaeb11e5b0e3ebb595313425e02001f9bcbf0942db30fd2af076:vitality": {
-    "avg_price": 0.8585714376031481,
-    "total_amount": 1908.5993979999998,
-    "entry_time": "2026-03-28T14:22:54.354500",
-    "market_title": "Counter-Strike: Vitality vs Aurora Gaming (BO3) - BLAST Open Rotterdam Playoffs",
-    "trader": "S-Works"
-  },
   "S-Works:0xefd78bf13d4631f06be14549b2770f3ca2ee91570c54064dbe9693799f9e3bfc:tundra esports": {
     "avg_price": 0.7168410741039529,
     "total_amount": 62.2003,
