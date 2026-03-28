@@ -334,5 +334,12 @@
     "entry_time": "2026-03-27T21:44:19.888361",
     "market_title": "Will the DHS shutdown last 60 days or more?",
     "trader": "Gohst"
+  },
+  "S-Works:0x359e176adadd76141620686e43aeeeb03e97b7c3ecfd7b81d0c4bda9a36e254f:grizzlies": {
+    "avg_price": 0.505,
+    "total_amount": 97055.8536,
+    "entry_time": "2026-03-28T00:43:36.121697",
+    "market_title": "Rockets vs. Grizzlies",
+    "trader": "S-Works"
   }
 }
