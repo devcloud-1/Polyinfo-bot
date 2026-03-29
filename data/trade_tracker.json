@@ -3535,12 +3535,28 @@
       "resolved_price": null,
       "pnl_if_followed": null,
       "pnl_if_ignored": null
+    },
+    {
+      "id": "aenews2_20260329044103",
+      "timestamp": "2026-03-29T04:41:03.625646",
+      "trader": "aenews2",
+      "market": "Will Trump talk to Xi Jinping in March?",
+      "market_id": "0x6aa39e488afd5dd8e1cd995258c28c3c485dbc4d467d4eb4d94fc6f30e172833",
+      "outcome": "No",
+      "entry_price": 0.3692513847457506,
+      "recommendation": "NO ENTRAR",
+      "score": 18,
+      "suggested_amount": 0.5,
+      "status": "PENDING",
+      "resolved_price": null,
+      "pnl_if_followed": null,
+      "pnl_if_ignored": null
     }
   ],
   "stats": {
-    "total": 221,
+    "total": 222,
     "entrar": 23,
-    "no_entrar": 190,
+    "no_entrar": 191,
     "observar": 8
   }
 }
