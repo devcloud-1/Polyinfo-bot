@@ -3471,12 +3471,28 @@
       "resolved_price": null,
       "pnl_if_followed": null,
       "pnl_if_ignored": null
+    },
+    {
+      "id": "S-Works_20260329001655",
+      "timestamp": "2026-03-29T00:16:55.241716",
+      "trader": "S-Works",
+      "market": "Canadiens vs. Predators",
+      "market_id": "0x8a1b7ec22a5a6fba22c0940d67944ac9ee4e89744462972e59b1d9f5eb8f177a",
+      "outcome": "Canadiens",
+      "entry_price": 0.69,
+      "recommendation": "NO ENTRAR",
+      "score": 15,
+      "suggested_amount": 0.0,
+      "status": "PENDING",
+      "resolved_price": null,
+      "pnl_if_followed": null,
+      "pnl_if_ignored": null
     }
   ],
   "stats": {
-    "total": 217,
+    "total": 218,
     "entrar": 23,
-    "no_entrar": 186,
+    "no_entrar": 187,
     "observar": 8
   }
 }
