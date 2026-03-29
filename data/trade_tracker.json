@@ -3647,12 +3647,28 @@
       "resolved_price": null,
       "pnl_if_followed": null,
       "pnl_if_ignored": null
+    },
+    {
+      "id": "Gohst_20260329201842",
+      "timestamp": "2026-03-29T20:18:42.344226",
+      "trader": "Gohst",
+      "market": "Military action against Iran ends by March 31, 2026?",
+      "market_id": "0x4642df0d198e647209dec3dd3b3e0c8f19d8ed364a2661e08443faae6d74c4b9",
+      "outcome": "No",
+      "entry_price": 0.4,
+      "recommendation": "OBSERVAR",
+      "score": 52,
+      "suggested_amount": null,
+      "status": "PENDING",
+      "resolved_price": null,
+      "pnl_if_followed": null,
+      "pnl_if_ignored": null
     }
   ],
   "stats": {
-    "total": 228,
+    "total": 229,
     "entrar": 23,
     "no_entrar": 196,
-    "observar": 9
+    "observar": 10
   }
 }
