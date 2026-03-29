@@ -369,5 +369,12 @@
     "entry_time": "2026-03-29T21:23:18.285847",
     "market_title": "Heat vs. Pacers",
     "trader": "S-Works"
+  },
+  "S-Works:0xef54425dc6d1727e47330841ae0f1a21ad050896ff88fc13a297c3d84e4aa25a:magic": {
+    "avg_price": 0.52,
+    "total_amount": 35620.6448,
+    "entry_time": "2026-03-29T22:27:48.115711",
+    "market_title": "Magic vs. Raptors",
+    "trader": "S-Works"
   }
 }
