@@ -3567,12 +3567,28 @@
       "resolved_price": null,
       "pnl_if_followed": null,
       "pnl_if_ignored": null
+    },
+    {
+      "id": "Gohst_20260329121844",
+      "timestamp": "2026-03-29T12:18:44.574702",
+      "trader": "Gohst",
+      "market": "Will Trump talk to Mark Rutte in March?",
+      "market_id": "0xbef7266e1d7c2adad3d7c6ae59df817d653c872802415a369c761ca75601f5ea",
+      "outcome": "Yes",
+      "entry_price": 0.26,
+      "recommendation": "OBSERVAR",
+      "score": 32,
+      "suggested_amount": null,
+      "status": "PENDING",
+      "resolved_price": null,
+      "pnl_if_followed": null,
+      "pnl_if_ignored": null
     }
   ],
   "stats": {
-    "total": 223,
+    "total": 224,
     "entrar": 23,
     "no_entrar": 192,
-    "observar": 8
+    "observar": 9
   }
 }
