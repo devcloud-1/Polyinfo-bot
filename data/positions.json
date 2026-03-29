@@ -321,13 +321,6 @@
     "market_title": "Will the DHS shutdown last 60 days or more?",
     "trader": "Gohst"
   },
-  "S-Works:0xfd14e97766d15985095d0da70e66aabfae2ca0e4da8ef5d01bbd69a7d1fe8f6d:wild": {
-    "avg_price": 0.03972834945126589,
-    "total_amount": 14.6248,
-    "entry_time": "2026-03-28T23:30:59.747805",
-    "market_title": "Wild vs. Bruins",
-    "trader": "S-Works"
-  },
   "S-Works:0xd14794fb42aca697fb532cd1f3ebf79d0757aeac6b99e49f192658f60cc68398:maple leafs": {
     "avg_price": 0.410000059996212,
     "total_amount": 134.365824,
