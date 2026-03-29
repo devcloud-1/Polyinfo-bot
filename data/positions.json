@@ -341,5 +341,12 @@
     "entry_time": "2026-03-29T12:18:42.554076",
     "market_title": "Will Trump talk to Mark Rutte in March?",
     "trader": "Gohst"
+  },
+  "S-Works:0xb45873eaac60b04cf7bbc829d789d5b0e8895146a50a3d4986ca4c5cc065f046:tundra esports": {
+    "avg_price": 0.5700000246546476,
+    "total_amount": 598.155347,
+    "entry_time": "2026-03-29T15:48:59.791555",
+    "market_title": "Dota 2: Tundra Esports vs Team Yandex - Game 1 Winner",
+    "trader": "S-Works"
   }
 }
