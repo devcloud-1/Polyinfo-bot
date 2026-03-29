@@ -321,13 +321,6 @@
     "market_title": "Will the DHS shutdown last 60 days or more?",
     "trader": "Gohst"
   },
-  "S-Works:0x605ffdd2d8cacf5b0c96f74f95293858299560686460a490575e9df16c9b3300:blue jackets": {
-    "avg_price": 0.75,
-    "total_amount": 41.775,
-    "entry_time": "2026-03-28T21:25:08.828602",
-    "market_title": "Sharks vs. Blue Jackets",
-    "trader": "S-Works"
-  },
   "S-Works:0x992bc2a1d68dc380f63d192759726d9f924126eb8e041caf696f8e484ea4e472:stars": {
     "avg_price": 0.3400000608729901,
     "total_amount": 11255.931297,
