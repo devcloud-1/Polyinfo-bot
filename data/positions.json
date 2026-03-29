@@ -327,5 +327,12 @@
     "entry_time": "2026-03-29T01:02:36.334102",
     "market_title": "Will Real Madrid CF win on 2026-04-04?",
     "trader": "S-Works"
+  },
+  "Gohst:0xc28589f4effa41509c87c36535208481f7ab8878a4926a1014d6e525816df729:yes": {
+    "avg_price": 0.225,
+    "total_amount": 1999.9940000000001,
+    "entry_time": "2026-03-29T10:12:42.255208",
+    "market_title": "Will the Freedom Movement (GS) win the most seats in the 2026 Slovenian parliamentary election?",
+    "trader": "Gohst"
   }
 }
