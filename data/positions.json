@@ -348,5 +348,12 @@
     "entry_time": "2026-03-29T02:21:24.368747",
     "market_title": "Canucks vs. Flames",
     "trader": "S-Works"
+  },
+  "aenews2:0x6aa39e488afd5dd8e1cd995258c28c3c485dbc4d467d4eb4d94fc6f30e172833:no": {
+    "avg_price": 0.3692513847457506,
+    "total_amount": 1742.1633,
+    "entry_time": "2026-03-29T04:41:01.032986",
+    "market_title": "Will Trump talk to Xi Jinping in March?",
+    "trader": "aenews2"
   }
 }
