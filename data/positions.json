@@ -369,5 +369,12 @@
     "entry_time": "2026-03-29T00:16:49.248032",
     "market_title": "Maple Leafs vs. Blues",
     "trader": "S-Works"
+  },
+  "S-Works:0x8a1b7ec22a5a6fba22c0940d67944ac9ee4e89744462972e59b1d9f5eb8f177a:canadiens": {
+    "avg_price": 0.69,
+    "total_amount": 10732.95,
+    "entry_time": "2026-03-29T00:16:52.550390",
+    "market_title": "Canadiens vs. Predators",
+    "trader": "S-Works"
   }
 }
