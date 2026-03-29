@@ -348,5 +348,12 @@
     "entry_time": "2026-03-29T02:21:24.368747",
     "market_title": "Canucks vs. Flames",
     "trader": "S-Works"
+  },
+  "aenews2:0x9dd53abf4c8b6b25961ebcf61c5413900ece7b3cc08a9511d0c61b3ef9e5a6e3:no": {
+    "avg_price": 0.001,
+    "total_amount": 193.55336,
+    "entry_time": "2026-03-29T04:08:18.349252",
+    "market_title": "Will Hezbollah conduct military action against Israel on March 22, 2026?",
+    "trader": "aenews2"
   }
 }
