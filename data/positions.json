@@ -362,5 +362,12 @@
     "entry_time": "2026-03-28T23:30:59.747805",
     "market_title": "Wild vs. Bruins",
     "trader": "S-Works"
+  },
+  "S-Works:0xd14794fb42aca697fb532cd1f3ebf79d0757aeac6b99e49f192658f60cc68398:maple leafs": {
+    "avg_price": 0.410000059996212,
+    "total_amount": 134.365824,
+    "entry_time": "2026-03-29T00:16:49.248032",
+    "market_title": "Maple Leafs vs. Blues",
+    "trader": "S-Works"
   }
 }
