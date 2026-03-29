@@ -3663,12 +3663,28 @@
       "resolved_price": null,
       "pnl_if_followed": null,
       "pnl_if_ignored": null
+    },
+    {
+      "id": "S-Works_20260329212320",
+      "timestamp": "2026-03-29T21:23:20.805302",
+      "trader": "S-Works",
+      "market": "Heat vs. Pacers",
+      "market_id": "0xdf99b42652984acb2679ce1729acca79ca93cbb1eb6e512cf7153eedcd0b630e",
+      "outcome": "Pacers",
+      "entry_price": 0.24000002297520315,
+      "recommendation": "NO ENTRAR",
+      "score": 12,
+      "suggested_amount": 0.0,
+      "status": "PENDING",
+      "resolved_price": null,
+      "pnl_if_followed": null,
+      "pnl_if_ignored": null
     }
   ],
   "stats": {
-    "total": 229,
+    "total": 230,
     "entrar": 23,
-    "no_entrar": 196,
+    "no_entrar": 197,
     "observar": 10
   }
 }
