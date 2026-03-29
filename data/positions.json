@@ -327,12 +327,5 @@
     "entry_time": "2026-03-29T01:02:36.334102",
     "market_title": "Will Real Madrid CF win on 2026-04-04?",
     "trader": "S-Works"
-  },
-  "S-Works:0x173c8f5699b4a4fc92be104e6c5d04e9c8c0ad256e46c7c5b942f7eec3e281fa:flames": {
-    "avg_price": 0.59,
-    "total_amount": 14744.0528,
-    "entry_time": "2026-03-29T02:21:24.368747",
-    "market_title": "Canucks vs. Flames",
-    "trader": "S-Works"
   }
 }
