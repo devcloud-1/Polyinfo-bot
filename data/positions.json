@@ -335,13 +335,6 @@
     "market_title": "Canadiens vs. Predators",
     "trader": "S-Works"
   },
-  "S-Works:0x1cf45d40cf39c4f40617d7b752a040e4da4fa43535ed6d2e100a2f60a6fa2f6f:kraken": {
-    "avg_price": 0.4400000023072003,
-    "total_amount": 529.157199,
-    "entry_time": "2026-03-29T00:40:07.292659",
-    "market_title": "Kraken vs. Sabres",
-    "trader": "S-Works"
-  },
   "S-Works:0x161ab8edd553f3de4366a6abe952f6de261d5f443135ce60248ac63e73a45f69:yes": {
     "avg_price": 0.59,
     "total_amount": 5.8469,
