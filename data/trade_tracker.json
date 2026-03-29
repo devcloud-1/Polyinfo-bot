@@ -3455,12 +3455,28 @@
       "resolved_price": null,
       "pnl_if_followed": null,
       "pnl_if_ignored": null
+    },
+    {
+      "id": "S-Works_20260329001651",
+      "timestamp": "2026-03-29T00:16:51.998667",
+      "trader": "S-Works",
+      "market": "Maple Leafs vs. Blues",
+      "market_id": "0xd14794fb42aca697fb532cd1f3ebf79d0757aeac6b99e49f192658f60cc68398",
+      "outcome": "Maple Leafs",
+      "entry_price": 0.410000059996212,
+      "recommendation": "NO ENTRAR",
+      "score": 15,
+      "suggested_amount": 0.5,
+      "status": "PENDING",
+      "resolved_price": null,
+      "pnl_if_followed": null,
+      "pnl_if_ignored": null
     }
   ],
   "stats": {
-    "total": 216,
+    "total": 217,
     "entrar": 23,
-    "no_entrar": 185,
+    "no_entrar": 186,
     "observar": 8
   }
 }
