@@ -334,5 +334,12 @@
     "entry_time": "2026-03-29T10:12:42.255208",
     "market_title": "Will the Freedom Movement (GS) win the most seats in the 2026 Slovenian parliamentary election?",
     "trader": "Gohst"
+  },
+  "Gohst:0xbef7266e1d7c2adad3d7c6ae59df817d653c872802415a369c761ca75601f5ea:yes": {
+    "avg_price": 0.26,
+    "total_amount": 54.6702,
+    "entry_time": "2026-03-29T12:18:42.554076",
+    "market_title": "Will Trump talk to Mark Rutte in March?",
+    "trader": "Gohst"
   }
 }
