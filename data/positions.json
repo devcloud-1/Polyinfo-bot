@@ -328,13 +328,6 @@
     "market_title": "Dota 2: Xtreme Gaming vs PARIVISION (BO3) - ESL One Birmingham Playoffs",
     "trader": "S-Works"
   },
-  "S-Works:0x06d23cbd28fa8673b44c5397b6aab7d049dec4da54aee42e021ddb421996e4ee:oilers": {
-    "avg_price": 0.55,
-    "total_amount": 97.39399999999999,
-    "entry_time": "2026-03-28T20:39:35.652043",
-    "market_title": "Ducks vs. Oilers",
-    "trader": "S-Works"
-  },
   "S-Works:0x605ffdd2d8cacf5b0c96f74f95293858299560686460a490575e9df16c9b3300:blue jackets": {
     "avg_price": 0.75,
     "total_amount": 41.775,
