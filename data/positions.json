@@ -362,5 +362,12 @@
     "entry_time": "2026-03-29T20:18:39.886533",
     "market_title": "Military action against Iran ends by March 31, 2026?",
     "trader": "Gohst"
+  },
+  "S-Works:0xdf99b42652984acb2679ce1729acca79ca93cbb1eb6e512cf7153eedcd0b630e:pacers": {
+    "avg_price": 0.24000002297520315,
+    "total_amount": 10570.614442,
+    "entry_time": "2026-03-29T21:23:18.285847",
+    "market_title": "Heat vs. Pacers",
+    "trader": "S-Works"
   }
 }
