@@ -3583,12 +3583,28 @@
       "resolved_price": null,
       "pnl_if_followed": null,
       "pnl_if_ignored": null
+    },
+    {
+      "id": "S-Works_20260329140347",
+      "timestamp": "2026-03-29T14:03:47.178152",
+      "trader": "S-Works",
+      "market": "Counter-Strike: Vitality vs Natus Vincere (BO5) - BLAST Open Rotterdam Playoffs",
+      "market_id": "0x7061a16b83b84d004b9afc04c172eb56208b6246373737ae054e28fe1ab00455",
+      "outcome": "Vitality",
+      "entry_price": 0.999,
+      "recommendation": "NO ENTRAR",
+      "score": 18,
+      "suggested_amount": 0.0,
+      "status": "PENDING",
+      "resolved_price": null,
+      "pnl_if_followed": null,
+      "pnl_if_ignored": null
     }
   ],
   "stats": {
-    "total": 224,
+    "total": 225,
     "entrar": 23,
-    "no_entrar": 192,
+    "no_entrar": 193,
     "observar": 9
   }
 }
