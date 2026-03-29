@@ -3487,12 +3487,28 @@
       "resolved_price": null,
       "pnl_if_followed": null,
       "pnl_if_ignored": null
+    },
+    {
+      "id": "S-Works_20260329004009",
+      "timestamp": "2026-03-29T00:40:09.608974",
+      "trader": "S-Works",
+      "market": "Kraken vs. Sabres",
+      "market_id": "0x1cf45d40cf39c4f40617d7b752a040e4da4fa43535ed6d2e100a2f60a6fa2f6f",
+      "outcome": "Kraken",
+      "entry_price": 0.4400000023072003,
+      "recommendation": "NO ENTRAR",
+      "score": 12,
+      "suggested_amount": 0.0,
+      "status": "PENDING",
+      "resolved_price": null,
+      "pnl_if_followed": null,
+      "pnl_if_ignored": null
     }
   ],
   "stats": {
-    "total": 218,
+    "total": 219,
     "entrar": 23,
-    "no_entrar": 187,
+    "no_entrar": 188,
     "observar": 8
   }
 }
