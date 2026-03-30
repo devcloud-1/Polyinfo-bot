@@ -3711,12 +3711,28 @@
       "resolved_price": null,
       "pnl_if_followed": null,
       "pnl_if_ignored": null
+    },
+    {
+      "id": "S-Works_20260330000327",
+      "timestamp": "2026-03-30T00:03:27.495623",
+      "trader": "S-Works",
+      "market": "Knicks vs. Thunder",
+      "market_id": "0xb71276804dfd74c76d770e78ac1e90c1d60bc827d4300c2fa21f6983b9a601ac",
+      "outcome": "Thunder",
+      "entry_price": 0.77,
+      "recommendation": "NO ENTRAR",
+      "score": 12,
+      "suggested_amount": 0.0,
+      "status": "PENDING",
+      "resolved_price": null,
+      "pnl_if_followed": null,
+      "pnl_if_ignored": null
     }
   ],
   "stats": {
-    "total": 232,
+    "total": 233,
     "entrar": 23,
-    "no_entrar": 198,
+    "no_entrar": 199,
     "observar": 11
   }
 }
