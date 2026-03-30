@@ -3839,12 +3839,28 @@
       "resolved_price": null,
       "pnl_if_followed": null,
       "pnl_if_ignored": null
+    },
+    {
+      "id": "Gohst_20260330165124",
+      "timestamp": "2026-03-30T16:51:24.750288",
+      "trader": "Gohst",
+      "market": "Will Kevin Spacey be confirmed to have visited Epstein\u2019s island?",
+      "market_id": "0xa38abe7921e1a335541afc488b6eb046c71c203f166fa0b5281d4491f8ac7577",
+      "outcome": "Yes",
+      "entry_price": 0.16,
+      "recommendation": "OBSERVAR",
+      "score": 38,
+      "suggested_amount": null,
+      "status": "PENDING",
+      "resolved_price": null,
+      "pnl_if_followed": null,
+      "pnl_if_ignored": null
     }
   ],
   "stats": {
-    "total": 240,
+    "total": 241,
     "entrar": 24,
     "no_entrar": 205,
-    "observar": 11
+    "observar": 12
   }
 }
