@@ -341,5 +341,12 @@
     "entry_time": "2026-03-29T20:18:39.886533",
     "market_title": "Military action against Iran ends by March 31, 2026?",
     "trader": "Gohst"
+  },
+  "Gohst:0x09f2c1563795ab7f72fbee56aa57afc23f319ee687b494d4c2b26c01d19729ce:yes": {
+    "avg_price": 0.1400000028480028,
+    "total_amount": 737.229977,
+    "entry_time": "2026-03-30T07:36:43.968360",
+    "market_title": "Will there be 5 or fewer US strikes on Somalia in March 2026?",
+    "trader": "Gohst"
   }
 }
