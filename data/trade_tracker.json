@@ -3775,12 +3775,28 @@
       "resolved_price": null,
       "pnl_if_followed": null,
       "pnl_if_ignored": null
+    },
+    {
+      "id": "S-Works_20260330022530",
+      "timestamp": "2026-03-30T02:25:30.014776",
+      "trader": "S-Works",
+      "market": "Kings vs. Nets",
+      "market_id": "0xd37522f09338ac31b622cfc55f7dd0fd56f4138790b0af8824227202b1b90ac4",
+      "outcome": "Nets",
+      "entry_price": 0.999,
+      "recommendation": "NO ENTRAR",
+      "score": 12,
+      "suggested_amount": 0.0,
+      "status": "PENDING",
+      "resolved_price": null,
+      "pnl_if_followed": null,
+      "pnl_if_ignored": null
     }
   ],
   "stats": {
-    "total": 236,
+    "total": 237,
     "entrar": 23,
-    "no_entrar": 202,
+    "no_entrar": 203,
     "observar": 11
   }
 }
