@@ -362,5 +362,12 @@
     "entry_time": "2026-03-30T17:42:51.453036",
     "market_title": "Will Crude Oil (CL) hit (HIGH) $100 by end of March?",
     "trader": "de5nuts"
+  },
+  "S-Works:0x6b0dc72c8ba138b52b41cf8fb20ffdf99ff3cf9de342c5df39384f59295a9a31:legacy": {
+    "avg_price": 0.8,
+    "total_amount": 22.7568,
+    "entry_time": "2026-03-30T23:38:01.992433",
+    "market_title": "Counter-Strike: 9z vs Legacy (BO5) - FERJEE In House Playoffs",
+    "trader": "S-Works"
   }
 }
