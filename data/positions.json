@@ -335,13 +335,6 @@
     "market_title": "Will Trump talk to Mark Rutte in March?",
     "trader": "Gohst"
   },
-  "S-Works:0x29c49781013568a50c85b700bc1f8cb11704c1fddd4b04c52a2ccd16af1831d9:tundra esports": {
-    "avg_price": 0.6402531053172262,
-    "total_amount": 1813.1612759999998,
-    "entry_time": "2026-03-29T15:49:02.481403",
-    "market_title": "Dota 2: Tundra Esports vs Team Yandex (BO5) - ESL One Birmingham Playoffs",
-    "trader": "S-Works"
-  },
   "S-Works:0x29c49781013568a50c85b700bc1f8cb11704c1fddd4b04c52a2ccd16af1831d9:team yandex": {
     "avg_price": 0.36,
     "total_amount": 322.6104,
