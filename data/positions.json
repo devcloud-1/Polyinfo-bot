@@ -342,13 +342,6 @@
     "market_title": "Military action against Iran ends by March 31, 2026?",
     "trader": "Gohst"
   },
-  "S-Works:0xb71276804dfd74c76d770e78ac1e90c1d60bc827d4300c2fa21f6983b9a601ac:thunder": {
-    "avg_price": 0.77,
-    "total_amount": 48503.8631,
-    "entry_time": "2026-03-30T00:03:25.121827",
-    "market_title": "Knicks vs. Thunder",
-    "trader": "S-Works"
-  },
   "S-Works:0xb71276804dfd74c76d770e78ac1e90c1d60bc827d4300c2fa21f6983b9a601ac:knicks": {
     "avg_price": 0.27,
     "total_amount": 10800.0,
