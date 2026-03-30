@@ -3807,12 +3807,28 @@
       "resolved_price": null,
       "pnl_if_followed": null,
       "pnl_if_ignored": null
+    },
+    {
+      "id": "de5nuts_20260330084940",
+      "timestamp": "2026-03-30T08:49:40.861123",
+      "trader": "de5nuts",
+      "market": "US escorts commercial ship through Hormuz by April 15?",
+      "market_id": "0x9e570fa9b5258f954859874e92e2de4be636f377d9968150915670d9bac09100",
+      "outcome": "No",
+      "entry_price": 0.8330458969905032,
+      "recommendation": "NO ENTRAR",
+      "score": 28,
+      "suggested_amount": 0.0,
+      "status": "PENDING",
+      "resolved_price": null,
+      "pnl_if_followed": null,
+      "pnl_if_ignored": null
     }
   ],
   "stats": {
-    "total": 238,
+    "total": 239,
     "entrar": 24,
-    "no_entrar": 203,
+    "no_entrar": 204,
     "observar": 11
   }
 }
