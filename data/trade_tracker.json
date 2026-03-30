@@ -3743,12 +3743,28 @@
       "resolved_price": null,
       "pnl_if_followed": null,
       "pnl_if_ignored": null
+    },
+    {
+      "id": "S-Works_20260330002609",
+      "timestamp": "2026-03-30T00:26:09.749850",
+      "trader": "S-Works",
+      "market": "Bruins vs. Blue Jackets",
+      "market_id": "0x101b2f1d14874c54e4ce17073797a0f933d6a010970d10c0fbba53cfdd535fe6",
+      "outcome": "Bruins",
+      "entry_price": 0.999,
+      "recommendation": "NO ENTRAR",
+      "score": 18,
+      "suggested_amount": 0.0,
+      "status": "PENDING",
+      "resolved_price": null,
+      "pnl_if_followed": null,
+      "pnl_if_ignored": null
     }
   ],
   "stats": {
-    "total": 234,
+    "total": 235,
     "entrar": 23,
-    "no_entrar": 200,
+    "no_entrar": 201,
     "observar": 11
   }
 }
