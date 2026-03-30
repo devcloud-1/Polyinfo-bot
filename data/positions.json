@@ -376,5 +376,12 @@
     "entry_time": "2026-03-30T01:09:51.106961",
     "market_title": "Knicks vs. Thunder",
     "trader": "S-Works"
+  },
+  "S-Works:0x143a3422de4bf5989c6cc95edabb225d5ae9898478dbdb9cf9c564773701e9e7:stars": {
+    "avg_price": 0.51,
+    "total_amount": 22666.44,
+    "entry_time": "2026-03-30T01:51:42.648937",
+    "market_title": "Stars vs. Flyers",
+    "trader": "S-Works"
   }
 }
