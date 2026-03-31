@@ -76,13 +76,6 @@
     "market_title": "Will the Fed decrease interest rates by 25 bps after the April 2026 meeting?",
     "trader": "de5nuts"
   },
-  "aenews2:0x865303ccb9a48341d1bae33b3b4379ca86d5abbff3ce1e132716631cc0af3cce:no": {
-    "avg_price": 0.8377018388209239,
-    "total_amount": 49998.58389000001,
-    "entry_time": "2026-03-16T09:35:00.110131",
-    "market_title": "Netanyahu out by June 30?",
-    "trader": "aenews2"
-  },
   "de5nuts:0x473867b4757ef6c9ee7ccd12c588ffd28b273c2239cfa64d34bf4fbd0ccb09f7:no": {
     "avg_price": 0.84,
     "total_amount": 3202.5,
