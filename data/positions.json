@@ -293,13 +293,6 @@
     "market_title": "Will Trump talk to Mark Rutte in March?",
     "trader": "Gohst"
   },
-  "de5nuts:0x9e570fa9b5258f954859874e92e2de4be636f377d9968150915670d9bac09100:no": {
-    "avg_price": 0.8330458969905032,
-    "total_amount": 9135.9727,
-    "entry_time": "2026-03-30T08:49:38.023996",
-    "market_title": "US escorts commercial ship through Hormuz by April 15?",
-    "trader": "de5nuts"
-  },
   "Gohst:0x583a505658647660175c2e0aa70b4a460d8c34a6b3f46251ce5f9f46e9886c50:yes": {
     "avg_price": 0.25,
     "total_amount": 28.02,
