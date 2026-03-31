@@ -335,13 +335,6 @@
     "market_title": "Maple Leafs vs. Ducks",
     "trader": "S-Works"
   },
-  "S-Works:0x26bcc867545076fce8cdcc91db31699b0598dec3aeac0ad0575d1d582b730cfe:thunder": {
-    "avg_price": 0.8700000311856012,
-    "total_amount": 606.454912,
-    "entry_time": "2026-03-31T03:43:47.594944",
-    "market_title": "Pistons vs. Thunder",
-    "trader": "S-Works"
-  },
   "aenews2:0xb48621f7eba07b0a3eeabc6afb09ae42490239903997b9d412b0f69aeb040c8b:no": {
     "avg_price": 0.3166857061665246,
     "total_amount": 11.14417,
