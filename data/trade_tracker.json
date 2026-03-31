@@ -3887,12 +3887,28 @@
       "resolved_price": null,
       "pnl_if_followed": null,
       "pnl_if_ignored": null
+    },
+    {
+      "id": "S-Works_20260331004310",
+      "timestamp": "2026-03-31T00:43:10.005738",
+      "trader": "S-Works",
+      "market": "76ers vs. Heat",
+      "market_id": "0x77921b61a4f56c6ce461afa8093bb22de1290d6a6555e7f78acb7465d94218b9",
+      "outcome": "Heat",
+      "entry_price": 0.4082142857142857,
+      "recommendation": "NO ENTRAR",
+      "score": 15,
+      "suggested_amount": 0.5,
+      "status": "PENDING",
+      "resolved_price": null,
+      "pnl_if_followed": null,
+      "pnl_if_ignored": null
     }
   ],
   "stats": {
-    "total": 243,
+    "total": 244,
     "entrar": 24,
-    "no_entrar": 207,
+    "no_entrar": 208,
     "observar": 12
   }
 }
