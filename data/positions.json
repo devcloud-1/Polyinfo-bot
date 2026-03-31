@@ -355,5 +355,12 @@
     "entry_time": "2026-03-31T04:59:17.286739",
     "market_title": "BitBoy convicted?",
     "trader": "aenews2"
+  },
+  "aenews2:0xb48621f7eba07b0a3eeabc6afb09ae42490239903997b9d412b0f69aeb040c8b:yes": {
+    "avg_price": 0.2010000271640641,
+    "total_amount": 6.44382,
+    "entry_time": "2026-03-31T05:22:00.452829",
+    "market_title": "BitBoy convicted?",
+    "trader": "aenews2"
   }
 }
