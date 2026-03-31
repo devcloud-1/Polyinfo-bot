@@ -3967,12 +3967,28 @@
       "resolved_price": null,
       "pnl_if_followed": null,
       "pnl_if_ignored": null
+    },
+    {
+      "id": "aenews2_20260331045919",
+      "timestamp": "2026-03-31T04:59:19.719161",
+      "trader": "aenews2",
+      "market": "BitBoy convicted?",
+      "market_id": "0xb48621f7eba07b0a3eeabc6afb09ae42490239903997b9d412b0f69aeb040c8b",
+      "outcome": "No",
+      "entry_price": 0.3166857061665246,
+      "recommendation": "OBSERVAR",
+      "score": 42,
+      "suggested_amount": null,
+      "status": "PENDING",
+      "resolved_price": null,
+      "pnl_if_followed": null,
+      "pnl_if_ignored": null
     }
   ],
   "stats": {
-    "total": 248,
+    "total": 249,
     "entrar": 24,
     "no_entrar": 212,
-    "observar": 12
+    "observar": 13
   }
 }
