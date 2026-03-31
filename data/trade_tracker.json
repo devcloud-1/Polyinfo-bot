@@ -3951,12 +3951,28 @@
       "resolved_price": null,
       "pnl_if_followed": null,
       "pnl_if_ignored": null
+    },
+    {
+      "id": "S-Works_20260331034350",
+      "timestamp": "2026-03-31T03:43:50.499796",
+      "trader": "S-Works",
+      "market": "Pistons vs. Thunder",
+      "market_id": "0x26bcc867545076fce8cdcc91db31699b0598dec3aeac0ad0575d1d582b730cfe",
+      "outcome": "Thunder",
+      "entry_price": 0.8700000311856012,
+      "recommendation": "NO ENTRAR",
+      "score": 12,
+      "suggested_amount": 0.5,
+      "status": "PENDING",
+      "resolved_price": null,
+      "pnl_if_followed": null,
+      "pnl_if_ignored": null
     }
   ],
   "stats": {
-    "total": 247,
+    "total": 248,
     "entrar": 24,
-    "no_entrar": 211,
+    "no_entrar": 212,
     "observar": 12
   }
 }
