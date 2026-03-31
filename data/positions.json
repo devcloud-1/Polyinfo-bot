@@ -335,13 +335,6 @@
     "market_title": "Spread: Hawks (-2.5)",
     "trader": "S-Works"
   },
-  "S-Works:0x77921b61a4f56c6ce461afa8093bb22de1290d6a6555e7f78acb7465d94218b9:heat": {
-    "avg_price": 0.4082142857142857,
-    "total_amount": 57.15,
-    "entry_time": "2026-03-31T00:43:07.494924",
-    "market_title": "76ers vs. Heat",
-    "trader": "S-Works"
-  },
   "S-Works:0xb52025545fc9f06521528bc8795e27d625912da7d84848570a9b6fd16104334e:ducks": {
     "avg_price": 0.7400000080600003,
     "total_amount": 1041.025738,
