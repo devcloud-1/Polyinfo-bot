@@ -3935,12 +3935,28 @@
       "resolved_price": null,
       "pnl_if_followed": null,
       "pnl_if_ignored": null
+    },
+    {
+      "id": "S-Works_20260331030200",
+      "timestamp": "2026-03-31T03:02:00.795676",
+      "trader": "S-Works",
+      "market": "Maple Leafs vs. Ducks",
+      "market_id": "0xb52025545fc9f06521528bc8795e27d625912da7d84848570a9b6fd16104334e",
+      "outcome": "Ducks",
+      "entry_price": 0.7400000080600003,
+      "recommendation": "NO ENTRAR",
+      "score": 15,
+      "suggested_amount": 0.0,
+      "status": "PENDING",
+      "resolved_price": null,
+      "pnl_if_followed": null,
+      "pnl_if_ignored": null
     }
   ],
   "stats": {
-    "total": 246,
+    "total": 247,
     "entrar": 24,
-    "no_entrar": 210,
+    "no_entrar": 211,
     "observar": 12
   }
 }
