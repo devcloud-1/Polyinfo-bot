@@ -369,5 +369,12 @@
     "entry_time": "2026-03-30T23:38:01.992433",
     "market_title": "Counter-Strike: 9z vs Legacy (BO5) - FERJEE In House Playoffs",
     "trader": "S-Works"
+  },
+  "S-Works:0xccd854a82a3f1314bb05840f97efad49af45b1f7ae9374c207fc43d619f007d5:celtics": {
+    "avg_price": 0.495,
+    "total_amount": 25127.728,
+    "entry_time": "2026-03-31T00:10:10.902148",
+    "market_title": "Spread: Hawks (-2.5)",
+    "trader": "S-Works"
   }
 }
