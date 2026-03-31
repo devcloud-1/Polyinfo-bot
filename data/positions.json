@@ -341,5 +341,12 @@
     "entry_time": "2026-03-31T15:17:51.372743",
     "market_title": "Will JD Vance win the 2028 US Presidential Election?",
     "trader": "Gohst"
+  },
+  "de5nuts:0x6d0e09d0f04572d9b1adad84703458b0297bc5603b69dccbde93147ee4443246:yes": {
+    "avg_price": 0.52,
+    "total_amount": 5200.0,
+    "entry_time": "2026-03-31T17:13:46.724732",
+    "market_title": "US forces enter Iran by April 30?",
+    "trader": "de5nuts"
   }
 }
