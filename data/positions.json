@@ -341,5 +341,12 @@
     "entry_time": "2026-03-31T09:24:49.230387",
     "market_title": "Houthi strike on Israel by April 15, 2026?",
     "trader": "Gohst"
+  },
+  "de5nuts:0x7eceae72d7d7b3e175fa872c728526e6fec4714288a4bda91fe818e298e69a6f:yes": {
+    "avg_price": 0.5,
+    "total_amount": 479.7746,
+    "entry_time": "2026-03-31T10:46:31.411924",
+    "market_title": "Will WTI Crude Oil (WTI) hit (HIGH) $120 in April?",
+    "trader": "de5nuts"
   }
 }
