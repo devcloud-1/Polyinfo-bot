@@ -3903,12 +3903,28 @@
       "resolved_price": null,
       "pnl_if_followed": null,
       "pnl_if_ignored": null
+    },
+    {
+      "id": "S-Works_20260331004313",
+      "timestamp": "2026-03-31T00:43:13.183562",
+      "trader": "S-Works",
+      "market": "Bulls vs. Spurs",
+      "market_id": "0x0b2199b187959cb50eb0199be36877390a2b93812a822b13e72045a3f79f48a0",
+      "outcome": "Spurs",
+      "entry_price": 0.93,
+      "recommendation": "NO ENTRAR",
+      "score": 15,
+      "suggested_amount": 0.0,
+      "status": "PENDING",
+      "resolved_price": null,
+      "pnl_if_followed": null,
+      "pnl_if_ignored": null
     }
   ],
   "stats": {
-    "total": 244,
+    "total": 245,
     "entrar": 24,
-    "no_entrar": 208,
+    "no_entrar": 209,
     "observar": 12
   }
 }
