@@ -3999,12 +3999,28 @@
       "resolved_price": null,
       "pnl_if_followed": null,
       "pnl_if_ignored": null
+    },
+    {
+      "id": "de5nuts_20260331104633",
+      "timestamp": "2026-03-31T10:46:33.617077",
+      "trader": "de5nuts",
+      "market": "Will WTI Crude Oil (WTI) hit (HIGH) $120 in April?",
+      "market_id": "0x7eceae72d7d7b3e175fa872c728526e6fec4714288a4bda91fe818e298e69a6f",
+      "outcome": "Yes",
+      "entry_price": 0.5,
+      "recommendation": "NO ENTRAR",
+      "score": 18,
+      "suggested_amount": 0.0,
+      "status": "PENDING",
+      "resolved_price": null,
+      "pnl_if_followed": null,
+      "pnl_if_ignored": null
     }
   ],
   "stats": {
-    "total": 250,
+    "total": 251,
     "entrar": 24,
-    "no_entrar": 212,
+    "no_entrar": 213,
     "observar": 14
   }
 }
