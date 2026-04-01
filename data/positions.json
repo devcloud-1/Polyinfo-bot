@@ -349,13 +349,6 @@
     "market_title": "US forces enter Iran by April 30?",
     "trader": "de5nuts"
   },
-  "S-Works:0x6f63aad95b048c8d59fc6b717fa16a407b7057b95682424deadca2428690b8a8:senators": {
-    "avg_price": 0.004,
-    "total_amount": 1.2,
-    "entry_time": "2026-04-01T00:54:14.958397",
-    "market_title": "Senators vs. Panthers",
-    "trader": "S-Works"
-  },
   "aenews2:0x7cb525e831729325d651017f81cbcb6f1adde5011c7b2283babea00b4ae93ae7:yes": {
     "avg_price": 0.001,
     "total_amount": 2141.40456,
