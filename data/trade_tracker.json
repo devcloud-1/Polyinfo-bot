@@ -4063,11 +4063,27 @@
       "resolved_price": null,
       "pnl_if_followed": null,
       "pnl_if_ignored": null
+    },
+    {
+      "id": "aenews2_20260401074745",
+      "timestamp": "2026-04-01T07:47:45.506603",
+      "trader": "aenews2",
+      "market": "Will Trump say \"Third term\" in March?",
+      "market_id": "0xd50c434c6dad84b1a031daeb257303530cde59ae6c4414cfada1d3869c760162",
+      "outcome": "No",
+      "entry_price": 0.745779523043698,
+      "recommendation": "ENTRAR",
+      "score": 72,
+      "suggested_amount": 1.5,
+      "status": "PENDING",
+      "resolved_price": null,
+      "pnl_if_followed": null,
+      "pnl_if_ignored": null
     }
   ],
   "stats": {
-    "total": 254,
-    "entrar": 24,
+    "total": 255,
+    "entrar": 25,
     "no_entrar": 215,
     "observar": 15
   }
