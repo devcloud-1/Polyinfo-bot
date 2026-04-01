@@ -292,5 +292,12 @@
     "entry_time": "2026-04-01T04:48:12.519991",
     "market_title": "Netanyahu out by March 31?",
     "trader": "aenews2"
+  },
+  "aenews2:0xd50c434c6dad84b1a031daeb257303530cde59ae6c4414cfada1d3869c760162:no": {
+    "avg_price": 0.5773333333333334,
+    "total_amount": 5413.6808,
+    "entry_time": "2026-04-01T11:32:41.342343",
+    "market_title": "Will Trump say \"Third term\" in March?",
+    "trader": "aenews2"
   }
 }
