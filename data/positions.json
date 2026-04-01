@@ -90,13 +90,6 @@
     "market_title": "Will 2026 be the fourth-hottest year on record?",
     "trader": "aenews2"
   },
-  "de5nuts:0x705479cc3e7cf2907997c62b4245356c48b5133f7d82a47829a2354dd77a7c51:no": {
-    "avg_price": 0.822254962666181,
-    "total_amount": 541.80024,
-    "entry_time": "2026-03-17T17:23:05.770123",
-    "market_title": "Will the U.S. invade Iran by March 31?",
-    "trader": "de5nuts"
-  },
   "de5nuts:0xb1fb3aaa332db47a97b2478ca9433eefbfbcb4d69c64b2d8477eee574ad66a50:yes": {
     "avg_price": 0.008,
     "total_amount": 1.01328,
