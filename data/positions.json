@@ -285,12 +285,5 @@
     "entry_time": "2026-03-31T17:13:46.724732",
     "market_title": "US forces enter Iran by April 30?",
     "trader": "de5nuts"
-  },
-  "aenews2:0x7cb525e831729325d651017f81cbcb6f1adde5011c7b2283babea00b4ae93ae7:yes": {
-    "avg_price": 0.001,
-    "total_amount": 2141.40456,
-    "entry_time": "2026-04-01T04:48:12.519991",
-    "market_title": "Netanyahu out by March 31?",
-    "trader": "aenews2"
   }
 }
