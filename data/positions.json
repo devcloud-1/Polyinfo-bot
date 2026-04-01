@@ -272,13 +272,6 @@
     "market_title": "Will Kevin Spacey be confirmed to have visited Epstein\u2019s island?",
     "trader": "Gohst"
   },
-  "aenews2:0xb48621f7eba07b0a3eeabc6afb09ae42490239903997b9d412b0f69aeb040c8b:yes": {
-    "avg_price": 0.653406804190328,
-    "total_amount": 11051.704187000001,
-    "entry_time": "2026-03-31T05:22:00.452829",
-    "market_title": "BitBoy convicted?",
-    "trader": "aenews2"
-  },
   "Gohst:0xdaf306854808eb73447e3fd8cd3736377b23e0e9e08234909fdb486b47462c99:yes": {
     "avg_price": 0.15,
     "total_amount": 159.999,
