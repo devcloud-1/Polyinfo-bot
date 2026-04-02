@@ -299,5 +299,12 @@
     "entry_time": "2026-04-02T01:15:14.604341",
     "market_title": "Kings vs. Raptors",
     "trader": "S-Works"
+  },
+  "S-Works:0xecc1044c1b24732e5e29170d92dea903204e196a2b960daf78cb794c2cbb0a19:kings": {
+    "avg_price": 0.33000004032571156,
+    "total_amount": 13.347758,
+    "entry_time": "2026-04-02T01:59:23.475642",
+    "market_title": "Kings vs. Raptors",
+    "trader": "S-Works"
   }
 }
