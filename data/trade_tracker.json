@@ -4127,12 +4127,28 @@
       "resolved_price": null,
       "pnl_if_followed": null,
       "pnl_if_ignored": null
+    },
+    {
+      "id": "aenews2_20260402013644",
+      "timestamp": "2026-04-02T01:36:44.888939",
+      "trader": "aenews2",
+      "market": "Will Trump say \"Hormuz\" during Address to the Nation?",
+      "market_id": "0x044f2bc7ad15a4f257818c06d52809f657225b33c5f383ba5f69148763284fae",
+      "outcome": "Yes",
+      "entry_price": 0.9904999999999999,
+      "recommendation": "NO ENTRAR",
+      "score": 28,
+      "suggested_amount": null,
+      "status": "PENDING",
+      "resolved_price": null,
+      "pnl_if_followed": null,
+      "pnl_if_ignored": null
     }
   ],
   "stats": {
-    "total": 258,
+    "total": 259,
     "entrar": 25,
-    "no_entrar": 218,
+    "no_entrar": 219,
     "observar": 15
   }
 }
