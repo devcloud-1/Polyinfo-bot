@@ -4255,12 +4255,28 @@
       "resolved_price": null,
       "pnl_if_followed": null,
       "pnl_if_ignored": null
+    },
+    {
+      "id": "S-Works_20260402160422",
+      "timestamp": "2026-04-02T16:04:22.022022",
+      "trader": "S-Works",
+      "market": "Counter-Strike: G2 vs BetBoom Team (BO3) - Stake Ranked Episode 1 Playoffs",
+      "market_id": "0xea4f8e6b82781f0189aff1062de6b501eca97eec41b9959eea7bfff3998f6165",
+      "outcome": "G2",
+      "entry_price": 0.83,
+      "recommendation": "NO ENTRAR",
+      "score": 15,
+      "suggested_amount": 0,
+      "status": "PENDING",
+      "resolved_price": null,
+      "pnl_if_followed": null,
+      "pnl_if_ignored": null
     }
   ],
   "stats": {
-    "total": 266,
+    "total": 267,
     "entrar": 26,
-    "no_entrar": 223,
+    "no_entrar": 224,
     "observar": 17
   }
 }
