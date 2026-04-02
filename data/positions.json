@@ -292,5 +292,12 @@
     "entry_time": "2026-04-02T05:19:43.257913",
     "market_title": "Will the next Prime Minister of Hungary be P\u00e9ter Magyar?",
     "trader": "aenews2"
+  },
+  "de5nuts:0x5db999fad322cea2914535aae5517060c3f80ad6d8c0231cde2124a434d16846:yes": {
+    "avg_price": 0.5168916599302398,
+    "total_amount": 5077.0236,
+    "entry_time": "2026-04-02T08:42:06.708875",
+    "market_title": "Will the U.S. invade Iran before 2027?",
+    "trader": "de5nuts"
   }
 }
