@@ -286,13 +286,6 @@
     "market_title": "Will Trump say \"Third term\" in March?",
     "trader": "aenews2"
   },
-  "S-Works:0xb540de240cbd20009192ba70575c23af5d24e253864891a9150b9691889a35d5:pacers": {
-    "avg_price": 0.5,
-    "total_amount": 2128.36,
-    "entry_time": "2026-04-02T00:33:45.269772",
-    "market_title": "Pacers vs. Bulls",
-    "trader": "S-Works"
-  },
   "S-Works:0xecc1044c1b24732e5e29170d92dea903204e196a2b960daf78cb794c2cbb0a19:raptors": {
     "avg_price": 0.88,
     "total_amount": 31633.4326,
