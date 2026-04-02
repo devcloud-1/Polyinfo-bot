@@ -313,5 +313,12 @@
     "entry_time": "2026-04-02T15:40:45.227550",
     "market_title": "Will Israel take military action in Gaza on March 28, 2026?",
     "trader": "Gohst"
+  },
+  "S-Works:0xea4f8e6b82781f0189aff1062de6b501eca97eec41b9959eea7bfff3998f6165:g2": {
+    "avg_price": 0.83,
+    "total_amount": 42431.6252,
+    "entry_time": "2026-04-02T16:04:19.127524",
+    "market_title": "Counter-Strike: G2 vs BetBoom Team (BO3) - Stake Ranked Episode 1 Playoffs",
+    "trader": "S-Works"
   }
 }
