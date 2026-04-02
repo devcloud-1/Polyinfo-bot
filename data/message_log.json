@@ -1,73 +1,73 @@
 {
   "messages": [
     {
-      "ts": "2026-03-30T00:49:36",
+      "ts": "2026-04-02T04:49:25",
       "type": "INFO",
-      "text": "\ud83d\udc41 <b>S-Works entr\u00f3 \u2014 IGNORAR</b>\n\n<b>Magic vs. Raptors</b>\nRAPTORS \u00b7 99.9\u00a2 \u2192 1.0x \u00b7 $1343 \u00b7 7 entradas\nVol $32,257\n\nScore 15/100 \u00b7 Mercado casi resuelto a 99.9c con retorno m\u00ednimo (~$0.13 por cada $100), violando el criterio expl\u00edcito de S-Works de no operar mercados cerca de resoluci\u00f3n. Adem\u00e1s, la categor\u00eda y descripci\u00f3n indican un mercado hist\u00f3rico de 2020 (Biden COVID antes de Nov 3, 2020) que ya est\u00e1 cerrado/resuelto, no alineado con NBA Magic vs Raptors.",
+      "text": "\ud83d\udc41 <b>S-Works entr\u00f3 \u2014 IGNORAR</b>\n\n<b>Pacers vs. Bulls</b>\nPACERS \u00b7 99.9\u00a2 \u2192 1.0x \u00b7 $15466 \u00b7 7 entradas\nVol $32,257\n\nScore 12/100 \u00b7 El mercado est\u00e1 casi resuelto a 99.9c (retorno ~0.1c por d\u00f3lar), lo que viola el criterio de S-Works de no entrar cuando el mercado no est\u00e1 casi resuelto. Adem\u00e1s, la descripci\u00f3n refiere a un evento de 2020 (Biden COVID antes de Nov 3, 2020) que ya pas\u00f3 hace a\u00f1os, indicando que este mercado es hist\u00f3rico/inactivo con datos API corruptos.",
       "has_buttons": true
     },
     {
-      "ts": "2026-03-30T00:49:36",
+      "ts": "2026-04-02T04:49:25",
       "type": "BUTTON_SENT",
       "text": "Botones enviados para S-Works \u2014 ?",
-      "callback_id": "65a002bbccf8",
+      "callback_id": "d51937d85866",
       "trader": "S-Works",
       "market": ""
     },
     {
-      "ts": "2026-03-30T00:49:39",
+      "ts": "2026-04-02T04:49:28",
       "type": "INFO",
-      "text": "\ud83d\udc41 <b>S-Works entr\u00f3 \u2014 IGNORAR</b>\n\n<b>Bruins vs. Blue Jackets</b>\nBRUINS \u00b7 99.9\u00a2 \u2192 1.0x \u00b7 $507 \u00b7 7 entradas\nVol $32,257\n\nScore 15/100 \u00b7 Precio a 0.999 indica mercado casi resuelto con retorno m\u00ednimo (~0.1c/$), eliminando margen de ganancia. Datos API inconsistentes (mercado describe Biden 2020, categor\u00eda US-current-affairs, liquidez $0) sugieren mercado antiguo/corrupto o error de plataforma.",
+      "text": "\ud83d\udc41 <b>S-Works entr\u00f3 \u2014 IGNORAR</b>\n\n<b>Canucks vs. Avalanche</b>\nCANUCKS \u00b7 99.9\u00a2 \u2192 1.0x \u00b7 $162 \u00b7 4 entradas\nVol $32,257\n\nScore 18/100 \u00b7 Mercado almost-resuelto a 99.9c con retorno m\u00ednimo (~0.1c), combinado con datos API inconsistentes (categor\u00eda pol\u00edtica/2020, cierre desconocido) sugiere mercado corrupto o hist\u00f3rico. La apuesta de $162 es exploratorio pero el riesgo residual no justifica exposici\u00f3n con bankroll de $25 USD.",
       "has_buttons": true
     },
     {
-      "ts": "2026-03-30T00:49:39",
+      "ts": "2026-04-02T04:49:28",
       "type": "BUTTON_SENT",
       "text": "Botones enviados para S-Works \u2014 ?",
-      "callback_id": "f3e62b945ae8",
+      "callback_id": "2d7366f9326b",
       "trader": "S-Works",
       "market": ""
     },
     {
-      "ts": "2026-03-30T01:09:47",
+      "ts": "2026-04-02T05:09:37",
       "type": "INFO",
-      "text": "\ud83d\udc41 <b>S-Works entr\u00f3 \u2014 IGNORAR</b>\n\n<b>Stars vs. Flyers</b>\nFLYERS \u00b7 40.0\u00a2 \u2192 2.5x \u00b7 $1828\nVol $32,257\n\nScore 15/100 \u00b7 Mercado desactualizado (fecha cierre 2020, evento hist\u00f3rico) con datos API corruptos y categor\u00eda incorrecta (US-current-affairs en lugar de deportes). La apuesta de S-Works en 'Flyers vs Stars' no coincide con descripci\u00f3n Biden-COVID, indicando desincronizaci\u00f3n cr\u00edtica del sistema.",
+      "text": "\ud83d\udc41 <b>S-Works entr\u00f3 \u2014 IGNORAR</b>\n\n<b>Canucks vs. Avalanche</b>\nCANUCKS \u00b7 99.9\u00a2 \u2192 1.0x \u00b7 $184 \u00b7 4 entradas\nVol $32,257\n\nScore 12/100 \u00b7 Mercado casi resuelto a 99.9c con retorno m\u00ednimo (~0.1c), violando el criterio de S-Works de apuestas >$100 con margen significativo. Los datos API est\u00e1n corruptos (categor\u00eda pol\u00edtica/Biden 2020 no coincide con Canucks vs Avalanche), indicando error sist\u00e9mico que invalida la se\u00f1al.",
       "has_buttons": true
     },
     {
-      "ts": "2026-03-30T01:09:48",
+      "ts": "2026-04-02T05:09:37",
       "type": "BUTTON_SENT",
       "text": "Botones enviados para S-Works \u2014 ?",
-      "callback_id": "ac2f17c1f56b",
+      "callback_id": "d5b8e2453abd",
       "trader": "S-Works",
       "market": ""
     },
     {
-      "ts": "2026-03-30T01:09:50",
+      "ts": "2026-04-02T05:09:39",
       "type": "INFO",
-      "text": "\ud83d\udc41 <b>S-Works entr\u00f3 \u2014 IGNORAR</b>\n\n<b>Bruins vs. Blue Jackets</b>\nBRUINS \u00b7 99.9\u00a2 \u2192 1.0x \u00b7 $95 \u00b7 5 entradas\nVol $32,257\n\nScore 18/100 \u00b7 Mercado casi resuelto a 99.9c con retorno m\u00ednimo (~0.1c), apuesta de $95.14 es exploratoria y excede bankroll del usuario ($25). Datos de mercado contradictorios (categor\u00eda US-current-affairs, descripci\u00f3n Biden 2020, pero mercado es Bruins vs Blue Jackets) sugieren error cr\u00edtico en API.",
+      "text": "\ud83d\udc41 <b>S-Works entr\u00f3 \u2014 IGNORAR</b>\n\n<b>Pacers vs. Bulls</b>\nPACERS \u00b7 99.9\u00a2 \u2192 1.0x \u00b7 $26\nVol $32,257\n\nScore 18/100 \u00b7 El mercado est\u00e1 pr\u00e1cticamente resuelto a 99.9c con retorno de solo ~0.1c por d\u00f3lar, eliminando margen de ganancia incluso para un trader elite. Los datos de mercado son inconsistentes (categor\u00eda 'US-current-affairs' pero evento Biden 2020 ya ocurri\u00f3 hace a\u00f1os), indicando dato corrupto o mercado obsoleto.",
       "has_buttons": true
     },
     {
-      "ts": "2026-03-30T01:09:50",
+      "ts": "2026-04-02T05:09:40",
       "type": "BUTTON_SENT",
       "text": "Botones enviados para S-Works \u2014 ?",
-      "callback_id": "2dcad3040e56",
+      "callback_id": "cd7f883336d9",
       "trader": "S-Works",
       "market": ""
     },
     {
-      "ts": "2026-03-30T01:09:53",
+      "ts": "2026-04-02T05:19:47",
       "type": "INFO",
-      "text": "\ud83d\udc41 <b>S-Works entr\u00f3 \u2014 IGNORAR</b>\n\n<b>Knicks vs. Thunder</b>\nKNICKS \u00b7 27.0\u00a2 \u2192 3.7x \u00b7 $10800\nVol $32,257\n\nScore 15/100 \u00b7 Desajuste cr\u00edtico: S-Works opera deportes/esports (NBA, NFL, etc.) pero este mercado es pol\u00edtica (Biden COVID-19, cierre 2020 - completamente resuelto). La descripci\u00f3n del mercado contradice totalmente su especialidad y el dato de 'Knicks vs Thunder' parece error API.",
+      "text": "\ud83d\udc41 <b>aenews2 entr\u00f3 \u2014 OBSERVAR</b>\n\n<b>Will the next Prime Minister of Hungary be P\u00e9ter Magyar?</b>\nNO \u00b7 36.0\u00a2 \u2192 2.8x \u00b7 $129 \u00b7 5 entradas\nVol $5,585,514\n\nScore 52/100 \u00b7 aenews2 apuesta solo $128.61 (sondeo exploratorio <$100), se\u00f1al de baja convicci\u00f3n en este mercado fuera de su especialidad (pol\u00edtica US/Medio Oriente, no Europa del Este). Con bankroll de $25 USD, cualquier entrada meaningful consume >4% del capital en un mercado con resoluci\u00f3n en 2026 (incertidumbre pol\u00edtica h\u00fangara elevada).",
       "has_buttons": true
     },
     {
-      "ts": "2026-03-30T01:09:53",
+      "ts": "2026-04-02T05:19:47",
       "type": "BUTTON_SENT",
-      "text": "Botones enviados para S-Works \u2014 ?",
-      "callback_id": "04d5722b75c7",
-      "trader": "S-Works",
+      "text": "Botones enviados para aenews2 \u2014 ?",
+      "callback_id": "273c8f41fe69",
+      "trader": "aenews2",
       "market": ""
     }
   ]
