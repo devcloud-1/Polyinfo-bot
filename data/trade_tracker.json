@@ -4271,11 +4271,27 @@
       "resolved_price": null,
       "pnl_if_followed": null,
       "pnl_if_ignored": null
+    },
+    {
+      "id": "Gohst_20260402192457",
+      "timestamp": "2026-04-02T19:24:57.983904",
+      "trader": "Gohst",
+      "market": "Will Donald Trump visit Arizona in 2026?",
+      "market_id": "0x59e545e4e5ffc4631a0dac93e27d51de7dd665959279399403cad90dae6b9666",
+      "outcome": "No",
+      "entry_price": 0.22153846153846152,
+      "recommendation": "ENTRAR",
+      "score": 76,
+      "suggested_amount": 1.5,
+      "status": "PENDING",
+      "resolved_price": null,
+      "pnl_if_followed": null,
+      "pnl_if_ignored": null
     }
   ],
   "stats": {
-    "total": 267,
-    "entrar": 26,
+    "total": 268,
+    "entrar": 27,
     "no_entrar": 224,
     "observar": 17
   }
