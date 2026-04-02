@@ -4079,12 +4079,28 @@
       "resolved_price": null,
       "pnl_if_followed": null,
       "pnl_if_ignored": null
+    },
+    {
+      "id": "aenews2_20260402001222",
+      "timestamp": "2026-04-02T00:12:22.976314",
+      "trader": "aenews2",
+      "market": "Will Trump say \"Crypto\" or \"Bitcoin\" during Address to the Nation?",
+      "market_id": "0xf30579393c6067a81c801530f7b398ca8eb3491a14a0b11e1dcb9224b1727309",
+      "outcome": "No",
+      "entry_price": 0.985115164216728,
+      "recommendation": "NO ENTRAR",
+      "score": 28,
+      "suggested_amount": null,
+      "status": "PENDING",
+      "resolved_price": null,
+      "pnl_if_followed": null,
+      "pnl_if_ignored": null
     }
   ],
   "stats": {
-    "total": 255,
+    "total": 256,
     "entrar": 25,
-    "no_entrar": 215,
+    "no_entrar": 216,
     "observar": 15
   }
 }
