@@ -4111,12 +4111,28 @@
       "resolved_price": null,
       "pnl_if_followed": null,
       "pnl_if_ignored": null
+    },
+    {
+      "id": "S-Works_20260402011517",
+      "timestamp": "2026-04-02T01:15:17.164217",
+      "trader": "S-Works",
+      "market": "Kings vs. Raptors",
+      "market_id": "0xecc1044c1b24732e5e29170d92dea903204e196a2b960daf78cb794c2cbb0a19",
+      "outcome": "Raptors",
+      "entry_price": 0.88,
+      "recommendation": "NO ENTRAR",
+      "score": 15,
+      "suggested_amount": 0.0,
+      "status": "PENDING",
+      "resolved_price": null,
+      "pnl_if_followed": null,
+      "pnl_if_ignored": null
     }
   ],
   "stats": {
-    "total": 257,
+    "total": 258,
     "entrar": 25,
-    "no_entrar": 217,
+    "no_entrar": 218,
     "observar": 15
   }
 }
