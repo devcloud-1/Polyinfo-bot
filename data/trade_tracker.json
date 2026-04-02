@@ -4223,12 +4223,28 @@
       "resolved_price": null,
       "pnl_if_followed": null,
       "pnl_if_ignored": null
+    },
+    {
+      "id": "Gohst_20260402144451",
+      "timestamp": "2026-04-02T14:44:51.918964",
+      "trader": "Gohst",
+      "market": "Will Pam Bondi leave the Trump administration before 2027?",
+      "market_id": "0x79e008f552c7459175380ec2ba980780067b1bfe6afe07805c8d56a240a7628a",
+      "outcome": "No",
+      "entry_price": 0.15,
+      "recommendation": "NO ENTRAR",
+      "score": 28,
+      "suggested_amount": null,
+      "status": "PENDING",
+      "resolved_price": null,
+      "pnl_if_followed": null,
+      "pnl_if_ignored": null
     }
   ],
   "stats": {
-    "total": 264,
+    "total": 265,
     "entrar": 25,
-    "no_entrar": 222,
+    "no_entrar": 223,
     "observar": 17
   }
 }
