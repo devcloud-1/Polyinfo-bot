@@ -299,5 +299,12 @@
     "entry_time": "2026-04-02T08:42:06.708875",
     "market_title": "Will the U.S. invade Iran before 2027?",
     "trader": "de5nuts"
+  },
+  "Gohst:0xbef7266e1d7c2adad3d7c6ae59df817d653c872802415a369c761ca75601f5ea:no": {
+    "avg_price": 0.13500000004775664,
+    "total_amount": 308.052551,
+    "entry_time": "2026-04-02T09:25:55.153302",
+    "market_title": "Will Trump talk to Mark Rutte in March?",
+    "trader": "Gohst"
   }
 }
