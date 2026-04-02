@@ -4095,12 +4095,28 @@
       "resolved_price": null,
       "pnl_if_followed": null,
       "pnl_if_ignored": null
+    },
+    {
+      "id": "S-Works_20260402003347",
+      "timestamp": "2026-04-02T00:33:47.877265",
+      "trader": "S-Works",
+      "market": "Pacers vs. Bulls",
+      "market_id": "0xb540de240cbd20009192ba70575c23af5d24e253864891a9150b9691889a35d5",
+      "outcome": "Pacers",
+      "entry_price": 0.5,
+      "recommendation": "NO ENTRAR",
+      "score": 15,
+      "suggested_amount": 0.0,
+      "status": "PENDING",
+      "resolved_price": null,
+      "pnl_if_followed": null,
+      "pnl_if_ignored": null
     }
   ],
   "stats": {
-    "total": 256,
+    "total": 257,
     "entrar": 25,
-    "no_entrar": 216,
+    "no_entrar": 217,
     "observar": 15
   }
 }
