@@ -4207,12 +4207,28 @@
       "resolved_price": null,
       "pnl_if_followed": null,
       "pnl_if_ignored": null
+    },
+    {
+      "id": "de5nuts_20260402120230",
+      "timestamp": "2026-04-02T12:02:30.723856",
+      "trader": "de5nuts",
+      "market": "Kharg Island no longer under Iranian control by April 15?",
+      "market_id": "0x10d4b55e87cd8df815a88de7a8eccdff77418d361285a540fbdc6505bb99a4a2",
+      "outcome": "Yes",
+      "entry_price": 0.09,
+      "recommendation": "OBSERVAR",
+      "score": 38,
+      "suggested_amount": null,
+      "status": "PENDING",
+      "resolved_price": null,
+      "pnl_if_followed": null,
+      "pnl_if_ignored": null
     }
   ],
   "stats": {
-    "total": 263,
+    "total": 264,
     "entrar": 25,
     "no_entrar": 222,
-    "observar": 16
+    "observar": 17
   }
 }
