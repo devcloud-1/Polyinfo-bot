@@ -320,5 +320,12 @@
     "entry_time": "2026-04-02T16:04:19.127524",
     "market_title": "Counter-Strike: G2 vs BetBoom Team (BO3) - Stake Ranked Episode 1 Playoffs",
     "trader": "S-Works"
+  },
+  "Gohst:0x59e545e4e5ffc4631a0dac93e27d51de7dd665959279399403cad90dae6b9666:no": {
+    "avg_price": 0.22153846153846152,
+    "total_amount": 3832.8098,
+    "entry_time": "2026-04-02T19:24:55.541542",
+    "market_title": "Will Donald Trump visit Arizona in 2026?",
+    "trader": "Gohst"
   }
 }
