@@ -4159,12 +4159,28 @@
       "resolved_price": null,
       "pnl_if_followed": null,
       "pnl_if_ignored": null
+    },
+    {
+      "id": "aenews2_20260402054105",
+      "timestamp": "2026-04-02T05:41:05.545160",
+      "trader": "aenews2",
+      "market": "Will the next Prime Minister of Hungary be P\u00e9ter Magyar?",
+      "market_id": "0x1480b819d03d4b6388d70e848b0384adf38c38d955cb783cdbcf6d4a436dee14",
+      "outcome": "No",
+      "entry_price": 0.36,
+      "recommendation": "OBSERVAR",
+      "score": 42,
+      "suggested_amount": 0.5,
+      "status": "PENDING",
+      "resolved_price": null,
+      "pnl_if_followed": null,
+      "pnl_if_ignored": null
     }
   ],
   "stats": {
-    "total": 260,
+    "total": 261,
     "entrar": 25,
     "no_entrar": 220,
-    "observar": 15
+    "observar": 16
   }
 }
