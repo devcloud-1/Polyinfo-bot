@@ -4239,11 +4239,27 @@
       "resolved_price": null,
       "pnl_if_followed": null,
       "pnl_if_ignored": null
+    },
+    {
+      "id": "Gohst_20260402154047",
+      "timestamp": "2026-04-02T15:40:47.607896",
+      "trader": "Gohst",
+      "market": "Will Israel take military action in Gaza on March 28, 2026?",
+      "market_id": "0xeb2a7825289b8ab64a4d14f51cecbe34d2e4d421992078a5dd13e426d4cdb43a",
+      "outcome": "No",
+      "entry_price": 0.16,
+      "recommendation": "ENTRAR",
+      "score": 72,
+      "suggested_amount": 1.5,
+      "status": "PENDING",
+      "resolved_price": null,
+      "pnl_if_followed": null,
+      "pnl_if_ignored": null
     }
   ],
   "stats": {
-    "total": 265,
-    "entrar": 25,
+    "total": 266,
+    "entrar": 26,
     "no_entrar": 223,
     "observar": 17
   }
