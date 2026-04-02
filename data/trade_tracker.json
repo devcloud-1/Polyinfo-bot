@@ -4143,12 +4143,28 @@
       "resolved_price": null,
       "pnl_if_followed": null,
       "pnl_if_ignored": null
+    },
+    {
+      "id": "S-Works_20260402034548",
+      "timestamp": "2026-04-02T03:45:48.141733",
+      "trader": "S-Works",
+      "market": "Canucks vs. Avalanche",
+      "market_id": "0xa0f1510a2ddae701f8a837d43d8278b6c4c5ef82b3acc8210e75bb4a0a00eb1f",
+      "outcome": "Canucks",
+      "entry_price": 0.9990000000000001,
+      "recommendation": "NO ENTRAR",
+      "score": 18,
+      "suggested_amount": 0.0,
+      "status": "PENDING",
+      "resolved_price": null,
+      "pnl_if_followed": null,
+      "pnl_if_ignored": null
     }
   ],
   "stats": {
-    "total": 259,
+    "total": 260,
     "entrar": 25,
-    "no_entrar": 219,
+    "no_entrar": 220,
     "observar": 15
   }
 }
