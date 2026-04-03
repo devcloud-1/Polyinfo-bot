@@ -341,5 +341,12 @@
     "entry_time": "2026-04-03T05:47:26.229604",
     "market_title": "Predators vs. Kings",
     "trader": "S-Works"
+  },
+  "aenews2:0xbef7266e1d7c2adad3d7c6ae59df817d653c872802415a369c761ca75601f5ea:yes": {
+    "avg_price": 0.7114906399226396,
+    "total_amount": 8211.26303,
+    "entry_time": "2026-04-03T07:52:14.264442",
+    "market_title": "Will Trump talk to Mark Rutte in March?",
+    "trader": "aenews2"
   }
 }
