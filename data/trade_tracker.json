@@ -4287,11 +4287,27 @@
       "resolved_price": null,
       "pnl_if_followed": null,
       "pnl_if_ignored": null
+    },
+    {
+      "id": "aenews2_20260403001326",
+      "timestamp": "2026-04-03T00:13:26.765350",
+      "trader": "aenews2",
+      "market": "Will Israel take military action in Gaza on March 28, 2026?",
+      "market_id": "0xeb2a7825289b8ab64a4d14f51cecbe34d2e4d421992078a5dd13e426d4cdb43a",
+      "outcome": "No",
+      "entry_price": 0.7101203852668176,
+      "recommendation": "ENTRAR",
+      "score": 78,
+      "suggested_amount": 1.5,
+      "status": "PENDING",
+      "resolved_price": null,
+      "pnl_if_followed": null,
+      "pnl_if_ignored": null
     }
   ],
   "stats": {
-    "total": 268,
-    "entrar": 27,
+    "total": 269,
+    "entrar": 28,
     "no_entrar": 224,
     "observar": 17
   }
