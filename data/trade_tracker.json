@@ -4447,12 +4447,28 @@
       "resolved_price": null,
       "pnl_if_followed": null,
       "pnl_if_ignored": null
+    },
+    {
+      "id": "S-Works_20260403182401",
+      "timestamp": "2026-04-03T18:24:01.788013",
+      "trader": "S-Works",
+      "market": "Counter-Strike: BetBoom Team vs Heroic (BO3) - Stake Ranked Episode 1 Playoffs",
+      "market_id": "0x5c31e479a7d7f60e3c071fb3f5b056a1947260a7fb617e22434c13c16ac68a82",
+      "outcome": "Heroic",
+      "entry_price": 0.6489926328535907,
+      "recommendation": "NO ENTRAR",
+      "score": 18,
+      "suggested_amount": 0.0,
+      "status": "PENDING",
+      "resolved_price": null,
+      "pnl_if_followed": null,
+      "pnl_if_ignored": null
     }
   ],
   "stats": {
-    "total": 278,
+    "total": 279,
     "entrar": 28,
-    "no_entrar": 232,
+    "no_entrar": 233,
     "observar": 18
   }
 }
