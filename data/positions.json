@@ -334,5 +334,12 @@
     "entry_time": "2026-04-03T00:57:50.275703",
     "market_title": "Will Trump talk to Mark Rutte in March?",
     "trader": "aenews2"
+  },
+  "aenews2:0x5d87eb09704572f515e1dc472bc1f3dac6835cbb06a6c72c1d0b3486cd0ad97c:no": {
+    "avg_price": 0.3651115572157108,
+    "total_amount": 2611.7452,
+    "entry_time": "2026-04-03T01:19:20.154914",
+    "market_title": "Will Israel or the US target Isfahan Nuclear Technology Center nuclear facility?",
+    "trader": "aenews2"
   }
 }
