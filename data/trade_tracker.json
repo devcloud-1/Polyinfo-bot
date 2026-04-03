@@ -4399,12 +4399,28 @@
       "resolved_price": null,
       "pnl_if_followed": null,
       "pnl_if_ignored": null
+    },
+    {
+      "id": "Gohst_20260403121310",
+      "timestamp": "2026-04-03T12:13:10.363142",
+      "trader": "Gohst",
+      "market": "Will Our Homeland Movement (Mi Haz\u00e1nk) win at least one seat in the next Hungarian parliamentary election?",
+      "market_id": "0xcb9cf7bbd8a94c3faa3a78108fbec9cda874b021c655d243054e8f3ebfe477be",
+      "outcome": "No",
+      "entry_price": 0.14,
+      "recommendation": "NO ENTRAR",
+      "score": 38,
+      "suggested_amount": null,
+      "status": "PENDING",
+      "resolved_price": null,
+      "pnl_if_followed": null,
+      "pnl_if_ignored": null
     }
   ],
   "stats": {
-    "total": 275,
+    "total": 276,
     "entrar": 28,
-    "no_entrar": 230,
+    "no_entrar": 231,
     "observar": 17
   }
 }
