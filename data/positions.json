@@ -335,13 +335,6 @@
     "market_title": "US forces enter Iran by December 31?",
     "trader": "aenews2"
   },
-  "aenews2:0x6d0e09d0f04572d9b1adad84703458b0297bc5603b69dccbde93147ee4443246:yes": {
-    "avg_price": 0.7938461538461539,
-    "total_amount": 6617.0892,
-    "entry_time": "2026-04-03T11:51:04.452037",
-    "market_title": "US forces enter Iran by April 30?",
-    "trader": "aenews2"
-  },
   "Gohst:0xcb9cf7bbd8a94c3faa3a78108fbec9cda874b021c655d243054e8f3ebfe477be:no": {
     "avg_price": 0.14,
     "total_amount": 539.9997000000001,
