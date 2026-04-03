@@ -4351,12 +4351,28 @@
       "resolved_price": null,
       "pnl_if_followed": null,
       "pnl_if_ignored": null
+    },
+    {
+      "id": "S-Works_20260403054729",
+      "timestamp": "2026-04-03T05:47:29.106686",
+      "trader": "S-Works",
+      "market": "Predators vs. Kings",
+      "market_id": "0xd992f63fd677908997d03669921fd0106661e782c43a7897fa32c6c9b2bf6f43",
+      "outcome": "Predators",
+      "entry_price": 0.46090913546014883,
+      "recommendation": "NO ENTRAR",
+      "score": 15,
+      "suggested_amount": 0.0,
+      "status": "PENDING",
+      "resolved_price": null,
+      "pnl_if_followed": null,
+      "pnl_if_ignored": null
     }
   ],
   "stats": {
-    "total": 272,
+    "total": 273,
     "entrar": 28,
-    "no_entrar": 227,
+    "no_entrar": 228,
     "observar": 17
   }
 }
