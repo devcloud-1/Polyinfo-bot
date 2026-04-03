@@ -362,5 +362,12 @@
     "entry_time": "2026-04-03T12:13:07.579839",
     "market_title": "Will Our Homeland Movement (Mi Haz\u00e1nk) win at least one seat in the next Hungarian parliamentary election?",
     "trader": "Gohst"
+  },
+  "Gohst:0x5e3b8baf0654c9f2327bb1c5283a13940ea9c9f49cc77a98017880418ed10239:no": {
+    "avg_price": 0.16,
+    "total_amount": 33.7408,
+    "entry_time": "2026-04-03T15:17:37.148213",
+    "market_title": "Will Israel conduct military action in Greater Beirut on March 29, 2026?",
+    "trader": "Gohst"
   }
 }
