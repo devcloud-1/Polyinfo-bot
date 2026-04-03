@@ -4303,12 +4303,28 @@
       "resolved_price": null,
       "pnl_if_followed": null,
       "pnl_if_ignored": null
+    },
+    {
+      "id": "S-Works_20260403001329",
+      "timestamp": "2026-04-03T00:13:29.690320",
+      "trader": "S-Works",
+      "market": "Red Wings vs. Flyers",
+      "market_id": "0x1257585a7b74573e9a6dd8c72cad1b035f0f26184db5e4f96242a9f73b349b1b",
+      "outcome": "Red Wings",
+      "entry_price": 0.67,
+      "recommendation": "NO ENTRAR",
+      "score": 22,
+      "suggested_amount": 0.5,
+      "status": "PENDING",
+      "resolved_price": null,
+      "pnl_if_followed": null,
+      "pnl_if_ignored": null
     }
   ],
   "stats": {
-    "total": 269,
+    "total": 270,
     "entrar": 28,
-    "no_entrar": 224,
+    "no_entrar": 225,
     "observar": 17
   }
 }
