@@ -355,5 +355,12 @@
     "entry_time": "2026-04-03T11:51:04.452037",
     "market_title": "US forces enter Iran by April 30?",
     "trader": "aenews2"
+  },
+  "Gohst:0xcb9cf7bbd8a94c3faa3a78108fbec9cda874b021c655d243054e8f3ebfe477be:no": {
+    "avg_price": 0.14,
+    "total_amount": 539.9997000000001,
+    "entry_time": "2026-04-03T12:13:07.579839",
+    "market_title": "Will Our Homeland Movement (Mi Haz\u00e1nk) win at least one seat in the next Hungarian parliamentary election?",
+    "trader": "Gohst"
   }
 }
