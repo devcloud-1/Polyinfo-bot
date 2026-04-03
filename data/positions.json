@@ -62,13 +62,6 @@
     "market_title": "Will Marco Rubio visit China by April 30, 2026?",
     "trader": "Gohst"
   },
-  "aenews2:0x6c8a4426ea2278ce7936c770cbf4d66ad2dead1c8ee50e90232e0379f6f42562:no": {
-    "avg_price": 0.72800244792128,
-    "total_amount": 904.0844,
-    "entry_time": "2026-03-17T15:08:38.892150",
-    "market_title": "Will 2026 be the fourth-hottest year on record?",
-    "trader": "aenews2"
-  },
   "de5nuts:0x4c80df6f557bb0b9de08c0301ebdce500dd9bdc58400d9269fb8fab1709ed584:yes": {
     "avg_price": 0.14000000006503657,
     "total_amount": 955.880762,
