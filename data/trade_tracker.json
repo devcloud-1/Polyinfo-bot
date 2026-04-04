@@ -4495,12 +4495,28 @@
       "resolved_price": null,
       "pnl_if_followed": null,
       "pnl_if_ignored": null
+    },
+    {
+      "id": "S-Works_20260404025658",
+      "timestamp": "2026-04-04T02:56:58.751649",
+      "trader": "S-Works",
+      "market": "Spread: Raptors (-13.5)",
+      "market_id": "0xf974c4224699c132a2e25544747cd339d2ef0bf6ebbe6bd8dda82229b57a4bb5",
+      "outcome": "Raptors",
+      "entry_price": 0.999,
+      "recommendation": "NO ENTRAR",
+      "score": 18,
+      "suggested_amount": 0,
+      "status": "PENDING",
+      "resolved_price": null,
+      "pnl_if_followed": null,
+      "pnl_if_ignored": null
     }
   ],
   "stats": {
-    "total": 281,
+    "total": 282,
     "entrar": 28,
-    "no_entrar": 235,
+    "no_entrar": 236,
     "observar": 18
   }
 }
