@@ -4543,12 +4543,28 @@
       "resolved_price": null,
       "pnl_if_followed": null,
       "pnl_if_ignored": null
+    },
+    {
+      "id": "S-Works_20260404075734",
+      "timestamp": "2026-04-04T07:57:34.808384",
+      "trader": "S-Works",
+      "market": "Counter-Strike: NRG vs Voca (BO3) - PGL Bucharest Group Stage",
+      "market_id": "0x72a524c4e27f303ccd63c585d0596b4cd5554c330b1600f5d5ea7d949056697f",
+      "outcome": "Voca",
+      "entry_price": 0.28000000195428626,
+      "recommendation": "NO ENTRAR",
+      "score": 15,
+      "suggested_amount": 0.0,
+      "status": "PENDING",
+      "resolved_price": null,
+      "pnl_if_followed": null,
+      "pnl_if_ignored": null
     }
   ],
   "stats": {
-    "total": 284,
+    "total": 285,
     "entrar": 28,
-    "no_entrar": 238,
+    "no_entrar": 239,
     "observar": 18
   }
 }
