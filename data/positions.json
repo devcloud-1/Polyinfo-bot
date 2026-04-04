@@ -362,5 +362,12 @@
     "entry_time": "2026-04-04T00:52:45.677239",
     "market_title": "Magic vs. Mavericks: O/U 239.5",
     "trader": "S-Works"
+  },
+  "S-Works:0x344e90407abb715b0ca39f9650b2b0a891808c56776054b100e6069bf8a3b49a:blues": {
+    "avg_price": 0.6200000068859877,
+    "total_amount": 110.901029,
+    "entry_time": "2026-04-04T03:18:22.690929",
+    "market_title": "Blues vs. Ducks",
+    "trader": "S-Works"
   }
 }
