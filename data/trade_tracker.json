@@ -4607,12 +4607,28 @@
       "resolved_price": null,
       "pnl_if_followed": null,
       "pnl_if_ignored": null
+    },
+    {
+      "id": "S-Works_20260404193145",
+      "timestamp": "2026-04-04T19:31:45.935808",
+      "trader": "S-Works",
+      "market": "Spurs vs. Nuggets: O/U 243.5",
+      "market_id": "0x929298e268cb30cf67f3d32f3740e202706bac3008caa901b3ba407d315b006c",
+      "outcome": "Over",
+      "entry_price": 0.48,
+      "recommendation": "NO ENTRAR",
+      "score": 12,
+      "suggested_amount": 0.5,
+      "status": "PENDING",
+      "resolved_price": null,
+      "pnl_if_followed": null,
+      "pnl_if_ignored": null
     }
   ],
   "stats": {
-    "total": 288,
+    "total": 289,
     "entrar": 28,
-    "no_entrar": 241,
+    "no_entrar": 242,
     "observar": 19
   }
 }
