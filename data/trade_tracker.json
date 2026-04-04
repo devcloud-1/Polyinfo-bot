@@ -4575,12 +4575,28 @@
       "resolved_price": null,
       "pnl_if_followed": null,
       "pnl_if_ignored": null
+    },
+    {
+      "id": "aenews2_20260404105814",
+      "timestamp": "2026-04-04T10:58:14.716322",
+      "trader": "aenews2",
+      "market": "Will Richard Branson be confirmed to have visited Epstein\u2019s island?",
+      "market_id": "0x57c75de5d056d826ca75c5c5f316b5450685a69b28473b4d34e2529141102891",
+      "outcome": "Yes",
+      "entry_price": 0.4495467338451384,
+      "recommendation": "OBSERVAR",
+      "score": 52,
+      "suggested_amount": null,
+      "status": "PENDING",
+      "resolved_price": null,
+      "pnl_if_followed": null,
+      "pnl_if_ignored": null
     }
   ],
   "stats": {
-    "total": 286,
+    "total": 287,
     "entrar": 28,
     "no_entrar": 240,
-    "observar": 18
+    "observar": 19
   }
 }
