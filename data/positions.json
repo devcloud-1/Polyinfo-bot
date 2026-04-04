@@ -202,13 +202,6 @@
     "market_title": "Will the DHS shutdown last 60 days or more?",
     "trader": "Gohst"
   },
-  "S-Works:0x161ab8edd553f3de4366a6abe952f6de261d5f443135ce60248ac63e73a45f69:yes": {
-    "avg_price": 0.5900000734939428,
-    "total_amount": 570.9940630000001,
-    "entry_time": "2026-03-29T01:02:36.334102",
-    "market_title": "Will Real Madrid CF win on 2026-04-04?",
-    "trader": "S-Works"
-  },
   "Gohst:0xbef7266e1d7c2adad3d7c6ae59df817d653c872802415a369c761ca75601f5ea:yes": {
     "avg_price": 0.26,
     "total_amount": 54.6702,
