@@ -4527,12 +4527,28 @@
       "resolved_price": null,
       "pnl_if_followed": null,
       "pnl_if_ignored": null
+    },
+    {
+      "id": "S-Works_20260404045059",
+      "timestamp": "2026-04-04T04:50:59.161665",
+      "trader": "S-Works",
+      "market": "Pelicans vs. Kings",
+      "market_id": "0xc4ab290eb72bdc5422c72c0d072de2a5164de53f9fe49ced3869a9e436b9bafd",
+      "outcome": "Kings",
+      "entry_price": 0.9910000015058382,
+      "recommendation": "NO ENTRAR",
+      "score": 22,
+      "suggested_amount": 0.0,
+      "status": "PENDING",
+      "resolved_price": null,
+      "pnl_if_followed": null,
+      "pnl_if_ignored": null
     }
   ],
   "stats": {
-    "total": 283,
+    "total": 284,
     "entrar": 28,
-    "no_entrar": 237,
+    "no_entrar": 238,
     "observar": 18
   }
 }
