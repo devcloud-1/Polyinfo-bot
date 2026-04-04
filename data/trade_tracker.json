@@ -4479,12 +4479,28 @@
       "resolved_price": null,
       "pnl_if_followed": null,
       "pnl_if_ignored": null
+    },
+    {
+      "id": "S-Works_20260404005247",
+      "timestamp": "2026-04-04T00:52:47.825705",
+      "trader": "S-Works",
+      "market": "Magic vs. Mavericks: O/U 239.5",
+      "market_id": "0x42c1ccd5cd83f296d70e87c9e13f0caec1df7b21e5abe9e02098bb20b8def90c",
+      "outcome": "Over",
+      "entry_price": 0.47000004818185764,
+      "recommendation": "NO ENTRAR",
+      "score": 18,
+      "suggested_amount": null,
+      "status": "PENDING",
+      "resolved_price": null,
+      "pnl_if_followed": null,
+      "pnl_if_ignored": null
     }
   ],
   "stats": {
-    "total": 280,
+    "total": 281,
     "entrar": 28,
-    "no_entrar": 234,
+    "no_entrar": 235,
     "observar": 18
   }
 }
