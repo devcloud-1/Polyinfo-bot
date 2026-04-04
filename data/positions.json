@@ -355,5 +355,12 @@
     "entry_time": "2026-04-04T00:09:02.255673",
     "market_title": "Spread: Raptors (-14.5)",
     "trader": "S-Works"
+  },
+  "S-Works:0x42c1ccd5cd83f296d70e87c9e13f0caec1df7b21e5abe9e02098bb20b8def90c:over": {
+    "avg_price": 0.47000004818185764,
+    "total_amount": 6.828297,
+    "entry_time": "2026-04-04T00:52:45.677239",
+    "market_title": "Magic vs. Mavericks: O/U 239.5",
+    "trader": "S-Works"
   }
 }
