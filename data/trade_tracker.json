@@ -4591,12 +4591,28 @@
       "resolved_price": null,
       "pnl_if_followed": null,
       "pnl_if_ignored": null
+    },
+    {
+      "id": "S-Works_20260404190945",
+      "timestamp": "2026-04-04T19:09:45.658572",
+      "trader": "S-Works",
+      "market": "Will FC Barcelona win on 2026-04-04?",
+      "market_id": "0x4bbcf615ffcb7f5cc8c23db66400033b879450e6820ea8c4ab3007acdaa96897",
+      "outcome": "No",
+      "entry_price": 0.5,
+      "recommendation": "NO ENTRAR",
+      "score": 15,
+      "suggested_amount": 0.0,
+      "status": "PENDING",
+      "resolved_price": null,
+      "pnl_if_followed": null,
+      "pnl_if_ignored": null
     }
   ],
   "stats": {
-    "total": 287,
+    "total": 288,
     "entrar": 28,
-    "no_entrar": 240,
+    "no_entrar": 241,
     "observar": 19
   }
 }
