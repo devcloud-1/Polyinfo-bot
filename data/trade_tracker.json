@@ -4511,12 +4511,28 @@
       "resolved_price": null,
       "pnl_if_followed": null,
       "pnl_if_ignored": null
+    },
+    {
+      "id": "S-Works_20260404031825",
+      "timestamp": "2026-04-04T03:18:25.128948",
+      "trader": "S-Works",
+      "market": "Blues vs. Ducks",
+      "market_id": "0x344e90407abb715b0ca39f9650b2b0a891808c56776054b100e6069bf8a3b49a",
+      "outcome": "Blues",
+      "entry_price": 0.6200000068859877,
+      "recommendation": "NO ENTRAR",
+      "score": 18,
+      "suggested_amount": 0.5,
+      "status": "PENDING",
+      "resolved_price": null,
+      "pnl_if_followed": null,
+      "pnl_if_ignored": null
     }
   ],
   "stats": {
-    "total": 282,
+    "total": 283,
     "entrar": 28,
-    "no_entrar": 236,
+    "no_entrar": 237,
     "observar": 18
   }
 }
