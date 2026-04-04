@@ -349,13 +349,6 @@
     "market_title": "Will Israel conduct military action in Greater Beirut on March 29, 2026?",
     "trader": "Gohst"
   },
-  "S-Works:0xa8e0f1062153687cb0019be0798c11e7d4260c733548b1fe03b24f325acdae5d:grizzlies": {
-    "avg_price": 0.48,
-    "total_amount": 31200.0,
-    "entry_time": "2026-04-04T00:09:02.255673",
-    "market_title": "Spread: Raptors (-14.5)",
-    "trader": "S-Works"
-  },
   "S-Works:0x42c1ccd5cd83f296d70e87c9e13f0caec1df7b21e5abe9e02098bb20b8def90c:over": {
     "avg_price": 0.47000004818185764,
     "total_amount": 6.828297,
