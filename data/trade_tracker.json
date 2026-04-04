@@ -4639,12 +4639,28 @@
       "resolved_price": null,
       "pnl_if_followed": null,
       "pnl_if_ignored": null
+    },
+    {
+      "id": "S-Works_20260404231053",
+      "timestamp": "2026-04-04T23:10:53.868480",
+      "trader": "S-Works",
+      "market": "Bruins vs. Lightning",
+      "market_id": "0xad8718e9f01fdeac1f59a56f02bd93a204bedc454649d0941d91007ec14961fc",
+      "outcome": "Lightning",
+      "entry_price": 0.32,
+      "recommendation": "NO ENTRAR",
+      "score": 15,
+      "suggested_amount": 0.5,
+      "status": "PENDING",
+      "resolved_price": null,
+      "pnl_if_followed": null,
+      "pnl_if_ignored": null
     }
   ],
   "stats": {
-    "total": 290,
+    "total": 291,
     "entrar": 28,
-    "no_entrar": 243,
+    "no_entrar": 244,
     "observar": 19
   }
 }
