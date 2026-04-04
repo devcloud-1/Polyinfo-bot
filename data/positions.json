@@ -362,5 +362,12 @@
     "entry_time": "2026-04-04T19:09:43.276002",
     "market_title": "Will FC Barcelona win on 2026-04-04?",
     "trader": "S-Works"
+  },
+  "S-Works:0x929298e268cb30cf67f3d32f3740e202706bac3008caa901b3ba407d315b006c:over": {
+    "avg_price": 0.48,
+    "total_amount": 408.4512,
+    "entry_time": "2026-04-04T19:31:43.204971",
+    "market_title": "Spurs vs. Nuggets: O/U 243.5",
+    "trader": "S-Works"
   }
 }
