@@ -348,5 +348,12 @@
     "entry_time": "2026-04-05T21:35:44.724740",
     "market_title": "Grizzlies vs. Bucks",
     "trader": "S-Works"
+  },
+  "S-Works:0x00e5c807d5b17f61e851b245ff2310188c3409ac8983b2d978990f4666e44d5a:pacers": {
+    "avg_price": 0.08,
+    "total_amount": 4423.3992,
+    "entry_time": "2026-04-05T22:29:50.564711",
+    "market_title": "Pacers vs. Cavaliers",
+    "trader": "S-Works"
   }
 }
