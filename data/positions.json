@@ -369,5 +369,12 @@
     "entry_time": "2026-04-04T23:10:50.636291",
     "market_title": "Bruins vs. Lightning",
     "trader": "S-Works"
+  },
+  "aenews2:0x6d293b5476217f3a22e2ec52d43ca27914a4aa7736061e92d9c00550ec8ed4f9:yes": {
+    "avg_price": 0.7188606299697959,
+    "total_amount": 466.48304,
+    "entry_time": "2026-04-05T00:13:49.825651",
+    "market_title": "Will Iran strike Oman again in March?",
+    "trader": "aenews2"
   }
 }
