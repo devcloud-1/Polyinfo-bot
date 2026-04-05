@@ -4687,12 +4687,28 @@
       "resolved_price": null,
       "pnl_if_followed": null,
       "pnl_if_ignored": null
+    },
+    {
+      "id": "S-Works_20260405005841",
+      "timestamp": "2026-04-05T00:58:41.019696",
+      "trader": "S-Works",
+      "market": "UFC Fight Night: Manolo Zecchini vs. Tommy McMillen (Featherweight, Main Card)",
+      "market_id": "0x184e09249b1a1c03a0ca8d343b68c919a7388419fd7d677c6078eac5be43db63",
+      "outcome": "Tommy McMillen",
+      "entry_price": 0.8500000139010766,
+      "recommendation": "NO ENTRAR",
+      "score": 18,
+      "suggested_amount": 0.0,
+      "status": "PENDING",
+      "resolved_price": null,
+      "pnl_if_followed": null,
+      "pnl_if_ignored": null
     }
   ],
   "stats": {
-    "total": 293,
+    "total": 294,
     "entrar": 29,
-    "no_entrar": 245,
+    "no_entrar": 246,
     "observar": 19
   }
 }
