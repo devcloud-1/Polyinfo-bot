@@ -362,5 +362,12 @@
     "entry_time": "2026-04-05T22:52:03.520182",
     "market_title": "Pacers vs. Cavaliers",
     "trader": "S-Works"
+  },
+  "S-Works:0x85f1d26180964738984c573a900b0bb133f6181c9d70efeadf328ad802cad721:hurricanes": {
+    "avg_price": 0.27000007618226024,
+    "total_amount": 82.793835,
+    "entry_time": "2026-04-05T23:13:29.409975",
+    "market_title": "Hurricanes vs. Senators",
+    "trader": "S-Works"
   }
 }
