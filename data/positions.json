@@ -314,13 +314,6 @@
     "market_title": "Will Iran strike Oman again in March?",
     "trader": "aenews2"
   },
-  "S-Works:0x2a6f15b1d468dafc56d89f4792c6cb20cdd64e0e2923c5083c02fa610372f4f1:flames": {
-    "avg_price": 0.43000002470629123,
-    "total_amount": 8761.409776,
-    "entry_time": "2026-04-05T03:05:56.501953",
-    "market_title": "Flames vs. Ducks",
-    "trader": "S-Works"
-  },
   "S-Works:0x0a36607a34c4e672d7cd8fcc61b46d21232e52db9949dbc32424ce269649b814:under": {
     "avg_price": 0.62,
     "total_amount": 209.8576,
