@@ -4879,12 +4879,28 @@
       "resolved_price": null,
       "pnl_if_followed": null,
       "pnl_if_ignored": null
+    },
+    {
+      "id": "S-Works_20260405211303",
+      "timestamp": "2026-04-05T21:13:03.136364",
+      "trader": "S-Works",
+      "market": "Spread: Celtics (-9.5)",
+      "market_id": "0xd5eb39f8abfd1ee8d9f8c5202ab2375b0ebd5d3546da7308837378af4a8f48fd",
+      "outcome": "Celtics",
+      "entry_price": 0.44000003512729774,
+      "recommendation": "NO ENTRAR",
+      "score": 18,
+      "suggested_amount": null,
+      "status": "PENDING",
+      "resolved_price": null,
+      "pnl_if_followed": null,
+      "pnl_if_ignored": null
     }
   ],
   "stats": {
-    "total": 305,
+    "total": 306,
     "entrar": 30,
-    "no_entrar": 255,
+    "no_entrar": 256,
     "observar": 20
   }
 }
