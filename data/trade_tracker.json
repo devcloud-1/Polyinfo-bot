@@ -4927,12 +4927,28 @@
       "resolved_price": null,
       "pnl_if_followed": null,
       "pnl_if_ignored": null
+    },
+    {
+      "id": "S-Works_20260405231331",
+      "timestamp": "2026-04-05T23:13:31.512232",
+      "trader": "S-Works",
+      "market": "Hurricanes vs. Senators",
+      "market_id": "0x85f1d26180964738984c573a900b0bb133f6181c9d70efeadf328ad802cad721",
+      "outcome": "Hurricanes",
+      "entry_price": 0.27000007618226024,
+      "recommendation": "NO ENTRAR",
+      "score": 18,
+      "suggested_amount": 0.5,
+      "status": "PENDING",
+      "resolved_price": null,
+      "pnl_if_followed": null,
+      "pnl_if_ignored": null
     }
   ],
   "stats": {
-    "total": 308,
+    "total": 309,
     "entrar": 30,
-    "no_entrar": 258,
+    "no_entrar": 259,
     "observar": 20
   }
 }
