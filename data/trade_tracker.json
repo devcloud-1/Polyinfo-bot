@@ -4943,12 +4943,28 @@
       "resolved_price": null,
       "pnl_if_followed": null,
       "pnl_if_ignored": null
+    },
+    {
+      "id": "S-Works_20260405233508",
+      "timestamp": "2026-04-05T23:35:08.297239",
+      "trader": "S-Works",
+      "market": "Spread: Cavaliers (-16.5)",
+      "market_id": "0xad5557292c392f5f08bcb28be66cc3c3ff4044113181b8891662bab3b958d41b",
+      "outcome": "Pacers",
+      "entry_price": 0.75,
+      "recommendation": "NO ENTRAR",
+      "score": 12,
+      "suggested_amount": 0.0,
+      "status": "PENDING",
+      "resolved_price": null,
+      "pnl_if_followed": null,
+      "pnl_if_ignored": null
     }
   ],
   "stats": {
-    "total": 309,
+    "total": 310,
     "entrar": 30,
-    "no_entrar": 259,
+    "no_entrar": 260,
     "observar": 20
   }
 }
