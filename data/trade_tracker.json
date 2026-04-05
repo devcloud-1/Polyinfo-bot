@@ -4895,12 +4895,28 @@
       "resolved_price": null,
       "pnl_if_followed": null,
       "pnl_if_ignored": null
+    },
+    {
+      "id": "S-Works_20260405213547",
+      "timestamp": "2026-04-05T21:35:47.142558",
+      "trader": "S-Works",
+      "market": "Grizzlies vs. Bucks",
+      "market_id": "0x69615e7805487df679e589e38eb213afe581292965b549e4d048a03e4f77edb0",
+      "outcome": "Grizzlies",
+      "entry_price": 0.18000000003169897,
+      "recommendation": "NO ENTRAR",
+      "score": 12,
+      "suggested_amount": null,
+      "status": "PENDING",
+      "resolved_price": null,
+      "pnl_if_followed": null,
+      "pnl_if_ignored": null
     }
   ],
   "stats": {
-    "total": 306,
+    "total": 307,
     "entrar": 30,
-    "no_entrar": 256,
+    "no_entrar": 257,
     "observar": 20
   }
 }
