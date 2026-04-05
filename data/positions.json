@@ -327,5 +327,12 @@
     "entry_time": "2026-04-05T03:05:56.501953",
     "market_title": "Flames vs. Ducks",
     "trader": "S-Works"
+  },
+  "S-Works:0x0a36607a34c4e672d7cd8fcc61b46d21232e52db9949dbc32424ce269649b814:under": {
+    "avg_price": 0.62,
+    "total_amount": 209.8576,
+    "entry_time": "2026-04-05T04:50:39.808720",
+    "market_title": "Games Total: O/U 2.5",
+    "trader": "S-Works"
   }
 }
