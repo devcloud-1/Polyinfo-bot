@@ -341,5 +341,12 @@
     "entry_time": "2026-04-05T00:58:38.321797",
     "market_title": "UFC Fight Night: Manolo Zecchini vs. Tommy McMillen (Featherweight, Main Card)",
     "trader": "S-Works"
+  },
+  "S-Works:0x2a6f15b1d468dafc56d89f4792c6cb20cdd64e0e2923c5083c02fa610372f4f1:flames": {
+    "avg_price": 0.43000002470629123,
+    "total_amount": 8761.409776,
+    "entry_time": "2026-04-05T03:05:56.501953",
+    "market_title": "Flames vs. Ducks",
+    "trader": "S-Works"
   }
 }
