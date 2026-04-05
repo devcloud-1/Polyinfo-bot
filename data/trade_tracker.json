@@ -4767,12 +4767,28 @@
       "resolved_price": null,
       "pnl_if_followed": null,
       "pnl_if_ignored": null
+    },
+    {
+      "id": "S-Works_20260405072741",
+      "timestamp": "2026-04-05T07:27:41.992831",
+      "trader": "S-Works",
+      "market": "Counter-Strike: FUT Esports vs NRG - Map 1 Winner",
+      "market_id": "0x18a1367d7336e1ecca29547e565163d5f044df655c354e175ac552e80dc657da",
+      "outcome": "FUT Esports",
+      "entry_price": 0.78,
+      "recommendation": "NO ENTRAR",
+      "score": 15,
+      "suggested_amount": 0.5,
+      "status": "PENDING",
+      "resolved_price": null,
+      "pnl_if_followed": null,
+      "pnl_if_ignored": null
     }
   ],
   "stats": {
-    "total": 298,
+    "total": 299,
     "entrar": 30,
-    "no_entrar": 249,
+    "no_entrar": 250,
     "observar": 19
   }
 }
