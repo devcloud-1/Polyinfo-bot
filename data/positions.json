@@ -341,5 +341,12 @@
     "entry_time": "2026-04-05T21:13:00.409423",
     "market_title": "Spread: Celtics (-9.5)",
     "trader": "S-Works"
+  },
+  "S-Works:0x69615e7805487df679e589e38eb213afe581292965b549e4d048a03e4f77edb0:grizzlies": {
+    "avg_price": 0.18000000003169897,
+    "total_amount": 1143.7056870000001,
+    "entry_time": "2026-04-05T21:35:44.724740",
+    "market_title": "Grizzlies vs. Bucks",
+    "trader": "S-Works"
   }
 }
