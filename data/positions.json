@@ -334,5 +334,12 @@
     "entry_time": "2026-04-05T20:51:12.127931",
     "market_title": "Raptors vs. Celtics",
     "trader": "S-Works"
+  },
+  "S-Works:0xd5eb39f8abfd1ee8d9f8c5202ab2375b0ebd5d3546da7308837378af4a8f48fd:celtics": {
+    "avg_price": 0.44000003512729774,
+    "total_amount": 8.721422,
+    "entry_time": "2026-04-05T21:13:00.409423",
+    "market_title": "Spread: Celtics (-9.5)",
+    "trader": "S-Works"
   }
 }
