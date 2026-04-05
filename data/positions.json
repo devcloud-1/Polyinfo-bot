@@ -327,5 +327,12 @@
     "entry_time": "2026-04-05T15:31:12.830012",
     "market_title": "Will \"The Super Mario Galaxy Movie\" Opening Weekend Box Office be between 190m and 200m?",
     "trader": "aenews2"
+  },
+  "S-Works:0x4c0348dfc0c77e682c30ebccb0d4662933a81356540bc39ef8992a220f1a93d3:celtics": {
+    "avg_price": 0.8700000066815875,
+    "total_amount": 1326.8135750000001,
+    "entry_time": "2026-04-05T20:51:12.127931",
+    "market_title": "Raptors vs. Celtics",
+    "trader": "S-Works"
   }
 }
