@@ -376,5 +376,12 @@
     "entry_time": "2026-04-05T00:13:49.825651",
     "market_title": "Will Iran strike Oman again in March?",
     "trader": "aenews2"
+  },
+  "S-Works:0x836b6b413f708cd929adfa5280fb05be940b164b147df6cb4af9b039da586439:pistons": {
+    "avg_price": 0.8200000436082163,
+    "total_amount": 24369.992732000002,
+    "entry_time": "2026-04-05T00:36:38.999226",
+    "market_title": "Pistons vs. 76ers",
+    "trader": "S-Works"
   }
 }
