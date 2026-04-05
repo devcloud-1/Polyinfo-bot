@@ -349,13 +349,6 @@
     "market_title": "Will FC Barcelona win on 2026-04-04?",
     "trader": "S-Works"
   },
-  "S-Works:0x707f4f2f8ecf9658aa9c9f4c085b62816b2367357dca104aaa34b11beff985e3:spurs": {
-    "avg_price": 0.6100000002094769,
-    "total_amount": 1164.806261,
-    "entry_time": "2026-04-04T19:55:20.142085",
-    "market_title": "Spurs vs. Nuggets",
-    "trader": "S-Works"
-  },
   "S-Works:0xad8718e9f01fdeac1f59a56f02bd93a204bedc454649d0941d91007ec14961fc:lightning": {
     "avg_price": 0.32,
     "total_amount": 3200.0,
