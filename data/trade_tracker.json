@@ -4815,12 +4815,28 @@
       "resolved_price": null,
       "pnl_if_followed": null,
       "pnl_if_ignored": null
+    },
+    {
+      "id": "de5nuts_20260405100530",
+      "timestamp": "2026-04-05T10:05:30.959273",
+      "trader": "de5nuts",
+      "market": "Will Reza Pahlavi enter Iran by May 31?",
+      "market_id": "0xcfeec50a34d9429bfdc60d180f391b828924b88bd40c5b2361a43b7375b7a533",
+      "outcome": "No",
+      "entry_price": 0.962,
+      "recommendation": "OBSERVAR",
+      "score": 38,
+      "suggested_amount": null,
+      "status": "PENDING",
+      "resolved_price": null,
+      "pnl_if_followed": null,
+      "pnl_if_ignored": null
     }
   ],
   "stats": {
-    "total": 301,
+    "total": 302,
     "entrar": 30,
     "no_entrar": 252,
-    "observar": 19
+    "observar": 20
   }
 }
