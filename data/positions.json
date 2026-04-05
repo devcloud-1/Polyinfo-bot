@@ -369,5 +369,12 @@
     "entry_time": "2026-04-05T23:13:29.409975",
     "market_title": "Hurricanes vs. Senators",
     "trader": "S-Works"
+  },
+  "S-Works:0xad5557292c392f5f08bcb28be66cc3c3ff4044113181b8891662bab3b958d41b:pacers": {
+    "avg_price": 0.75,
+    "total_amount": 1145.5500000000002,
+    "entry_time": "2026-04-05T23:35:04.970480",
+    "market_title": "Spread: Cavaliers (-16.5)",
+    "trader": "S-Works"
   }
 }
