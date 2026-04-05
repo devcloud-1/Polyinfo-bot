@@ -1,11 +1,4 @@
 {
-  "Gohst:0x7cb525e831729325d651017f81cbcb6f1adde5011c7b2283babea00b4ae93ae7:no": {
-    "avg_price": 0.355,
-    "total_amount": 269.9946,
-    "entry_time": "2026-03-12T15:53:46.594326",
-    "market_title": "Netanyahu out by March 31?",
-    "trader": "Gohst"
-  },
   "Gohst:0x97d9efae9a1242a8a03dbcc185a8b86bd305d6d46b3f24ca1a4aca3fa9a6212e:yes": {
     "avg_price": 0.2,
     "total_amount": 37.228,
