@@ -4735,12 +4735,28 @@
       "resolved_price": null,
       "pnl_if_followed": null,
       "pnl_if_ignored": null
+    },
+    {
+      "id": "S-Works_20260405045042",
+      "timestamp": "2026-04-05T04:50:42.248884",
+      "trader": "S-Works",
+      "market": "Games Total: O/U 2.5",
+      "market_id": "0x0a36607a34c4e672d7cd8fcc61b46d21232e52db9949dbc32424ce269649b814",
+      "outcome": "Under",
+      "entry_price": 0.62,
+      "recommendation": "NO ENTRAR",
+      "score": 18,
+      "suggested_amount": 0.5,
+      "status": "PENDING",
+      "resolved_price": null,
+      "pnl_if_followed": null,
+      "pnl_if_ignored": null
     }
   ],
   "stats": {
-    "total": 296,
+    "total": 297,
     "entrar": 29,
-    "no_entrar": 248,
+    "no_entrar": 249,
     "observar": 19
   }
 }
