@@ -1,72 +1,72 @@
 {
   "messages": [
     {
-      "ts": "2026-04-05T10:26:57",
+      "ts": "2026-04-05T11:29:13",
       "type": "INFO",
-      "text": "\ud83d\udc41 <b>S-Works entr\u00f3 \u2014 IGNORAR</b>\n\n<b>Counter-Strike: FUT Esports vs NRG (BO3) - PGL Bucharest Group Stage</b>\nFUT ESPORTS \u00b7 99.9\u00a2 \u2192 1.0x \u00b7 $766 \u00b7 5 entradas\nVol $32,257\n\nScore 18/100 \u00b7 Mercado casi resuelto a 99.9c con retorno marginal (~0.1c), viola criterio de S-Works de entrar solo cuando el mercado NO est\u00e1 casi resuelto. Datos de API incoherentes (categor\u00eda US-current-affairs con evento 2020 expirado) sugieren mercado corrompido o hist\u00f3rico.",
+      "text": "\ud83d\udc41 <b>S-Works entr\u00f3 \u2014 IGNORAR</b>\n\n<b>Counter-Strike: FUT Esports vs NRG (BO3) - PGL Bucharest Group Stage</b>\nFUT ESPORTS \u00b7 99.9\u00a2 \u2192 1.0x \u00b7 $2529 \u00b7 8 entradas\nVol $32,257\n\nScore 18/100 \u00b7 Mercado casi resuelto a 99.9c con retorno m\u00ednimo (~0.1c), violando criterio de entrada de S-Works. Datos de API inconsistentes (mercado parece ser Biden COVID-19 2020, no CS2 actual) generan incertidumbre sobre la veracidad del trade detectado.",
       "has_buttons": true
     },
     {
-      "ts": "2026-04-05T10:26:57",
+      "ts": "2026-04-05T11:29:13",
       "type": "BUTTON_SENT",
       "text": "Botones enviados para S-Works \u2014 ?",
-      "callback_id": "32b1cfb4afbe",
+      "callback_id": "438e383a5c24",
       "trader": "S-Works",
       "market": ""
     },
     {
-      "ts": "2026-04-05T10:26:59",
+      "ts": "2026-04-05T11:29:16",
       "type": "INFO",
-      "text": "\ud83d\udc41 <b>S-Works entr\u00f3 \u2014 IGNORAR</b>\n\n<b>Counter-Strike: FUT Esports vs NRG - Map 2 Winner</b>\nFUT ESPORTS \u00b7 99.9\u00a2 \u2192 1.0x \u00b7 $44 \u00b7 2 entradas\nVol $32,257\n\nScore 18/100 \u00b7 Precio 0.999 indica mercado casi resuelto con retorno m\u00ednimo (~0.1c/$), eliminando margen de ganancia incluso con 66.9% win rate. Apuesta de $43.84 en bankroll de $25 es sobreapalancamiento cr\u00edtico (175% del capital) que viola gesti\u00f3n de riesgo fundamental.",
+      "text": "\ud83d\udc41 <b>S-Works entr\u00f3 \u2014 IGNORAR</b>\n\n<b>UFC Fight Night: Ethyn Ewing vs. Rafael Estevam (Bantamweight, Main Card)</b>\nETHYN EWING \u00b7 99.9\u00a2 \u2192 1.0x \u00b7 $6\nVol $32,257\n\nScore 15/100 \u00b7 El mercado est\u00e1 pr\u00e1cticamente resuelto a 99.9c con retorno m\u00ednimo (~0.1c), y hay inconsistencia cr\u00edtica: el trade muestra UFC pero los datos de mercado refieren a Biden COVID-19 (2020, hist\u00f3rico). Los datos API son contradictorios y el evento puede estar cerrado.",
       "has_buttons": true
     },
     {
-      "ts": "2026-04-05T10:26:59",
+      "ts": "2026-04-05T11:29:16",
       "type": "BUTTON_SENT",
       "text": "Botones enviados para S-Works \u2014 ?",
-      "callback_id": "6e1788c25912",
+      "callback_id": "ea162aa8e17c",
       "trader": "S-Works",
       "market": ""
     },
     {
-      "ts": "2026-04-05T10:47:18",
+      "ts": "2026-04-05T11:49:27",
       "type": "INFO",
-      "text": "\ud83d\udc41 <b>S-Works entr\u00f3 \u2014 IGNORAR</b>\n\n<b>UFC Fight Night: Ethyn Ewing vs. Rafael Estevam (Bantamweight, Main Card)</b>\nETHYN EWING \u00b7 99.9\u00a2 \u2192 1.0x \u00b7 $16368 \u00b7 3 entradas\nVol $32,257\n\nScore 12/100 \u00b7 Mercado casi resuelto a 99.9c con retorno m\u00ednimo (~0.1c), creando ratio riesgo-recompensa desfavorable. Discrepancia cr\u00edtica: datos de mercado refieren a Biden COVID-19 (2020), no a UFC Ethyn Ewing, indicando error API o mercado incorrecto.",
+      "text": "\ud83d\udc41 <b>S-Works entr\u00f3 \u2014 IGNORAR</b>\n\n<b>UFC Fight Night: Ethyn Ewing vs. Rafael Estevam (Bantamweight, Main Card)</b>\nETHYN EWING \u00b7 99.9\u00a2 \u2192 1.0x \u00b7 $1209 \u00b7 3 entradas\nVol $32,257\n\nScore 12/100 \u00b7 El mercado est\u00e1 pr\u00e1cticamente resuelto a 99.9c con retorno marginal de ~0.1c por d\u00f3lar, eliminando el margen de ganancia incluso con el excelente track record de S-Works. Los datos de mercado son inconsistentes (categor\u00eda pol\u00edtica/Biden 2020 vs UFC), indicando error cr\u00edtico en la API que invalida la se\u00f1al.",
       "has_buttons": true
     },
     {
-      "ts": "2026-04-05T10:47:18",
+      "ts": "2026-04-05T11:49:28",
       "type": "BUTTON_SENT",
       "text": "Botones enviados para S-Works \u2014 ?",
-      "callback_id": "cd47236a4e18",
+      "callback_id": "0f14f340540a",
       "trader": "S-Works",
       "market": ""
     },
     {
-      "ts": "2026-04-05T10:47:25",
+      "ts": "2026-04-05T12:09:38",
       "type": "INFO",
-      "text": "\ud83d\udc41 <b>S-Works entr\u00f3 \u2014 IGNORAR</b>\n\n<b>Counter-Strike: FUT Esports vs NRG (BO3) - PGL Bucharest Group Stage</b>\nFUT ESPORTS \u00b7 99.9\u00a2 \u2192 1.0x \u00b7 $1158 \u00b7 6 entradas\nVol $32,257\n\nScore 18/100 \u00b7 El mercado est\u00e1 casi resuelto a 0.999 (99.9c), ofreciendo retorno m\u00ednimo de ~0.1c por d\u00f3lar invertido. Los datos de mercado son inconsistentes (categor\u00eda pol\u00edtica, cierre desconocido, descripci\u00f3n sobre Biden 2020) mientras que el trade es sobre CS2, indicando error cr\u00edtico en la API.",
+      "text": "\ud83d\udc41 <b>S-Works entr\u00f3 \u2014 IGNORAR</b>\n\n<b>UFC Fight Night: Ethyn Ewing vs. Rafael Estevam (Bantamweight, Main Card)</b>\nETHYN EWING \u00b7 99.9\u00a2 \u2192 1.0x \u00b7 $2329 \u00b7 3 entradas\nVol $32,257\n\nScore 15/100 \u00b7 Mercado pr\u00e1cticamente resuelto a 99.9c con retorno m\u00ednimo (~0.1c), incompatible con gesti\u00f3n de riesgo. Los datos de mercado contradicen el trade (categor\u00eda pol\u00edtica/Biden 2020, no UFC actual), indicando error cr\u00edtico en la fuente de datos.",
       "has_buttons": true
     },
     {
-      "ts": "2026-04-05T10:47:26",
+      "ts": "2026-04-05T12:09:38",
       "type": "BUTTON_SENT",
       "text": "Botones enviados para S-Works \u2014 ?",
-      "callback_id": "9c914da08088",
+      "callback_id": "2bec6cf0e0da",
       "trader": "S-Works",
       "market": ""
     },
     {
-      "ts": "2026-04-05T11:07:38",
+      "ts": "2026-04-05T12:50:13",
       "type": "INFO",
-      "text": "\ud83d\udc41 <b>S-Works entr\u00f3 \u2014 IGNORAR</b>\n\n<b>Counter-Strike: FUT Esports vs NRG (BO3) - PGL Bucharest Group Stage</b>\nFUT ESPORTS \u00b7 99.9\u00a2 \u2192 1.0x \u00b7 $235 \u00b7 2 entradas\nVol $32,257\n\nScore 18/100 \u00b7 Mercado casi resuelto a 99.9c con retorno m\u00ednimo (~0.1c/$) destruye risk/reward; adem\u00e1s los datos API muestran inconsistencia cr\u00edtica (CS2 match pero categor\u00eda 'US-current-affairs' sobre Biden 2020), indicando posible error de datos o mercado inactivo/obsoleto.",
+      "text": "\ud83d\udc41 <b>S-Works entr\u00f3 \u2014 IGNORAR</b>\n\n<b>Counter-Strike: FUT Esports vs NRG (BO3) - PGL Bucharest Group Stage</b>\nFUT ESPORTS \u00b7 99.9\u00a2 \u2192 1.0x \u00b7 $10 \u00b7 3 entradas\nVol $32,257\n\nScore 15/100 \u00b7 Mercado casi resuelto a 99.9c con retorno m\u00ednimo (~0.1c/$) y apuesta de solo $10.39 (40% del bankroll de $25). Los datos API son contradictorios (etiquetado como 'US-current-affairs' sobre Biden/COVID-2020 pero descripto como Counter-Strike), lo que sugiere error cr\u00edtico en la informaci\u00f3n del mercado.",
       "has_buttons": true
     },
     {
-      "ts": "2026-04-05T11:07:38",
+      "ts": "2026-04-05T12:50:13",
       "type": "BUTTON_SENT",
       "text": "Botones enviados para S-Works \u2014 ?",
-      "callback_id": "81fe39f540ac",
+      "callback_id": "7a693c15b710",
       "trader": "S-Works",
       "market": ""
     }
