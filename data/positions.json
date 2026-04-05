@@ -350,8 +350,8 @@
     "trader": "S-Works"
   },
   "S-Works:0x00e5c807d5b17f61e851b245ff2310188c3409ac8983b2d978990f4666e44d5a:pacers": {
-    "avg_price": 0.08,
-    "total_amount": 4423.3992,
+    "avg_price": 0.0842907322950547,
+    "total_amount": 4655.681557,
     "entry_time": "2026-04-05T22:29:50.564711",
     "market_title": "Pacers vs. Cavaliers",
     "trader": "S-Works"
