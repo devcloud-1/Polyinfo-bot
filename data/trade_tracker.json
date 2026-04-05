@@ -4751,11 +4751,27 @@
       "resolved_price": null,
       "pnl_if_followed": null,
       "pnl_if_ignored": null
+    },
+    {
+      "id": "aenews2_20260405053351",
+      "timestamp": "2026-04-05T05:33:51.096571",
+      "trader": "aenews2",
+      "market": "Will the U.S. invade Iran before 2027?",
+      "market_id": "0x5db999fad322cea2914535aae5517060c3f80ad6d8c0231cde2124a434d16846",
+      "outcome": "No",
+      "entry_price": 0.46743938596139795,
+      "recommendation": "ENTRAR",
+      "score": 72,
+      "suggested_amount": 1.5,
+      "status": "PENDING",
+      "resolved_price": null,
+      "pnl_if_followed": null,
+      "pnl_if_ignored": null
     }
   ],
   "stats": {
-    "total": 297,
-    "entrar": 29,
+    "total": 298,
+    "entrar": 30,
     "no_entrar": 249,
     "observar": 19
   }
