@@ -4991,12 +4991,28 @@
       "resolved_price": null,
       "pnl_if_followed": null,
       "pnl_if_ignored": null
+    },
+    {
+      "id": "S-Works_20260406004406",
+      "timestamp": "2026-04-06T00:44:06.885925",
+      "trader": "S-Works",
+      "market": "Magic vs. Pelicans",
+      "market_id": "0xb8633de421dfdf5ea9b5dc45faaffdf9e98695cd566e6742729202638b7fe478",
+      "outcome": "Magic",
+      "entry_price": 0.3500000186847923,
+      "recommendation": "NO ENTRAR",
+      "score": 12,
+      "suggested_amount": 0.5,
+      "status": "PENDING",
+      "resolved_price": null,
+      "pnl_if_followed": null,
+      "pnl_if_ignored": null
     }
   ],
   "stats": {
-    "total": 312,
+    "total": 313,
     "entrar": 30,
-    "no_entrar": 262,
+    "no_entrar": 263,
     "observar": 20
   }
 }
