@@ -5039,12 +5039,28 @@
       "resolved_price": null,
       "pnl_if_followed": null,
       "pnl_if_ignored": null
+    },
+    {
+      "id": "S-Works_20260406023115",
+      "timestamp": "2026-04-06T02:31:15.023855",
+      "trader": "S-Works",
+      "market": "Rockets vs. Warriors",
+      "market_id": "0x73ade848497f1f1f77c75e7f2385839c85a4839de53da4fa81228048fecbc8ce",
+      "outcome": "Warriors",
+      "entry_price": 0.4400000125082082,
+      "recommendation": "NO ENTRAR",
+      "score": 15,
+      "suggested_amount": 0,
+      "status": "PENDING",
+      "resolved_price": null,
+      "pnl_if_followed": null,
+      "pnl_if_ignored": null
     }
   ],
   "stats": {
-    "total": 315,
+    "total": 316,
     "entrar": 30,
-    "no_entrar": 265,
+    "no_entrar": 266,
     "observar": 20
   }
 }
