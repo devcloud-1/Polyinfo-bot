@@ -383,5 +383,12 @@
     "entry_time": "2026-04-06T00:18:59.568836",
     "market_title": "Jazz vs. Thunder: O/U 239.5",
     "trader": "S-Works"
+  },
+  "S-Works:0x210fa419aa8ab16ec246750874ab1a1e14a8cf6dda1933cc66db7b02a539256a:thunder": {
+    "avg_price": 0.71,
+    "total_amount": 225.2404,
+    "entry_time": "2026-04-06T00:19:02.628156",
+    "market_title": "Spread: Thunder (-24.5)",
+    "trader": "S-Works"
   }
 }
