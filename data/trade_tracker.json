@@ -5055,12 +5055,28 @@
       "resolved_price": null,
       "pnl_if_followed": null,
       "pnl_if_ignored": null
+    },
+    {
+      "id": "S-Works_20260406070643",
+      "timestamp": "2026-04-06T07:06:43.222371",
+      "trader": "S-Works",
+      "market": "Map Handicap: LGC (-1.5) vs MIBR (+1.5)",
+      "market_id": "0xc3c5bb031caab6e488f6da3e5af5785eafbd1597433eca993ede29e480b5aa63",
+      "outcome": "MIBR",
+      "entry_price": 0.5700000016125002,
+      "recommendation": "NO ENTRAR",
+      "score": 12,
+      "suggested_amount": 0.5,
+      "status": "PENDING",
+      "resolved_price": null,
+      "pnl_if_followed": null,
+      "pnl_if_ignored": null
     }
   ],
   "stats": {
-    "total": 316,
+    "total": 317,
     "entrar": 30,
-    "no_entrar": 266,
+    "no_entrar": 267,
     "observar": 20
   }
 }
