@@ -188,13 +188,6 @@
     "market_title": "Will the DHS shutdown last 60 days or more?",
     "trader": "Gohst"
   },
-  "Gohst:0xbef7266e1d7c2adad3d7c6ae59df817d653c872802415a369c761ca75601f5ea:yes": {
-    "avg_price": 0.26,
-    "total_amount": 54.6702,
-    "entry_time": "2026-03-29T12:18:42.554076",
-    "market_title": "Will Trump talk to Mark Rutte in March?",
-    "trader": "Gohst"
-  },
   "Gohst:0x583a505658647660175c2e0aa70b4a460d8c34a6b3f46251ce5f9f46e9886c50:yes": {
     "avg_price": 0.25,
     "total_amount": 28.02,
