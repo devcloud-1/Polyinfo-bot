@@ -279,13 +279,6 @@
     "market_title": "Will the U.S. invade Iran before 2027?",
     "trader": "aenews2"
   },
-  "aenews2:0x0842399b1d5e90288b1bc17ce671e947dba095247347149f3c2749ef542556a6:yes": {
-    "avg_price": 0.481,
-    "total_amount": 962.0,
-    "entry_time": "2026-04-05T14:58:05.236363",
-    "market_title": "Will \"The Super Mario Galaxy Movie\" Opening Weekend Box Office be between 180m and 190m?",
-    "trader": "aenews2"
-  },
   "aenews2:0xc35f382694bc66e67f6e0f0a8b28c992756960fd8ef2cfc6568d04df528d6ef1:no": {
     "avg_price": 0.48100000000000004,
     "total_amount": 844.0107,
