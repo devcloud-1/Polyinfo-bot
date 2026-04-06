@@ -174,13 +174,6 @@
     "market_title": "US x Iran ceasefire by April 7?",
     "trader": "aenews2"
   },
-  "aenews2:0x80059ff4e694f878c0498f6f3a067ee7ca62dc2fc46251a4287b58355ce47bc5:yes": {
-    "avg_price": 0.3117840668907222,
-    "total_amount": 40065.065795,
-    "entry_time": "2026-03-27T12:18:09.276560",
-    "market_title": "US x Iran ceasefire by April 30?",
-    "trader": "aenews2"
-  },
   "Gohst:0x553a941e8a11cac22eb746b6bbea0530695ee3e1b0693d80433d7b943c91cab7:no": {
     "avg_price": 0.14,
     "total_amount": 494.0389,
