@@ -376,5 +376,12 @@
     "entry_time": "2026-04-06T00:44:04.429121",
     "market_title": "Magic vs. Pelicans",
     "trader": "S-Works"
+  },
+  "S-Works:0x73ade848497f1f1f77c75e7f2385839c85a4839de53da4fa81228048fecbc8ce:warriors": {
+    "avg_price": 0.4400000125082082,
+    "total_amount": 8557.725312,
+    "entry_time": "2026-04-06T02:31:11.484588",
+    "market_title": "Rockets vs. Warriors",
+    "trader": "S-Works"
   }
 }
