@@ -328,13 +328,6 @@
     "market_title": "Will \"The Super Mario Galaxy Movie\" Opening Weekend Box Office be between 190m and 200m?",
     "trader": "aenews2"
   },
-  "S-Works:0x210fa419aa8ab16ec246750874ab1a1e14a8cf6dda1933cc66db7b02a539256a:thunder": {
-    "avg_price": 0.71,
-    "total_amount": 225.2404,
-    "entry_time": "2026-04-06T00:19:02.628156",
-    "market_title": "Spread: Thunder (-24.5)",
-    "trader": "S-Works"
-  },
   "S-Works:0xb8633de421dfdf5ea9b5dc45faaffdf9e98695cd566e6742729202638b7fe478:magic": {
     "avg_price": 0.3500000186847923,
     "total_amount": 492.083033,
