@@ -5087,12 +5087,28 @@
       "resolved_price": null,
       "pnl_if_followed": null,
       "pnl_if_ignored": null
+    },
+    {
+      "id": "S-Works_20260406081838",
+      "timestamp": "2026-04-06T08:18:38.519591",
+      "trader": "S-Works",
+      "market": "Counter-Strike: Legacy vs MIBR (BO3) - PGL Bucharest Group Stage",
+      "market_id": "0xee064081dc10c158a0f6a9432487aef3c250cad5fd01e9887544a8ed26ebcfd7",
+      "outcome": "MIBR",
+      "entry_price": 0.5321428809484933,
+      "recommendation": "NO ENTRAR",
+      "score": 12,
+      "suggested_amount": 0.5,
+      "status": "PENDING",
+      "resolved_price": null,
+      "pnl_if_followed": null,
+      "pnl_if_ignored": null
     }
   ],
   "stats": {
-    "total": 318,
+    "total": 319,
     "entrar": 30,
-    "no_entrar": 268,
+    "no_entrar": 269,
     "observar": 20
   }
 }
