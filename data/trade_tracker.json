@@ -5023,12 +5023,28 @@
       "resolved_price": null,
       "pnl_if_followed": null,
       "pnl_if_ignored": null
+    },
+    {
+      "id": "aenews2_20260406014813",
+      "timestamp": "2026-04-06T01:48:13.332023",
+      "trader": "aenews2",
+      "market": "Will \"The Super Mario Galaxy Movie\" Opening Weekend Box Office be less than 160m?",
+      "market_id": "0xca04e1e3c9a6881bf9ff7d44698491fe73d43abd0db17bdf3296669c7136ca28",
+      "outcome": "No",
+      "entry_price": 0.998,
+      "recommendation": "NO ENTRAR",
+      "score": 28,
+      "suggested_amount": null,
+      "status": "PENDING",
+      "resolved_price": null,
+      "pnl_if_followed": null,
+      "pnl_if_ignored": null
     }
   ],
   "stats": {
-    "total": 314,
+    "total": 315,
     "entrar": 30,
-    "no_entrar": 264,
+    "no_entrar": 265,
     "observar": 20
   }
 }
